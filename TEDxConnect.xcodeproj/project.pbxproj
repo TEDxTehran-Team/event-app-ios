@@ -1,0 +1,461 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6D460C6324DE7DCA00F50DAF /* ApolloSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 6D460C6224DE7DCA00F50DAF /* ApolloSQLite */; };
+		6D460C6524DE7DCA00F50DAF /* ApolloCore in Frameworks */ = {isa = PBXBuildFile; productRef = 6D460C6424DE7DCA00F50DAF /* ApolloCore */; };
+		6D460C6724DE7DCA00F50DAF /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 6D460C6624DE7DCA00F50DAF /* ApolloWebSocket */; };
+		6D460C6924DE7DCA00F50DAF /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 6D460C6824DE7DCA00F50DAF /* Apollo */; };
+		6D460C6B24DE7DCA00F50DAF /* ApolloCodegenLib in Frameworks */ = {isa = PBXBuildFile; productRef = 6D460C6A24DE7DCA00F50DAF /* ApolloCodegenLib */; };
+		6D460C6D24DE7F3500F50DAF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D460C6C24DE7F3500F50DAF /* Network.swift */; };
+		6D4FAC6324DE7AD1002202D9 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D4FAC6224DE7AD1002202D9 /* schema.json */; };
+		6D4FAC6524DE7AF4002202D9 /* Queries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 6D4FAC6424DE7AF4002202D9 /* Queries.graphql */; };
+		6DC754D924DE6BD700F96518 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC754D824DE6BD700F96518 /* AppDelegate.swift */; };
+		6DC754DB24DE6BD700F96518 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC754DA24DE6BD700F96518 /* SceneDelegate.swift */; };
+		6DC754DE24DE6BD700F96518 /* TEDxConnect.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6DC754DC24DE6BD700F96518 /* TEDxConnect.xcdatamodeld */; };
+		6DC754E024DE6BD700F96518 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC754DF24DE6BD700F96518 /* ContentView.swift */; };
+		6DC754E224DE6BD900F96518 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DC754E124DE6BD900F96518 /* Assets.xcassets */; };
+		6DC754E524DE6BD900F96518 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DC754E424DE6BD900F96518 /* Preview Assets.xcassets */; };
+		6DC754E824DE6BD900F96518 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DC754E624DE6BD900F96518 /* LaunchScreen.storyboard */; };
+		6DF6A15224DE85F80023B186 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF6A15124DE85F80023B186 /* API.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6D460C6C24DE7F3500F50DAF /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		6D4FAC6224DE7AD1002202D9 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		6D4FAC6424DE7AF4002202D9 /* Queries.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Queries.graphql; sourceTree = "<group>"; };
+		6DC754D524DE6BD700F96518 /* TEDxConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TEDxConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DC754D824DE6BD700F96518 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6DC754DA24DE6BD700F96518 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		6DC754DD24DE6BD700F96518 /* TEDxConnect.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TEDxConnect.xcdatamodel; sourceTree = "<group>"; };
+		6DC754DF24DE6BD700F96518 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6DC754E124DE6BD900F96518 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6DC754E424DE6BD900F96518 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6DC754E724DE6BD900F96518 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6DC754E924DE6BD900F96518 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6DF6A15124DE85F80023B186 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6DC754D224DE6BD700F96518 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D460C6B24DE7DCA00F50DAF /* ApolloCodegenLib in Frameworks */,
+				6D460C6524DE7DCA00F50DAF /* ApolloCore in Frameworks */,
+				6D460C6924DE7DCA00F50DAF /* Apollo in Frameworks */,
+				6D460C6724DE7DCA00F50DAF /* ApolloWebSocket in Frameworks */,
+				6D460C6324DE7DCA00F50DAF /* ApolloSQLite in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6DC754CC24DE6BD600F96518 = {
+			isa = PBXGroup;
+			children = (
+				6DC754D724DE6BD700F96518 /* TEDxConnect */,
+				6DC754D624DE6BD700F96518 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6DC754D624DE6BD700F96518 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6DC754D524DE6BD700F96518 /* TEDxConnect.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6DC754D724DE6BD700F96518 /* TEDxConnect */ = {
+			isa = PBXGroup;
+			children = (
+				6DC754D824DE6BD700F96518 /* AppDelegate.swift */,
+				6DC754DA24DE6BD700F96518 /* SceneDelegate.swift */,
+				6DC754DF24DE6BD700F96518 /* ContentView.swift */,
+				6D4FAC6224DE7AD1002202D9 /* schema.json */,
+				6D4FAC6424DE7AF4002202D9 /* Queries.graphql */,
+				6D460C6C24DE7F3500F50DAF /* Network.swift */,
+				6DF6A15124DE85F80023B186 /* API.swift */,
+				6DC754E124DE6BD900F96518 /* Assets.xcassets */,
+				6DC754E624DE6BD900F96518 /* LaunchScreen.storyboard */,
+				6DC754E924DE6BD900F96518 /* Info.plist */,
+				6DC754DC24DE6BD700F96518 /* TEDxConnect.xcdatamodeld */,
+				6DC754E324DE6BD900F96518 /* Preview Content */,
+			);
+			path = TEDxConnect;
+			sourceTree = "<group>";
+		};
+		6DC754E324DE6BD900F96518 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				6DC754E424DE6BD900F96518 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6DC754D424DE6BD700F96518 /* TEDxConnect */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DC754EC24DE6BD900F96518 /* Build configuration list for PBXNativeTarget "TEDxConnect" */;
+			buildPhases = (
+				6D4FAC6624DE7B1D002202D9 /* Generate Apollo GraphQL API */,
+				6DC754D124DE6BD700F96518 /* Sources */,
+				6DC754D224DE6BD700F96518 /* Frameworks */,
+				6DC754D324DE6BD700F96518 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TEDxConnect;
+			packageProductDependencies = (
+				6D460C6224DE7DCA00F50DAF /* ApolloSQLite */,
+				6D460C6424DE7DCA00F50DAF /* ApolloCore */,
+				6D460C6624DE7DCA00F50DAF /* ApolloWebSocket */,
+				6D460C6824DE7DCA00F50DAF /* Apollo */,
+				6D460C6A24DE7DCA00F50DAF /* ApolloCodegenLib */,
+			);
+			productName = TEDxConnect;
+			productReference = 6DC754D524DE6BD700F96518 /* TEDxConnect.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6DC754CD24DE6BD600F96518 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = Alexani;
+				TargetAttributes = {
+					6DC754D424DE6BD700F96518 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+				};
+			};
+			buildConfigurationList = 6DC754D024DE6BD600F96518 /* Build configuration list for PBXProject "TEDxConnect" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6DC754CC24DE6BD600F96518;
+			packageReferences = (
+				6D460C6124DE7DCA00F50DAF /* XCRemoteSwiftPackageReference "apollo-ios" */,
+			);
+			productRefGroup = 6DC754D624DE6BD700F96518 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6DC754D424DE6BD700F96518 /* TEDxConnect */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6DC754D324DE6BD700F96518 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D4FAC6324DE7AD1002202D9 /* schema.json in Resources */,
+				6D4FAC6524DE7AF4002202D9 /* Queries.graphql in Resources */,
+				6DC754E824DE6BD900F96518 /* LaunchScreen.storyboard in Resources */,
+				6DC754E524DE6BD900F96518 /* Preview Assets.xcassets in Resources */,
+				6DC754E224DE6BD900F96518 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6D4FAC6624DE7B1D002202D9 /* Generate Apollo GraphQL API */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Apollo GraphQL API";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\nif [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\necho >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\nexit 1\nfi\nDERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\nif [ -z \"${SCRIPT_PATH}\" ]; then\necho >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\nexit 1\nfi\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6DC754D124DE6BD700F96518 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D460C6D24DE7F3500F50DAF /* Network.swift in Sources */,
+				6DC754DE24DE6BD700F96518 /* TEDxConnect.xcdatamodeld in Sources */,
+				6DC754D924DE6BD700F96518 /* AppDelegate.swift in Sources */,
+				6DC754E024DE6BD700F96518 /* ContentView.swift in Sources */,
+				6DF6A15224DE85F80023B186 /* API.swift in Sources */,
+				6DC754DB24DE6BD700F96518 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6DC754E624DE6BD900F96518 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6DC754E724DE6BD900F96518 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6DC754EA24DE6BD900F96518 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6DC754EB24DE6BD900F96518 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6DC754ED24DE6BD900F96518 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"TEDxConnect/Preview Content\"";
+				DEVELOPMENT_TEAM = XU385D6UF5;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = TEDxConnect/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Alexani.TEDxConnect;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6DC754EE24DE6BD900F96518 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"TEDxConnect/Preview Content\"";
+				DEVELOPMENT_TEAM = XU385D6UF5;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = TEDxConnect/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Alexani.TEDxConnect;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6DC754D024DE6BD600F96518 /* Build configuration list for PBXProject "TEDxConnect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DC754EA24DE6BD900F96518 /* Debug */,
+				6DC754EB24DE6BD900F96518 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6DC754EC24DE6BD900F96518 /* Build configuration list for PBXNativeTarget "TEDxConnect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DC754ED24DE6BD900F96518 /* Debug */,
+				6DC754EE24DE6BD900F96518 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6D460C6124DE7DCA00F50DAF /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.30.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6D460C6224DE7DCA00F50DAF /* ApolloSQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D460C6124DE7DCA00F50DAF /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloSQLite;
+		};
+		6D460C6424DE7DCA00F50DAF /* ApolloCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D460C6124DE7DCA00F50DAF /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloCore;
+		};
+		6D460C6624DE7DCA00F50DAF /* ApolloWebSocket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D460C6124DE7DCA00F50DAF /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloWebSocket;
+		};
+		6D460C6824DE7DCA00F50DAF /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D460C6124DE7DCA00F50DAF /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+		6D460C6A24DE7DCA00F50DAF /* ApolloCodegenLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D460C6124DE7DCA00F50DAF /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloCodegenLib;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		6DC754DC24DE6BD700F96518 /* TEDxConnect.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6DC754DD24DE6BD700F96518 /* TEDxConnect.xcdatamodel */,
+			);
+			currentVersion = 6DC754DD24DE6BD700F96518 /* TEDxConnect.xcdatamodel */;
+			path = TEDxConnect.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 6DC754CD24DE6BD600F96518 /* Project object */;
+}
