@@ -3,18 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6D460C6324DE7DCA00F50DAF /* ApolloSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 6D460C6224DE7DCA00F50DAF /* ApolloSQLite */; };
-		6D460C6524DE7DCA00F50DAF /* ApolloCore in Frameworks */ = {isa = PBXBuildFile; productRef = 6D460C6424DE7DCA00F50DAF /* ApolloCore */; };
-		6D460C6724DE7DCA00F50DAF /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 6D460C6624DE7DCA00F50DAF /* ApolloWebSocket */; };
-		6D460C6924DE7DCA00F50DAF /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 6D460C6824DE7DCA00F50DAF /* Apollo */; };
-		6D460C6B24DE7DCA00F50DAF /* ApolloCodegenLib in Frameworks */ = {isa = PBXBuildFile; productRef = 6D460C6A24DE7DCA00F50DAF /* ApolloCodegenLib */; };
+		44E03337C65ABC359A233E94 /* Pods_TEDxConnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FDE6D95D7B921766C172A0 /* Pods_TEDxConnect.framework */; };
+		6D22EB2C24E11C62008566A0 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D22EB2B24E11C61008566A0 /* schema.json */; };
 		6D460C6D24DE7F3500F50DAF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D460C6C24DE7F3500F50DAF /* Network.swift */; };
-		6D4FAC6324DE7AD1002202D9 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D4FAC6224DE7AD1002202D9 /* schema.json */; };
-		6D4FAC6524DE7AF4002202D9 /* Queries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 6D4FAC6424DE7AF4002202D9 /* Queries.graphql */; };
 		6DC754D924DE6BD700F96518 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC754D824DE6BD700F96518 /* AppDelegate.swift */; };
 		6DC754DB24DE6BD700F96518 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC754DA24DE6BD700F96518 /* SceneDelegate.swift */; };
 		6DC754DE24DE6BD700F96518 /* TEDxConnect.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6DC754DC24DE6BD700F96518 /* TEDxConnect.xcdatamodeld */; };
@@ -22,23 +17,33 @@
 		6DC754E224DE6BD900F96518 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DC754E124DE6BD900F96518 /* Assets.xcassets */; };
 		6DC754E524DE6BD900F96518 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DC754E424DE6BD900F96518 /* Preview Assets.xcassets */; };
 		6DC754E824DE6BD900F96518 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DC754E624DE6BD900F96518 /* LaunchScreen.storyboard */; };
-		6DF6A15224DE85F80023B186 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF6A15124DE85F80023B186 /* API.swift */; };
+		6DE7CEE524E120BA00910DF7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7CEE424E120BA00910DF7 /* API.swift */; };
+		6DE7CEE724E120DF00910DF7 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7CEE624E120DF00910DF7 /* Repository.swift */; };
+		6DE7CEEA24E1217200910DF7 /* RepositoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7CEE924E1217200910DF7 /* RepositoryRepository.swift */; };
+		6DE7CEF024E122EB00910DF7 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7CEEF24E122EB00910DF7 /* RepositoryViewModel.swift */; };
+		6DFB0D5724E11CC900353416 /* Queries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 6DFB0D5624E11CC900353416 /* Queries.graphql */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6D22EB2B24E11C61008566A0 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		6D460C6C24DE7F3500F50DAF /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		6D4FAC6224DE7AD1002202D9 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		6D4FAC6424DE7AF4002202D9 /* Queries.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Queries.graphql; sourceTree = "<group>"; };
 		6DC754D524DE6BD700F96518 /* TEDxConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TEDxConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DC754D824DE6BD700F96518 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DC754DA24DE6BD700F96518 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6DC754DD24DE6BD700F96518 /* TEDxConnect.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TEDxConnect.xcdatamodel; sourceTree = "<group>"; };
-		6DC754DF24DE6BD700F96518 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6DC754DF24DE6BD700F96518 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "../New Group/ContentView.swift"; sourceTree = "<group>"; };
 		6DC754E124DE6BD900F96518 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6DC754E424DE6BD900F96518 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6DC754E724DE6BD900F96518 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6DC754E924DE6BD900F96518 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6DF6A15124DE85F80023B186 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		6DE7CEE424E120BA00910DF7 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		6DE7CEE624E120DF00910DF7 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		6DE7CEE924E1217200910DF7 /* RepositoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryRepository.swift; sourceTree = "<group>"; };
+		6DE7CEEF24E122EB00910DF7 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
+		6DFB0D5624E11CC900353416 /* Queries.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Queries.graphql; sourceTree = "<group>"; };
+		747CD5FF7D5F26B645079232 /* Pods-TEDxConnect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TEDxConnect.release.xcconfig"; path = "Target Support Files/Pods-TEDxConnect/Pods-TEDxConnect.release.xcconfig"; sourceTree = "<group>"; };
+		B7FDE6D95D7B921766C172A0 /* Pods_TEDxConnect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TEDxConnect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F37A51473AD1ED9E8959A852 /* Pods-TEDxConnect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TEDxConnect.debug.xcconfig"; path = "Target Support Files/Pods-TEDxConnect/Pods-TEDxConnect.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,22 +51,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D460C6B24DE7DCA00F50DAF /* ApolloCodegenLib in Frameworks */,
-				6D460C6524DE7DCA00F50DAF /* ApolloCore in Frameworks */,
-				6D460C6924DE7DCA00F50DAF /* Apollo in Frameworks */,
-				6D460C6724DE7DCA00F50DAF /* ApolloWebSocket in Frameworks */,
-				6D460C6324DE7DCA00F50DAF /* ApolloSQLite in Frameworks */,
+				44E03337C65ABC359A233E94 /* Pods_TEDxConnect.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0CCC391DA23E7AB0EF549177 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F37A51473AD1ED9E8959A852 /* Pods-TEDxConnect.debug.xcconfig */,
+				747CD5FF7D5F26B645079232 /* Pods-TEDxConnect.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		6DC754CC24DE6BD600F96518 = {
 			isa = PBXGroup;
 			children = (
 				6DC754D724DE6BD700F96518 /* TEDxConnect */,
 				6DC754D624DE6BD700F96518 /* Products */,
+				0CCC391DA23E7AB0EF549177 /* Pods */,
+				A03718C07224C4A1D620D7A1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,16 +90,19 @@
 			children = (
 				6DC754D824DE6BD700F96518 /* AppDelegate.swift */,
 				6DC754DA24DE6BD700F96518 /* SceneDelegate.swift */,
-				6DC754DF24DE6BD700F96518 /* ContentView.swift */,
-				6D4FAC6224DE7AD1002202D9 /* schema.json */,
-				6D4FAC6424DE7AF4002202D9 /* Queries.graphql */,
 				6D460C6C24DE7F3500F50DAF /* Network.swift */,
-				6DF6A15124DE85F80023B186 /* API.swift */,
+				6DE7CEE824E120E700910DF7 /* Model */,
+				6DE7CEEB24E1217B00910DF7 /* Repository */,
+				6DE7CEEE24E122D700910DF7 /* ViewModel */,
+				6DE7CEF124E1237900910DF7 /* View */,
 				6DC754E124DE6BD900F96518 /* Assets.xcassets */,
 				6DC754E624DE6BD900F96518 /* LaunchScreen.storyboard */,
 				6DC754E924DE6BD900F96518 /* Info.plist */,
 				6DC754DC24DE6BD700F96518 /* TEDxConnect.xcdatamodeld */,
 				6DC754E324DE6BD900F96518 /* Preview Content */,
+				6DFB0D5624E11CC900353416 /* Queries.graphql */,
+				6D22EB2B24E11C61008566A0 /* schema.json */,
+				6DE7CEE424E120BA00910DF7 /* API.swift */,
 			);
 			path = TEDxConnect;
 			sourceTree = "<group>";
@@ -100,6 +115,46 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		6DE7CEE824E120E700910DF7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6DE7CEE624E120DF00910DF7 /* Repository.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6DE7CEEB24E1217B00910DF7 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				6DE7CEE924E1217200910DF7 /* RepositoryRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		6DE7CEEE24E122D700910DF7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6DE7CEEF24E122EB00910DF7 /* RepositoryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6DE7CEF124E1237900910DF7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6DC754DF24DE6BD700F96518 /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A03718C07224C4A1D620D7A1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B7FDE6D95D7B921766C172A0 /* Pods_TEDxConnect.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -107,10 +162,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6DC754EC24DE6BD900F96518 /* Build configuration list for PBXNativeTarget "TEDxConnect" */;
 			buildPhases = (
+				35979F964DBC28FBD481266C /* [CP] Check Pods Manifest.lock */,
 				6D4FAC6624DE7B1D002202D9 /* Generate Apollo GraphQL API */,
 				6DC754D124DE6BD700F96518 /* Sources */,
 				6DC754D224DE6BD700F96518 /* Frameworks */,
 				6DC754D324DE6BD700F96518 /* Resources */,
+				72D2A2C688982A0307BABDE0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -118,11 +175,6 @@
 			);
 			name = TEDxConnect;
 			packageProductDependencies = (
-				6D460C6224DE7DCA00F50DAF /* ApolloSQLite */,
-				6D460C6424DE7DCA00F50DAF /* ApolloCore */,
-				6D460C6624DE7DCA00F50DAF /* ApolloWebSocket */,
-				6D460C6824DE7DCA00F50DAF /* Apollo */,
-				6D460C6A24DE7DCA00F50DAF /* ApolloCodegenLib */,
 			);
 			productName = TEDxConnect;
 			productReference = 6DC754D524DE6BD700F96518 /* TEDxConnect.app */;
@@ -153,7 +205,6 @@
 			);
 			mainGroup = 6DC754CC24DE6BD600F96518;
 			packageReferences = (
-				6D460C6124DE7DCA00F50DAF /* XCRemoteSwiftPackageReference "apollo-ios" */,
 			);
 			productRefGroup = 6DC754D624DE6BD700F96518 /* Products */;
 			projectDirPath = "";
@@ -169,8 +220,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D4FAC6324DE7AD1002202D9 /* schema.json in Resources */,
-				6D4FAC6524DE7AF4002202D9 /* Queries.graphql in Resources */,
+				6D22EB2C24E11C62008566A0 /* schema.json in Resources */,
+				6DFB0D5724E11CC900353416 /* Queries.graphql in Resources */,
 				6DC754E824DE6BD900F96518 /* LaunchScreen.storyboard in Resources */,
 				6DC754E524DE6BD900F96518 /* Preview Assets.xcassets in Resources */,
 				6DC754E224DE6BD900F96518 /* Assets.xcassets in Resources */,
@@ -180,6 +231,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		35979F964DBC28FBD481266C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TEDxConnect-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6D4FAC6624DE7B1D002202D9 /* Generate Apollo GraphQL API */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -196,7 +269,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\nif [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\necho >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\nexit 1\nfi\nDERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\nif [ -z \"${SCRIPT_PATH}\" ]; then\necho >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\nexit 1\nfi\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n";
+			shellScript = "SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n";
+		};
+		72D2A2C688982A0307BABDE0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TEDxConnect/Pods-TEDxConnect-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TEDxConnect/Pods-TEDxConnect-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TEDxConnect/Pods-TEDxConnect-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -205,11 +295,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DE7CEE724E120DF00910DF7 /* Repository.swift in Sources */,
 				6D460C6D24DE7F3500F50DAF /* Network.swift in Sources */,
+				6DE7CEEA24E1217200910DF7 /* RepositoryRepository.swift in Sources */,
 				6DC754DE24DE6BD700F96518 /* TEDxConnect.xcdatamodeld in Sources */,
 				6DC754D924DE6BD700F96518 /* AppDelegate.swift in Sources */,
+				6DE7CEF024E122EB00910DF7 /* RepositoryViewModel.swift in Sources */,
 				6DC754E024DE6BD700F96518 /* ContentView.swift in Sources */,
-				6DF6A15224DE85F80023B186 /* API.swift in Sources */,
+				6DE7CEE524E120BA00910DF7 /* API.swift in Sources */,
 				6DC754DB24DE6BD700F96518 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +437,7 @@
 		};
 		6DC754ED24DE6BD900F96518 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F37A51473AD1ED9E8959A852 /* Pods-TEDxConnect.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -364,6 +458,7 @@
 		};
 		6DC754EE24DE6BD900F96518 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 747CD5FF7D5F26B645079232 /* Pods-TEDxConnect.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -404,45 +499,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		6D460C6124DE7DCA00F50DAF /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 0.30.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		6D460C6224DE7DCA00F50DAF /* ApolloSQLite */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6D460C6124DE7DCA00F50DAF /* XCRemoteSwiftPackageReference "apollo-ios" */;
-			productName = ApolloSQLite;
-		};
-		6D460C6424DE7DCA00F50DAF /* ApolloCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6D460C6124DE7DCA00F50DAF /* XCRemoteSwiftPackageReference "apollo-ios" */;
-			productName = ApolloCore;
-		};
-		6D460C6624DE7DCA00F50DAF /* ApolloWebSocket */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6D460C6124DE7DCA00F50DAF /* XCRemoteSwiftPackageReference "apollo-ios" */;
-			productName = ApolloWebSocket;
-		};
-		6D460C6824DE7DCA00F50DAF /* Apollo */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6D460C6124DE7DCA00F50DAF /* XCRemoteSwiftPackageReference "apollo-ios" */;
-			productName = Apollo;
-		};
-		6D460C6A24DE7DCA00F50DAF /* ApolloCodegenLib */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6D460C6124DE7DCA00F50DAF /* XCRemoteSwiftPackageReference "apollo-ios" */;
-			productName = ApolloCodegenLib;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		6DC754DC24DE6BD700F96518 /* TEDxConnect.xcdatamodeld */ = {

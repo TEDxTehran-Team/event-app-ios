@@ -4,37 +4,51 @@
 import Apollo
 import Foundation
 
-public final class LaunchListQuery: GraphQLQuery {
+public final class SearchRepositoriesQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query LaunchList {
-      launches {
+    query SearchRepositories($query: String!, $count: Int!) {
+      search(query: $query, type: REPOSITORY, first: $count) {
         __typename
-        cursor
-        hasMore
-        launches {
+        edges {
           __typename
-          id
-          site
+          node {
+            __typename
+            ... on Repository {
+              name
+              stargazers {
+                __typename
+                totalCount
+              }
+              url
+            }
+          }
         }
       }
     }
     """
 
-  public let operationName: String = "LaunchList"
+  public let operationName: String = "SearchRepositories"
 
-  public init() {
+  public var query: String
+  public var count: Int
+
+  public init(query: String, count: Int) {
+    self.query = query
+    self.count = count
+  }
+
+  public var variables: GraphQLMap? {
+    return ["query": query, "count": count]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["Query"]
 
-    public static var selections: [GraphQLSelection] {
-      return [
-        GraphQLField("launches", type: .nonNull(.object(Launch.selections))),
-      ]
-    }
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("search", arguments: ["query": GraphQLVariable("query"), "type": "REPOSITORY", "first": GraphQLVariable("count")], type: .nonNull(.object(Search.selections))),
+    ]
 
     public private(set) var resultMap: ResultMap
 
@@ -42,30 +56,27 @@ public final class LaunchListQuery: GraphQLQuery {
       self.resultMap = unsafeResultMap
     }
 
-    public init(launches: Launch) {
-      self.init(unsafeResultMap: ["__typename": "Query", "launches": launches.resultMap])
+    public init(search: Search) {
+      self.init(unsafeResultMap: ["__typename": "Query", "search": search.resultMap])
     }
 
-    public var launches: Launch {
+    /// Perform a search across resources.
+    public var search: Search {
       get {
-        return Launch(unsafeResultMap: resultMap["launches"]! as! ResultMap)
+        return Search(unsafeResultMap: resultMap["search"]! as! ResultMap)
       }
       set {
-        resultMap.updateValue(newValue.resultMap, forKey: "launches")
+        resultMap.updateValue(newValue.resultMap, forKey: "search")
       }
     }
 
-    public struct Launch: GraphQLSelectionSet {
-      public static let possibleTypes: [String] = ["LaunchConnection"]
+    public struct Search: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["SearchResultItemConnection"]
 
-      public static var selections: [GraphQLSelection] {
-        return [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("cursor", type: .nonNull(.scalar(String.self))),
-          GraphQLField("hasMore", type: .nonNull(.scalar(Bool.self))),
-          GraphQLField("launches", type: .nonNull(.list(.object(Launch.selections)))),
-        ]
-      }
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("edges", type: .list(.object(Edge.selections))),
+      ]
 
       public private(set) var resultMap: ResultMap
 
@@ -73,8 +84,8 @@ public final class LaunchListQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(cursor: String, hasMore: Bool, launches: [Launch?]) {
-        self.init(unsafeResultMap: ["__typename": "LaunchConnection", "cursor": cursor, "hasMore": hasMore, "launches": launches.map { (value: Launch?) -> ResultMap? in value.flatMap { (value: Launch) -> ResultMap in value.resultMap } }])
+      public init(edges: [Edge?]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "SearchResultItemConnection", "edges": edges.flatMap { (value: [Edge?]) -> [ResultMap?] in value.map { (value: Edge?) -> ResultMap? in value.flatMap { (value: Edge) -> ResultMap in value.resultMap } } }])
       }
 
       public var __typename: String {
@@ -86,43 +97,23 @@ public final class LaunchListQuery: GraphQLQuery {
         }
       }
 
-      public var cursor: String {
+      /// A list of edges.
+      public var edges: [Edge?]? {
         get {
-          return resultMap["cursor"]! as! String
+          return (resultMap["edges"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Edge?] in value.map { (value: ResultMap?) -> Edge? in value.flatMap { (value: ResultMap) -> Edge in Edge(unsafeResultMap: value) } } }
         }
         set {
-          resultMap.updateValue(newValue, forKey: "cursor")
+          resultMap.updateValue(newValue.flatMap { (value: [Edge?]) -> [ResultMap?] in value.map { (value: Edge?) -> ResultMap? in value.flatMap { (value: Edge) -> ResultMap in value.resultMap } } }, forKey: "edges")
         }
       }
 
-      public var hasMore: Bool {
-        get {
-          return resultMap["hasMore"]! as! Bool
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "hasMore")
-        }
-      }
+      public struct Edge: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["SearchResultItemEdge"]
 
-      public var launches: [Launch?] {
-        get {
-          return (resultMap["launches"] as! [ResultMap?]).map { (value: ResultMap?) -> Launch? in value.flatMap { (value: ResultMap) -> Launch in Launch(unsafeResultMap: value) } }
-        }
-        set {
-          resultMap.updateValue(newValue.map { (value: Launch?) -> ResultMap? in value.flatMap { (value: Launch) -> ResultMap in value.resultMap } }, forKey: "launches")
-        }
-      }
-
-      public struct Launch: GraphQLSelectionSet {
-        public static let possibleTypes: [String] = ["Launch"]
-
-        public static var selections: [GraphQLSelection] {
-          return [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-            GraphQLField("site", type: .scalar(String.self)),
-          ]
-        }
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("node", type: .object(Node.selections)),
+        ]
 
         public private(set) var resultMap: ResultMap
 
@@ -130,8 +121,8 @@ public final class LaunchListQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: GraphQLID, site: String? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Launch", "id": id, "site": site])
+        public init(node: Node? = nil) {
+          self.init(unsafeResultMap: ["__typename": "SearchResultItemEdge", "node": node.flatMap { (value: Node) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -143,21 +134,178 @@ public final class LaunchListQuery: GraphQLQuery {
           }
         }
 
-        public var id: GraphQLID {
+        /// The item at the end of the edge.
+        public var node: Node? {
           get {
-            return resultMap["id"]! as! GraphQLID
+            return (resultMap["node"] as? ResultMap).flatMap { Node(unsafeResultMap: $0) }
           }
           set {
-            resultMap.updateValue(newValue, forKey: "id")
+            resultMap.updateValue(newValue?.resultMap, forKey: "node")
           }
         }
 
-        public var site: String? {
-          get {
-            return resultMap["site"] as? String
+        public struct Node: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["App", "Issue", "MarketplaceListing", "Organization", "PullRequest", "Repository", "User"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLTypeCase(
+              variants: ["Repository": AsRepository.selections],
+              default: [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              ]
+            )
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
           }
-          set {
-            resultMap.updateValue(newValue, forKey: "site")
+
+          public static func makeApp() -> Node {
+            return Node(unsafeResultMap: ["__typename": "App"])
+          }
+
+          public static func makeIssue() -> Node {
+            return Node(unsafeResultMap: ["__typename": "Issue"])
+          }
+
+          public static func makeMarketplaceListing() -> Node {
+            return Node(unsafeResultMap: ["__typename": "MarketplaceListing"])
+          }
+
+          public static func makeOrganization() -> Node {
+            return Node(unsafeResultMap: ["__typename": "Organization"])
+          }
+
+          public static func makePullRequest() -> Node {
+            return Node(unsafeResultMap: ["__typename": "PullRequest"])
+          }
+
+          public static func makeUser() -> Node {
+            return Node(unsafeResultMap: ["__typename": "User"])
+          }
+
+          public static func makeRepository(name: String, stargazers: AsRepository.Stargazer, url: String) -> Node {
+            return Node(unsafeResultMap: ["__typename": "Repository", "name": name, "stargazers": stargazers.resultMap, "url": url])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var asRepository: AsRepository? {
+            get {
+              if !AsRepository.possibleTypes.contains(__typename) { return nil }
+              return AsRepository(unsafeResultMap: resultMap)
+            }
+            set {
+              guard let newValue = newValue else { return }
+              resultMap = newValue.resultMap
+            }
+          }
+
+          public struct AsRepository: GraphQLSelectionSet {
+            public static let possibleTypes: [String] = ["Repository"]
+
+            public static let selections: [GraphQLSelection] = [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("name", type: .nonNull(.scalar(String.self))),
+              GraphQLField("stargazers", type: .nonNull(.object(Stargazer.selections))),
+              GraphQLField("url", type: .nonNull(.scalar(String.self))),
+            ]
+
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public init(name: String, stargazers: Stargazer, url: String) {
+              self.init(unsafeResultMap: ["__typename": "Repository", "name": name, "stargazers": stargazers.resultMap, "url": url])
+            }
+
+            public var __typename: String {
+              get {
+                return resultMap["__typename"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            /// The name of the repository.
+            public var name: String {
+              get {
+                return resultMap["name"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "name")
+              }
+            }
+
+            /// A list of users who have starred this starrable.
+            public var stargazers: Stargazer {
+              get {
+                return Stargazer(unsafeResultMap: resultMap["stargazers"]! as! ResultMap)
+              }
+              set {
+                resultMap.updateValue(newValue.resultMap, forKey: "stargazers")
+              }
+            }
+
+            /// The HTTP URL for this repository
+            public var url: String {
+              get {
+                return resultMap["url"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "url")
+              }
+            }
+
+            public struct Stargazer: GraphQLSelectionSet {
+              public static let possibleTypes: [String] = ["StargazerConnection"]
+
+              public static let selections: [GraphQLSelection] = [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                GraphQLField("totalCount", type: .nonNull(.scalar(Int.self))),
+              ]
+
+              public private(set) var resultMap: ResultMap
+
+              public init(unsafeResultMap: ResultMap) {
+                self.resultMap = unsafeResultMap
+              }
+
+              public init(totalCount: Int) {
+                self.init(unsafeResultMap: ["__typename": "StargazerConnection", "totalCount": totalCount])
+              }
+
+              public var __typename: String {
+                get {
+                  return resultMap["__typename"]! as! String
+                }
+                set {
+                  resultMap.updateValue(newValue, forKey: "__typename")
+                }
+              }
+
+              /// Identifies the total count of items in the connection.
+              public var totalCount: Int {
+                get {
+                  return resultMap["totalCount"]! as! Int
+                }
+                set {
+                  resultMap.updateValue(newValue, forKey: "totalCount")
+                }
+              }
+            }
           }
         }
       }

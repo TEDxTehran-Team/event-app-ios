@@ -6,10 +6,22 @@
 //  Copyright © 2020 Alexani. All rights reserved.
 //
 
-import CoreData
+import Foundation
 import Apollo
 
 class Network {
   static let shared = Network()
-  private(set) lazy var apollo = ApolloClient(url: URL(string: "https://apollo-fullstack-tutorial.herokuapp.com/")!)
+  
+  private(set) lazy var apollo: ApolloClient = {
+    let token = "ed021b80f7890b8ad017e896617703caae3a3458"
+    let url = URL(string: "https://api.github.com/graphql")!
+    
+    let configuration = URLSessionConfiguration.default
+    
+    configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(token)"]
+    
+    return ApolloClient(
+      networkTransport: HTTPNetworkTransport(url: url, client: URLSessionClient(sessionConfiguration: configuration, callbackQueue: nil))
+    )
+  }()
 }
