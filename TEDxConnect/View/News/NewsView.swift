@@ -26,7 +26,6 @@ struct NewsView: View {
     }
     .onDisappear {
       UITableView.appearance().separatorStyle = .singleLine
-      
     }
   }
   

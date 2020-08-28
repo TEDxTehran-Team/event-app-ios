@@ -1,7 +1,18 @@
 query GetAllNews {
-    allNews {
-      title
-      description
-      iconUrl
+  allNews {
+    title
+    description
+    iconUrl
+  }
+}
+
+query GetAlbums {
+  albums {
+    title
+    cover
+    photo {
+      image
+      thumbnail
     }
+  }
 }

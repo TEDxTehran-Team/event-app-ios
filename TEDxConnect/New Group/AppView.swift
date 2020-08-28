@@ -13,9 +13,17 @@ struct AppView: View {
   var body: some View {
     TabView {
       NavigationView {
-        NewsView()
+        GalleryView()
       }
       .tag(0)
+      .tabItem {
+        Image(systemName: "square.grid.2x2")
+        Text("Gallery")
+      }
+      NavigationView {
+        NewsView()
+      }
+      .tag(1)
       .tabItem {
         Image(systemName: "text.aligncenter")
         Text("News")
