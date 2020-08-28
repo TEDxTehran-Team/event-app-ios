@@ -1,15 +1,7 @@
-query SearchRepositories($query: String!, $count: Int!) {
-    search(query: $query, type: REPOSITORY, first: $count) {
-        edges {
-            node {
-                ... on Repository {
-                    name
-                    stargazers {
-                        totalCount
-                    }
-                    url
-                }
-            }
-        }
+query GetAllNews {
+    allNews {
+      title
+      description
+      iconUrl
     }
 }
