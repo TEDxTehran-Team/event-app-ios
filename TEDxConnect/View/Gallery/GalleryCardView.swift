@@ -13,14 +13,19 @@ struct GalleryCardView: View {
   let album: Album
   
   var body: some View {
-    NavigationLink(destination: GalleryDetailView(album: album)) {
+    ZStack {
       Image(album.cover)
         .resizable()
         .overlay(ImageOverlay(text: album.title), alignment: .bottomLeading)
         .cornerRadius(10)
         .padding(.vertical, 10)
         .frame(height: 200)
+      NavigationLink(destination: GalleryDetailView(album: album)) {
+        EmptyView()
+      }
+      .buttonStyle(PlainButtonStyle())
     }
+    
   }
 }
 

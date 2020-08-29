@@ -24,11 +24,12 @@ struct NewsCardView: View {
             .scaledToFit()
             .frame(width: 65, height: 40)
           Text(news.title)
-            .font(.title)
+            .customFont(name: Constants.customFont, style: .title1, weight: .bold)
             .foregroundColor(.primary)
         }
         Text(news.description)
           .foregroundColor(.secondary)
+          .customFont(name: Constants.customFont, style: .body, weight: .regular)
       }
       .padding(20)
     }

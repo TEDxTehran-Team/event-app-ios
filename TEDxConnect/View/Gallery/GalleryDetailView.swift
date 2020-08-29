@@ -11,39 +11,24 @@ import SwiftUI
 struct GalleryDetailView: View {
   
   let album: Album
+  let width = (UIScreen.main.bounds.width/3) - 20
   
   var body: some View {
-    List {
-      ForEach(album.photo, id:  \.self) { photo in
-        ForEach(0..<2) { _ in
-          CollectionView(photo: photo)
-        }
+    
+    GridStack(minCellWidth: width, spacing: 10, numItems: album.photo.count) { index, cellWidth in
+      NavigationLink(destination: Image(self.album.photo[index].image).resizable().scaledToFit()) {
+        Image(self.album.photo[index].thumbnail)
+        .resizable()
+        .scaledToFill()
+        .frame(width: cellWidth, height: cellWidth)
+        .cornerRadius(10)
       }
+      .buttonStyle(PlainButtonStyle())
     }
     .navigationBarTitle(Text(album.title), displayMode: .inline)
     
   }
-}
-
-struct CollectionView: View {
-  let photo: Album.Photo
-  var body: some View {
-    VStack {
-      HStack {
-        ForEach(0..<2) { items in
-          Spacer()
-          Image(self.photo.thumbnail)
-            .resizable()
-            .scaledToFill()
-            .frame(width: 150, height: 150)
-            .foregroundColor(.yellow)
-            .cornerRadius(10)
-          Spacer()
-        }
-        .padding(.bottom, 16)
-      }
-    }
-  }
+  
 }
 
 struct GalleryDetailView_Previews: PreviewProvider {
