@@ -16,3 +16,10 @@ query GetAlbums {
     }
   }
 }
+query GetAbouts {
+  aboutOrganizer {
+    title
+    description
+    image
+  }
+}

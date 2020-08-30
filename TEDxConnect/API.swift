@@ -266,3 +266,108 @@ public final class GetAlbumsQuery: GraphQLQuery {
     }
   }
 }
+
+public final class GetAboutsQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query GetAbouts {
+      aboutOrganizer {
+        __typename
+        title
+        description
+        image
+      }
+    }
+    """
+
+  public let operationName: String = "GetAbouts"
+
+  public init() {
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("aboutOrganizer", type: .object(AboutOrganizer.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(aboutOrganizer: AboutOrganizer? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "aboutOrganizer": aboutOrganizer.flatMap { (value: AboutOrganizer) -> ResultMap in value.resultMap }])
+    }
+
+    public var aboutOrganizer: AboutOrganizer? {
+      get {
+        return (resultMap["aboutOrganizer"] as? ResultMap).flatMap { AboutOrganizer(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "aboutOrganizer")
+      }
+    }
+
+    public struct AboutOrganizer: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["AboutOrganizerSchemaType"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("title", type: .nonNull(.scalar(String.self))),
+        GraphQLField("description", type: .scalar(String.self)),
+        GraphQLField("image", type: .scalar(String.self)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(title: String, description: String? = nil, image: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "AboutOrganizerSchemaType", "title": title, "description": description, "image": image])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var title: String {
+        get {
+          return resultMap["title"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "title")
+        }
+      }
+
+      public var description: String? {
+        get {
+          return resultMap["description"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "description")
+        }
+      }
+
+      /// an optional image for the 'about' section.
+      public var image: String? {
+        get {
+          return resultMap["image"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "image")
+        }
+      }
+    }
+  }
+}

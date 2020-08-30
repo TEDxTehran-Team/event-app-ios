@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		44E03337C65ABC359A233E94 /* Pods_TEDxConnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FDE6D95D7B921766C172A0 /* Pods_TEDxConnect.framework */; };
 		6D460C6D24DE7F3500F50DAF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D460C6C24DE7F3500F50DAF /* Network.swift */; };
+		6DC0A45524FBCD1D00CE535B /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC0A45424FBCD1D00CE535B /* About.swift */; };
+		6DC0A45724FBCDCE00CE535B /* AboutRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC0A45624FBCDCE00CE535B /* AboutRepository.swift */; };
+		6DC0A45924FBCE6D00CE535B /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC0A45824FBCE6D00CE535B /* AboutViewModel.swift */; };
+		6DC0A45C24FBCE9B00CE535B /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC0A45B24FBCE9B00CE535B /* AboutView.swift */; };
+		6DC0A45E24FBD01C00CE535B /* AboutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC0A45D24FBD01C00CE535B /* AboutDetailView.swift */; };
 		6DC754D924DE6BD700F96518 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC754D824DE6BD700F96518 /* AppDelegate.swift */; };
 		6DC754DB24DE6BD700F96518 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC754DA24DE6BD700F96518 /* SceneDelegate.swift */; };
 		6DC754DE24DE6BD700F96518 /* TEDxConnect.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6DC754DC24DE6BD700F96518 /* TEDxConnect.xcdatamodeld */; };
@@ -45,6 +50,11 @@
 
 /* Begin PBXFileReference section */
 		6D460C6C24DE7F3500F50DAF /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		6DC0A45424FBCD1D00CE535B /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
+		6DC0A45624FBCDCE00CE535B /* AboutRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutRepository.swift; sourceTree = "<group>"; };
+		6DC0A45824FBCE6D00CE535B /* AboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
+		6DC0A45B24FBCE9B00CE535B /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		6DC0A45D24FBD01C00CE535B /* AboutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutDetailView.swift; sourceTree = "<group>"; };
 		6DC754D524DE6BD700F96518 /* TEDxConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TEDxConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DC754D824DE6BD700F96518 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DC754DA24DE6BD700F96518 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +113,15 @@
 				747CD5FF7D5F26B645079232 /* Pods-TEDxConnect.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		6DC0A45A24FBCE8D00CE535B /* About */ = {
+			isa = PBXGroup;
+			children = (
+				6DC0A45B24FBCE9B00CE535B /* AboutView.swift */,
+				6DC0A45D24FBD01C00CE535B /* AboutDetailView.swift */,
+			);
+			path = About;
 			sourceTree = "<group>";
 		};
 		6DC754CC24DE6BD600F96518 = {
@@ -218,6 +237,7 @@
 			children = (
 				6DD9718124F8D0D70044D596 /* News.swift */,
 				6DE7941024F939A500CEEE0E /* Album.swift */,
+				6DC0A45424FBCD1D00CE535B /* About.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -227,6 +247,7 @@
 			children = (
 				6DD9718324F8D20D0044D596 /* NewsRepository.swift */,
 				6DE7941224F93B1C00CEEE0E /* GalleryRepository.swift */,
+				6DC0A45624FBCDCE00CE535B /* AboutRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -236,6 +257,7 @@
 			children = (
 				6DD9718924F8D2C20044D596 /* NewsViewModel.swift */,
 				6DE7941424F93B3E00CEEE0E /* GalleryViewModel.swift */,
+				6DC0A45824FBCE6D00CE535B /* AboutViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -245,6 +267,7 @@
 			children = (
 				6DCFBC6524FA45F7005103E5 /* GridStack */,
 				6DCFBC6024FA453F005103E5 /* AppView.swift */,
+				6DC0A45A24FBCE8D00CE535B /* About */,
 				6DE7941624F93B6D00CEEE0E /* Gallery */,
 				6DD9719324F8F0CF0044D596 /* News */,
 				6DD9719624F8F4B20044D596 /* Custom Modifiers */,
@@ -406,6 +429,9 @@
 				6D460C6D24DE7F3500F50DAF /* Network.swift in Sources */,
 				6DCFBC5724F93D4F005103E5 /* GalleryCardView.swift in Sources */,
 				6DCFBC5924F94190005103E5 /* ImageOverlay.swift in Sources */,
+				6DC0A45C24FBCE9B00CE535B /* AboutView.swift in Sources */,
+				6DC0A45724FBCDCE00CE535B /* AboutRepository.swift in Sources */,
+				6DC0A45E24FBD01C00CE535B /* AboutDetailView.swift in Sources */,
 				6DC754DE24DE6BD700F96518 /* TEDxConnect.xcdatamodeld in Sources */,
 				6DD9719824F8F9600044D596 /* NavigationBarModifier.swift in Sources */,
 				6DC754D924DE6BD700F96518 /* AppDelegate.swift in Sources */,
@@ -420,9 +446,11 @@
 				6DCFBC5B24F941A5005103E5 /* GalleryDetailView.swift in Sources */,
 				6DE7CEE524E120BA00910DF7 /* API.swift in Sources */,
 				6DD9718224F8D0D70044D596 /* News.swift in Sources */,
+				6DC0A45524FBCD1D00CE535B /* About.swift in Sources */,
 				6DE7941324F93B1C00CEEE0E /* GalleryRepository.swift in Sources */,
 				6DD9718424F8D20D0044D596 /* NewsRepository.swift in Sources */,
 				6DCFBC6B24FA45F7005103E5 /* Array+chunked.swift in Sources */,
+				6DC0A45924FBCE6D00CE535B /* AboutViewModel.swift in Sources */,
 				6DD9719024F8EBE30044D596 /* NewsCardView.swift in Sources */,
 				6DCFBC6124FA4540005103E5 /* AppView.swift in Sources */,
 				6DC754DB24DE6BD700F96518 /* SceneDelegate.swift in Sources */,

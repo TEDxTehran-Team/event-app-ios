@@ -28,6 +28,14 @@ struct AppView: View {
         Image(systemName: "text.aligncenter")
         Text("News")
       }
+      NavigationView {
+        AboutView()
+      }
+      .tag(2)
+      .tabItem {
+        Image(systemName: "info")
+        Text("About")
+      }
     }
     .customFont(name: Fonts.shabnam, style: .headline)
     .accentColor(Colors.primaryRed)
