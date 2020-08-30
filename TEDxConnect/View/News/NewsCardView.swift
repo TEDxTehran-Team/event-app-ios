@@ -14,8 +14,8 @@ struct NewsCardView: View {
   var body: some View {
     ZStack {
       RoundedRectangle(cornerRadius: 25, style: .continuous)
-        .fill(Color.backgorund)
-        .shadow(radius: 8)
+        .fill(Colors.primaryBackground)
+        .shadow(radius: 4)
       
       VStack(alignment: .leading) {
         HStack(alignment: .center, spacing: 20) {
@@ -24,12 +24,12 @@ struct NewsCardView: View {
             .scaledToFit()
             .frame(width: 65, height: 40)
           Text(news.title)
-            .customFont(name: Constants.customFont, style: .title1, weight: .bold)
+            .customFont(name: Fonts.shabnam, style: .title1, weight: .bold)
             .foregroundColor(.primary)
         }
         Text(news.description)
           .foregroundColor(.secondary)
-          .customFont(name: Constants.customFont, style: .body, weight: .regular)
+          .customFont(name: Fonts.shabnam, style: .body, weight: .regular)
       }
       .padding(20)
     }

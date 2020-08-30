@@ -34,18 +34,3 @@ extension View {
   }
 }
 
-enum CustomFont {
-  enum Weight {
-    case regular, bold
-  }
-  static func set(withSize size: CGFloat, withWeight weight:Weight = .regular) -> UIFont {
-    var name = ""
-    switch weight {
-      case .regular:
-        name = "Shabnam-FD"
-      case .bold:
-        name = "Shabnam-Bold-FD"
-    }
-    return UIFont(name: name, size: size)!
-  }
-}

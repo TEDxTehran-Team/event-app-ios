@@ -6,8 +6,14 @@
 //  Copyright © 2020 Alexani. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
-struct Constants {
-  static let customFont = "Shabnam-FD"
+enum Fonts {
+  static let shabnam = "Shabnam-FD"
+  static let shabnamBold = "Shabnam-Bold-FD"
+}
+
+enum Colors {
+  static let primaryRed = Color("primaryRed")
+  static let primaryBackground = Color("primaryBackground")
 }

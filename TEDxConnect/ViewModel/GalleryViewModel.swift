@@ -12,10 +12,13 @@ class GalleryViewModel: ObservableObject {
   
   var repo = GalleryRepository()
   @Published var repositories = [Album]()
-    
+  
   func setup() {
     repo.get() { repositories in
-      self.repositories = repositories!
+      guard let repositories = repositories else {
+        return
+      }
+      self.repositories = repositories
     }
   }
   

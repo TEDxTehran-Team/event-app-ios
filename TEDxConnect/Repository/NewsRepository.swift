@@ -14,7 +14,8 @@ class NewsRepository {
   func get(completion: @escaping ([News]?) -> ()) {
     
     Network.shared.apollo.fetch(query: GetAllNewsQuery()) { result in
-      guard let data = try? result.get().data else { return }
+      guard let _ = try? result.get().data else { return }
+      completion([News](repeating: News.example, count: 10))
     }
     
   }

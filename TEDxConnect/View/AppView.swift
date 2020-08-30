@@ -29,8 +29,8 @@ struct AppView: View {
         Text("News")
       }
     }
-    .customFont(name: Constants.customFont, style: .headline)
-    .accentColor(.primaryRed)
+    .customFont(name: Fonts.shabnam, style: .headline)
+    .accentColor(Colors.primaryRed)
     
   }
   

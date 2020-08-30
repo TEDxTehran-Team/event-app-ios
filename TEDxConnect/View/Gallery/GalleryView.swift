@@ -10,24 +10,22 @@ import SwiftUI
 
 struct GalleryView: View {
   
-  var viewModel = GalleryViewModel()
-   
-   var albums = [Album](repeating: Album.example, count: 10)
-   
-   var body: some View {
-     List(albums, id: \.self) { album in
-       GalleryCardView(album: album)
-     }
-     .navigationBarColor(UIColor(named: "primaryRed"))
-     .navigationBarTitle(Text("Gallery"))
-     .onAppear {
-       UITableView.appearance().separatorStyle = .none
-       self.viewModel.setup()
-     }
-     .onDisappear {
-       UITableView.appearance().separatorStyle = .singleLine
-     }
-   }
+  @ObservedObject var viewModel = GalleryViewModel()
+  
+  var body: some View {
+    List(viewModel.repositories, id: \.self) { album in
+      GalleryCardView(album: album)
+    }
+    .navigationBarColor(UIColor(named: "primaryRed"))
+    .navigationBarTitle(Text("Gallery"))
+    .onAppear {
+      UITableView.appearance().separatorStyle = .none
+      self.viewModel.setup()
+    }
+    .onDisappear {
+      UITableView.appearance().separatorStyle = .singleLine
+    }
+  }
   
 }
 

@@ -10,12 +10,10 @@ import SwiftUI
 
 struct NewsView: View {
   
-  var viewModel = NewsViewModel()
-  
-  var news = [News](repeating: News.example, count: 10)
-  
+  @ObservedObject var viewModel = NewsViewModel()
+    
   var body: some View {
-    List(news, id: \.self) { news in
+    List(viewModel.repositories, id: \.self) { news in
       NewsCardView(news: news)
     }
     .navigationBarColor(UIColor(named: "primaryRed"))

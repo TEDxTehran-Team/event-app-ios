@@ -14,7 +14,8 @@ class GalleryRepository {
   func get(completion: @escaping ([Album]?) -> ()) {
     
     Network.shared.apollo.fetch(query: GetAlbumsQuery()) { result in
-      guard let data = try? result.get().data else { return }
+      guard let _ = try? result.get().data else { return }
+      completion([Album](repeating: Album.example, count: 10))
     }
     
   }
