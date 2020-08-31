@@ -371,3 +371,315 @@ public final class GetAboutsQuery: GraphQLQuery {
     }
   }
 }
+
+public final class CurrentEventInfoQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query CurrentEventInfo {
+      organizer {
+        __typename
+        mainEvent {
+          __typename
+          title
+          banner
+          startDate
+          endDate
+          links {
+            __typename
+            role
+            url
+          }
+          venue {
+            __typename
+            title
+            adddress
+            mapLink
+            mapImage
+          }
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "CurrentEventInfo"
+
+  public init() {
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("organizer", type: .object(Organizer.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(organizer: Organizer? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "organizer": organizer.flatMap { (value: Organizer) -> ResultMap in value.resultMap }])
+    }
+
+    public var organizer: Organizer? {
+      get {
+        return (resultMap["organizer"] as? ResultMap).flatMap { Organizer(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "organizer")
+      }
+    }
+
+    public struct Organizer: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["OrganizerSchemaType"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("mainEvent", type: .object(MainEvent.selections)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(mainEvent: MainEvent? = nil) {
+        self.init(unsafeResultMap: ["__typename": "OrganizerSchemaType", "mainEvent": mainEvent.flatMap { (value: MainEvent) -> ResultMap in value.resultMap }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// which event is currently the main event for this organizer?
+      public var mainEvent: MainEvent? {
+        get {
+          return (resultMap["mainEvent"] as? ResultMap).flatMap { MainEvent(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "mainEvent")
+        }
+      }
+
+      public struct MainEvent: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["EventSchemaType"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("title", type: .nonNull(.scalar(String.self))),
+          GraphQLField("banner", type: .scalar(String.self)),
+          GraphQLField("startDate", type: .scalar(String.self)),
+          GraphQLField("endDate", type: .scalar(String.self)),
+          GraphQLField("links", type: .nonNull(.list(.nonNull(.object(Link.selections))))),
+          GraphQLField("venue", type: .object(Venue.selections)),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(title: String, banner: String? = nil, startDate: String? = nil, endDate: String? = nil, links: [Link], venue: Venue? = nil) {
+          self.init(unsafeResultMap: ["__typename": "EventSchemaType", "title": title, "banner": banner, "startDate": startDate, "endDate": endDate, "links": links.map { (value: Link) -> ResultMap in value.resultMap }, "venue": venue.flatMap { (value: Venue) -> ResultMap in value.resultMap }])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var title: String {
+          get {
+            return resultMap["title"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "title")
+          }
+        }
+
+        /// a banner for the event to be shown on the applications.
+        public var banner: String? {
+          get {
+            return resultMap["banner"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "banner")
+          }
+        }
+
+        /// shows the staring date and time for event.
+        public var startDate: String? {
+          get {
+            return resultMap["startDate"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "startDate")
+          }
+        }
+
+        /// shows the ending date and time for event.
+        public var endDate: String? {
+          get {
+            return resultMap["endDate"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "endDate")
+          }
+        }
+
+        /// to which event does the link belong?
+        public var links: [Link] {
+          get {
+            return (resultMap["links"] as! [ResultMap]).map { (value: ResultMap) -> Link in Link(unsafeResultMap: value) }
+          }
+          set {
+            resultMap.updateValue(newValue.map { (value: Link) -> ResultMap in value.resultMap }, forKey: "links")
+          }
+        }
+
+        /// where is the event held?
+        public var venue: Venue? {
+          get {
+            return (resultMap["venue"] as? ResultMap).flatMap { Venue(unsafeResultMap: $0) }
+          }
+          set {
+            resultMap.updateValue(newValue?.resultMap, forKey: "venue")
+          }
+        }
+
+        public struct Link: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["EventLinkSchemaType"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("role", type: .scalar(String.self)),
+            GraphQLField("url", type: .nonNull(.scalar(String.self))),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(role: String? = nil, url: String) {
+            self.init(unsafeResultMap: ["__typename": "EventLinkSchemaType", "role": role, "url": url])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          /// an optional slug, describing the link for other programs, such as applications.
+          public var role: String? {
+            get {
+              return resultMap["role"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "role")
+            }
+          }
+
+          /// the url address for the link.
+          public var url: String {
+            get {
+              return resultMap["url"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "url")
+            }
+          }
+        }
+
+        public struct Venue: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["VenueSchemaType"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("title", type: .nonNull(.scalar(String.self))),
+            GraphQLField("adddress", type: .scalar(String.self)),
+            GraphQLField("mapLink", type: .scalar(String.self)),
+            GraphQLField("mapImage", type: .scalar(String.self)),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(title: String, adddress: String? = nil, mapLink: String? = nil, mapImage: String? = nil) {
+            self.init(unsafeResultMap: ["__typename": "VenueSchemaType", "title": title, "adddress": adddress, "mapLink": mapLink, "mapImage": mapImage])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var title: String {
+            get {
+              return resultMap["title"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "title")
+            }
+          }
+
+          /// venue's address.
+          public var adddress: String? {
+            get {
+              return resultMap["adddress"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "adddress")
+            }
+          }
+
+          /// a link to venue's location on the map (e.g. google map link).
+          public var mapLink: String? {
+            get {
+              return resultMap["mapLink"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "mapLink")
+            }
+          }
+
+          /// an image showing venue's location on the map.
+          public var mapImage: String? {
+            get {
+              return resultMap["mapImage"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "mapImage")
+            }
+          }
+        }
+      }
+    }
+  }
+}

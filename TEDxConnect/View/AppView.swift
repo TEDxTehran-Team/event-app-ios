@@ -13,13 +13,14 @@ struct AppView: View {
   var body: some View {
     TabView {
       NavigationView {
-        GalleryView()
+        EventDetailView()
       }
       .tag(0)
       .tabItem {
-        Image(systemName: "square.grid.2x2")
-        Text("Gallery")
+        Image(systemName: "house")
+        Text("Home")
       }
+
       NavigationView {
         NewsView()
       }
@@ -28,6 +29,7 @@ struct AppView: View {
         Image(systemName: "text.aligncenter")
         Text("News")
       }
+      
       NavigationView {
         AboutView()
       }
@@ -36,6 +38,16 @@ struct AppView: View {
         Image(systemName: "info")
         Text("About")
       }
+      
+      NavigationView {
+        GalleryView()
+      }
+      .tag(3)
+      .tabItem {
+        Image(systemName: "square.grid.2x2")
+        Text("Gallery")
+      }
+
     }
     .customFont(name: Fonts.shabnam, style: .headline)
     .accentColor(Colors.primaryRed)

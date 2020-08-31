@@ -16,10 +16,33 @@ query GetAlbums {
     }
   }
 }
+
 query GetAbouts {
   aboutOrganizer {
     title
     description
     image
+  }
+}
+
+query CurrentEventInfo {
+  organizer {
+    mainEvent {
+      title
+      banner
+      startDate
+      endDate
+      links {
+        role
+        url
+      }
+      venue {
+        title
+        adddress
+        mapLink
+        mapImage
+      }
+      
+    }
   }
 }
