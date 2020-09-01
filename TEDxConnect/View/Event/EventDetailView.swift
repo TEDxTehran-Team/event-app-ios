@@ -24,7 +24,7 @@ struct EventDetailView: View {
         Button(action: {
           print("test")
         }) {
-          <#code#>
+          // live button
         }
         
         VStack {
