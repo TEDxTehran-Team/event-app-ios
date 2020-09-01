@@ -8,8 +8,14 @@ query GetAllNews {
 
 query GetAlbums {
   albums {
+    id
     title
     cover
+  }
+}
+
+query GetAlbumPhotos($id: Int!) {
+  album(id: $id){
     photo {
       image
       thumbnail
@@ -18,14 +24,15 @@ query GetAlbums {
 }
 
 query GetAbouts {
-  aboutOrganizer {
-    title
-    description
-    image
+  organizer{
+    abouts {
+      title
+      description
+    }
   }
 }
 
-query CurrentEventInfo {
+query MainEventInfo {
   organizer {
     mainEvent {
       title

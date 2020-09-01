@@ -10,7 +10,7 @@ import SwiftUI
 
 struct GalleryView: View {
   
-  @ObservedObject var viewModel = GalleryViewModel()
+  @ObservedObject var viewModel = AlbumViewModel()
   
   var body: some View {
     List(viewModel.repositories, id: \.self) { album in

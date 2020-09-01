@@ -16,4 +16,5 @@ enum Fonts {
 enum Colors {
   static let primaryRed = Color("primaryRed")
   static let primaryBackground = Color("primaryBackground")
+  static let primaryLightGray = Color("primaryLightGray")
 }

@@ -16,31 +16,50 @@ struct EventDetailView: View {
     GeometryReader { geometry in
       
       ScrollView(.vertical) {
+        Image(decorative: self.viewModel.repository.banner)
+          .resizable()
+          .scaledToFit()
+          .frame(width: geometry.size.width)
+        
+        Button(action: {
+          print("test")
+        }) {
+          <#code#>
+        }
+        
         VStack {
-          Image(decorative: self.viewModel.repository.banner)
-            .resizable()
-            .scaledToFit()
-            .frame(width: geometry.size.width)
-          
-          VStack {
+          VStack(alignment: .leading) {
             HStack {
-              Text(self.viewModel.repository.startDate)
-              Text(self.viewModel.repository.endDate)
+              Image(decorative: "clock-icon")
+              Text(DateHelper.dateWith(self.viewModel.repository.startDate, showTime: true))
+              Text(DateHelper.dateWith(self.viewModel.repository.endDate, showTime: true))
             }
+            .padding()
+            Divider()
             HStack {
+              Image(decorative: "venue-icon")
               Text(self.viewModel.repository.venue.title)
             }
+            .padding()
+            Divider()
             HStack {
+              Image(decorative: "address-icon")
               Text(self.viewModel.repository.venue.adddress)
             }
-            Image(self.viewModel.repository.venue.mapImage)
-              .resizable()
-              .scaledToFit()
-              .frame(width: geometry.size.width)
+            .padding()
           }
+          .background(Colors.primaryBackground)
+          .cornerRadius(10)
+          .foregroundColor(.secondary)
+          .padding()
           
+          Image(self.viewModel.repository.venue.mapImage)
+            .resizable()
+            .scaledToFill()
+            .frame(width: geometry.size.width)
         }
       }
+      .background(Colors.primaryLightGray)
       
     }
     .navigationBarColor(UIColor(named: "primaryRed"))

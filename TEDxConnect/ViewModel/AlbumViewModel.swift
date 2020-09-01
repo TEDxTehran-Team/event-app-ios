@@ -1,5 +1,5 @@
 //
-//  GalleryViewModel.swift
+//  AlbumViewModel.swift
 //  TEDxConnect
 //
 //  Created by Tadeh Alexani on 8/28/20.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-class GalleryViewModel: ObservableObject {
+class AlbumViewModel: ObservableObject {
   
-  var repo = GalleryRepository()
+  var repo = AlbumRepository()
   @Published var repositories = [Album]()
   
   func setup() {

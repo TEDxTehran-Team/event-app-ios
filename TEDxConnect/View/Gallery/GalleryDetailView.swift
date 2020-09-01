@@ -10,14 +10,16 @@ import SwiftUI
 
 struct GalleryDetailView: View {
   
+  @ObservedObject var viewModel = PhotoViewModel()
+  
   let album: Album
   let width = (UIScreen.main.bounds.width/3) - 20
   
   var body: some View {
     
-    GridStack(minCellWidth: width, spacing: 10, numItems: album.photo.count) { index, cellWidth in
-      NavigationLink(destination: Image(self.album.photo[index].image).resizable().scaledToFit()) {
-        Image(self.album.photo[index].thumbnail)
+    GridStack(minCellWidth: width, spacing: 10, numItems: viewModel.repositories.count) { index, cellWidth in
+      NavigationLink(destination: Image(self.viewModel.repositories[index].image).resizable().scaledToFit()) {
+        Image(self.viewModel.repositories[index].thumbnail)
         .resizable()
         .scaledToFill()
         .frame(width: cellWidth, height: cellWidth)
@@ -26,7 +28,9 @@ struct GalleryDetailView: View {
       .buttonStyle(PlainButtonStyle())
     }
     .navigationBarTitle(Text(album.title), displayMode: .inline)
-    
+    .onAppear {
+      self.viewModel.setup(withAlbumId: self.album.id)
+    }
   }
   
 }

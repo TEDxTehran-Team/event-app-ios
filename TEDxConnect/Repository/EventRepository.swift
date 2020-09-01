@@ -12,7 +12,7 @@ class EventRepository {
   
   func get(completion: @escaping (Event?) -> ()) {
     
-    Network.shared.apollo.fetch(query: CurrentEventInfoQuery()) { result in
+    Network.shared.apollo.fetch(query: MainEventInfoQuery()) { result in
       guard let _ = try? result.get().data else { return }
       completion(Event.example)
     }

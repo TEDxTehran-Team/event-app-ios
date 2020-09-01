@@ -115,13 +115,9 @@ public final class GetAlbumsQuery: GraphQLQuery {
     query GetAlbums {
       albums {
         __typename
+        id
         title
         cover
-        photo {
-          __typename
-          image
-          thumbnail
-        }
       }
     }
     """
@@ -162,9 +158,9 @@ public final class GetAlbumsQuery: GraphQLQuery {
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("title", type: .nonNull(.scalar(String.self))),
         GraphQLField("cover", type: .scalar(String.self)),
-        GraphQLField("photo", type: .nonNull(.list(.nonNull(.object(Photo.selections))))),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -173,8 +169,8 @@ public final class GetAlbumsQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(title: String, cover: String? = nil, photo: [Photo]) {
-        self.init(unsafeResultMap: ["__typename": "AlbumSchemaType", "title": title, "cover": cover, "photo": photo.map { (value: Photo) -> ResultMap in value.resultMap }])
+      public init(id: GraphQLID, title: String, cover: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "AlbumSchemaType", "id": id, "title": title, "cover": cover])
       }
 
       public var __typename: String {
@@ -183,6 +179,15 @@ public final class GetAlbumsQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
         }
       }
 
@@ -202,6 +207,90 @@ public final class GetAlbumsQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "cover")
+        }
+      }
+    }
+  }
+}
+
+public final class GetAlbumPhotosQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query GetAlbumPhotos($id: Int!) {
+      album(id: $id) {
+        __typename
+        photo {
+          __typename
+          image
+          thumbnail
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "GetAlbumPhotos"
+
+  public var id: Int
+
+  public init(id: Int) {
+    self.id = id
+  }
+
+  public var variables: GraphQLMap? {
+    return ["id": id]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("album", arguments: ["id": GraphQLVariable("id")], type: .object(Album.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(album: Album? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "album": album.flatMap { (value: Album) -> ResultMap in value.resultMap }])
+    }
+
+    public var album: Album? {
+      get {
+        return (resultMap["album"] as? ResultMap).flatMap { Album(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "album")
+      }
+    }
+
+    public struct Album: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["AlbumSchemaType"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("photo", type: .nonNull(.list(.nonNull(.object(Photo.selections))))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(photo: [Photo]) {
+        self.init(unsafeResultMap: ["__typename": "AlbumSchemaType", "photo": photo.map { (value: Photo) -> ResultMap in value.resultMap }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
         }
       }
 
@@ -272,11 +361,13 @@ public final class GetAboutsQuery: GraphQLQuery {
   public let operationDefinition: String =
     """
     query GetAbouts {
-      aboutOrganizer {
+      organizer {
         __typename
-        title
-        description
-        image
+        abouts {
+          __typename
+          title
+          description
+        }
       }
     }
     """
@@ -290,7 +381,7 @@ public final class GetAboutsQuery: GraphQLQuery {
     public static let possibleTypes: [String] = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("aboutOrganizer", type: .object(AboutOrganizer.selections)),
+      GraphQLField("organizer", type: .object(Organizer.selections)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -299,27 +390,25 @@ public final class GetAboutsQuery: GraphQLQuery {
       self.resultMap = unsafeResultMap
     }
 
-    public init(aboutOrganizer: AboutOrganizer? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Query", "aboutOrganizer": aboutOrganizer.flatMap { (value: AboutOrganizer) -> ResultMap in value.resultMap }])
+    public init(organizer: Organizer? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "organizer": organizer.flatMap { (value: Organizer) -> ResultMap in value.resultMap }])
     }
 
-    public var aboutOrganizer: AboutOrganizer? {
+    public var organizer: Organizer? {
       get {
-        return (resultMap["aboutOrganizer"] as? ResultMap).flatMap { AboutOrganizer(unsafeResultMap: $0) }
+        return (resultMap["organizer"] as? ResultMap).flatMap { Organizer(unsafeResultMap: $0) }
       }
       set {
-        resultMap.updateValue(newValue?.resultMap, forKey: "aboutOrganizer")
+        resultMap.updateValue(newValue?.resultMap, forKey: "organizer")
       }
     }
 
-    public struct AboutOrganizer: GraphQLSelectionSet {
-      public static let possibleTypes: [String] = ["AboutOrganizerSchemaType"]
+    public struct Organizer: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["OrganizerSchemaType"]
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("title", type: .nonNull(.scalar(String.self))),
-        GraphQLField("description", type: .scalar(String.self)),
-        GraphQLField("image", type: .scalar(String.self)),
+        GraphQLField("abouts", type: .nonNull(.list(.nonNull(.object(About.selections))))),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -328,8 +417,8 @@ public final class GetAboutsQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(title: String, description: String? = nil, image: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "AboutOrganizerSchemaType", "title": title, "description": description, "image": image])
+      public init(abouts: [About]) {
+        self.init(unsafeResultMap: ["__typename": "OrganizerSchemaType", "abouts": abouts.map { (value: About) -> ResultMap in value.resultMap }])
       }
 
       public var __typename: String {
@@ -341,42 +430,71 @@ public final class GetAboutsQuery: GraphQLQuery {
         }
       }
 
-      public var title: String {
+      /// the organizer we're giving the info about.
+      public var abouts: [About] {
         get {
-          return resultMap["title"]! as! String
+          return (resultMap["abouts"] as! [ResultMap]).map { (value: ResultMap) -> About in About(unsafeResultMap: value) }
         }
         set {
-          resultMap.updateValue(newValue, forKey: "title")
+          resultMap.updateValue(newValue.map { (value: About) -> ResultMap in value.resultMap }, forKey: "abouts")
         }
       }
 
-      public var description: String? {
-        get {
-          return resultMap["description"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "description")
-        }
-      }
+      public struct About: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["AboutOrganizerSchemaType"]
 
-      /// an optional image for the 'about' section.
-      public var image: String? {
-        get {
-          return resultMap["image"] as? String
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("title", type: .nonNull(.scalar(String.self))),
+          GraphQLField("description", type: .scalar(String.self)),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
         }
-        set {
-          resultMap.updateValue(newValue, forKey: "image")
+
+        public init(title: String, description: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "AboutOrganizerSchemaType", "title": title, "description": description])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var title: String {
+          get {
+            return resultMap["title"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "title")
+          }
+        }
+
+        public var description: String? {
+          get {
+            return resultMap["description"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "description")
+          }
         }
       }
     }
   }
 }
 
-public final class CurrentEventInfoQuery: GraphQLQuery {
+public final class MainEventInfoQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query CurrentEventInfo {
+    query MainEventInfo {
       organizer {
         __typename
         mainEvent {
@@ -402,7 +520,7 @@ public final class CurrentEventInfoQuery: GraphQLQuery {
     }
     """
 
-  public let operationName: String = "CurrentEventInfo"
+  public let operationName: String = "MainEventInfo"
 
   public init() {
   }

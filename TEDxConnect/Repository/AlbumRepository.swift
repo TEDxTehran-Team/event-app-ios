@@ -1,5 +1,5 @@
 //
-//  GalleryRepository.swift
+//  AlbumRepository.swift
 //  TEDxConnect
 //
 //  Created by Tadeh Alexani on 8/28/20.
@@ -9,7 +9,7 @@
 import Foundation
 import Apollo
 
-class GalleryRepository {
+class AlbumRepository {
   
   func get(completion: @escaping ([Album]?) -> ()) {
     

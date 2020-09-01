@@ -17,7 +17,7 @@ struct Event: Codable, Hashable {
     var mapImage: String
     
     static var example: Venue {
-      Venue(title: "Milad Tower", adddress: "Cras ipsum risus, elementum vitae aliquet ac, lacinia in neque. Etiam vel purus felis", mapLink: "https://www.google.com/maps/place/Milad+Tower/@35.7448416,51.3753212,15z/data=!4m5!3m4!1s0x0:0x74f5290b67841378!8m2!3d35.7448416!4d51.3753212", mapImage: "Milad")
+      Venue(title: "برج میلاد", adddress: "تهران، بزرگراه همت غرب به شرق، خروجی شیخ فضل الله جنوب، مسیر اختصاصی برج میلاد تهران", mapLink: "https://www.google.com/maps/place/Milad+Tower/@35.7448416,51.3753212,15z/data=!4m5!3m4!1s0x0:0x74f5290b67841378!8m2!3d35.7448416!4d51.3753212", mapImage: "Milad")
     }
   }
   
