@@ -21,11 +21,11 @@ struct EventDetailView: View {
           .scaledToFit()
           .frame(width: geometry.size.width)
         
-        Button(action: {
-          print("test")
-        }) {
-          // live button
-        }
+//        Button(action: {
+//          print("test")
+//        }) {
+//          // live button
+//        }
         
         VStack {
           VStack(alignment: .leading) {
