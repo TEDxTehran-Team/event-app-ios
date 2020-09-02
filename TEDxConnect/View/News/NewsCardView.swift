@@ -19,7 +19,7 @@ struct NewsCardView: View {
       
       VStack(alignment: .leading) {
         HStack(alignment: .center, spacing: 20) {
-          Image(news.icon)
+          Image(news.icon ?? "heart.fill")
             .resizable()
             .scaledToFit()
             .frame(width: 65, height: 40)
