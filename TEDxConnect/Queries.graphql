@@ -1,15 +1,55 @@
-query SearchRepositories($query: String!, $count: Int!) {
-    search(query: $query, type: REPOSITORY, first: $count) {
-        edges {
-            node {
-                ... on Repository {
-                    name
-                    stargazers {
-                        totalCount
-                    }
-                    url
-                }
-            }
-        }
+query GetAllNews {
+  allNews {
+    title
+    description
+    iconUrl
+  }
+}
+
+query GetAlbums {
+  albums {
+    id
+    title
+    cover
+  }
+}
+
+query GetAlbumPhotos($id: Int!) {
+  album(id: $id){
+    photo {
+      image
+      thumbnail
     }
+  }
+}
+
+query GetAbouts {
+  organizer{
+    abouts {
+      title
+      description
+    }
+  }
+}
+
+query MainEventInfo {
+  organizer {
+    mainEvent {
+      title
+      banner
+      startDate
+      endDate
+      links {
+        role
+        url
+      }
+      venue {
+        title
+        adddress
+        mapLink
+        mapImage
+      }
+      
+    }
+  }
 }

@@ -1,0 +1,23 @@
+//
+//  AlbumRepository.swift
+//  TEDxConnect
+//
+//  Created by Tadeh Alexani on 8/28/20.
+//  Copyright © 2020 Alexani. All rights reserved.
+//
+
+import Foundation
+import Apollo
+
+class AlbumRepository {
+  
+  func get(completion: @escaping ([Album]?) -> ()) {
+    
+    Network.shared.apollo.fetch(query: GetAlbumsQuery()) { result in
+      guard let _ = try? result.get().data else { return }
+      completion([Album](repeating: Album.example, count: 10))
+    }
+    
+  }
+  
+}
