@@ -54,6 +54,7 @@
 		6DFCAF4A24FD314F008AD550 /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFCAF4924FD314F008AD550 /* EventDetailView.swift */; };
 		6DFCAF4C24FD32FC008AD550 /* EventRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFCAF4B24FD32FC008AD550 /* EventRepository.swift */; };
 		6DFCAF4E24FD3332008AD550 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFCAF4D24FD3332008AD550 /* EventViewModel.swift */; };
+		E837435C24FFEB21009FEB5B /* Json+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837435B24FFEB21009FEB5B /* Json+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +108,7 @@
 		6DFCAF4D24FD3332008AD550 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		747CD5FF7D5F26B645079232 /* Pods-TEDxConnect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TEDxConnect.release.xcconfig"; path = "Target Support Files/Pods-TEDxConnect/Pods-TEDxConnect.release.xcconfig"; sourceTree = "<group>"; };
 		B7FDE6D95D7B921766C172A0 /* Pods_TEDxConnect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TEDxConnect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E837435B24FFEB21009FEB5B /* Json+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Json+Extension.swift"; sourceTree = "<group>"; };
 		F37A51473AD1ED9E8959A852 /* Pods-TEDxConnect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TEDxConnect.debug.xcconfig"; path = "Target Support Files/Pods-TEDxConnect/Pods-TEDxConnect.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -234,6 +236,7 @@
 			children = (
 				6DD9719C24F8FB180044D596 /* View+Extension.swift */,
 				6D1325BB24FE706400FFA202 /* DateHelper.swift */,
+				E837435B24FFEB21009FEB5B /* Json+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				6DD9718224F8D0D70044D596 /* News.swift in Sources */,
 				6DC0A45524FBCD1D00CE535B /* About.swift in Sources */,
 				6DE7941324F93B1C00CEEE0E /* AlbumRepository.swift in Sources */,
+				E837435C24FFEB21009FEB5B /* Json+Extension.swift in Sources */,
 				6DD9718424F8D20D0044D596 /* NewsRepository.swift in Sources */,
 				6DCFBC6B24FA45F7005103E5 /* Array+chunked.swift in Sources */,
 				6DC0A45924FBCE6D00CE535B /* AboutViewModel.swift in Sources */,

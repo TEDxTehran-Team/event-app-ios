@@ -10,14 +10,18 @@ import Foundation
 import Apollo
 
 class NewsRepository {
-  
-  func get(completion: @escaping ([News]?) -> ()) {
     
-    Network.shared.apollo.fetch(query: GetAllNewsQuery()) { result in
-      guard let _ = try? result.get().data else { return }
-      completion([News](repeating: News.example, count: 10))
+    func get(completion: @escaping ([News]?) -> ()) {
+        
+        Network.shared.apollo.fetch(query: GetAllNewsQuery()) { result in
+            guard let response = try? result.get().data else { return }
+            
+            let model = response.decodeModel(type: NewsResponse.self)
+            completion(model?.allNews ?? [])
+            
+        }
+        
     }
     
-  }
-  
 }
+
