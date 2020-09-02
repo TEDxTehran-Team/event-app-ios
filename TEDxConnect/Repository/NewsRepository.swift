@@ -11,14 +11,16 @@ import Apollo
 
 class NewsRepository {
     
-    func get(completion: @escaping ([News]?) -> ()) {
+    func get(completion: @escaping ([News]?,XException?) -> ()) {
         
         Network.shared.apollo.fetch(query: GetAllNewsQuery()) { result in
-            guard let response = try? result.get().data else { return }
-            
-            let model = response.decodeModel(type: NewsResponse.self)
-            completion(model?.allNews ?? [])
-            
+            switch result {
+            case .failure(let error):
+                completion(nil,XException(message: error.localizedDescription, code: 0))
+            case .success(let data):
+                let model = data.data?.decodeModel(type:  NewsResponse.self)
+                completion(model?.allNews,nil)
+            }
         }
         
     }
