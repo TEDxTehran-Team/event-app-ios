@@ -13,17 +13,28 @@ struct AboutView: View {
   @ObservedObject var viewModel = AboutViewModel()
   
   var body: some View {
-    VStack {
-      Image("tedx_logo")
-        .resizable()
-        .scaledToFit()
-        .frame(width: 300)
-        .padding(20)
-      
-      List(viewModel.repositories, id: \.self) { about in
-        NavigationLink(destination: AboutDetailView(about: about)) {
-          Text(about.title)
+    ZStack {
+      VStack {
+        Image(Images.logo)
+          .resizable()
+          .scaledToFit()
+          .frame(width: 300)
+          .padding(20)
+        
+        List(viewModel.repositories, id: \.self) { about in
+          NavigationLink(destination: AboutDetailView(about: about)) {
+            Text(about.title)
+          }
         }
+      }
+      
+      if self.viewModel.statusView == .loading {
+        Indicator()
+      }
+      
+      if self.viewModel.statusView == .error {
+        Text(self.viewModel.errorMessage)
+          .customFont(name: Fonts.shabnam, style: .caption1, weight: .medium)
       }
     }
     .navigationBarColor(UIColor(named: "primaryRed"))

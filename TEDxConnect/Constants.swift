@@ -18,3 +18,15 @@ enum Colors {
   static let primaryBackground = Color("primaryBackground")
   static let primaryLightGray = Color("primaryLightGray")
 }
+
+// add images also here
+enum Images {
+  static let urlExtension = "https://tedxtehran.idearun.co/media/"
+  static let logo = "tedx_logo"
+  
+  enum Examples {
+    static let map = "map_image_test"
+    static let about = "about_image_test"
+    static let eventBanner = "about_image_test"
+  }
+}

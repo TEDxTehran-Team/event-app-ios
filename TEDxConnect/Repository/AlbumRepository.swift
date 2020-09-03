@@ -11,11 +11,16 @@ import Apollo
 
 class AlbumRepository {
   
-  func get(completion: @escaping ([Album]?) -> ()) {
+  func get(completion: @escaping ([Album]?, XException?) -> ()) {
     
     Network.shared.apollo.fetch(query: GetAlbumsQuery()) { result in
-      guard let _ = try? result.get().data else { return }
-      completion([Album](repeating: Album.example, count: 10))
+      switch result {
+        case .failure(let error):
+          completion(nil, XException(message: error.localizedDescription, code: 0))
+        case .success(let data):
+          let model = data.data?.decodeModel(type:  AlbumResponse.self)
+          completion(model?.albums, nil)
+      }
     }
     
   }

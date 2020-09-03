@@ -10,20 +10,20 @@ import Foundation
 import Apollo
 
 class NewsRepository {
+  
+  func get(completion: @escaping ([News]?, XException?) -> ()) {
     
-    func get(completion: @escaping ([News]?,XException?) -> ()) {
-        
-        Network.shared.apollo.fetch(query: GetAllNewsQuery()) { result in
-            switch result {
-            case .failure(let error):
-                completion(nil,XException(message: error.localizedDescription, code: 0))
-            case .success(let data):
-                let model = data.data?.decodeModel(type:  NewsResponse.self)
-                completion(model?.allNews,nil)
-            }
-        }
-        
+    Network.shared.apollo.fetch(query: GetAllNewsQuery()) { result in
+      switch result {
+        case .failure(let error):
+          completion(nil, XException(message: error.localizedDescription, code: 0))
+        case .success(let data):
+          let model = data.data?.decodeModel(type:  NewsResponse.self)
+          completion(model?.allNews, nil)
+      }
     }
     
+  }
+  
 }
 

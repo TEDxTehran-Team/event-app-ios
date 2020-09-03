@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import RemoteImage
 
 struct AboutDetailView: View {
   
@@ -17,10 +18,18 @@ struct AboutDetailView: View {
       
       ScrollView(.vertical) {
         VStack {
-          Image(decorative: self.about.image)
-            .resizable()
-            .scaledToFit()
-            .frame(width: geometry.size.width)
+          if self.about.image != nil {
+            RemoteImage(type: .url(URL(string: Images.urlExtension + self.about.image!)!), errorView: { error in
+              RemoteImageErrorView(errorText: error.localizedDescription)
+            }, imageView: { image in
+              image
+                .resizable()
+                .scaledToFit()
+                .frame(width: geometry.size.width)
+            }, loadingView: {
+              Indicator()
+            })
+          }
           
           Text(self.about.description)
             .padding()

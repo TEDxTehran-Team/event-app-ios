@@ -9,44 +9,42 @@
 import SwiftUI
 
 struct NewsView: View {
-    
-    @ObservedObject var viewModel = NewsViewModel()
-    
-    var body: some View {
-        ZStack {
-            VStack {
-                List(viewModel.repositories, id: \.self) { news in
-                    NewsCardView(news: news)
-                }
-            }
-            
-            if self.viewModel.statusView == .loading {
-                Indicator()
-            }
-            
-            if self.viewModel.statusView == .error {
-                Text(self.viewModel.errorMessage)
-                    .customFont(name: Fonts.shabnam, style: .caption1, weight: .medium)
-            }
-            
-            
+  
+  @ObservedObject var viewModel = NewsViewModel()
+  
+  var body: some View {
+    ZStack {
+      VStack {
+        List(viewModel.repositories, id: \.self) { news in
+          NewsCardView(news: news)
         }
-            
-        .navigationBarColor(UIColor(named: "primaryRed"))
-        .navigationBarTitle(Text("News"))
-        .onAppear {
-            UITableView.appearance().separatorStyle = .none
-            self.viewModel.setup()
-        }
-        .onDisappear {
-            UITableView.appearance().separatorStyle = .singleLine
-        }
+      }
+      
+      if self.viewModel.statusView == .loading {
+        Indicator()
+      }
+      
+      if self.viewModel.statusView == .error {
+        Text(self.viewModel.errorMessage)
+          .customFont(name: Fonts.shabnam, style: .caption1, weight: .medium)
+      }
+      
     }
-    
+    .navigationBarColor(UIColor(named: "primaryRed"))
+    .navigationBarTitle(Text("News"))
+    .onAppear {
+      UITableView.appearance().separatorStyle = .none
+      self.viewModel.setup()
+    }
+    .onDisappear {
+      UITableView.appearance().separatorStyle = .singleLine
+    }
+  }
+  
 }
 
 struct NewsView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewsView()
-    }
+  static var previews: some View {
+    NewsView()
+  }
 }

@@ -13,8 +13,21 @@ struct GalleryView: View {
   @ObservedObject var viewModel = AlbumViewModel()
   
   var body: some View {
-    List(viewModel.repositories, id: \.self) { album in
-      GalleryCardView(album: album)
+    ZStack {
+      VStack {
+        List(viewModel.repositories, id: \.self) { album in
+          GalleryCardView(album: album)
+        }
+      }
+      
+      if self.viewModel.statusView == .loading {
+        Indicator()
+      }
+      
+      if self.viewModel.statusView == .error {
+        Text(self.viewModel.errorMessage)
+          .customFont(name: Fonts.shabnam, style: .caption1, weight: .medium)
+      }
     }
     .navigationBarColor(UIColor(named: "primaryRed"))
     .navigationBarTitle(Text("Gallery"))

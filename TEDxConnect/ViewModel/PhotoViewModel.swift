@@ -13,11 +13,23 @@ class PhotoViewModel: ObservableObject {
   var repo = PhotoRepository()
   @Published var repositories = [Photo]()
   
+  @Published var errorMessage: String = ""
+  @Published var statusView: StatusView = .none
+  
   func setup(withAlbumId albumId: Int) {
-    repo.get(withAlbumId: albumId) { repositories in
+    self.statusView = .loading
+    repo.get(withAlbumId: albumId) { repositories, exception  in
+      
+      if let error = exception {
+        self.statusView = .error
+        self.errorMessage = error.message
+        return
+      }
+      
       guard let repositories = repositories else {
         return
       }
+      self.statusView = .none
       self.repositories = repositories
     }
   }

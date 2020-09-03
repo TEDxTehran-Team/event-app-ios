@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import RemoteImage
 
 struct EventDetailView: View {
   
@@ -15,51 +16,79 @@ struct EventDetailView: View {
   var body: some View {
     GeometryReader { geometry in
       
-      ScrollView(.vertical) {
-        Image(decorative: self.viewModel.repository.banner)
-          .resizable()
-          .scaledToFit()
-          .frame(width: geometry.size.width)
-        
-//        Button(action: {
-//          print("test")
-//        }) {
-//          // live button
-//        }
-        
-        VStack {
-          VStack(alignment: .leading) {
-            HStack {
-              Image(decorative: "clock-icon")
-              Text(DateHelper.dateWith(self.viewModel.repository.startDate, showTime: true))
-              Text(DateHelper.dateWith(self.viewModel.repository.endDate, showTime: true))
-            }
-            .padding()
-            Divider()
-            HStack {
-              Image(decorative: "venue-icon")
-              Text(self.viewModel.repository.venue.title)
-            }
-            .padding()
-            Divider()
-            HStack {
-              Image(decorative: "address-icon")
-              Text(self.viewModel.repository.venue.adddress)
-            }
-            .padding()
+      ZStack {
+        ScrollView(.vertical) {
+          if self.viewModel.repository.banner != nil {
+            RemoteImage(type: .url(URL(string: Images.urlExtension + self.viewModel.repository.banner!)!), errorView: { error in
+              RemoteImageErrorView(errorText: error.localizedDescription)
+            }, imageView: { image in
+              image
+                .resizable()
+                .scaledToFit()
+                .frame(width: geometry.size.width)
+            }, loadingView: {
+              Indicator()
+            })
           }
-          .background(Colors.primaryBackground)
-          .cornerRadius(10)
-          .foregroundColor(.secondary)
-          .padding()
           
-          Image(self.viewModel.repository.venue.mapImage)
-            .resizable()
-            .scaledToFill()
-            .frame(width: geometry.size.width)
+          //        Button(action: {
+          //          print("test")
+          //        }) {
+          //          // live button
+          //        }
+          
+          VStack {
+            VStack(alignment: .leading) {
+              HStack {
+                Image(decorative: "clock-icon")
+                Text(DateHelper.dateWith(self.viewModel.repository.startDate ?? "TBA", showTime: true))
+                Text(DateHelper.dateWith(self.viewModel.repository.endDate  ?? "TBA", showTime: true))
+              }
+              .padding()
+              Divider()
+              HStack {
+                Image(decorative: "venue-icon")
+                Text(self.viewModel.repository.venue?.title ?? "-")
+              }
+              .padding()
+              Divider()
+              HStack {
+                Image(decorative: "address-icon")
+                Text(self.viewModel.repository.venue?.adddress ?? "-")
+              }
+              .padding()
+            }
+            .background(Colors.primaryBackground)
+            .cornerRadius(10)
+            .foregroundColor(.secondary)
+            .padding()
+            
+            if self.viewModel.repository.venue?.mapImage != nil {
+              RemoteImage(type: .url(URL(string: Images.urlExtension + self.viewModel.repository.venue!.mapImage)!), errorView: { error in
+                RemoteImageErrorView(errorText: error.localizedDescription)
+              }, imageView: { image in
+                image
+                  .resizable()
+                  .scaledToFit()
+                  .frame(width: geometry.size.width)
+              }, loadingView: {
+                Indicator()
+              })
+              .onTapGesture {
+                print("Tapped on Map!")
+              }
+            }
+            
+          }
         }
+        .background(Colors.primaryLightGray)
+        
+        if self.viewModel.statusView == .error {
+          Text(self.viewModel.errorMessage)
+            .customFont(name: Fonts.shabnam, style: .caption1, weight: .medium)
+        }
+        
       }
-      .background(Colors.primaryLightGray)
       
     }
     .navigationBarColor(UIColor(named: "primaryRed"))

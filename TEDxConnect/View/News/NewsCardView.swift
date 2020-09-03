@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import RemoteImage
 
 struct NewsCardView: View {
   let news: News
@@ -19,10 +20,22 @@ struct NewsCardView: View {
       
       VStack(alignment: .leading) {
         HStack(alignment: .center, spacing: 20) {
-          Image(news.icon ?? "heart.fill")
-            .resizable()
-            .scaledToFit()
-            .frame(width: 65, height: 40)
+          
+          RemoteImage(type: .url(URL(string: Images.urlExtension + (news.icon ?? ""))!), errorView: { error in
+            Image(systemName: "pencil.and.outline")
+              .resizable()
+              .scaledToFit()
+              .foregroundColor(.secondary)
+          }, imageView: { image in
+            image
+              .resizable()
+              .scaledToFit()
+          }, loadingView: {
+            Indicator()
+          })
+          .frame(width: 65, height: 30)
+          
+          
           Text(news.title)
             .customFont(name: Fonts.shabnam, style: .title1, weight: .bold)
             .foregroundColor(.primary)

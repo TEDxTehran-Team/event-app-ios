@@ -11,11 +11,16 @@ import Apollo
 
 class AboutRepository {
   
-  func get(completion: @escaping ([About]?) -> ()) {
+  func get(completion: @escaping ([About]?, XException?) -> ()) {
     
     Network.shared.apollo.fetch(query: GetAboutsQuery()) { result in
-      guard let _ = try? result.get().data else { return }
-      completion([About](repeating: About.example, count: 10))
+      switch result {
+        case .failure(let error):
+          completion(nil, XException(message: error.localizedDescription, code: 0))
+        case .success(let data):
+          let model = data.data?.organizer?.decodeModel(type: AboutResponse.self)
+          completion(model?.abouts, nil)
+      }
     }
     
   }

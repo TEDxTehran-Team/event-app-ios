@@ -2,7 +2,7 @@ query GetAllNews {
   allNews {
     title
     description
-    iconUrl
+    icon
   }
 }
 
@@ -28,6 +28,7 @@ query GetAbouts {
     abouts {
       title
       description
+      image
     }
   }
 }

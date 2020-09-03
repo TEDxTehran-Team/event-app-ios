@@ -7,19 +7,28 @@
 //
 
 import SwiftUI
+import RemoteImage
 
 struct GalleryCardView: View {
   
   let album: Album
+  let width = UIScreen.main.bounds.width
   
   var body: some View {
     ZStack {
-      Image(album.cover)
-        .resizable()
-        .overlay(ImageOverlay(text: album.title), alignment: .bottomLeading)
-        .cornerRadius(10)
-        .padding(.vertical, 10)
+      RemoteImage(type: .url(URL(string: Images.urlExtension + album.cover)!), errorView: { error in
+        RemoteImageErrorView(errorText: error.localizedDescription)
+      }, imageView: { image in
+        image
+          .resizable()
+          .overlay(ImageOverlay(text: self.album.title), alignment: .bottomLeading)
+          .cornerRadius(10)
+          .padding(.vertical, 10)
+      }, loadingView: {
+        Indicator()
+      })
         .frame(height: 200)
+      
       NavigationLink(destination: GalleryDetailView(album: album)) {
         EmptyView()
       }
