@@ -15,7 +15,7 @@ struct Album: Decodable, Hashable {
   var cover: String
   
   static var example: Album {
-    return Album(id: "1", title: "تداکس‌تهران ۲۰۱۹: خوشبینی مسئولانه", cover: Images.Examples.galleryCover)
+    return Album(id: "1", title: "تداکس‌تهران ۲۰۱۹: خوشبینی مسئولانه", cover: Images.example)
   }
   
 }

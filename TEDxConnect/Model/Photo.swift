@@ -13,7 +13,7 @@ struct Photo: Decodable, Hashable {
   var thumbnail: String
   
   static var example: Photo {
-    Photo(image: Images.Examples.galleryPhoto, thumbnail: Images.Examples.galleryPhoto)
+    Photo(image: Images.example, thumbnail: Images.example)
   }
 }
 

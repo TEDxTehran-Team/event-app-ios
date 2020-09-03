@@ -29,12 +29,6 @@ enum Images {
   static let logo = "tedx-logo"
   static let placeholder = "placeholder"
   static let profilePlaceholder = "profile-placeholder"
-  
-  enum Examples {
-    static let map = "map_image_test"
-    static let about = "about_image_test"
-    static let eventBanner = "about_image_test"
-    static let galleryCover = "gallery_cover_test"
-    static let galleryPhoto = "gallery_photo_test"
-  }
+  static let example = "example-image"
+  static let newsIconExample = "zitel"
 }
