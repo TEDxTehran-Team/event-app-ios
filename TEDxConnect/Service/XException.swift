@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 struct XException: LocalizedError {
   var message:String
   var code:Int?
