@@ -16,8 +16,8 @@ struct GalleryCardView: View {
   
   var body: some View {
     ZStack {
-      RemoteImage(type: .url(URL(string: Images.urlExtension + album.cover)!), errorView: { error in
-        RemoteImageErrorView(errorText: error.localizedDescription)
+      RemoteImage(type: .url(URL(string: Images.urlExtension + album.cover)!), errorView: { _ in
+        ImagePlaceholder()
       }, imageView: { image in
         image
           .resizable()

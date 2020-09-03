@@ -14,7 +14,9 @@
 		6D1325BC24FE706400FFA202 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1325BB24FE706400FFA202 /* DateHelper.swift */; };
 		6D460C6D24DE7F3500F50DAF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D460C6C24DE7F3500F50DAF /* Network.swift */; };
 		6D85B3A52500CC5C003459A8 /* RemoteImage in Frameworks */ = {isa = PBXBuildFile; productRef = 6D85B3A42500CC5C003459A8 /* RemoteImage */; };
-		6D85B3A72500DC54003459A8 /* RemoteImageErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D85B3A62500DC54003459A8 /* RemoteImageErrorView.swift */; };
+		6D8CE96A25011B8000F47ADF /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8CE96925011B8000F47ADF /* CustomButton.swift */; };
+		6D8CE96D25011F3900F47ADF /* WebView in Frameworks */ = {isa = PBXBuildFile; productRef = 6D8CE96C25011F3900F47ADF /* WebView */; };
+		6D8CE96F2501237A00F47ADF /* ImagePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8CE96E2501237A00F47ADF /* ImagePlaceholder.swift */; };
 		6DC0A45524FBCD1D00CE535B /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC0A45424FBCD1D00CE535B /* About.swift */; };
 		6DC0A45724FBCDCE00CE535B /* AboutRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC0A45624FBCDCE00CE535B /* AboutRepository.swift */; };
 		6DC0A45924FBCE6D00CE535B /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC0A45824FBCE6D00CE535B /* AboutViewModel.swift */; };
@@ -68,7 +70,8 @@
 		6D1325B724FE65D200FFA202 /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 		6D1325BB24FE706400FFA202 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		6D460C6C24DE7F3500F50DAF /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		6D85B3A62500DC54003459A8 /* RemoteImageErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageErrorView.swift; sourceTree = "<group>"; };
+		6D8CE96925011B8000F47ADF /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		6D8CE96E2501237A00F47ADF /* ImagePlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePlaceholder.swift; sourceTree = "<group>"; };
 		6DC0A45424FBCD1D00CE535B /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		6DC0A45624FBCDCE00CE535B /* AboutRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutRepository.swift; sourceTree = "<group>"; };
 		6DC0A45824FBCE6D00CE535B /* AboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
@@ -126,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D8CE96D25011F3900F47ADF /* WebView in Frameworks */,
 				6D85B3A52500CC5C003459A8 /* RemoteImage in Frameworks */,
 				44E03337C65ABC359A233E94 /* Pods_TEDxConnect.framework in Frameworks */,
 			);
@@ -237,6 +241,7 @@
 			children = (
 				6DD9719724F8F9600044D596 /* NavigationBarModifier.swift */,
 				6DCFBC7124FA48E5005103E5 /* CustomFont.swift */,
+				6D8CE96925011B8000F47ADF /* CustomButton.swift */,
 			);
 			path = "Custom Modifiers";
 			sourceTree = "<group>";
@@ -343,7 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				E837436324FFF69D009FEB5B /* Indicator.swift */,
-				6D85B3A62500DC54003459A8 /* RemoteImageErrorView.swift */,
+				6D8CE96E2501237A00F47ADF /* ImagePlaceholder.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -369,6 +374,7 @@
 			name = TEDxConnect;
 			packageProductDependencies = (
 				6D85B3A42500CC5C003459A8 /* RemoteImage */,
+				6D8CE96C25011F3900F47ADF /* WebView */,
 			);
 			productName = TEDxConnect;
 			productReference = 6DC754D524DE6BD700F96518 /* TEDxConnect.app */;
@@ -400,6 +406,7 @@
 			mainGroup = 6DC754CC24DE6BD600F96518;
 			packageReferences = (
 				6D85B3A32500CC5C003459A8 /* XCRemoteSwiftPackageReference "RemoteImage" */,
+				6D8CE96B25011F3900F47ADF /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */,
 			);
 			productRefGroup = 6DC754D624DE6BD700F96518 /* Products */;
 			projectDirPath = "";
@@ -515,6 +522,7 @@
 				6DFCAF4724FD2FBB008AD550 /* Event.swift in Sources */,
 				6DD9718824F8D2740044D596 /* NewsView.swift in Sources */,
 				6DE7941524F93B3E00CEEE0E /* AlbumViewModel.swift in Sources */,
+				6D8CE96F2501237A00F47ADF /* ImagePlaceholder.swift in Sources */,
 				6D1325BC24FE706400FFA202 /* DateHelper.swift in Sources */,
 				6DD9718A24F8D2C20044D596 /* NewsViewModel.swift in Sources */,
 				6DE7941124F939A500CEEE0E /* Album.swift in Sources */,
@@ -526,13 +534,13 @@
 				6DE7941324F93B1C00CEEE0E /* AlbumRepository.swift in Sources */,
 				E837435C24FFEB21009FEB5B /* JSON+Extension.swift in Sources */,
 				6DD9718424F8D20D0044D596 /* NewsRepository.swift in Sources */,
-				6D85B3A72500DC54003459A8 /* RemoteImageErrorView.swift in Sources */,
 				6DCFBC6B24FA45F7005103E5 /* Array+chunked.swift in Sources */,
 				E837436124FFF605009FEB5B /* StatusView.swift in Sources */,
 				6DC0A45924FBCE6D00CE535B /* AboutViewModel.swift in Sources */,
 				E837435F24FFF327009FEB5B /* XException.swift in Sources */,
 				6DD9719024F8EBE30044D596 /* NewsCardView.swift in Sources */,
 				6DCFBC6124FA4540005103E5 /* AppView.swift in Sources */,
+				6D8CE96A25011B8000F47ADF /* CustomButton.swift in Sources */,
 				6DC754DB24DE6BD700F96518 /* SceneDelegate.swift in Sources */,
 				6DD9719D24F8FB180044D596 /* View+Extension.swift in Sources */,
 				6DCFBC7224FA48E5005103E5 /* CustomFont.swift in Sources */,
@@ -741,6 +749,14 @@
 				minimumVersion = 2.0.3;
 			};
 		};
+		6D8CE96B25011F3900F47ADF /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kylehickinson/SwiftUI-WebView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -748,6 +764,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6D85B3A32500CC5C003459A8 /* XCRemoteSwiftPackageReference "RemoteImage" */;
 			productName = RemoteImage;
+		};
+		6D8CE96C25011F3900F47ADF /* WebView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D8CE96B25011F3900F47ADF /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */;
+			productName = WebView;
 		};
 /* End XCSwiftPackageProductDependency section */
 

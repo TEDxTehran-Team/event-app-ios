@@ -20,8 +20,8 @@ struct GalleryDetailView: View {
     ZStack {
       GridStack(minCellWidth: width, spacing: 10, numItems: viewModel.repositories.count) { index, cellWidth in
         NavigationLink(destination:
-          RemoteImage(type: .url(URL(string: Images.urlExtension + self.viewModel.repositories[index].image)!), errorView: { error in
-            RemoteImageErrorView(errorText: error.localizedDescription)
+          RemoteImage(type: .url(URL(string: Images.urlExtension + self.viewModel.repositories[index].image)!), errorView: { _ in
+            ImagePlaceholder()
           }, imageView: { image in
             image
               .resizable()
@@ -31,8 +31,8 @@ struct GalleryDetailView: View {
           })
         ) {
           
-          RemoteImage(type: .url(URL(string: Images.urlExtension + self.viewModel.repositories[index].thumbnail)!), errorView: { error in
-            RemoteImageErrorView(errorText: error.localizedDescription)
+          RemoteImage(type: .url(URL(string: Images.urlExtension + self.viewModel.repositories[index].thumbnail)!), errorView: { _ in
+            ImagePlaceholder()
           }, imageView: { image in
             image
               .resizable()

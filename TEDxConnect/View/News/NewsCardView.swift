@@ -20,12 +20,8 @@ struct NewsCardView: View {
       
       VStack(alignment: .leading) {
         HStack(alignment: .center, spacing: 20) {
-          
-          RemoteImage(type: .url(URL(string: Images.urlExtension + (news.icon ?? ""))!), errorView: { error in
-            Image(systemName: "pencil.and.outline")
-              .resizable()
-              .scaledToFit()
-              .foregroundColor(.secondary)
+          RemoteImage(type: .url(URL(string: Images.urlExtension + (news.icon ?? ""))!), errorView: { _ in
+            ImagePlaceholder()
           }, imageView: { image in
             image
               .resizable()
@@ -33,13 +29,13 @@ struct NewsCardView: View {
           }, loadingView: {
             Indicator()
           })
-          .frame(width: 65, height: 30)
-          
+            .frame(width: 55, height: 30)
           
           Text(news.title)
             .customFont(name: Fonts.shabnam, style: .title1, weight: .bold)
             .foregroundColor(.primary)
         }
+        Divider()
         Text(news.description)
           .foregroundColor(.secondary)
           .customFont(name: Fonts.shabnam, style: .body, weight: .regular)

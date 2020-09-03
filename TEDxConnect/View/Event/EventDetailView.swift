@@ -18,24 +18,32 @@ struct EventDetailView: View {
       
       ZStack {
         ScrollView(.vertical) {
-          if self.viewModel.repository.banner != nil {
-            RemoteImage(type: .url(URL(string: Images.urlExtension + self.viewModel.repository.banner!)!), errorView: { error in
-              RemoteImageErrorView(errorText: error.localizedDescription)
-            }, imageView: { image in
-              image
-                .resizable()
-                .scaledToFit()
-                .frame(width: geometry.size.width)
-            }, loadingView: {
-              Indicator()
-            })
-          }
+          RemoteImage(type: .url(URL(string: Images.urlExtension + (self.viewModel.repository.banner ?? ""))!), errorView: { _ in
+            ImagePlaceholder()
+          }, imageView: { image in
+            image
+              .resizable()
+              .scaledToFill()
+              .frame(width: geometry.size.width, height: 200)
+              .clipped()
+          }, loadingView: {
+            Indicator()
+          })
           
-          //        Button(action: {
-          //          print("test")
-          //        }) {
-          //          // live button
-          //        }
+          Button(action: {
+            
+            UIApplication.shared.open(URL(string: self.viewModel.repository.links?.first { $0.role == "ticket" }?.url ?? Constants.placeholderUrl)!)
+            
+          }) {
+            HStack {
+              Spacer()
+              Image(systemName: "play.rectangle")
+              Text("Watch Live")
+              Spacer()
+            }
+            .padding()
+          }
+          .customStyle(withBackgroundColor: Colors.primaryRed)
           
           VStack {
             VStack(alignment: .leading) {
@@ -61,23 +69,22 @@ struct EventDetailView: View {
             .background(Colors.primaryBackground)
             .cornerRadius(10)
             .foregroundColor(.secondary)
-            .padding()
+            .padding([.horizontal, .bottom])
             
-            if self.viewModel.repository.venue?.mapImage != nil {
-              RemoteImage(type: .url(URL(string: Images.urlExtension + self.viewModel.repository.venue!.mapImage)!), errorView: { error in
-                RemoteImageErrorView(errorText: error.localizedDescription)
-              }, imageView: { image in
-                image
-                  .resizable()
-                  .scaledToFit()
-                  .frame(width: geometry.size.width)
-              }, loadingView: {
-                Indicator()
-              })
+            RemoteImage(type: .url(URL(string: Images.urlExtension + (self.viewModel.repository.venue?.mapImage ?? ""))!), errorView: { _ in
+              ImagePlaceholder()
+            }, imageView: { image in
+              image
+                .resizable()
+                .scaledToFit()
+                .frame(width: geometry.size.width, height: 200)
+            }, loadingView: {
+              Indicator()
+            })
               .onTapGesture {
-                print("Tapped on Map!")
-              }
+                UIApplication.shared.open(URL(string: self.viewModel.repository.venue?.mapLink ?? Constants.placeholderUrl)!)
             }
+            
             
           }
         }

@@ -14,7 +14,7 @@ class Network {
   
   private(set) lazy var apollo: ApolloClient = {
     //    let token = "ed021b80f7890b8ad017e896617703caae3a3458"
-    let url = URL(string: "https://tedxtehran.idearun.co/graphql/")!
+    let url = URL(string: Constants.baseUrl)!
     
     let configuration = URLSessionConfiguration.default
     
