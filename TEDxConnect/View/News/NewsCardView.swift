@@ -16,7 +16,7 @@ struct NewsCardView: View {
     ZStack {
       RoundedRectangle(cornerRadius: 25, style: .continuous)
         .fill(Colors.primaryBackground)
-        .shadow(radius: 5, x: 0, y: 3)
+        .shadow(radius: 6, x: 0, y: 3)
       
       VStack(alignment: .leading) {
         HStack(alignment: .center, spacing: 20) {
