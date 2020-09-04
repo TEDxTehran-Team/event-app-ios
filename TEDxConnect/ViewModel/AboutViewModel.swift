@@ -29,7 +29,7 @@ class AboutViewModel: ObservableObject {
       guard let repositories = repositories else {
         return
       }
-      self.statusView = .none
+      self.statusView = .complete
       self.repositories = repositories
     }
   }

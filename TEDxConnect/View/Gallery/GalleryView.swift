@@ -14,9 +14,18 @@ struct GalleryView: View {
   
   var body: some View {
     ZStack {
-      VStack {
-        List(viewModel.repositories, id: \.self) { album in
-          GalleryCardView(album: album)
+      if self.viewModel.statusView == .complete {
+        if self.viewModel.repositories.count != 0 {
+          VStack {
+            List(viewModel.repositories, id: \.self) { album in
+              GalleryCardView(album: album)
+            }
+          }
+        } else {
+          EmptyListView()
+            .onTapGesture {
+              self.viewModel.setup()
+          }
         }
       }
       

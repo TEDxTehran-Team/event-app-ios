@@ -14,9 +14,18 @@ struct NewsView: View {
   
   var body: some View {
     ZStack {
-      VStack {
-        List(viewModel.repositories, id: \.self) { news in
-          NewsCardView(news: news)
+      if self.viewModel.statusView == .complete {
+        if viewModel.repositories.count != 0 {
+          VStack {
+            List(viewModel.repositories, id: \.self) { news in
+              NewsCardView(news: news)
+            }
+          }
+        } else {
+          EmptyListView()
+            .onTapGesture {
+              self.viewModel.setup()
+          }
         }
       }
       

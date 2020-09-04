@@ -31,4 +31,5 @@ enum Images {
   static let profilePlaceholder = "profile-placeholder"
   static let example = "example-image"
   static let newsIconExample = "zitel"
+  static let emptyList = "404"
 }

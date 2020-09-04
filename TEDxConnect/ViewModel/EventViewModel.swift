@@ -29,7 +29,7 @@ class EventViewModel: ObservableObject {
       guard let repository = repository else {
         return
       }
-      self.statusView = .none
+      self.statusView = .complete
       self.repository = repository
     }
   }

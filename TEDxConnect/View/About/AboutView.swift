@@ -14,16 +14,25 @@ struct AboutView: View {
   
   var body: some View {
     ZStack {
-      VStack {
-        Image(Images.logo)
-          .resizable()
-          .scaledToFit()
-          .frame(width: 300)
-          .padding(20)
-        
-        List(viewModel.repositories, id: \.self) { about in
-          NavigationLink(destination: AboutDetailView(about: about)) {
-            Text(about.title)
+      if self.viewModel.statusView == .complete {
+        if self.viewModel.repositories.count != 0 {
+          VStack {
+            Image(Images.logo)
+              .resizable()
+              .scaledToFit()
+              .frame(width: 300)
+              .padding(20)
+            
+            List(viewModel.repositories, id: \.self) { about in
+              NavigationLink(destination: AboutDetailView(about: about)) {
+                Text(about.title)
+              }
+            }
+          }
+        } else {
+          EmptyListView()
+            .onTapGesture {
+              self.viewModel.setup()
           }
         }
       }

@@ -26,7 +26,7 @@ struct AppView: View {
       }
       .tag(1)
       .tabItem {
-        Image(systemName: "square.grid.2x2")
+        Image(systemName: "clock")
         Text("Timetable")
       }
       
@@ -44,7 +44,7 @@ struct AppView: View {
       }
       .tag(3)
       .tabItem {
-        Image(systemName: "square.grid.2x2")
+        Image(systemName: "photo.on.rectangle")
         Text("Gallery")
       }
 
