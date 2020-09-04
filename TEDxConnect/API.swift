@@ -4,6 +4,67 @@
 import Apollo
 import Foundation
 
+/// An enumeration.
+public enum SectionType: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+  public typealias RawValue = String
+  /// Generic
+  case generic
+  /// Talks
+  case talk
+  /// Performance
+  case performance
+  /// Activity
+  case activity
+  /// Entertainment
+  case entertainment
+  /// Auto generated constant for unknown enum values
+  case __unknown(RawValue)
+
+  public init?(rawValue: RawValue) {
+    switch rawValue {
+      case "GENERIC": self = .generic
+      case "TALK": self = .talk
+      case "PERFORMANCE": self = .performance
+      case "ACTIVITY": self = .activity
+      case "ENTERTAINMENT": self = .entertainment
+      default: self = .__unknown(rawValue)
+    }
+  }
+
+  public var rawValue: RawValue {
+    switch self {
+      case .generic: return "GENERIC"
+      case .talk: return "TALK"
+      case .performance: return "PERFORMANCE"
+      case .activity: return "ACTIVITY"
+      case .entertainment: return "ENTERTAINMENT"
+      case .__unknown(let value): return value
+    }
+  }
+
+  public static func == (lhs: SectionType, rhs: SectionType) -> Bool {
+    switch (lhs, rhs) {
+      case (.generic, .generic): return true
+      case (.talk, .talk): return true
+      case (.performance, .performance): return true
+      case (.activity, .activity): return true
+      case (.entertainment, .entertainment): return true
+      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+      default: return false
+    }
+  }
+
+  public static var allCases: [SectionType] {
+    return [
+      .generic,
+      .talk,
+      .performance,
+      .activity,
+      .entertainment,
+    ]
+  }
+}
+
 public final class GetAllNewsQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
@@ -807,6 +868,322 @@ public final class MainEventInfoQuery: GraphQLQuery {
             }
             set {
               resultMap.updateValue(newValue, forKey: "mapImage")
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class GetDaysQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query GetDays {
+      organizer {
+        __typename
+        mainEvent {
+          __typename
+          days {
+            __typename
+            title
+            sessions {
+              __typename
+              title
+              startTime
+              sections {
+                __typename
+                title
+                type
+                startTime
+                endTime
+              }
+            }
+          }
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "GetDays"
+
+  public init() {
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("organizer", type: .object(Organizer.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(organizer: Organizer? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "organizer": organizer.flatMap { (value: Organizer) -> ResultMap in value.resultMap }])
+    }
+
+    public var organizer: Organizer? {
+      get {
+        return (resultMap["organizer"] as? ResultMap).flatMap { Organizer(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "organizer")
+      }
+    }
+
+    public struct Organizer: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["OrganizerSchemaType"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("mainEvent", type: .object(MainEvent.selections)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(mainEvent: MainEvent? = nil) {
+        self.init(unsafeResultMap: ["__typename": "OrganizerSchemaType", "mainEvent": mainEvent.flatMap { (value: MainEvent) -> ResultMap in value.resultMap }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// which event is currently the main event for this organizer?
+      public var mainEvent: MainEvent? {
+        get {
+          return (resultMap["mainEvent"] as? ResultMap).flatMap { MainEvent(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "mainEvent")
+        }
+      }
+
+      public struct MainEvent: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["EventSchemaType"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("days", type: .nonNull(.list(.nonNull(.object(Day.selections))))),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(days: [Day]) {
+          self.init(unsafeResultMap: ["__typename": "EventSchemaType", "days": days.map { (value: Day) -> ResultMap in value.resultMap }])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        /// to which event does the day belong?
+        public var days: [Day] {
+          get {
+            return (resultMap["days"] as! [ResultMap]).map { (value: ResultMap) -> Day in Day(unsafeResultMap: value) }
+          }
+          set {
+            resultMap.updateValue(newValue.map { (value: Day) -> ResultMap in value.resultMap }, forKey: "days")
+          }
+        }
+
+        public struct Day: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["EventDaySchemaType"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("title", type: .nonNull(.scalar(String.self))),
+            GraphQLField("sessions", type: .nonNull(.list(.nonNull(.object(Session.selections))))),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(title: String, sessions: [Session]) {
+            self.init(unsafeResultMap: ["__typename": "EventDaySchemaType", "title": title, "sessions": sessions.map { (value: Session) -> ResultMap in value.resultMap }])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var title: String {
+            get {
+              return resultMap["title"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "title")
+            }
+          }
+
+          /// to which event day does this session belong?
+          public var sessions: [Session] {
+            get {
+              return (resultMap["sessions"] as! [ResultMap]).map { (value: ResultMap) -> Session in Session(unsafeResultMap: value) }
+            }
+            set {
+              resultMap.updateValue(newValue.map { (value: Session) -> ResultMap in value.resultMap }, forKey: "sessions")
+            }
+          }
+
+          public struct Session: GraphQLSelectionSet {
+            public static let possibleTypes: [String] = ["SessionSchemaType"]
+
+            public static let selections: [GraphQLSelection] = [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("title", type: .nonNull(.scalar(String.self))),
+              GraphQLField("startTime", type: .nonNull(.scalar(String.self))),
+              GraphQLField("sections", type: .nonNull(.list(.nonNull(.object(Section.selections))))),
+            ]
+
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public init(title: String, startTime: String, sections: [Section]) {
+              self.init(unsafeResultMap: ["__typename": "SessionSchemaType", "title": title, "startTime": startTime, "sections": sections.map { (value: Section) -> ResultMap in value.resultMap }])
+            }
+
+            public var __typename: String {
+              get {
+                return resultMap["__typename"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            public var title: String {
+              get {
+                return resultMap["title"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "title")
+              }
+            }
+
+            /// when will the session start?
+            public var startTime: String {
+              get {
+                return resultMap["startTime"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "startTime")
+              }
+            }
+
+            /// in which session this section will be held?
+            public var sections: [Section] {
+              get {
+                return (resultMap["sections"] as! [ResultMap]).map { (value: ResultMap) -> Section in Section(unsafeResultMap: value) }
+              }
+              set {
+                resultMap.updateValue(newValue.map { (value: Section) -> ResultMap in value.resultMap }, forKey: "sections")
+              }
+            }
+
+            public struct Section: GraphQLSelectionSet {
+              public static let possibleTypes: [String] = ["SectionSchemaType"]
+
+              public static let selections: [GraphQLSelection] = [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                GraphQLField("title", type: .nonNull(.scalar(String.self))),
+                GraphQLField("type", type: .nonNull(.scalar(SectionType.self))),
+                GraphQLField("startTime", type: .nonNull(.scalar(String.self))),
+                GraphQLField("endTime", type: .nonNull(.scalar(String.self))),
+              ]
+
+              public private(set) var resultMap: ResultMap
+
+              public init(unsafeResultMap: ResultMap) {
+                self.resultMap = unsafeResultMap
+              }
+
+              public init(title: String, type: SectionType, startTime: String, endTime: String) {
+                self.init(unsafeResultMap: ["__typename": "SectionSchemaType", "title": title, "type": type, "startTime": startTime, "endTime": endTime])
+              }
+
+              public var __typename: String {
+                get {
+                  return resultMap["__typename"]! as! String
+                }
+                set {
+                  resultMap.updateValue(newValue, forKey: "__typename")
+                }
+              }
+
+              public var title: String {
+                get {
+                  return resultMap["title"]! as! String
+                }
+                set {
+                  resultMap.updateValue(newValue, forKey: "title")
+                }
+              }
+
+              /// shows type of this program section, whether it's a generic section, a talk or performance, an activity, or else.
+              public var type: SectionType {
+                get {
+                  return resultMap["type"]! as! SectionType
+                }
+                set {
+                  resultMap.updateValue(newValue, forKey: "type")
+                }
+              }
+
+              /// when will the section start?
+              public var startTime: String {
+                get {
+                  return resultMap["startTime"]! as! String
+                }
+                set {
+                  resultMap.updateValue(newValue, forKey: "startTime")
+                }
+              }
+
+              /// when will the section end?
+              public var endTime: String {
+                get {
+                  return resultMap["endTime"]! as! String
+                }
+                set {
+                  resultMap.updateValue(newValue, forKey: "endTime")
+                }
+              }
             }
           }
         }

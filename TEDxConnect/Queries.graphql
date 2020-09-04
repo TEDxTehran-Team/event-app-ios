@@ -54,3 +54,23 @@ query MainEventInfo {
     }
   }
 }
+
+query GetDays {
+  organizer {
+    mainEvent {
+      days {
+        title
+        sessions {
+          title
+          startTime
+          sections {
+            title
+            type
+            startTime
+            endTime
+          }
+        }
+      }
+    }
+  }
+}

@@ -100,6 +100,10 @@ struct EventDetailView: View {
     }
     .navigationBarColor(UIColor(named: "primaryRed"))
     .navigationBarTitle(Text("Home"))
+    .navigationBarItems(trailing: NavigationLink(destination: AboutView(), label: {
+      Image(systemName: "info.circle")
+        .foregroundColor(.white)
+    }))
     .onAppear {
       UITableView.appearance().separatorStyle = .none
       self.viewModel.setup()

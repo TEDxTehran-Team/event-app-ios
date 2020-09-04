@@ -22,21 +22,21 @@ struct AppView: View {
       }
 
       NavigationView {
-        NewsView()
+        TimeTableView()
       }
       .tag(1)
       .tabItem {
-        Image(systemName: "text.aligncenter")
-        Text("News")
+        Image(systemName: "square.grid.2x2")
+        Text("Timetable")
       }
       
       NavigationView {
-        AboutView()
+        NewsView()
       }
       .tag(2)
       .tabItem {
-        Image(systemName: "info")
-        Text("About")
+        Image(systemName: "text.aligncenter")
+        Text("News")
       }
       
       NavigationView {

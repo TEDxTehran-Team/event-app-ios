@@ -18,6 +18,13 @@
 		6D8CE96D25011F3900F47ADF /* WebView in Frameworks */ = {isa = PBXBuildFile; productRef = 6D8CE96C25011F3900F47ADF /* WebView */; };
 		6D8CE96F2501237A00F47ADF /* ImagePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8CE96E2501237A00F47ADF /* ImagePlaceholder.swift */; };
 		6D8CE97125012AB700F47ADF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D8CE97025012AB700F47ADF /* Colors.xcassets */; };
+		6D8CE973250204A600F47ADF /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8CE972250204A600F47ADF /* Day.swift */; };
+		6D8CE9752502057200F47ADF /* DayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8CE9742502057200F47ADF /* DayRepository.swift */; };
+		6D8CE9772502059D00F47ADF /* DayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8CE9762502059D00F47ADF /* DayViewModel.swift */; };
+		6D8CE979250206AD00F47ADF /* TimeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8CE978250206AD00F47ADF /* TimeTableView.swift */; };
+		6D8CE97D25020E3500F47ADF /* SessionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8CE97C25020E3500F47ADF /* SessionHeaderView.swift */; };
+		6D8CE97F25020ED200F47ADF /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8CE97E25020ED200F47ADF /* SectionView.swift */; };
+		6DAA3CE32502102C006528DB /* DayHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAA3CE22502102C006528DB /* DayHeaderView.swift */; };
 		6DC0A45524FBCD1D00CE535B /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC0A45424FBCD1D00CE535B /* About.swift */; };
 		6DC0A45724FBCDCE00CE535B /* AboutRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC0A45624FBCDCE00CE535B /* AboutRepository.swift */; };
 		6DC0A45924FBCE6D00CE535B /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC0A45824FBCE6D00CE535B /* AboutViewModel.swift */; };
@@ -74,6 +81,13 @@
 		6D8CE96925011B8000F47ADF /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		6D8CE96E2501237A00F47ADF /* ImagePlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePlaceholder.swift; sourceTree = "<group>"; };
 		6D8CE97025012AB700F47ADF /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		6D8CE972250204A600F47ADF /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		6D8CE9742502057200F47ADF /* DayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRepository.swift; sourceTree = "<group>"; };
+		6D8CE9762502059D00F47ADF /* DayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModel.swift; sourceTree = "<group>"; };
+		6D8CE978250206AD00F47ADF /* TimeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableView.swift; sourceTree = "<group>"; };
+		6D8CE97C25020E3500F47ADF /* SessionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHeaderView.swift; sourceTree = "<group>"; };
+		6D8CE97E25020ED200F47ADF /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
+		6DAA3CE22502102C006528DB /* DayHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayHeaderView.swift; sourceTree = "<group>"; };
 		6DC0A45424FBCD1D00CE535B /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		6DC0A45624FBCDCE00CE535B /* AboutRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutRepository.swift; sourceTree = "<group>"; };
 		6DC0A45824FBCE6D00CE535B /* AboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
@@ -147,6 +161,17 @@
 				747CD5FF7D5F26B645079232 /* Pods-TEDxConnect.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		6D8CE98025020EDF00F47ADF /* TimeTable */ = {
+			isa = PBXGroup;
+			children = (
+				6D8CE978250206AD00F47ADF /* TimeTableView.swift */,
+				6DAA3CE22502102C006528DB /* DayHeaderView.swift */,
+				6D8CE97C25020E3500F47ADF /* SessionHeaderView.swift */,
+				6D8CE97E25020ED200F47ADF /* SectionView.swift */,
+			);
+			path = TimeTable;
 			sourceTree = "<group>";
 		};
 		6DC0A45A24FBCE8D00CE535B /* About */ = {
@@ -278,6 +303,7 @@
 				6D1325B524FE65C100FFA202 /* Photo.swift */,
 				6DC0A45424FBCD1D00CE535B /* About.swift */,
 				6DFCAF4624FD2FBB008AD550 /* Event.swift */,
+				6D8CE972250204A600F47ADF /* Day.swift */,
 				E837436024FFF605009FEB5B /* StatusView.swift */,
 			);
 			path = Model;
@@ -291,6 +317,7 @@
 				6D1325B324FE658F00FFA202 /* PhotoRepository.swift */,
 				6DC0A45624FBCDCE00CE535B /* AboutRepository.swift */,
 				6DFCAF4B24FD32FC008AD550 /* EventRepository.swift */,
+				6D8CE9742502057200F47ADF /* DayRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -303,6 +330,7 @@
 				6D1325B724FE65D200FFA202 /* PhotoViewModel.swift */,
 				6DC0A45824FBCE6D00CE535B /* AboutViewModel.swift */,
 				6DFCAF4D24FD3332008AD550 /* EventViewModel.swift */,
+				6D8CE9762502059D00F47ADF /* DayViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -326,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				6DFCAF4924FD314F008AD550 /* EventDetailView.swift */,
+				6D8CE98025020EDF00F47ADF /* TimeTable */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -507,6 +536,9 @@
 				6DFCAF4A24FD314F008AD550 /* EventDetailView.swift in Sources */,
 				E837436424FFF69D009FEB5B /* Indicator.swift in Sources */,
 				6D460C6D24DE7F3500F50DAF /* Network.swift in Sources */,
+				6D8CE9772502059D00F47ADF /* DayViewModel.swift in Sources */,
+				6D8CE97D25020E3500F47ADF /* SessionHeaderView.swift in Sources */,
+				6DAA3CE32502102C006528DB /* DayHeaderView.swift in Sources */,
 				6DCFBC5724F93D4F005103E5 /* GalleryCardView.swift in Sources */,
 				6DFCAF4E24FD3332008AD550 /* EventViewModel.swift in Sources */,
 				6DCFBC5924F94190005103E5 /* ImageOverlay.swift in Sources */,
@@ -514,6 +546,7 @@
 				6DC0A45724FBCDCE00CE535B /* AboutRepository.swift in Sources */,
 				6DC0A45E24FBD01C00CE535B /* AboutDetailView.swift in Sources */,
 				6DC754DE24DE6BD700F96518 /* TEDxConnect.xcdatamodeld in Sources */,
+				6D8CE97F25020ED200F47ADF /* SectionView.swift in Sources */,
 				6DD9719824F8F9600044D596 /* NavigationBarModifier.swift in Sources */,
 				6DC754D924DE6BD700F96518 /* AppDelegate.swift in Sources */,
 				6DCFBC6924FA45F7005103E5 /* GridStack.swift in Sources */,
@@ -526,13 +559,16 @@
 				6DFCAF4724FD2FBB008AD550 /* Event.swift in Sources */,
 				6DD9718824F8D2740044D596 /* NewsView.swift in Sources */,
 				6DE7941524F93B3E00CEEE0E /* AlbumViewModel.swift in Sources */,
+				6D8CE9752502057200F47ADF /* DayRepository.swift in Sources */,
 				6D8CE96F2501237A00F47ADF /* ImagePlaceholder.swift in Sources */,
+				6D8CE973250204A600F47ADF /* Day.swift in Sources */,
 				6D1325BC24FE706400FFA202 /* DateHelper.swift in Sources */,
 				6DD9718A24F8D2C20044D596 /* NewsViewModel.swift in Sources */,
 				6DE7941124F939A500CEEE0E /* Album.swift in Sources */,
 				6D1325B424FE658F00FFA202 /* PhotoRepository.swift in Sources */,
 				6DCFBC5B24F941A5005103E5 /* GalleryDetailView.swift in Sources */,
 				6DE7CEE524E120BA00910DF7 /* API.swift in Sources */,
+				6D8CE979250206AD00F47ADF /* TimeTableView.swift in Sources */,
 				6DD9718224F8D0D70044D596 /* News.swift in Sources */,
 				6DC0A45524FBCD1D00CE535B /* About.swift in Sources */,
 				6DE7941324F93B1C00CEEE0E /* AlbumRepository.swift in Sources */,
