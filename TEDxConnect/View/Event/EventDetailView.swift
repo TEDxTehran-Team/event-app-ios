@@ -14,38 +14,37 @@ struct EventDetailView: View {
   @ObservedObject var viewModel = EventViewModel()
   
   var body: some View {
-    GeometryReader { geometry in
-      
-      ZStack {
-        ScrollView(.vertical) {
-          RemoteImage(type: .url(URL(string: Images.urlExtension + (self.viewModel.repository.banner ?? ""))!), errorView: { _ in
-            ImagePlaceholder()
-          }, imageView: { image in
-            image
-              .resizable()
-              .scaledToFill()
-              .frame(width: geometry.size.width, height: 200)
-              .clipped()
-          }, loadingView: {
-            Indicator()
-          })
-          
-          Button(action: {
-            
-            UIApplication.shared.open(URL(string: self.viewModel.repository.links?.first { $0.role == "ticket" }?.url ?? Constants.placeholderUrl)!)
-            
-          }) {
-            HStack {
-              Spacer()
-              Image(systemName: "play.rectangle")
-              Text("Watch Live")
-              Spacer()
-            }
-            .padding()
-          }
-          .customStyle(withBackgroundColor: Colors.primaryRed)
-          
+    GeometryReader { fullView in
+      ScrollView(.vertical) {
+        ZStack {
           VStack {
+            RemoteImage(type: .url(URL(string: Images.urlExtension + (self.viewModel.repository.banner ?? ""))!), errorView: { _ in
+              ImagePlaceholder()
+            }, imageView: { image in
+              image
+                .resizable()
+                .scaledToFill()
+                .frame(width: fullView.size.width, height: 200)
+                .clipped()
+            }, loadingView: {
+              Indicator()
+            })
+            
+            Button(action: {
+              
+              UIApplication.shared.open(URL(string: self.viewModel.repository.links?.first { $0.role == "live" }?.url ?? Constants.placeholderUrl)!)
+              
+            }) {
+              HStack {
+                Spacer()
+                Image(systemName: "play.rectangle")
+                Text("Watch Live")
+                Spacer()
+              }
+              .padding()
+            }
+            .customStyle(withBackgroundColor: Colors.primaryRed)
+            
             VStack(alignment: .leading) {
               HStack {
                 Image(decorative: "clock-icon")
@@ -77,7 +76,7 @@ struct EventDetailView: View {
               image
                 .resizable()
                 .scaledToFit()
-                .frame(width: geometry.size.width, height: 200)
+                .frame(width: fullView.size.width, height: 200)
             }, loadingView: {
               Indicator()
             })
@@ -85,33 +84,35 @@ struct EventDetailView: View {
                 UIApplication.shared.open(URL(string: self.viewModel.repository.venue?.mapLink ?? Constants.placeholderUrl)!)
             }
             
-            
+          } // VStack
+          if self.viewModel.statusView == .error {
+            Text(self.viewModel.errorMessage)
+              .customFont(name: Fonts.shabnam, style: .caption1, weight: .medium)
           }
-        }
+        } // ZStack
+        
+      } // ScrollView
         .background(Colors.primaryLightGray)
-        
-        if self.viewModel.statusView == .error {
-          Text(self.viewModel.errorMessage)
-            .customFont(name: Fonts.shabnam, style: .caption1, weight: .medium)
-        }
-        
-      }
       
-    }
-    .navigationBarColor(UIColor(named: "primaryRed"))
-    .navigationBarTitle(Text("Home"))
-    .navigationBarItems(trailing: NavigationLink(destination: AboutView(), label: {
-      Image(systemName: "info.circle")
-        .foregroundColor(.white)
-    }))
-    .onAppear {
-      UITableView.appearance().separatorStyle = .none
-      self.viewModel.setup()
+    } // GeometryReader
+      .navigationBarColor(UIColor(named: "primaryRed"))
+      .navigationBarTitle(Text("Home"))
+      .navigationBarItems(trailing: NavigationLink(destination: AboutView(), label: {
+        Image(systemName: "info.circle")
+          .resizable()
+          .frame(width: 24, height: 24)
+          .foregroundColor(.white)
+      }))
+      .onAppear {
+        UITableView.appearance().separatorStyle = .none
+        self.viewModel.setup()
     }
     .onDisappear {
       UITableView.appearance().separatorStyle = .singleLine
     }
-  }
+  } // Body
+  
+  
   
 }
 

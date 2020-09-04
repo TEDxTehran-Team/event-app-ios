@@ -24,6 +24,7 @@ struct SectionView: View {
       Text(DateHelper.ommitSeconds(fromTime: section.endTime))
     }
     .foregroundColor(.secondary)
+    .customFont(name: Fonts.shabnam, style: .body)
   }
 }
 

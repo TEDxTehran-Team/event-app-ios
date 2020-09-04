@@ -17,11 +17,11 @@ struct NavigationBarModifier: ViewModifier {
     coloredAppearance.configureWithTransparentBackground()
     coloredAppearance.backgroundColor = backgroundColor
     coloredAppearance.titleTextAttributes = [
-      .font : UIFont(name: Fonts.shabnam, size: 20)!,
+      .font : UIFont(name: Fonts.shabnam, size: 17)!,
       .foregroundColor: UIColor.white
     ]
     coloredAppearance.largeTitleTextAttributes = [
-      .font : UIFont(name: Fonts.shabnamBold, size: 40)!,
+      .font : UIFont(name: Fonts.shabnamBold, size: 34)!,
       .foregroundColor: UIColor.white
     ]
     

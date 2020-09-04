@@ -19,6 +19,7 @@ struct DayHeaderView: View {
       .background(Colors.primaryLightGray)
       .cornerRadius(20)
       .foregroundColor(.secondary)
+      .customFont(name: Fonts.shabnam, style: .headline)
   }
 }
 
