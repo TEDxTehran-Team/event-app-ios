@@ -39,7 +39,7 @@ struct GalleryView: View {
       }
     }
     .navigationBarColor(UIColor(named: "primaryRed"))
-    .navigationBarTitle(Text("Gallery"))
+    .navigationBarTitle(Text("Gallery"), displayMode: .inline)
     .onAppear {
       UITableView.appearance().separatorStyle = .none
       self.viewModel.setup()

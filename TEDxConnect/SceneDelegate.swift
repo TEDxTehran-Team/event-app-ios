@@ -19,6 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
+    UITabBar.appearance().shadowImage = UIImage()
+    UITabBar.appearance().backgroundImage = UIImage()
+    UITabBar.appearance().isTranslucent = true
+    UITabBar.appearance().backgroundColor = UIColor(named: "primaryBarBackground")
+    
     // Get the managed object context from the shared persistent container.
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 

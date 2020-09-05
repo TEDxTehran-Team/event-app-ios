@@ -40,7 +40,7 @@ struct NewsView: View {
       
     }
     .navigationBarColor(UIColor(named: "primaryRed"))
-    .navigationBarTitle(Text("News"))
+    .navigationBarTitle(Text("News"), displayMode: .inline)
     .onAppear {
       UITableView.appearance().separatorStyle = .none
       self.viewModel.setup()
