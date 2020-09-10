@@ -16,7 +16,7 @@ struct NewsCardView: View {
     ZStack {
       RoundedRectangle(cornerRadius: 25, style: .continuous)
         .fill(Colors.primaryBackground)
-        .shadow(radius: 6, x: 0, y: 3)
+        .shadow(color: Color.black.opacity(0.2), radius: 6, x: 0, y: 3)
       
       VStack(alignment: .leading) {
         HStack(alignment: .center, spacing: 20) {
@@ -35,7 +35,6 @@ struct NewsCardView: View {
             .customFont(name: Fonts.shabnam, style: .headline, weight: .bold)
             .foregroundColor(.primary)
         }
-        Divider()
         Text(news.description)
           .foregroundColor(.secondary)
           .customFont(name: Fonts.shabnam, style: .body, weight: .regular)

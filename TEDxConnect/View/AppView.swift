@@ -20,7 +20,7 @@ struct AppView: View {
         Image(systemName: "house")
         Text("Home")
       }
-
+      
       NavigationView {
         TimeTableView()
       }
@@ -47,7 +47,16 @@ struct AppView: View {
         Image(systemName: "photo.on.rectangle")
         Text("Gallery")
       }
-
+      
+      NavigationView {
+        TalksView()
+      }
+      .tag(4)
+      .tabItem {
+        Image(systemName: "music.mic")
+        Text("Talks")
+      }
+      
     }
     .customFont(name: Fonts.shabnam, style: .headline)
     .accentColor(Colors.primaryRed)

@@ -74,3 +74,60 @@ query GetDays {
     }
   }
 }
+
+query GetTalks {
+  talksWithEvent {
+    talks {
+      id
+      title
+      speakers {
+        title
+      }
+      section {
+        image
+      }
+    }
+    event {
+      title
+    }
+  }
+}
+
+query GetFeaturedTalk {
+  featuredTalk {
+    id
+    title
+    speakers {
+      title
+    }
+    section {
+      image
+    }
+  }
+}
+
+query GetTalkDetail($id: Int!) {
+  talk(id: $id) {
+    id
+    title
+    description
+    videoLink
+    extraLink
+    speakers {
+      title
+    }
+    section {
+      image
+    }
+  }
+  suggestedTalk(talk: $id) {
+    id
+    title
+    speakers {
+      title
+    }
+    section {
+      image
+    }
+  }
+}

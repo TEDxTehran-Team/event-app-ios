@@ -7,13 +7,12 @@
 //
 
 import Foundation
-import Apollo
 
 class AlbumRepository {
   
   func get(completion: @escaping ([Album]?, XException?) -> ()) {
     
-    Network.shared.apollo.fetch(query: GetAlbumsQuery()) { result in
+    Network.shared.apollo.fetch(query: GetAlbumsQuery(), cachePolicy: .returnCacheDataAndFetch) { result in
       switch result {
         case .failure(let error):
           completion(nil, XException(message: error.localizedDescription, code: 0))

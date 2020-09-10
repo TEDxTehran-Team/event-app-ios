@@ -7,13 +7,12 @@
 //
 
 import Foundation
-import Apollo
 
 class AboutRepository {
   
   func get(completion: @escaping ([About]?, XException?) -> ()) {
     
-    Network.shared.apollo.fetch(query: GetAboutsQuery()) { result in
+    Network.shared.apollo.fetch(query: GetAboutsQuery(), cachePolicy: .returnCacheDataAndFetch) { result in
       switch result {
         case .failure(let error):
           completion(nil, XException(message: error.localizedDescription, code: 0))

@@ -7,13 +7,12 @@
 //
 
 import Foundation
-import Apollo
 
 class DayRepository {
   
   func get(completion: @escaping ([Day]?, XException?) -> ()) {
     
-    Network.shared.apollo.fetch(query: GetDaysQuery()) { result in
+    Network.shared.apollo.fetch(query: GetDaysQuery(), cachePolicy: .returnCacheDataAndFetch) { result in
       switch result {
         case .failure(let error):
           completion(nil, XException(message: error.localizedDescription, code: 0))
