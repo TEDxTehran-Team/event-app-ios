@@ -30,8 +30,9 @@ struct TalkCell: View {
         })
           .cornerRadius(10)
         VStack(alignment: .leading) {
-          Text(talk.title )
+          Text(talk.title)
             .customFont(name: Fonts.shabnam, style: .headline)
+            .lineLimit(2)
           Text(talk.speakers.map { $0.title }.joined(separator: ", "))
             .customFont(name: Fonts.shabnam, style: .subheadline)
             .foregroundColor(.secondary)

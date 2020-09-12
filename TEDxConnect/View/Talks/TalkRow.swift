@@ -20,9 +20,7 @@ struct TalksRow: View {
             TalkCell(talk: self.talks[index])
           }
         }
-        .padding()
       }
-      
     }
   }
 }

@@ -389,15 +389,15 @@
 		6DE7CEF124E1237900910DF7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E837436224FFF68A009FEB5B /* Custom Views */,
-				6DCFBC6524FA45F7005103E5 /* GridStack */,
 				6DCFBC6024FA453F005103E5 /* AppView.swift */,
 				6DFCAF4824FD3133008AD550 /* Event */,
 				6DC0A45A24FBCE8D00CE535B /* About */,
 				6DE7941624F93B6D00CEEE0E /* Gallery */,
 				6DD9719324F8F0CF0044D596 /* News */,
 				6DD067F72509EFC1008BBC08 /* Talks */,
+				E837436224FFF68A009FEB5B /* Custom Views */,
 				6DD9719624F8F4B20044D596 /* Custom Modifiers */,
+				6DCFBC6524FA45F7005103E5 /* GridStack */,
 			);
 			path = View;
 			sourceTree = "<group>";

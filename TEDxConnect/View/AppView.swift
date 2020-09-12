@@ -60,7 +60,6 @@ struct AppView: View {
     }
     .customFont(name: Fonts.shabnam, style: .headline)
     .accentColor(Colors.primaryRed)
-    
   }
   
 }
