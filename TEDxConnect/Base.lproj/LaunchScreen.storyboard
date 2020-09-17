@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tedx_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ThW-bg-kuw">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tedx-logo" translatesAutoresizingMaskIntoConstraints="NO" id="ThW-bg-kuw">
                                 <rect key="frame" x="52" y="348" width="310.5" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="yhx-4V-hde"/>
@@ -37,6 +37,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="tedx_logo" width="818" height="178"/>
+        <image name="tedx-logo" width="818" height="178"/>
     </resources>
 </document>

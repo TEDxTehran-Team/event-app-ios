@@ -10,7 +10,7 @@ import SwiftUI
 
 struct GalleryView: View {
   
-  @ObservedObject var viewModel = AlbumViewModel()
+  @EnvironmentObject var viewModel: AlbumViewModel
   
   var body: some View {
     ZStack {
@@ -42,7 +42,6 @@ struct GalleryView: View {
     .navigationBarTitle(Text("Gallery"), displayMode: .inline)
     .onAppear {
       UITableView.appearance().separatorStyle = .none
-      self.viewModel.setup()
     }
     .onDisappear {
       UITableView.appearance().separatorStyle = .singleLine
@@ -53,6 +52,6 @@ struct GalleryView: View {
 
 struct GalleryView_Previews: PreviewProvider {
   static var previews: some View {
-    GalleryView()
+    GalleryView().environmentObject(AlbumViewModel())
   }
 }

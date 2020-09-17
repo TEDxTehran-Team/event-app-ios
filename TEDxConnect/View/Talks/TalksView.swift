@@ -16,18 +16,26 @@ struct TalksView: View {
   var body: some View {
     ZStack {
       if self.talkViewModel.statusView == .complete {
-        VStack {
-          
-          FeaturedTalkView(talk: featuredTalkViewModel.repository)
-          
-          List(talkViewModel.repositories, id: \.self) { talkWithEvent in
-            if talkWithEvent.talks.count != 0 {
-              VStack(alignment: .leading, spacing: 10) {
-                Text(talkWithEvent.event.title ?? "")
-                  .foregroundColor(.secondary)
-                TalksRow(talks: talkWithEvent.talks)
+        VStack(spacing: 10) {
+          List {
+            
+            FeaturedTalkView(talk: featuredTalkViewModel.repository)
+            
+            ForEach(talkViewModel.repositories, id: \.self) { talkWithEvent in
+              Group {
+                if talkWithEvent.talks.count != 0 {
+                  VStack(alignment: .leading, spacing: 10) {
+                    Text(talkWithEvent.event.title ?? "")
+                      .foregroundColor(.secondary)
+                    TalksRow(talks: talkWithEvent.talks)
+                  }
+                } else {
+                  EmptyView()
+                }
               }
+              
             }
+            
           }
         }
         

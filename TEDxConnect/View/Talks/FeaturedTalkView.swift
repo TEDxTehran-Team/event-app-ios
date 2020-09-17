@@ -14,26 +14,24 @@ struct FeaturedTalkView: View {
   let talk: Talk
   
   var body: some View {
-    ZStack {
-      RemoteImage(type: .url(URL(string: Images.urlExtension + (talk.section.image))!), errorView: { _ in
-        ImagePlaceholder()
-      }, imageView: { image in
-        image
-          .resizable()
-          .scaledToFill()
-          .frame(height: 200)
-          .clipped()
-      }, loadingView: {
-        Indicator()
-      })
-        .cornerRadius(10)
-      
-      //      VStack {
-      //        Text(talk.title ?? "")
-      //        Text(talk.speakers.map { $0.title }.joined(separator: ", "))
-      //      }
+    NavigationLink(destination: TalkDetailView(id: talk.id)) {
+      ZStack {
+        RemoteImage(type: .url(URL(string: Images.urlExtension + (talk.section.image))!), errorView: { _ in
+          ImagePlaceholder()
+        }, imageView: { image in
+          image
+            .resizable()
+            .scaledToFill()
+            .frame(height: 200)
+            .clipped()
+        }, loadingView: {
+          Indicator()
+        })
+          .cornerRadius(10)
+        
+      }
+      .padding()
     }
-    .padding()
   }
 }
 

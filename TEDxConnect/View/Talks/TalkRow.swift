@@ -13,12 +13,10 @@ struct TalksRow: View {
   let talks: [Talk]
   
   var body: some View {
-    VStack(alignment: .leading) {
-      ScrollView(.horizontal, showsIndicators: false) {
-        HStack(alignment: .top, spacing: 10) {
-          ForEach(0..<talks.count) { index in
-            TalkCell(talk: self.talks[index])
-          }
+    ScrollView(.horizontal, showsIndicators: false) {
+      HStack(alignment: .top, spacing: 10) {
+        ForEach(0..<talks.count) { index in
+          TalkCell(talk: self.talks[index])
         }
       }
     }

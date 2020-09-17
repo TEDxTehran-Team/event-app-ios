@@ -11,7 +11,7 @@ import RemoteImage
 
 struct EventDetailView: View {
   
-  @ObservedObject var viewModel = EventViewModel()
+  @EnvironmentObject var viewModel: EventViewModel
   
   var body: some View {
     GeometryReader { fullView in
@@ -105,7 +105,6 @@ struct EventDetailView: View {
       }))
       .onAppear {
         UITableView.appearance().separatorStyle = .none
-        self.viewModel.setup()
     }
     .onDisappear {
       UITableView.appearance().separatorStyle = .singleLine
@@ -118,6 +117,6 @@ struct EventDetailView: View {
 
 struct EventDetailView_Previews: PreviewProvider {
   static var previews: some View {
-    EventDetailView()
+    EventDetailView().environmentObject(EventViewModel())
   }
 }

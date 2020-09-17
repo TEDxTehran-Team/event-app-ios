@@ -19,7 +19,7 @@ struct Day: Decodable, Hashable {
     var sections: [Section]
     
     static var example: Session {
-      Session(title: "Registration and Breakfast", startTime: "08:00:00", sections: [Section.example])
+      Session(title: "-", startTime: "08:00:00", sections: [Section.example])
     }
     
     struct Section: Decodable, Hashable {
@@ -29,7 +29,7 @@ struct Day: Decodable, Hashable {
       var endTime: String
       
       static var example: Section {
-        Section(title: "Registraion", type: .GENERIC, startTime: "08:00:00", endTime: "09:00:00")
+        Section(title: "-", type: .GENERIC, startTime: "08:00:00", endTime: "09:00:00")
       }
       
       enum SectionType: String, Decodable, Hashable {
@@ -54,7 +54,7 @@ struct Day: Decodable, Hashable {
   }
   
   static var example: Day {
-    Day(title: "TEDxTehran 2020", sessions: [Session.example])
+    Day(title: "-", sessions: [Session.example])
   }
   
 }

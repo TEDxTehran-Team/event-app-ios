@@ -19,15 +19,14 @@ struct TalkCell: View {
       VStack {
         RemoteImage(type: .url(URL(string: Images.urlExtension + talk.section.image)!), errorView: { _ in
           ImagePlaceholder()
-            .frame(width: self.cellWidth, height: self.cellWidth)
         }, imageView: { image in
           image
             .resizable()
             .scaledToFill()
-            .frame(width: self.cellWidth, height: self.cellWidth)
         }, loadingView: {
           Indicator()
         })
+          .frame(width: self.cellWidth, height: self.cellWidth)
           .cornerRadius(10)
         VStack(alignment: .leading) {
           Text(talk.title)

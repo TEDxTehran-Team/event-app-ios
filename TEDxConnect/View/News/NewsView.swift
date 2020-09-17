@@ -10,8 +10,8 @@ import SwiftUI
 
 struct NewsView: View {
   
-  @ObservedObject var viewModel = NewsViewModel()
-  
+  @EnvironmentObject var viewModel: NewsViewModel
+
   var body: some View {
     ZStack {
       if self.viewModel.statusView == .complete {
@@ -43,7 +43,7 @@ struct NewsView: View {
     .navigationBarTitle(Text("News"), displayMode: .inline)
     .onAppear {
       UITableView.appearance().separatorStyle = .none
-      self.viewModel.setup()
+      
     }
     .onDisappear {
       UITableView.appearance().separatorStyle = .singleLine
@@ -54,6 +54,6 @@ struct NewsView: View {
 
 struct NewsView_Previews: PreviewProvider {
   static var previews: some View {
-    NewsView()
+    NewsView().environmentObject(NewsViewModel())
   }
 }

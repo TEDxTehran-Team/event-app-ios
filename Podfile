@@ -6,7 +6,8 @@ target 'TEDxConnect' do
   use_frameworks!
 
   # Pods for TEDxConnect
-  pod "Apollo"
-  pod "Apollo/SQLite"
+  pod 'Apollo'
+  pod 'Apollo/SQLite'
+  # pod 'Kingfisher/SwiftUI'
 
 end

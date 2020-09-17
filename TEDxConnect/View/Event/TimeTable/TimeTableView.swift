@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TimeTableView: View {
-  @ObservedObject var viewModel = DayViewModel()
+  @EnvironmentObject var viewModel: DayViewModel
   
   var body: some View {
     ZStack {
@@ -55,7 +55,6 @@ struct TimeTableView: View {
     .navigationBarTitle(Text("Timetable"), displayMode: .inline)
     .onAppear {
       UITableView.appearance().separatorStyle = .none
-      self.viewModel.setup()
     }
     .onDisappear {
       UITableView.appearance().separatorStyle = .singleLine
@@ -66,6 +65,6 @@ struct TimeTableView: View {
 
 struct TimeTableView_Previews: PreviewProvider {
   static var previews: some View {
-    TimeTableView()
+    TimeTableView().environmentObject(DayViewModel())
   }
 }

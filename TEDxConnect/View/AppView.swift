@@ -10,10 +10,16 @@ import SwiftUI
 
 struct AppView: View {
   
+  var eventViewModel = EventViewModel()
+  var dayViewModel = DayViewModel()
+  var newsViewModel = NewsViewModel()
+  var albumViewModel = AlbumViewModel()
+  
   var body: some View {
     TabView {
       NavigationView {
         EventDetailView()
+          .environmentObject(eventViewModel)
       }
       .tag(0)
       .tabItem {
@@ -23,6 +29,7 @@ struct AppView: View {
       
       NavigationView {
         TimeTableView()
+          .environmentObject(dayViewModel)
       }
       .tag(1)
       .tabItem {
@@ -32,6 +39,7 @@ struct AppView: View {
       
       NavigationView {
         NewsView()
+          .environmentObject(newsViewModel)
       }
       .tag(2)
       .tabItem {
@@ -41,6 +49,7 @@ struct AppView: View {
       
       NavigationView {
         GalleryView()
+        .environmentObject(albumViewModel)
       }
       .tag(3)
       .tabItem {
@@ -60,6 +69,14 @@ struct AppView: View {
     }
     .customFont(name: Fonts.shabnam, style: .headline)
     .accentColor(Colors.primaryRed)
+    .onAppear {
+      print("test on appear")
+      self.eventViewModel.setup()
+      self.dayViewModel.setup()
+      self.newsViewModel.setup()
+      self.albumViewModel.setup()
+    }
+    
   }
   
 }

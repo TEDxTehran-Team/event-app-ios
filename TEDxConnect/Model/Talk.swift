@@ -22,7 +22,7 @@ struct Talk: Decodable, Hashable {
     var title: String
     
     static var example: Speaker {
-      Speaker(title: "Joh Doe")
+      Speaker(title: "-")
     }
   }
   
@@ -35,7 +35,7 @@ struct Talk: Decodable, Hashable {
   }
   
   static var example: Talk {
-    Talk(id: "0", title: "test", speakers: [Talk.Speaker.example], section: Talk.Section.example)
+    Talk(id: "0", title: "-", speakers: [Talk.Speaker.example], section: Talk.Section.example)
   }
   
 }
