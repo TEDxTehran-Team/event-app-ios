@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import RemoteImage
+import struct Kingfisher.KFImage
 
 struct GalleryDetailView: View {
   
@@ -20,27 +20,21 @@ struct GalleryDetailView: View {
     ZStack {
       GridStack(minCellWidth: width, spacing: 10, numItems: viewModel.repositories.count) { index, cellWidth in
         NavigationLink(destination:
-          RemoteImage(type: .url(URL(string: Images.urlExtension + self.viewModel.repositories[index].image)!), errorView: { _ in
-            ImagePlaceholder()
-          }, imageView: { image in
-            image
-              .resizable()
-              .scaledToFit()
-          }, loadingView: {
-            Indicator()
-          })
+            KFImage(URL(string: Images.urlExtension + self.viewModel.repositories[index].image)!)
+            .placeholder {
+              ImagePlaceholder()
+            }
+            .resizable()
+            .scaledToFit()
         ) {
-          
-          RemoteImage(type: .url(URL(string: Images.urlExtension + self.viewModel.repositories[index].thumbnail)!), errorView: { _ in
-            ImagePlaceholder()
-          }, imageView: { image in
-            image
-              .resizable()
-              .scaledToFill()
-              .frame(width: cellWidth, height: cellWidth)
-          }, loadingView: {
-            Indicator()
-          })
+        
+          KFImage(URL(string: Images.urlExtension + self.viewModel.repositories[index].thumbnail)!)
+            .placeholder {
+              ImagePlaceholder()
+            }
+            .resizable()
+            .scaledToFill()
+            .frame(width: cellWidth, height: cellWidth)
             .cornerRadius(10)
           
         }

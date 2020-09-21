@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import RemoteImage
+import struct Kingfisher.KFImage
 
 struct TalkCell: View {
   
@@ -17,17 +17,16 @@ struct TalkCell: View {
   var body: some View {
     NavigationLink(destination: TalkDetailView(id: talk.id)) {
       VStack {
-        RemoteImage(type: .url(URL(string: Images.urlExtension + talk.section.image)!), errorView: { _ in
-          ImagePlaceholder()
-        }, imageView: { image in
-          image
-            .resizable()
-            .scaledToFill()
-        }, loadingView: {
-          Indicator()
-        })
+        
+        KFImage(URL(string: Images.urlExtension + talk.section.image)!)
+          .placeholder {
+            ImagePlaceholder()
+          }
+          .resizable()
+          .scaledToFill()
           .frame(width: self.cellWidth, height: self.cellWidth)
           .cornerRadius(10)
+        
         VStack(alignment: .leading) {
           Text(talk.title)
             .customFont(name: Fonts.shabnam, style: .headline)

@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import RemoteImage
+import struct Kingfisher.KFImage
 
 struct AboutDetailView: View {
   
@@ -18,16 +18,14 @@ struct AboutDetailView: View {
       
       ScrollView(.vertical) {
         VStack {
-          RemoteImage(type: .url(URL(string: Images.urlExtension + (self.about.image ?? ""))!), errorView: { _ in
-            ImagePlaceholder()
-          }, imageView: { image in
-            image
-              .resizable()
-              .scaledToFit()
-              .frame(width: geometry.size.width)
-          }, loadingView: {
-            Indicator()
-          })
+          
+          KFImage(URL(string: Images.urlExtension + (self.about.image ?? ""))!)
+            .placeholder {
+              ImagePlaceholder()
+            }
+            .resizable()
+            .scaledToFit()
+            .frame(width: geometry.size.width)
           
           
           Text(self.about.description)

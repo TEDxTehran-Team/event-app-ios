@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import RemoteImage
+import struct Kingfisher.KFImage
 
 struct TalkDetailView: View {
   
@@ -25,17 +25,16 @@ struct TalkDetailView: View {
               
             }) {
               ZStack {
-                RemoteImage(type: .url(URL(string: Images.urlExtension + (self.viewModel.repository.talk.section.image))!), errorView: { _ in
-                  ImagePlaceholder()
-                }, imageView: { image in
-                  image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: fullView.size.width, height: 200)
-                    .clipped()
-                }, loadingView: {
-                  Indicator()
-                })
+                
+                KFImage(URL(string: Images.urlExtension + (self.viewModel.repository.talk.section.image))!)
+                  .placeholder {
+                    ImagePlaceholder()
+                  }
+                  .resizable()
+                  .scaledToFill()
+                  .frame(width: fullView.size.width, height: 200)
+                  .clipped()
+                
                 Rectangle()
                   .fill(Color.gray.opacity(0.35))
                   .frame(width: fullView.size.width, height: 200)
@@ -45,7 +44,7 @@ struct TalkDetailView: View {
                       .scaledToFit()
                       .foregroundColor(.white)
                       .frame(width: 50, height: 50)
-                )
+                  )
                 
               }
             }
@@ -65,7 +64,7 @@ struct TalkDetailView: View {
               Text("Description")
                 .foregroundColor(.secondary)
                 .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom)
-                  .foregroundColor(Colors.primaryRed), alignment: .bottom)
+                          .foregroundColor(Colors.primaryRed), alignment: .bottom)
               Text(self.viewModel.repository.talk.description ?? "")
                 .foregroundColor(.secondary)
             }
@@ -75,7 +74,7 @@ struct TalkDetailView: View {
               Text("Suggested Talks")
                 .foregroundColor(.secondary)
                 .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom)
-                  .foregroundColor(Colors.primaryRed), alignment: .bottom)
+                          .foregroundColor(Colors.primaryRed), alignment: .bottom)
               TalksRow(talks: self.viewModel.repository.suggestedTalk)
             }
             .padding()
@@ -86,13 +85,13 @@ struct TalkDetailView: View {
               .customFont(name: Fonts.shabnam, style: .caption1, weight: .medium)
           }
         } // ZStack
-          .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity)
       } // ScrollView
       
     } // GeometryReader
-      .navigationBarTitle(Text(self.viewModel.repository.talk.speakers.map { $0.title }.joined(separator: ", ")))
-      .onAppear {
-        self.viewModel.setup(withId: Int(self.id) ?? 0)
+    .navigationBarTitle(Text(self.viewModel.repository.talk.speakers.map { $0.title }.joined(separator: ", ")))
+    .onAppear {
+      self.viewModel.setup(withId: Int(self.id) ?? 0)
     }
   }
 }

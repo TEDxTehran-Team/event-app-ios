@@ -37,6 +37,7 @@ struct TalksView: View {
             }
             
           }
+          .listSeparatorStyle(.none)
         }
         
       }

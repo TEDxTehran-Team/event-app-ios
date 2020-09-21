@@ -15,6 +15,12 @@ struct AppView: View {
   var newsViewModel = NewsViewModel()
   var albumViewModel = AlbumViewModel()
   
+  
+  init() {
+    UITableView.appearance().backgroundColor = .clear // tableview background
+    UITableViewCell.appearance().backgroundColor = .clear // cell background
+  }
+  
   var body: some View {
     TabView {
       NavigationView {
@@ -49,7 +55,7 @@ struct AppView: View {
       
       NavigationView {
         GalleryView()
-        .environmentObject(albumViewModel)
+          .environmentObject(albumViewModel)
       }
       .tag(3)
       .tabItem {
@@ -70,7 +76,6 @@ struct AppView: View {
     .customFont(name: Fonts.shabnam, style: .headline)
     .accentColor(Colors.primaryRed)
     .onAppear {
-      print("test on appear")
       self.eventViewModel.setup()
       self.dayViewModel.setup()
       self.newsViewModel.setup()

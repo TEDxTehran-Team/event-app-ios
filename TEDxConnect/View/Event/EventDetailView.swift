@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import RemoteImage
+import struct Kingfisher.KFImage
 
 struct EventDetailView: View {
   
@@ -18,17 +18,15 @@ struct EventDetailView: View {
       ScrollView(.vertical) {
         ZStack {
           VStack {
-            RemoteImage(type: .url(URL(string: Images.urlExtension + (self.viewModel.repository.banner ?? ""))!), errorView: { _ in
-              ImagePlaceholder()
-            }, imageView: { image in
-              image
-                .resizable()
-                .scaledToFill()
-                .frame(width: fullView.size.width, height: 200)
-                .clipped()
-            }, loadingView: {
-              Indicator()
-            })
+
+            KFImage(URL(string: Images.urlExtension + (self.viewModel.repository.banner ?? ""))!)
+              .placeholder {
+                ImagePlaceholder()
+              }
+              .resizable()
+              .scaledToFill()
+              .frame(width: fullView.size.width, height: 200)
+              .clipped()
             
             Button(action: {
               
@@ -70,19 +68,16 @@ struct EventDetailView: View {
             .foregroundColor(.secondary)
             .padding([.horizontal, .bottom])
             
-            RemoteImage(type: .url(URL(string: Images.urlExtension + (self.viewModel.repository.venue?.mapImage ?? ""))!), errorView: { _ in
-              ImagePlaceholder()
-            }, imageView: { image in
-              image
-                .resizable()
-                .scaledToFit()
-                .frame(width: fullView.size.width, height: 200)
-            }, loadingView: {
-              Indicator()
-            })
+            KFImage(URL(string: Images.urlExtension + (self.viewModel.repository.venue?.mapImage ?? ""))!)
+              .placeholder {
+                ImagePlaceholder()
+              }
+              .resizable()
+              .scaledToFit()
+              .frame(width: fullView.size.width, height: 200)
               .onTapGesture {
                 UIApplication.shared.open(URL(string: self.viewModel.repository.venue?.mapLink ?? Constants.placeholderUrl)!)
-            }
+              }
             
           } // VStack
           if self.viewModel.statusView == .error {
@@ -92,19 +87,19 @@ struct EventDetailView: View {
         } // ZStack
         
       } // ScrollView
-        .background(Colors.primaryLightGray)
+      .background(Colors.primaryLightGray)
       
     } // GeometryReader
-      .navigationBarColor(UIColor(named: "primaryRed"))
-      .navigationBarTitle(Text("Home"), displayMode: .inline)
-      .navigationBarItems(trailing: NavigationLink(destination: AboutView(), label: {
-        Image(systemName: "info.circle")
-          .resizable()
-          .frame(width: 24, height: 24)
-          .foregroundColor(.white)
-      }))
-      .onAppear {
-        UITableView.appearance().separatorStyle = .none
+    .navigationBarColor(UIColor(named: "primaryRed"))
+    .navigationBarTitle(Text("Home"), displayMode: .inline)
+    .navigationBarItems(trailing: NavigationLink(destination: AboutView(), label: {
+      Image(systemName: "info.circle")
+        .resizable()
+        .frame(width: 24, height: 24)
+        .foregroundColor(.white)
+    }))
+    .onAppear {
+      UITableView.appearance().separatorStyle = .none
     }
     .onDisappear {
       UITableView.appearance().separatorStyle = .singleLine

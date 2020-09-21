@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import RemoteImage
+import struct Kingfisher.KFImage
 
 struct NewsCardView: View {
   let news: News
@@ -20,15 +20,13 @@ struct NewsCardView: View {
       
       VStack(alignment: .leading) {
         HStack(alignment: .center, spacing: 20) {
-          RemoteImage(type: .url(URL(string: Images.urlExtension + (news.icon ?? ""))!), errorView: { _ in
-            ImagePlaceholder()
-          }, imageView: { image in
-            image
-              .resizable()
-              .scaledToFit()
-          }, loadingView: {
-            Indicator()
-          })
+          
+          KFImage(URL(string: Images.urlExtension + (news.icon ?? ""))!)
+            .placeholder {
+              ImagePlaceholder()
+            }
+            .resizable()
+            .scaledToFit()
             .frame(width: 55, height: 30)
           
           Text(news.title)

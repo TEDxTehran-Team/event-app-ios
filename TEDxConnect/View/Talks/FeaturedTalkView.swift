@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import RemoteImage
+import struct Kingfisher.KFImage
 
 struct FeaturedTalkView: View {
   
@@ -16,17 +16,15 @@ struct FeaturedTalkView: View {
   var body: some View {
     NavigationLink(destination: TalkDetailView(id: talk.id)) {
       ZStack {
-        RemoteImage(type: .url(URL(string: Images.urlExtension + (talk.section.image))!), errorView: { _ in
-          ImagePlaceholder()
-        }, imageView: { image in
-          image
-            .resizable()
-            .scaledToFill()
-            .frame(height: 200)
-            .clipped()
-        }, loadingView: {
-          Indicator()
-        })
+        
+        KFImage(URL(string: Images.urlExtension + (talk.section.image))!)
+          .placeholder {
+            ImagePlaceholder()
+          }
+          .resizable()
+          .scaledToFill()
+          .frame(height: 200)
+          .clipped()
           .cornerRadius(10)
         
       }

@@ -11,21 +11,20 @@ import SwiftUI
 struct NewsView: View {
   
   @EnvironmentObject var viewModel: NewsViewModel
-
+  
   var body: some View {
     ZStack {
       if self.viewModel.statusView == .complete {
         if viewModel.repositories.count != 0 {
-          VStack {
-            List(viewModel.repositories, id: \.self) { news in
-              NewsCardView(news: news)
-            }
+          List(viewModel.repositories, id: \.self) { news in
+            NewsCardView(news: news)
           }
+          .listSeparatorStyle(.none)
         } else {
           EmptyListView()
             .onTapGesture {
               self.viewModel.setup()
-          }
+            }
         }
       }
       
@@ -41,13 +40,6 @@ struct NewsView: View {
     }
     .navigationBarColor(UIColor(named: "primaryRed"))
     .navigationBarTitle(Text("News"), displayMode: .inline)
-    .onAppear {
-      UITableView.appearance().separatorStyle = .none
-      
-    }
-    .onDisappear {
-      UITableView.appearance().separatorStyle = .singleLine
-    }
   }
   
 }

@@ -10,10 +10,13 @@ import SwiftUI
 
 struct ImagePlaceholder: View {
   var body: some View {
-    Image(decorative: Images.placeholder)
-      .resizable()
-      .scaledToFill()
-      .frame(maxHeight: 200)
-      .clipped()
+    ZStack {
+      Image(decorative: Images.placeholder)
+        .resizable()
+        .scaledToFill()
+        .frame(maxHeight: 200)
+        .clipped()
+      Indicator()
+    }
   }
 }

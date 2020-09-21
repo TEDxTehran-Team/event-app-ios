@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,9 +13,7 @@
 		6D1325B824FE65D200FFA202 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1325B724FE65D200FFA202 /* PhotoViewModel.swift */; };
 		6D1325BC24FE706400FFA202 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1325BB24FE706400FFA202 /* DateHelper.swift */; };
 		6D460C6D24DE7F3500F50DAF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D460C6C24DE7F3500F50DAF /* Network.swift */; };
-		6D85B3A52500CC5C003459A8 /* RemoteImage in Frameworks */ = {isa = PBXBuildFile; productRef = 6D85B3A42500CC5C003459A8 /* RemoteImage */; };
 		6D8CE96A25011B8000F47ADF /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8CE96925011B8000F47ADF /* CustomButton.swift */; };
-		6D8CE96D25011F3900F47ADF /* WebView in Frameworks */ = {isa = PBXBuildFile; productRef = 6D8CE96C25011F3900F47ADF /* WebView */; };
 		6D8CE96F2501237A00F47ADF /* ImagePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8CE96E2501237A00F47ADF /* ImagePlaceholder.swift */; };
 		6D8CE97125012AB700F47ADF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D8CE97025012AB700F47ADF /* Colors.xcassets */; };
 		6D8CE973250204A600F47ADF /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8CE972250204A600F47ADF /* Day.swift */; };
@@ -33,7 +31,6 @@
 		6DC0A45E24FBD01C00CE535B /* AboutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC0A45D24FBD01C00CE535B /* AboutDetailView.swift */; };
 		6DC754D924DE6BD700F96518 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC754D824DE6BD700F96518 /* AppDelegate.swift */; };
 		6DC754DB24DE6BD700F96518 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC754DA24DE6BD700F96518 /* SceneDelegate.swift */; };
-		6DC754DE24DE6BD700F96518 /* TEDxConnect.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6DC754DC24DE6BD700F96518 /* TEDxConnect.xcdatamodeld */; };
 		6DC754E224DE6BD900F96518 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DC754E124DE6BD900F96518 /* Assets.xcassets */; };
 		6DC754E524DE6BD900F96518 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DC754E424DE6BD900F96518 /* Preview Assets.xcassets */; };
 		6DC754E824DE6BD900F96518 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DC754E624DE6BD900F96518 /* LaunchScreen.storyboard */; };
@@ -76,6 +73,8 @@
 		6DE7941324F93B1C00CEEE0E /* AlbumRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7941224F93B1C00CEEE0E /* AlbumRepository.swift */; };
 		6DE7941524F93B3E00CEEE0E /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7941424F93B3E00CEEE0E /* AlbumViewModel.swift */; };
 		6DE7CEE524E120BA00910DF7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7CEE424E120BA00910DF7 /* API.swift */; };
+		6DF671302518917F00C8190B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DF6712F2518917F00C8190B /* GoogleService-Info.plist */; };
+		6DF671452518A5C300C8190B /* List+Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF671442518A5C300C8190B /* List+Separator.swift */; };
 		6DFB0D5724E11CC900353416 /* Queries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 6DFB0D5624E11CC900353416 /* Queries.graphql */; };
 		6DFCAF4724FD2FBB008AD550 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFCAF4624FD2FBB008AD550 /* Event.swift */; };
 		6DFCAF4A24FD314F008AD550 /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFCAF4924FD314F008AD550 /* EventDetailView.swift */; };
@@ -112,7 +111,6 @@
 		6DC754D524DE6BD700F96518 /* TEDxConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TEDxConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DC754D824DE6BD700F96518 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DC754DA24DE6BD700F96518 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6DC754DD24DE6BD700F96518 /* TEDxConnect.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TEDxConnect.xcdatamodel; sourceTree = "<group>"; };
 		6DC754E124DE6BD900F96518 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6DC754E424DE6BD900F96518 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6DC754E724DE6BD900F96518 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -156,6 +154,8 @@
 		6DE7941224F93B1C00CEEE0E /* AlbumRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumRepository.swift; sourceTree = "<group>"; };
 		6DE7941424F93B3E00CEEE0E /* AlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
 		6DE7CEE424E120BA00910DF7 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		6DF6712F2518917F00C8190B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6DF671442518A5C300C8190B /* List+Separator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "List+Separator.swift"; sourceTree = "<group>"; };
 		6DFB0D5624E11CC900353416 /* Queries.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Queries.graphql; sourceTree = "<group>"; };
 		6DFCAF4624FD2FBB008AD550 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		6DFCAF4924FD314F008AD550 /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
@@ -175,8 +175,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D8CE96D25011F3900F47ADF /* WebView in Frameworks */,
-				6D85B3A52500CC5C003459A8 /* RemoteImage in Frameworks */,
 				44E03337C65ABC359A233E94 /* Pods_TEDxConnect.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,6 +232,7 @@
 		6DC754D724DE6BD700F96518 /* TEDxConnect */ = {
 			isa = PBXGroup;
 			children = (
+				6DF6712F2518917F00C8190B /* GoogleService-Info.plist */,
 				6DC754D824DE6BD700F96518 /* AppDelegate.swift */,
 				6DC754DA24DE6BD700F96518 /* SceneDelegate.swift */,
 				6DCFBC7324FA4FD8005103E5 /* Constants.swift */,
@@ -248,7 +247,6 @@
 				6D8CE97025012AB700F47ADF /* Colors.xcassets */,
 				6DC754E624DE6BD900F96518 /* LaunchScreen.storyboard */,
 				6DC754E924DE6BD900F96518 /* Info.plist */,
-				6DC754DC24DE6BD700F96518 /* TEDxConnect.xcdatamodeld */,
 				6DD9719124F8EFE80044D596 /* Localizable.strings */,
 				6DC754E324DE6BD900F96518 /* Preview Content */,
 				6DFB0D5624E11CC900353416 /* Queries.graphql */,
@@ -431,6 +429,7 @@
 		E837436224FFF68A009FEB5B /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				6DF671442518A5C300C8190B /* List+Separator.swift */,
 				E837436324FFF69D009FEB5B /* Indicator.swift */,
 				6D8CE96E2501237A00F47ADF /* ImagePlaceholder.swift */,
 				6DAA3CE42502255A006528DB /* EmptyListView.swift */,
@@ -458,8 +457,6 @@
 			);
 			name = TEDxConnect;
 			packageProductDependencies = (
-				6D85B3A42500CC5C003459A8 /* RemoteImage */,
-				6D8CE96C25011F3900F47ADF /* WebView */,
 			);
 			productName = TEDxConnect;
 			productReference = 6DC754D524DE6BD700F96518 /* TEDxConnect.app */;
@@ -490,8 +487,6 @@
 			);
 			mainGroup = 6DC754CC24DE6BD600F96518;
 			packageReferences = (
-				6D85B3A32500CC5C003459A8 /* XCRemoteSwiftPackageReference "RemoteImage" */,
-				6D8CE96B25011F3900F47ADF /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */,
 			);
 			productRefGroup = 6DC754D624DE6BD700F96518 /* Products */;
 			projectDirPath = "";
@@ -514,6 +509,7 @@
 				6DCFBC7024FA47C2005103E5 /* Shabnam-FD.ttf in Resources */,
 				6DD9718E24F8D74F0044D596 /* schema.json in Resources */,
 				6DC754E824DE6BD900F96518 /* LaunchScreen.storyboard in Resources */,
+				6DF671302518917F00C8190B /* GoogleService-Info.plist in Resources */,
 				6DC754E524DE6BD900F96518 /* Preview Assets.xcassets in Resources */,
 				6DC754E224DE6BD900F96518 /* Assets.xcassets in Resources */,
 			);
@@ -595,6 +591,7 @@
 				6D8CE97D25020E3500F47ADF /* SessionHeaderView.swift in Sources */,
 				6DD067F62509EF8E008BBC08 /* TalkViewModel.swift in Sources */,
 				6DAA3CE32502102C006528DB /* DayHeaderView.swift in Sources */,
+				6DF671452518A5C300C8190B /* List+Separator.swift in Sources */,
 				6DD068012509FA49008BBC08 /* FeaturedTalkRepository.swift in Sources */,
 				6DCFBC5724F93D4F005103E5 /* GalleryCardView.swift in Sources */,
 				6DD067FF2509F26A008BBC08 /* TalkCell.swift in Sources */,
@@ -603,7 +600,6 @@
 				6DC0A45C24FBCE9B00CE535B /* AboutView.swift in Sources */,
 				6DC0A45724FBCDCE00CE535B /* AboutRepository.swift in Sources */,
 				6DC0A45E24FBD01C00CE535B /* AboutDetailView.swift in Sources */,
-				6DC754DE24DE6BD700F96518 /* TEDxConnect.xcdatamodeld in Sources */,
 				6D8CE97F25020ED200F47ADF /* SectionView.swift in Sources */,
 				6DD9719824F8F9600044D596 /* NavigationBarModifier.swift in Sources */,
 				6DC754D924DE6BD700F96518 /* AppDelegate.swift in Sources */,
@@ -790,14 +786,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TEDxConnect/Preview Content\"";
-				DEVELOPMENT_TEAM = 32J3958STN;
+				DEVELOPMENT_TEAM = 767247GCQY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TEDxConnect/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = co.Alexani.TEDxConnect;
+				PRODUCT_BUNDLE_IDENTIFIER = com.talexani.xconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -811,14 +807,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TEDxConnect/Preview Content\"";
-				DEVELOPMENT_TEAM = 32J3958STN;
+				DEVELOPMENT_TEAM = 767247GCQY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TEDxConnect/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = co.Alexani.TEDxConnect;
+				PRODUCT_BUNDLE_IDENTIFIER = com.talexani.xconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -847,51 +843,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		6D85B3A32500CC5C003459A8 /* XCRemoteSwiftPackageReference "RemoteImage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/crelies/RemoteImage";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.3;
-			};
-		};
-		6D8CE96B25011F3900F47ADF /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kylehickinson/SwiftUI-WebView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		6D85B3A42500CC5C003459A8 /* RemoteImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6D85B3A32500CC5C003459A8 /* XCRemoteSwiftPackageReference "RemoteImage" */;
-			productName = RemoteImage;
-		};
-		6D8CE96C25011F3900F47ADF /* WebView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6D8CE96B25011F3900F47ADF /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */;
-			productName = WebView;
-		};
-/* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		6DC754DC24DE6BD700F96518 /* TEDxConnect.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				6DC754DD24DE6BD700F96518 /* TEDxConnect.xcdatamodel */,
-			);
-			currentVersion = 6DC754DD24DE6BD700F96518 /* TEDxConnect.xcdatamodel */;
-			path = TEDxConnect.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 6DC754CD24DE6BD600F96518 /* Project object */;
 }

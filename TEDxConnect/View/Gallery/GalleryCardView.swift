@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import RemoteImage
+import struct Kingfisher.KFImage
 
 struct GalleryCardView: View {
   
@@ -16,18 +16,16 @@ struct GalleryCardView: View {
   
   var body: some View {
     ZStack {
-      RemoteImage(type: .url(URL(string: Images.urlExtension + album.cover)!), errorView: { _ in
-        ImagePlaceholder()
-      }, imageView: { image in
-        image
-          .resizable()
-          .overlay(ImageOverlay(text: self.album.title), alignment: .bottomLeading)
-          .cornerRadius(10)
-          .padding(.vertical, 10)
-      }, loadingView: {
-        Indicator()
-      })
+      
+      KFImage(URL(string: Images.urlExtension + album.cover)!)
+        .placeholder {
+          ImagePlaceholder()
+        }
+        .resizable()
         .frame(height: 200)
+        .overlay(ImageOverlay(text: self.album.title), alignment: .bottomLeading)
+        .cornerRadius(10)
+        .padding(.vertical, 10)
       
       NavigationLink(destination: GalleryDetailView(album: album)) {
         EmptyView()
