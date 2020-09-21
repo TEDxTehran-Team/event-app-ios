@@ -29,7 +29,6 @@ struct EventDetailView: View {
               .clipped()
             
             Button(action: {
-              fatalError()
               UIApplication.shared.open(URL(string: self.viewModel.repository.links?.first { $0.role == "live" }?.url ?? Constants.placeholderUrl)!)
               
             }) {
