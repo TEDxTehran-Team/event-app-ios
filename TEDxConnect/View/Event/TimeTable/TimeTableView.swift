@@ -52,12 +52,6 @@ struct TimeTableView: View {
     }
     .navigationBarColor(UIColor(named: "primaryRed"))
     .navigationBarTitle(Text("Timetable"), displayMode: .inline)
-    .onAppear {
-      UITableView.appearance().separatorStyle = .none
-    }
-    .onDisappear {
-      UITableView.appearance().separatorStyle = .singleLine
-    }
     
   }
 }

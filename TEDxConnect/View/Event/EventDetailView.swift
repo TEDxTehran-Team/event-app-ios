@@ -29,7 +29,7 @@ struct EventDetailView: View {
               .clipped()
             
             Button(action: {
-              
+              fatalError()
               UIApplication.shared.open(URL(string: self.viewModel.repository.links?.first { $0.role == "live" }?.url ?? Constants.placeholderUrl)!)
               
             }) {
@@ -98,12 +98,6 @@ struct EventDetailView: View {
         .frame(width: 24, height: 24)
         .foregroundColor(.white)
     }))
-    .onAppear {
-      UITableView.appearance().separatorStyle = .none
-    }
-    .onDisappear {
-      UITableView.appearance().separatorStyle = .singleLine
-    }
   } // Body
   
   
