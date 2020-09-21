@@ -16,10 +16,12 @@ struct GalleryView: View {
     ZStack {
       if self.viewModel.statusView == .complete {
         if self.viewModel.repositories.count != 0 {
-          List(viewModel.repositories, id: \.self) { album in
-            GalleryCardView(album: album)
+          ScrollView(.vertical) {
+            ForEach(viewModel.repositories, id: \.self) { album in
+              GalleryCardView(album: album)
+            }
+            .padding()
           }
-          .listSeparatorStyle(.none)
         } else {
           EmptyListView()
             .onTapGesture {

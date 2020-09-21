@@ -25,6 +25,7 @@ struct SectionView: View {
     }
     .foregroundColor(.secondary)
     .customFont(name: Fonts.shabnam, style: .body)
+    .padding(.horizontal)
   }
 }
 

@@ -14,6 +14,8 @@ struct AppView: View {
   var dayViewModel = DayViewModel()
   var newsViewModel = NewsViewModel()
   var albumViewModel = AlbumViewModel()
+  var talkViewModel = TalkViewModel()
+  var featuredTalkViewModel = FeaturedTalkViewModel()
   
   
   init() {
@@ -65,6 +67,8 @@ struct AppView: View {
       
       NavigationView {
         TalksView()
+          .environmentObject(talkViewModel)
+          .environmentObject(featuredTalkViewModel)
       }
       .tag(4)
       .tabItem {
@@ -80,6 +84,8 @@ struct AppView: View {
       self.dayViewModel.setup()
       self.newsViewModel.setup()
       self.albumViewModel.setup()
+      self.talkViewModel.setup()
+      self.featuredTalkViewModel.setup()
     }
     
   }

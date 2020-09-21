@@ -16,10 +16,12 @@ struct NewsView: View {
     ZStack {
       if self.viewModel.statusView == .complete {
         if viewModel.repositories.count != 0 {
-          List(viewModel.repositories, id: \.self) { news in
-            NewsCardView(news: news)
+          ScrollView(.vertical) {
+            ForEach(viewModel.repositories, id: \.self) { news in
+              NewsCardView(news: news)
+            }
+            .padding()
           }
-          .listSeparatorStyle(.none)
         } else {
           EmptyListView()
             .onTapGesture {

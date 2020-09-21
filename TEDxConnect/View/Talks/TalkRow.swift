@@ -16,7 +16,13 @@ struct TalksRow: View {
     ScrollView(.horizontal, showsIndicators: false) {
       HStack(alignment: .top, spacing: 10) {
         ForEach(0..<talks.count) { index in
-          TalkCell(talk: self.talks[index])
+          if index == 0 {
+            TalkCell(talk: self.talks[index])
+              .padding(.leading)
+          } else {
+            TalkCell(talk: self.talks[index])
+          }
+          
         }
       }
     }

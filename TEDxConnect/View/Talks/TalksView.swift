@@ -10,34 +10,32 @@ import SwiftUI
 
 struct TalksView: View {
   
-  @ObservedObject var talkViewModel = TalkViewModel()
-  @ObservedObject var featuredTalkViewModel = FeaturedTalkViewModel()
+  @EnvironmentObject var talkViewModel: TalkViewModel
+  @EnvironmentObject var featuredTalkViewModel: FeaturedTalkViewModel
   
   var body: some View {
     ZStack {
       if self.talkViewModel.statusView == .complete {
-        VStack(spacing: 10) {
-          List {
-            
-            FeaturedTalkView(talk: featuredTalkViewModel.repository)
-            
-            ForEach(talkViewModel.repositories, id: \.self) { talkWithEvent in
-              Group {
-                if talkWithEvent.talks.count != 0 {
-                  VStack(alignment: .leading, spacing: 10) {
-                    Text(talkWithEvent.event.title ?? "")
-                      .foregroundColor(.secondary)
-                    TalksRow(talks: talkWithEvent.talks)
-                  }
-                } else {
-                  EmptyView()
+        ScrollView(.vertical) {
+          
+          FeaturedTalkView(talk: featuredTalkViewModel.repository)
+          
+          ForEach(talkViewModel.repositories, id: \.self) { talkWithEvent in
+            Group {
+              if talkWithEvent.talks.count != 0 {
+                VStack(alignment: .leading, spacing: 10) {
+                  Text(talkWithEvent.event.title ?? "")
+                    .foregroundColor(.secondary)
+                    .padding()
+                  TalksRow(talks: talkWithEvent.talks)
                 }
+              } else {
+                EmptyView()
               }
-              
             }
             
           }
-          .listSeparatorStyle(.none)
+          
         }
         
       }
@@ -54,19 +52,13 @@ struct TalksView: View {
     }
     .navigationBarColor(UIColor(named: "primaryRed"))
     .navigationBarTitle(Text("Talks"), displayMode: .inline)
-    .onAppear {
-      UITableView.appearance().separatorStyle = .none
-      self.talkViewModel.setup()
-      self.featuredTalkViewModel.setup()
-    }
-    .onDisappear {
-      UITableView.appearance().separatorStyle = .singleLine
-    }
   }
 }
 
 struct TalksView_Previews: PreviewProvider {
   static var previews: some View {
     TalksView()
+      .environmentObject(TalkViewModel())
+      .environmentObject(FeaturedTalkViewModel())
   }
 }

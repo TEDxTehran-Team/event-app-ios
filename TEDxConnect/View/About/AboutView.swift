@@ -28,7 +28,6 @@ struct AboutView: View {
                 Text(about.title)
               }
             }
-            .listSeparatorStyle(.none)
           }
         } else {
           EmptyListView()

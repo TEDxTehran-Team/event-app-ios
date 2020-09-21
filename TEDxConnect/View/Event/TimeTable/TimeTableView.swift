@@ -15,9 +15,9 @@ struct TimeTableView: View {
     ZStack {
       if self.viewModel.statusView == .complete {
         if self.viewModel.repositories.count != 0 {
-          List {
+          ScrollView(.vertical) {
             ForEach(viewModel.repositories, id: \.self) { day in
-              Group {
+              VStack(alignment: .leading) {
                 DayHeaderView(day: day)
                   .padding(.vertical, 4)
                 ForEach(day.sessions, id: \.self) { session in
@@ -31,8 +31,8 @@ struct TimeTableView: View {
                 }
               }
             }
+            .padding()
           }
-          .listSeparatorStyle(.none)
         } else {
           EmptyListView()
             .onTapGesture {

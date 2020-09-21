@@ -58,7 +58,7 @@ struct TalkDetailView: View {
                 .customFont(name: Fonts.shabnamBold, style: .subheadline)
                 .foregroundColor(.secondary)
             }
-            .padding()
+            .padding(.horizontal)
             
             VStack(alignment: .leading, spacing: 10) {
               Text("Description")
@@ -68,16 +68,18 @@ struct TalkDetailView: View {
               Text(self.viewModel.repository.talk.description ?? "")
                 .foregroundColor(.secondary)
             }
-            .padding()
+            .padding(.horizontal)
+            .padding(.vertical, 10)
             
             VStack(alignment: .leading, spacing: 10) {
               Text("Suggested Talks")
                 .foregroundColor(.secondary)
                 .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom)
                           .foregroundColor(Colors.primaryRed), alignment: .bottom)
+                .padding(.horizontal)
               TalksRow(talks: self.viewModel.repository.suggestedTalk)
             }
-            .padding()
+            .layoutPriority(1)
             
           } // VStack
           if self.viewModel.statusView == .error {

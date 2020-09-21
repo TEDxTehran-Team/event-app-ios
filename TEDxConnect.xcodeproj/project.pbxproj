@@ -74,7 +74,6 @@
 		6DE7941524F93B3E00CEEE0E /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7941424F93B3E00CEEE0E /* AlbumViewModel.swift */; };
 		6DE7CEE524E120BA00910DF7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7CEE424E120BA00910DF7 /* API.swift */; };
 		6DF671302518917F00C8190B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DF6712F2518917F00C8190B /* GoogleService-Info.plist */; };
-		6DF671452518A5C300C8190B /* List+Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF671442518A5C300C8190B /* List+Separator.swift */; };
 		6DFB0D5724E11CC900353416 /* Queries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 6DFB0D5624E11CC900353416 /* Queries.graphql */; };
 		6DFCAF4724FD2FBB008AD550 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFCAF4624FD2FBB008AD550 /* Event.swift */; };
 		6DFCAF4A24FD314F008AD550 /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFCAF4924FD314F008AD550 /* EventDetailView.swift */; };
@@ -155,7 +154,6 @@
 		6DE7941424F93B3E00CEEE0E /* AlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
 		6DE7CEE424E120BA00910DF7 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		6DF6712F2518917F00C8190B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		6DF671442518A5C300C8190B /* List+Separator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "List+Separator.swift"; sourceTree = "<group>"; };
 		6DFB0D5624E11CC900353416 /* Queries.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Queries.graphql; sourceTree = "<group>"; };
 		6DFCAF4624FD2FBB008AD550 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		6DFCAF4924FD314F008AD550 /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
@@ -390,8 +388,8 @@
 				6DCFBC6024FA453F005103E5 /* AppView.swift */,
 				6DFCAF4824FD3133008AD550 /* Event */,
 				6DC0A45A24FBCE8D00CE535B /* About */,
-				6DE7941624F93B6D00CEEE0E /* Gallery */,
 				6DD9719324F8F0CF0044D596 /* News */,
+				6DE7941624F93B6D00CEEE0E /* Gallery */,
 				6DD067F72509EFC1008BBC08 /* Talks */,
 				E837436224FFF68A009FEB5B /* Custom Views */,
 				6DD9719624F8F4B20044D596 /* Custom Modifiers */,
@@ -429,7 +427,6 @@
 		E837436224FFF68A009FEB5B /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				6DF671442518A5C300C8190B /* List+Separator.swift */,
 				E837436324FFF69D009FEB5B /* Indicator.swift */,
 				6D8CE96E2501237A00F47ADF /* ImagePlaceholder.swift */,
 				6DAA3CE42502255A006528DB /* EmptyListView.swift */,
@@ -591,7 +588,6 @@
 				6D8CE97D25020E3500F47ADF /* SessionHeaderView.swift in Sources */,
 				6DD067F62509EF8E008BBC08 /* TalkViewModel.swift in Sources */,
 				6DAA3CE32502102C006528DB /* DayHeaderView.swift in Sources */,
-				6DF671452518A5C300C8190B /* List+Separator.swift in Sources */,
 				6DD068012509FA49008BBC08 /* FeaturedTalkRepository.swift in Sources */,
 				6DCFBC5724F93D4F005103E5 /* GalleryCardView.swift in Sources */,
 				6DD067FF2509F26A008BBC08 /* TalkCell.swift in Sources */,

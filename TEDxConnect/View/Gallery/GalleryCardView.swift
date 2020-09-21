@@ -15,8 +15,7 @@ struct GalleryCardView: View {
   let width = UIScreen.main.bounds.width
   
   var body: some View {
-    ZStack {
-      
+    NavigationLink(destination: GalleryDetailView(album: album)) {
       KFImage(URL(string: Images.urlExtension + album.cover)!)
         .placeholder {
           ImagePlaceholder()
@@ -26,11 +25,6 @@ struct GalleryCardView: View {
         .overlay(ImageOverlay(text: self.album.title), alignment: .bottomLeading)
         .cornerRadius(10)
         .padding(.vertical, 10)
-      
-      NavigationLink(destination: GalleryDetailView(album: album)) {
-        EmptyView()
-      }
-      .buttonStyle(PlainButtonStyle())
     }
     
   }
