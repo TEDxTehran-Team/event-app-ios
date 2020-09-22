@@ -16,12 +16,12 @@ struct AppView: View {
   var albumViewModel = AlbumViewModel()
   var talkViewModel = TalkViewModel()
   var featuredTalkViewModel = FeaturedTalkViewModel()
-  
+  /*
   init() {
     UITableView.appearance().backgroundColor = .clear // tableview background
     UITableViewCell.appearance().backgroundColor = .clear // cell background
   }
-  
+  */
   var body: some View {
     TabView {
       NavigationView {

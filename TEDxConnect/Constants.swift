@@ -11,6 +11,7 @@ import SwiftUI
 enum Constants {
   static let baseUrl = "https://tedxtehran.idearun.co/graphql/"
   static let placeholderUrl = "https://tedxtehran.com/"
+  static let acknowledgmentsUrl = "https://trello.com/b/9Vp84PlW"
 }
 
 enum Fonts {

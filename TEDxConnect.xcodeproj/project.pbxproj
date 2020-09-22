@@ -326,6 +326,14 @@
 			path = Icons;
 			sourceTree = "<group>";
 		};
+		6DD12DF0251A1F240055D611 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				6DD12DCF2519DC2F0055D611 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		6DD9719324F8F0CF0044D596 /* News */ = {
 			isa = PBXGroup;
 			children = (
@@ -422,6 +430,7 @@
 			children = (
 				6DCFBC6024FA453F005103E5 /* AppView.swift */,
 				6DFCAF4824FD3133008AD550 /* Event */,
+				6DD12DF0251A1F240055D611 /* Settings */,
 				6DC0A45A24FBCE8D00CE535B /* About */,
 				6DD9719324F8F0CF0044D596 /* News */,
 				6DE7941624F93B6D00CEEE0E /* Gallery */,
@@ -462,7 +471,6 @@
 		E837436224FFF68A009FEB5B /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				6DD12DCF2519DC2F0055D611 /* SettingsView.swift */,
 				E837436324FFF69D009FEB5B /* Indicator.swift */,
 				6D8CE96E2501237A00F47ADF /* ImagePlaceholder.swift */,
 				6DAA3CE42502255A006528DB /* EmptyListView.swift */,

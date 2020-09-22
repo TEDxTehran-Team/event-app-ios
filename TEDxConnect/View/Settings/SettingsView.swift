@@ -19,7 +19,8 @@ struct SettingsView: View {
   var body: some View {
     
     Form {
-      Section {
+      Section(header: Text("Appearance")) {
+        
         Picker(selection: $iconSettings.currentIndex, label: Text("Icons")) {
           ForEach(0..<iconSettings.iconNames.count) { i in
             HStack {
@@ -47,16 +48,16 @@ struct SettingsView: View {
             }
           }
         }
-      }
-      
-      Section {
+        
+        
         Toggle(isOn: $toggleModel.isDark) {
           Text("Dark Mode")
         }
+        
       }
       
-      Section {
-        Button("Clear Cache") {
+      Section(header: Text("More")) {
+        Button(action: {
           Network.shared.apollo.clearCache() { result in
             switch result {
               case .success():
@@ -67,6 +68,20 @@ struct SettingsView: View {
                 self.alertMessage = error.localizedDescription
             }
             self.showingAlert = true
+          }
+        }) {
+          HStack(spacing: 10) {
+            Image(systemName: "paintbrush")
+            Text("Clear Cache")
+          }
+        }
+        
+        Button(action: {
+          UIApplication.shared.open(URL(string: Constants.acknowledgmentsUrl)!)
+        }) {
+          HStack(spacing: 10) {
+            Image(systemName: "heart")
+            Text("Acknowledgments")
           }
         }
       }
