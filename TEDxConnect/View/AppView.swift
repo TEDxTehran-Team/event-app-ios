@@ -17,7 +17,6 @@ struct AppView: View {
   var talkViewModel = TalkViewModel()
   var featuredTalkViewModel = FeaturedTalkViewModel()
   
-  
   init() {
     UITableView.appearance().backgroundColor = .clear // tableview background
     UITableViewCell.appearance().backgroundColor = .clear // cell background

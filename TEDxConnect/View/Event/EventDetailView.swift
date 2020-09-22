@@ -91,7 +91,12 @@ struct EventDetailView: View {
     } // GeometryReader
     .navigationBarColor(UIColor(named: "primaryRed"))
     .navigationBarTitle(Text("Home"), displayMode: .inline)
-    .navigationBarItems(trailing: NavigationLink(destination: AboutView(), label: {
+    .navigationBarItems(leading: NavigationLink(destination: SettingsView().environmentObject(IconNames()), label: {
+      Image(systemName: "gear")
+        .resizable()
+        .frame(width: 24, height: 24)
+        .foregroundColor(.white)
+    }), trailing: NavigationLink(destination: AboutView(), label: {
       Image(systemName: "info.circle")
         .resizable()
         .frame(width: 24, height: 24)
