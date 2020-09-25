@@ -31,6 +31,7 @@ struct AboutDetailView: View {
           Text(self.about.description)
             .padding()
         }
+        .environment(\.layoutDirection, .rightToLeft)
       }
       
     }

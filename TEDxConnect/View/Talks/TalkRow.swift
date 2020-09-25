@@ -11,21 +11,23 @@ import SwiftUI
 struct TalksRow: View {
   
   let talks: [Talk]
+  @Environment(\.locale) var locale: Locale
   
   var body: some View {
     ScrollView(.horizontal, showsIndicators: false) {
       HStack(alignment: .top, spacing: 10) {
         ForEach(0..<talks.count) { index in
-          if index == 0 {
+          if index == (locale == Locale(identifier: "fa_IR") ? talks.count-1 : 0) {
             TalkCell(talk: self.talks[index])
-              .padding(.leading)
+              .padding(locale == Locale(identifier: "fa_IR") ? .trailing : .leading)
           } else {
             TalkCell(talk: self.talks[index])
           }
-          
         }
       }
+      .rotation3DEffect(Angle(degrees: 180), axis: (x: CGFloat(0), y: CGFloat(10), z: CGFloat(0)))
     }
+    .flipsForRightToLeftLayoutDirection(true)
   }
 }
 

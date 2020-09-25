@@ -28,6 +28,8 @@ struct AboutView: View {
                 Text(about.title)
               }
             }
+            .environment(\.layoutDirection, .rightToLeft)
+
           }
         } else {
           EmptyListView()
@@ -44,6 +46,9 @@ struct AboutView: View {
       if self.viewModel.statusView == .error {
         Text(self.viewModel.errorMessage)
           .customFont(name: Fonts.shabnam, style: .caption1, weight: .medium)
+          .onTapGesture {
+            self.viewModel.setup()
+          }
       }
     }
     .navigationBarColor(UIColor(named: "primaryRed"))

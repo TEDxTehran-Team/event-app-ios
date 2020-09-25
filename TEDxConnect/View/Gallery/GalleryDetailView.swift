@@ -48,6 +48,9 @@ struct GalleryDetailView: View {
       if self.viewModel.statusView == .error {
         Text(self.viewModel.errorMessage)
           .customFont(name: Fonts.shabnam, style: .caption1, weight: .medium)
+          .onTapGesture {
+            self.viewModel.setup(withAlbumId: Int(self.album.id) ?? 0)
+          }
       }
     }
     .navigationBarTitle(Text(album.title), displayMode: .inline)

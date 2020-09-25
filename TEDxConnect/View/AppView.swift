@@ -16,34 +16,32 @@ struct AppView: View {
   var albumViewModel = AlbumViewModel()
   var talkViewModel = TalkViewModel()
   var featuredTalkViewModel = FeaturedTalkViewModel()
-  /*
-  init() {
-    UITableView.appearance().backgroundColor = .clear // tableview background
-    UITableViewCell.appearance().backgroundColor = .clear // cell background
-  }
-  */
+  
+  @State private var selection = 3
+
   var body: some View {
-    TabView {
+    TabView(selection: $selection) {
       NavigationView {
-        EventDetailView()
-          .environmentObject(eventViewModel)
+        TalksView()
+          .environmentObject(talkViewModel)
+          .environmentObject(featuredTalkViewModel)
       }
       .tag(0)
       .tabItem {
-        Image(systemName: "house")
-        Text("Home")
+        Image(systemName: "music.mic")
+        Text("Talks")
       }
       
       NavigationView {
-        TimeTableView()
-          .environmentObject(dayViewModel)
+        GalleryView()
+          .environmentObject(albumViewModel)
       }
       .tag(1)
       .tabItem {
-        Image(systemName: "clock")
-        Text("Timetable")
+        Image(systemName: "photo.on.rectangle")
+        Text("Gallery")
       }
-      
+
       NavigationView {
         NewsView()
           .environmentObject(newsViewModel)
@@ -53,26 +51,16 @@ struct AppView: View {
         Image(systemName: "text.aligncenter")
         Text("News")
       }
-      
+    
       NavigationView {
-        GalleryView()
-          .environmentObject(albumViewModel)
+        EventView()
+          .environmentObject(eventViewModel)
+          .environmentObject(dayViewModel)
       }
       .tag(3)
       .tabItem {
-        Image(systemName: "photo.on.rectangle")
-        Text("Gallery")
-      }
-      
-      NavigationView {
-        TalksView()
-          .environmentObject(talkViewModel)
-          .environmentObject(featuredTalkViewModel)
-      }
-      .tag(4)
-      .tabItem {
-        Image(systemName: "music.mic")
-        Text("Talks")
+        Image(systemName: "house")
+        Text("Home")
       }
       
     }
@@ -93,6 +81,6 @@ struct AppView: View {
 
 struct AppView_Previews: PreviewProvider {
   static var previews: some View {
-    AppView()
+    AppView().environment(\.locale, .init(identifier: "fa_IR"))
   }
 }

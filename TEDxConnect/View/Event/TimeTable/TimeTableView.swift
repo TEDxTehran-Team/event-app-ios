@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TimeTableView: View {
-  @EnvironmentObject var viewModel: DayViewModel
+  let viewModel: DayViewModel
   
   var body: some View {
     ZStack {
@@ -48,16 +48,20 @@ struct TimeTableView: View {
       if self.viewModel.statusView == .error {
         Text(self.viewModel.errorMessage)
           .customFont(name: Fonts.shabnam, style: .caption1, weight: .medium)
+          .onTapGesture {
+            self.viewModel.setup()
+          }
       }
     }
     .navigationBarColor(UIColor(named: "primaryRed"))
     .navigationBarTitle(Text("Timetable"), displayMode: .inline)
+    .environment(\.layoutDirection, .rightToLeft)
     
   }
 }
 
 struct TimeTableView_Previews: PreviewProvider {
   static var previews: some View {
-    TimeTableView().environmentObject(DayViewModel())
+    TimeTableView(viewModel: DayViewModel())
   }
 }

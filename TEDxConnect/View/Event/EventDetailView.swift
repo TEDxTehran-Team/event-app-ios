@@ -11,7 +11,7 @@ import struct Kingfisher.KFImage
 
 struct EventDetailView: View {
   
-  @EnvironmentObject var viewModel: EventViewModel
+  let viewModel: EventViewModel
   
   var body: some View {
     GeometryReader { fullView in
@@ -82,6 +82,9 @@ struct EventDetailView: View {
           if self.viewModel.statusView == .error {
             Text(self.viewModel.errorMessage)
               .customFont(name: Fonts.shabnam, style: .caption1, weight: .medium)
+              .onTapGesture {
+                self.viewModel.setup()
+              }
           }
         } // ZStack
         
@@ -102,6 +105,7 @@ struct EventDetailView: View {
         .frame(width: 24, height: 24)
         .foregroundColor(.white)
     }))
+    .environment(\.layoutDirection, .rightToLeft)
   } // Body
   
   
@@ -110,6 +114,6 @@ struct EventDetailView: View {
 
 struct EventDetailView_Previews: PreviewProvider {
   static var previews: some View {
-    EventDetailView().environmentObject(EventViewModel())
+    EventDetailView(viewModel: EventViewModel())
   }
 }

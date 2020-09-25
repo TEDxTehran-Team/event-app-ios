@@ -21,6 +21,7 @@ struct GalleryView: View {
               GalleryCardView(album: album)
             }
             .padding()
+            .environment(\.layoutDirection, .rightToLeft)
           }
         } else {
           EmptyListView()
@@ -37,6 +38,9 @@ struct GalleryView: View {
       if self.viewModel.statusView == .error {
         Text(self.viewModel.errorMessage)
           .customFont(name: Fonts.shabnam, style: .caption1, weight: .medium)
+          .onTapGesture {
+            self.viewModel.setup()
+          }
       }
     }
     .navigationBarColor(UIColor(named: "primaryRed"))

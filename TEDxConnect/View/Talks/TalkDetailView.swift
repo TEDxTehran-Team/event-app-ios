@@ -85,6 +85,9 @@ struct TalkDetailView: View {
           if self.viewModel.statusView == .error {
             Text(self.viewModel.errorMessage)
               .customFont(name: Fonts.shabnam, style: .caption1, weight: .medium)
+              .onTapGesture {
+                self.viewModel.setup(withId: Int(self.id) ?? 0)
+              }
           }
         } // ZStack
         .frame(maxWidth: .infinity)
@@ -95,6 +98,7 @@ struct TalkDetailView: View {
     .onAppear {
       self.viewModel.setup(withId: Int(self.id) ?? 0)
     }
+    .environment(\.layoutDirection, .rightToLeft)
   }
 }
 

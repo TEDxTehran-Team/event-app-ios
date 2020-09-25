@@ -38,6 +38,7 @@ struct NewsCardView: View {
           .customFont(name: Fonts.shabnam, style: .body, weight: .regular)
       }
       .padding(20)
+      .environment(\.layoutDirection, .rightToLeft)
     }
     .padding(.vertical, 10)
   }

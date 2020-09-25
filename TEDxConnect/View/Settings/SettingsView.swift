@@ -19,7 +19,7 @@ struct SettingsView: View {
   var body: some View {
     
     Form {
-      Section(header: Text("Appearance")) {
+      Section(header: Text("Appearance").customFont(name: Fonts.shabnam, style: .footnote)) {
         
         Picker(selection: $iconSettings.currentIndex, label: Text("Icons")) {
           ForEach(0..<iconSettings.iconNames.count) { i in
@@ -56,7 +56,7 @@ struct SettingsView: View {
         
       }
       
-      Section(header: Text("More")) {
+      Section(header: Text("More").customFont(name: Fonts.shabnam, style: .footnote), footer: Text("We're tracking potential bugs with Crashlytics and will fix all of them ASAP.").customFont(name: Fonts.shabnam, style: .footnote)) {
         Button(action: {
           Network.shared.apollo.clearCache() { result in
             switch result {

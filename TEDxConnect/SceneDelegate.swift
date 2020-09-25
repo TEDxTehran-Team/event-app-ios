@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     // If you want your app to support RTL, please comment the line below & uncomment the line after that
     // let contentView = AppView()
-    let contentView = AppView().environment(\.layoutDirection, .rightToLeft).environment(\.locale, Locale(identifier: "fa-IR"))
+    let contentView = AppView().environment(\.locale, .init(identifier: "fa_IR"))
     
     // Use a UIHostingController as window root view controller.
     if let windowScene = scene as? UIWindowScene {
