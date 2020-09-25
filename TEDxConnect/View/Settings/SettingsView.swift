@@ -91,6 +91,7 @@ struct SettingsView: View {
     .alert(isPresented: $showingAlert) {
       Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("Ok")))
     }
+    .environment(\.layoutDirection, .rightToLeft)
     
   }
 }
