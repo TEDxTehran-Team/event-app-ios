@@ -67,6 +67,14 @@ struct EventDetailView: View {
                 }
                 Divider()
               }
+              NavigationLink(destination: SpeakersView()) {
+                HStack {
+                  Image(decorative: "speaker-icon")
+                  Text(LocalizedStringKey("Speakers"))
+                }
+                .padding()
+              }
+              Divider()
               HStack {
                 Image(decorative: "clock-icon")
                 Text(DateHelper.dateWith(self.viewModel.repository.startDate ?? "TBA", showTime: true))
@@ -112,11 +120,9 @@ struct EventDetailView: View {
               .customStyle(withBackgroundColor: Colors.primaryRed)
             }
 
-            
           } // VStack
           if self.viewModel.statusView == .error {
-            Text(self.viewModel.errorMessage)
-              .customFont(name: Fonts.shabnam, style: .caption1, weight: .medium)
+            ErrorView(errorText: self.viewModel.errorMessage)
               .onTapGesture {
                 self.viewModel.setup()
               }

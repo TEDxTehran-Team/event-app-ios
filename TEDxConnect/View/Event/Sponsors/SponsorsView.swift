@@ -49,8 +49,7 @@ struct SponsorsView: View {
       }
       
       if self.viewModel.statusView == .error {
-        Text(self.viewModel.errorMessage)
-          .customFont(name: Fonts.shabnam, style: .caption1, weight: .medium)
+        ErrorView(errorText: self.viewModel.errorMessage)
           .onTapGesture {
             self.viewModel.setup()
           }

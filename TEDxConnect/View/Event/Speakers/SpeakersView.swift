@@ -7,44 +7,55 @@
 //
 
 import SwiftUI
+import struct Kingfisher.KFImage
 
 struct SpeakersView: View {
   
-  @EnvironmentObject var viewModel: SpeakerViewModel
+  @ObservedObject var viewModel = SpeakerViewModel()
   
   var body: some View {
-    ZStack {
-      if self.viewModel.statusView == .complete {
-        if self.viewModel.repositories.count != 0 {
-          ScrollView(.vertical) {
-            ForEach(viewModel.repositories, id: \.self) { speaker in
-              Text(speaker.title)
+    GeometryReader { geo in
+      ZStack {
+        GridStack(minCellWidth: (geo.size.width/3)-20, spacing: 15, numItems: viewModel.repositories.count) { index, cellWidth in
+          NavigationLink(destination:
+                          SpeakerDetailView(speaker: self.viewModel.repositories[index])
+          ) {
+            
+            VStack {
+              KFImage(URL(string: Images.urlExtension + self.viewModel.repositories[index].image)!)
+                .placeholder {
+                  ImagePlaceholder()
+                }
+                .resizable()
+                .scaledToFill()
+                .frame(width: cellWidth, height: cellWidth)
+                .cornerRadius(10)
+              
+              Text(self.viewModel.repositories[index].title)
+                .customFont(name: Fonts.shabnam, style: .headline)
+                .lineLimit(2)
             }
-            .padding()
-            .environment(\.layoutDirection, .rightToLeft)
+            
           }
-        } else {
-          EmptyListView()
+          .buttonStyle(PlainButtonStyle())
+        }
+        
+        if self.viewModel.statusView == .loading {
+          Indicator()
+        }
+        
+        if self.viewModel.statusView == .error {
+          ErrorView(errorText: self.viewModel.errorMessage)
             .onTapGesture {
               self.viewModel.setup()
             }
         }
       }
-      
-      if self.viewModel.statusView == .loading {
-        Indicator()
-      }
-      
-      if self.viewModel.statusView == .error {
-        Text(self.viewModel.errorMessage)
-          .customFont(name: Fonts.shabnam, style: .caption1, weight: .medium)
-          .onTapGesture {
-            self.viewModel.setup()
-          }
+      .navigationBarTitle(Text(LocalizedStringKey("Speakers")), displayMode: .inline)
+      .onAppear {
+        self.viewModel.setup()
       }
     }
-    .navigationBarColor(UIColor(named: "primaryRed"))
-    .navigationBarTitle(Text(LocalizedStringKey("Speakers")), displayMode: .inline)
   }
 }
 

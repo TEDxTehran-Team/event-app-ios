@@ -46,9 +46,10 @@ struct TalksView: View {
       }
       
       if self.talkViewModel.statusView == .error || self.featuredTalkViewModel.statusView == .error {
-        
-        Text(self.talkViewModel.errorMessage == "" ? self.featuredTalkViewModel.errorMessage : self.talkViewModel.errorMessage)
-          .customFont(name: Fonts.shabnam, style: .caption1, weight: .medium)
+        ErrorView(errorText: self.talkViewModel.errorMessage == "" ? self.featuredTalkViewModel.errorMessage : self.talkViewModel.errorMessage)
+          .onTapGesture {
+            self.talkViewModel.errorMessage == "" ? featuredTalkViewModel.setup() : talkViewModel.setup()
+          }
       }
     }
     .navigationBarColor(UIColor(named: "primaryRed"))
