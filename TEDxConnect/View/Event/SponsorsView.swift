@@ -1,39 +1,41 @@
 //
-//  TimeTableView.swift
+//  SponsorsView.swift
 //  TEDxConnect
 //
-//  Created by Tadeh Alexani on 9/4/20.
+//  Created by Tadeh Alexani on 10/3/20.
 //  Copyright © 2020 Alexani. All rights reserved.
 //
 
 import SwiftUI
 
-struct TimeTableView: View {
+struct SponsorsView: View {
   
-  @EnvironmentObject var viewModel: DayViewModel
+  @ObservedObject var viewModel = SponsorViewModel()
   
   var body: some View {
     ZStack {
       if self.viewModel.statusView == .complete {
         if self.viewModel.repositories.count != 0 {
           ScrollView(.vertical) {
-            ForEach(viewModel.repositories, id: \.self) { day in
-              VStack(alignment: .leading) {
-                DayHeaderView(day: day)
-                  .padding(.vertical, 4)
-                ForEach(day.sessions, id: \.self) { session in
-                  Group {
-                    SessionHeaderView(session: session)
-                    ForEach(session.sections, id: \.self) { section in
-                      SectionView(section: section)
-                    }
-                    Divider()
+                        
+            ForEach(viewModel.repositories, id: \.self) { sponsorWithEvent in
+              Group {
+                if sponsorWithEvent.sponsors.count != 0 {
+                  VStack(alignment: .leading, spacing: 10) {
+                    Text(sponsorWithEvent.type.title)
+                      .foregroundColor(.secondary)
+                      .padding()
+                    SponsorsRow(sponsors: sponsorWithEvent.sponsors)
                   }
+                } else {
+                  EmptyView()
                 }
               }
+              
             }
-            .padding()
+            
           }
+          .environment(\.layoutDirection, .rightToLeft)
         } else {
           EmptyListView()
             .onTapGesture {
@@ -54,15 +56,16 @@ struct TimeTableView: View {
           }
       }
     }
+    .onAppear {
+      self.viewModel.setup()
+    }
     .navigationBarColor(UIColor(named: "primaryRed"))
-    .navigationBarTitle(Text(LocalizedStringKey("Timetable")), displayMode: .inline)
-    .environment(\.layoutDirection, .rightToLeft)
-    
+    .navigationBarTitle(Text(LocalizedStringKey("Sponsors")), displayMode: .inline)
   }
 }
 
-struct TimeTableView_Previews: PreviewProvider {
+struct SponsorsView_Previews: PreviewProvider {
   static var previews: some View {
-    TimeTableView().environmentObject(DayViewModel())
+    SponsorsView()
   }
 }

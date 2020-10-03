@@ -1,26 +1,27 @@
 //
-//  NewsView.swift
+//  SpeakersView.swift
 //  TEDxConnect
 //
-//  Created by Tadeh Alexani on 8/28/20.
+//  Created by Tadeh Alexani on 10/3/20.
 //  Copyright © 2020 Alexani. All rights reserved.
 //
 
 import SwiftUI
 
-struct NewsView: View {
+struct SpeakersView: View {
   
-  @EnvironmentObject var viewModel: NewsViewModel
+  @EnvironmentObject var viewModel: SpeakerViewModel
   
   var body: some View {
     ZStack {
       if self.viewModel.statusView == .complete {
-        if viewModel.repositories.count != 0 {
+        if self.viewModel.repositories.count != 0 {
           ScrollView(.vertical) {
-            ForEach(viewModel.repositories, id: \.self) { news in
-              NewsCardView(news: news)
+            ForEach(viewModel.repositories, id: \.self) { speaker in
+              Text(speaker.title)
             }
             .padding()
+            .environment(\.layoutDirection, .rightToLeft)
           }
         } else {
           EmptyListView()
@@ -41,16 +42,14 @@ struct NewsView: View {
             self.viewModel.setup()
           }
       }
-      
     }
     .navigationBarColor(UIColor(named: "primaryRed"))
-    .navigationBarTitle(Text(LocalizedStringKey("News")), displayMode: .inline)
+    .navigationBarTitle(Text(LocalizedStringKey("Speakers")), displayMode: .inline)
   }
-  
 }
 
-struct NewsView_Previews: PreviewProvider {
+struct SpeakersView_Previews: PreviewProvider {
   static var previews: some View {
-    NewsView().environmentObject(NewsViewModel())
+    SpeakersView().environmentObject(SpeakerViewModel())
   }
 }

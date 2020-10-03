@@ -52,7 +52,7 @@ struct TalksView: View {
       }
     }
     .navigationBarColor(UIColor(named: "primaryRed"))
-    .navigationBarTitle(Text("Talks"), displayMode: .inline)
+    .navigationBarTitle(Text(LocalizedStringKey("Talks")), displayMode: .inline)
   }
 }
 

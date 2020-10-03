@@ -19,9 +19,9 @@ struct SettingsView: View {
   var body: some View {
     
     Form {
-      Section(header: Text("Appearance").customFont(name: Fonts.shabnam, style: .footnote)) {
+      Section(header: Text(LocalizedStringKey("Appearance")).customFont(name: Fonts.shabnam, style: .footnote)) {
         
-        Picker(selection: $iconSettings.currentIndex, label: Text("Icons")) {
+        Picker(selection: $iconSettings.currentIndex, label: Text(LocalizedStringKey("Icons"))) {
           ForEach(0..<iconSettings.iconNames.count) { i in
             HStack {
               Text(self.iconSettings.iconNames[i] ?? "AppIcon")
@@ -56,7 +56,7 @@ struct SettingsView: View {
         
       }
       
-      Section(header: Text("More").customFont(name: Fonts.shabnam, style: .footnote), footer: Text("We're tracking potential bugs with Crashlytics and will fix all of them ASAP.").customFont(name: Fonts.shabnam, style: .footnote)) {
+      Section(header: Text(LocalizedStringKey("More")).customFont(name: Fonts.shabnam, style: .footnote), footer: Text(LocalizedStringKey("We're tracking potential bugs with Crashlytics and will fix all of them ASAP.")).customFont(name: Fonts.shabnam, style: .footnote)) {
         Button(action: {
           Network.shared.apollo.clearCache() { result in
             switch result {
@@ -72,7 +72,7 @@ struct SettingsView: View {
         }) {
           HStack(spacing: 10) {
             Image(systemName: "paintbrush")
-            Text("Clear Cache")
+            Text(LocalizedStringKey("Clear Cache"))
           }
         }
         
@@ -81,15 +81,15 @@ struct SettingsView: View {
         }) {
           HStack(spacing: 10) {
             Image(systemName: "heart")
-            Text("Acknowledgments")
+            Text(LocalizedStringKey("Acknowledgments"))
           }
         }
       }
       
     }
-    .navigationBarTitle(Text("Settings"), displayMode: .inline)
+    .navigationBarTitle(Text(LocalizedStringKey("Settings")), displayMode: .inline)
     .alert(isPresented: $showingAlert) {
-      Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("Ok")))
+      Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text(LocalizedStringKey("OK"))))
     }
     .environment(\.layoutDirection, .rightToLeft)
     

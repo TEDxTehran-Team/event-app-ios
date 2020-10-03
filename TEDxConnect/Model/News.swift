@@ -20,5 +20,5 @@ struct News: Decodable, Hashable {
 }
 
 struct NewsResponse: Decodable {
-  var allNews: [News]
+  var news: [News]
 }

@@ -1,5 +1,5 @@
-query GetAllNews {
-  allNews {
+query GetNews {
+  news {
     title
     description
     icon
@@ -46,7 +46,7 @@ query MainEventInfo {
       }
       venue {
         title
-        adddress
+        adress
         mapLink
         mapImage
       }
@@ -120,7 +120,7 @@ query GetTalkDetail($id: Int!) {
       image
     }
   }
-  suggestedTalk(talk: $id) {
+  suggestedTalks(talk: $id) {
     id
     title
     speakers {
@@ -128,6 +128,31 @@ query GetTalkDetail($id: Int!) {
     }
     section {
       image
+    }
+  }
+}
+
+query GetEventSponsors {
+  sponsorsWithType(event: 1) {
+    sponsors {
+      title
+      logo
+    }
+    type {
+      title
+    }
+  }
+}
+
+
+query GetEventSpeakers {
+  organizer {
+    mainEvent {
+      speakers {
+        title
+        description
+        image
+      }
     }
   }
 }

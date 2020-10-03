@@ -52,7 +52,7 @@ struct AboutView: View {
       }
     }
     .navigationBarColor(UIColor(named: "primaryRed"))
-    .navigationBarTitle(Text("About"), displayMode: .inline)
+    .navigationBarTitle(Text(LocalizedStringKey("About")), displayMode: .inline)
     .onAppear {
       self.viewModel.setup()
     }

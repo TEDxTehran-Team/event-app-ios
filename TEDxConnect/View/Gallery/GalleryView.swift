@@ -44,7 +44,7 @@ struct GalleryView: View {
       }
     }
     .navigationBarColor(UIColor(named: "primaryRed"))
-    .navigationBarTitle(Text("Gallery"), displayMode: .inline)
+    .navigationBarTitle(Text(LocalizedStringKey("Gallery")), displayMode: .inline)
   }
   
 }

@@ -65,12 +65,12 @@ public enum SectionType: RawRepresentable, Equatable, Hashable, CaseIterable, Ap
   }
 }
 
-public final class GetAllNewsQuery: GraphQLQuery {
+public final class GetNewsQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query GetAllNews {
-      allNews {
+    query GetNews {
+      news {
         __typename
         title
         description
@@ -79,7 +79,7 @@ public final class GetAllNewsQuery: GraphQLQuery {
     }
     """
 
-  public let operationName: String = "GetAllNews"
+  public let operationName: String = "GetNews"
 
   public init() {
   }
@@ -88,7 +88,7 @@ public final class GetAllNewsQuery: GraphQLQuery {
     public static let possibleTypes: [String] = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("allNews", type: .list(.object(AllNews.selections))),
+      GraphQLField("news", type: .list(.object(News.selections))),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -97,20 +97,20 @@ public final class GetAllNewsQuery: GraphQLQuery {
       self.resultMap = unsafeResultMap
     }
 
-    public init(allNews: [AllNews?]? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Query", "allNews": allNews.flatMap { (value: [AllNews?]) -> [ResultMap?] in value.map { (value: AllNews?) -> ResultMap? in value.flatMap { (value: AllNews) -> ResultMap in value.resultMap } } }])
+    public init(news: [News?]? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "news": news.flatMap { (value: [News?]) -> [ResultMap?] in value.map { (value: News?) -> ResultMap? in value.flatMap { (value: News) -> ResultMap in value.resultMap } } }])
     }
 
-    public var allNews: [AllNews?]? {
+    public var news: [News?]? {
       get {
-        return (resultMap["allNews"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [AllNews?] in value.map { (value: ResultMap?) -> AllNews? in value.flatMap { (value: ResultMap) -> AllNews in AllNews(unsafeResultMap: value) } } }
+        return (resultMap["news"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [News?] in value.map { (value: ResultMap?) -> News? in value.flatMap { (value: ResultMap) -> News in News(unsafeResultMap: value) } } }
       }
       set {
-        resultMap.updateValue(newValue.flatMap { (value: [AllNews?]) -> [ResultMap?] in value.map { (value: AllNews?) -> ResultMap? in value.flatMap { (value: AllNews) -> ResultMap in value.resultMap } } }, forKey: "allNews")
+        resultMap.updateValue(newValue.flatMap { (value: [News?]) -> [ResultMap?] in value.map { (value: News?) -> ResultMap? in value.flatMap { (value: News) -> ResultMap in value.resultMap } } }, forKey: "news")
       }
     }
 
-    public struct AllNews: GraphQLSelectionSet {
+    public struct News: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["NewsSchemaType"]
 
       public static let selections: [GraphQLSelection] = [
@@ -585,7 +585,7 @@ public final class MainEventInfoQuery: GraphQLQuery {
           venue {
             __typename
             title
-            adddress
+            adress
             mapLink
             mapImage
           }
@@ -808,7 +808,7 @@ public final class MainEventInfoQuery: GraphQLQuery {
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("title", type: .nonNull(.scalar(String.self))),
-            GraphQLField("adddress", type: .scalar(String.self)),
+            GraphQLField("adress", type: .scalar(String.self)),
             GraphQLField("mapLink", type: .scalar(String.self)),
             GraphQLField("mapImage", type: .scalar(String.self)),
           ]
@@ -819,8 +819,8 @@ public final class MainEventInfoQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(title: String, adddress: String? = nil, mapLink: String? = nil, mapImage: String? = nil) {
-            self.init(unsafeResultMap: ["__typename": "VenueSchemaType", "title": title, "adddress": adddress, "mapLink": mapLink, "mapImage": mapImage])
+          public init(title: String, adress: String? = nil, mapLink: String? = nil, mapImage: String? = nil) {
+            self.init(unsafeResultMap: ["__typename": "VenueSchemaType", "title": title, "adress": adress, "mapLink": mapLink, "mapImage": mapImage])
           }
 
           public var __typename: String {
@@ -842,12 +842,12 @@ public final class MainEventInfoQuery: GraphQLQuery {
           }
 
           /// venue's address.
-          public var adddress: String? {
+          public var adress: String? {
             get {
-              return resultMap["adddress"] as? String
+              return resultMap["adress"] as? String
             }
             set {
-              resultMap.updateValue(newValue, forKey: "adddress")
+              resultMap.updateValue(newValue, forKey: "adress")
             }
           }
 
@@ -1700,7 +1700,7 @@ public final class GetTalkDetailQuery: GraphQLQuery {
           image
         }
       }
-      suggestedTalk(talk: $id) {
+      suggestedTalks(talk: $id) {
         __typename
         id
         title
@@ -1733,7 +1733,7 @@ public final class GetTalkDetailQuery: GraphQLQuery {
 
     public static let selections: [GraphQLSelection] = [
       GraphQLField("talk", arguments: ["id": GraphQLVariable("id")], type: .object(Talk.selections)),
-      GraphQLField("suggestedTalk", arguments: ["talk": GraphQLVariable("id")], type: .list(.object(SuggestedTalk.selections))),
+      GraphQLField("suggestedTalks", arguments: ["talk": GraphQLVariable("id")], type: .list(.object(SuggestedTalk.selections))),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -1742,8 +1742,8 @@ public final class GetTalkDetailQuery: GraphQLQuery {
       self.resultMap = unsafeResultMap
     }
 
-    public init(talk: Talk? = nil, suggestedTalk: [SuggestedTalk?]? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Query", "talk": talk.flatMap { (value: Talk) -> ResultMap in value.resultMap }, "suggestedTalk": suggestedTalk.flatMap { (value: [SuggestedTalk?]) -> [ResultMap?] in value.map { (value: SuggestedTalk?) -> ResultMap? in value.flatMap { (value: SuggestedTalk) -> ResultMap in value.resultMap } } }])
+    public init(talk: Talk? = nil, suggestedTalks: [SuggestedTalk?]? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "talk": talk.flatMap { (value: Talk) -> ResultMap in value.resultMap }, "suggestedTalks": suggestedTalks.flatMap { (value: [SuggestedTalk?]) -> [ResultMap?] in value.map { (value: SuggestedTalk?) -> ResultMap? in value.flatMap { (value: SuggestedTalk) -> ResultMap in value.resultMap } } }])
     }
 
     public var talk: Talk? {
@@ -1755,12 +1755,12 @@ public final class GetTalkDetailQuery: GraphQLQuery {
       }
     }
 
-    public var suggestedTalk: [SuggestedTalk?]? {
+    public var suggestedTalks: [SuggestedTalk?]? {
       get {
-        return (resultMap["suggestedTalk"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [SuggestedTalk?] in value.map { (value: ResultMap?) -> SuggestedTalk? in value.flatMap { (value: ResultMap) -> SuggestedTalk in SuggestedTalk(unsafeResultMap: value) } } }
+        return (resultMap["suggestedTalks"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [SuggestedTalk?] in value.map { (value: ResultMap?) -> SuggestedTalk? in value.flatMap { (value: ResultMap) -> SuggestedTalk in SuggestedTalk(unsafeResultMap: value) } } }
       }
       set {
-        resultMap.updateValue(newValue.flatMap { (value: [SuggestedTalk?]) -> [ResultMap?] in value.map { (value: SuggestedTalk?) -> ResultMap? in value.flatMap { (value: SuggestedTalk) -> ResultMap in value.resultMap } } }, forKey: "suggestedTalk")
+        resultMap.updateValue(newValue.flatMap { (value: [SuggestedTalk?]) -> [ResultMap?] in value.map { (value: SuggestedTalk?) -> ResultMap? in value.flatMap { (value: SuggestedTalk) -> ResultMap in value.resultMap } } }, forKey: "suggestedTalks")
       }
     }
 
@@ -2079,6 +2079,378 @@ public final class GetTalkDetailQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "image")
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class GetEventSponsorsQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query GetEventSponsors {
+      sponsorsWithType(event: 1) {
+        __typename
+        sponsors {
+          __typename
+          title
+          logo
+        }
+        type {
+          __typename
+          title
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "GetEventSponsors"
+
+  public init() {
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("sponsorsWithType", arguments: ["event": 1], type: .list(.object(SponsorsWithType.selections))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(sponsorsWithType: [SponsorsWithType?]? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "sponsorsWithType": sponsorsWithType.flatMap { (value: [SponsorsWithType?]) -> [ResultMap?] in value.map { (value: SponsorsWithType?) -> ResultMap? in value.flatMap { (value: SponsorsWithType) -> ResultMap in value.resultMap } } }])
+    }
+
+    public var sponsorsWithType: [SponsorsWithType?]? {
+      get {
+        return (resultMap["sponsorsWithType"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [SponsorsWithType?] in value.map { (value: ResultMap?) -> SponsorsWithType? in value.flatMap { (value: ResultMap) -> SponsorsWithType in SponsorsWithType(unsafeResultMap: value) } } }
+      }
+      set {
+        resultMap.updateValue(newValue.flatMap { (value: [SponsorsWithType?]) -> [ResultMap?] in value.map { (value: SponsorsWithType?) -> ResultMap? in value.flatMap { (value: SponsorsWithType) -> ResultMap in value.resultMap } } }, forKey: "sponsorsWithType")
+      }
+    }
+
+    public struct SponsorsWithType: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["SponsorsWithTypeSchemaType"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("sponsors", type: .list(.object(Sponsor.selections))),
+        GraphQLField("type", type: .object(`Type`.selections)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(sponsors: [Sponsor?]? = nil, type: `Type`? = nil) {
+        self.init(unsafeResultMap: ["__typename": "SponsorsWithTypeSchemaType", "sponsors": sponsors.flatMap { (value: [Sponsor?]) -> [ResultMap?] in value.map { (value: Sponsor?) -> ResultMap? in value.flatMap { (value: Sponsor) -> ResultMap in value.resultMap } } }, "type": type.flatMap { (value: `Type`) -> ResultMap in value.resultMap }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var sponsors: [Sponsor?]? {
+        get {
+          return (resultMap["sponsors"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Sponsor?] in value.map { (value: ResultMap?) -> Sponsor? in value.flatMap { (value: ResultMap) -> Sponsor in Sponsor(unsafeResultMap: value) } } }
+        }
+        set {
+          resultMap.updateValue(newValue.flatMap { (value: [Sponsor?]) -> [ResultMap?] in value.map { (value: Sponsor?) -> ResultMap? in value.flatMap { (value: Sponsor) -> ResultMap in value.resultMap } } }, forKey: "sponsors")
+        }
+      }
+
+      public var type: `Type`? {
+        get {
+          return (resultMap["type"] as? ResultMap).flatMap { `Type`(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "type")
+        }
+      }
+
+      public struct Sponsor: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["SponsorSchemaType"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("title", type: .nonNull(.scalar(String.self))),
+          GraphQLField("logo", type: .scalar(String.self)),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(title: String, logo: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "SponsorSchemaType", "title": title, "logo": logo])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var title: String {
+          get {
+            return resultMap["title"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "title")
+          }
+        }
+
+        /// logo of the sponsor.
+        public var logo: String? {
+          get {
+            return resultMap["logo"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "logo")
+          }
+        }
+      }
+
+      public struct `Type`: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["SponsorTypeSchemaType"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("title", type: .nonNull(.scalar(String.self))),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(title: String) {
+          self.init(unsafeResultMap: ["__typename": "SponsorTypeSchemaType", "title": title])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var title: String {
+          get {
+            return resultMap["title"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "title")
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class GetEventSpeakersQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query GetEventSpeakers {
+      organizer {
+        __typename
+        mainEvent {
+          __typename
+          speakers {
+            __typename
+            title
+            description
+            image
+          }
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "GetEventSpeakers"
+
+  public init() {
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("organizer", type: .object(Organizer.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(organizer: Organizer? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "organizer": organizer.flatMap { (value: Organizer) -> ResultMap in value.resultMap }])
+    }
+
+    public var organizer: Organizer? {
+      get {
+        return (resultMap["organizer"] as? ResultMap).flatMap { Organizer(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "organizer")
+      }
+    }
+
+    public struct Organizer: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["OrganizerSchemaType"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("mainEvent", type: .object(MainEvent.selections)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(mainEvent: MainEvent? = nil) {
+        self.init(unsafeResultMap: ["__typename": "OrganizerSchemaType", "mainEvent": mainEvent.flatMap { (value: MainEvent) -> ResultMap in value.resultMap }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// which event is currently the main event for this organizer?
+      public var mainEvent: MainEvent? {
+        get {
+          return (resultMap["mainEvent"] as? ResultMap).flatMap { MainEvent(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "mainEvent")
+        }
+      }
+
+      public struct MainEvent: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["EventSchemaType"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("speakers", type: .nonNull(.list(.nonNull(.object(Speaker.selections))))),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(speakers: [Speaker]) {
+          self.init(unsafeResultMap: ["__typename": "EventSchemaType", "speakers": speakers.map { (value: Speaker) -> ResultMap in value.resultMap }])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        /// to which event does the speaker belong?
+        public var speakers: [Speaker] {
+          get {
+            return (resultMap["speakers"] as! [ResultMap]).map { (value: ResultMap) -> Speaker in Speaker(unsafeResultMap: value) }
+          }
+          set {
+            resultMap.updateValue(newValue.map { (value: Speaker) -> ResultMap in value.resultMap }, forKey: "speakers")
+          }
+        }
+
+        public struct Speaker: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["SpeakerSchema"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("title", type: .nonNull(.scalar(String.self))),
+            GraphQLField("description", type: .scalar(String.self)),
+            GraphQLField("image", type: .scalar(String.self)),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(title: String, description: String? = nil, image: String? = nil) {
+            self.init(unsafeResultMap: ["__typename": "SpeakerSchema", "title": title, "description": description, "image": image])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var title: String {
+            get {
+              return resultMap["title"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "title")
+            }
+          }
+
+          public var description: String? {
+            get {
+              return resultMap["description"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "description")
+            }
+          }
+
+          /// a thumbnail image for the speaker.
+          public var image: String? {
+            get {
+              return resultMap["image"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "image")
+            }
           }
         }
       }

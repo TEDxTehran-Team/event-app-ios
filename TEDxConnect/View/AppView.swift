@@ -17,7 +17,7 @@ struct AppView: View {
   var talkViewModel = TalkViewModel()
   var featuredTalkViewModel = FeaturedTalkViewModel()
   
-  @State private var selection = 3
+  @State private var selection = 4
 
   var body: some View {
     TabView(selection: $selection) {
@@ -29,7 +29,7 @@ struct AppView: View {
       .tag(0)
       .tabItem {
         Image(systemName: "music.mic")
-        Text("Talks")
+        Text(LocalizedStringKey("Talks"))
       }
       
       NavigationView {
@@ -39,7 +39,7 @@ struct AppView: View {
       .tag(1)
       .tabItem {
         Image(systemName: "photo.on.rectangle")
-        Text("Gallery")
+        Text(LocalizedStringKey("Gallery"))
       }
 
       NavigationView {
@@ -49,18 +49,27 @@ struct AppView: View {
       .tag(2)
       .tabItem {
         Image(systemName: "text.aligncenter")
-        Text("News")
+        Text(LocalizedStringKey("News"))
       }
     
       NavigationView {
-        EventView()
-          .environmentObject(eventViewModel)
+        TimeTableView()
           .environmentObject(dayViewModel)
       }
       .tag(3)
       .tabItem {
+        Image(systemName: "clock")
+        Text(LocalizedStringKey("Timetable"))
+      }
+      
+      NavigationView {
+        EventDetailView()
+          .environmentObject(eventViewModel)
+      }
+      .tag(4)
+      .tabItem {
         Image(systemName: "house")
-        Text("Home")
+        Text(LocalizedStringKey("Home"))
       }
       
     }

@@ -11,7 +11,7 @@ import struct Kingfisher.KFImage
 
 struct EventDetailView: View {
   
-  let viewModel: EventViewModel
+  @EnvironmentObject var viewModel: EventViewModel
   
   var body: some View {
     GeometryReader { fullView in
@@ -29,13 +29,13 @@ struct EventDetailView: View {
               .clipped()
             
             Button(action: {
-              UIApplication.shared.open(URL(string: self.viewModel.repository.links?.first { $0.role == "live" }?.url ?? Constants.placeholderUrl)!)
+              UIApplication.shared.open(URL(string: self.viewModel.repository.links?.first { $0.role == "LIVE" }?.url ?? Constants.placeholderUrl)!)
               
             }) {
               HStack {
                 Spacer()
                 Image(systemName: "play.rectangle")
-                Text("Watch Live")
+                Text(LocalizedStringKey("Watch Live"))
                 Spacer()
               }
               .padding()
@@ -43,6 +43,30 @@ struct EventDetailView: View {
             .customStyle(withBackgroundColor: Colors.primaryRed)
             
             VStack(alignment: .leading) {
+              if let ticket = self.viewModel.repository.links?.first { $0.role == "TICKET" } {
+                Button {
+                  UIApplication.shared.open(URL(string: ticket.url )!)
+                } label: {
+                  HStack {
+                    Image(decorative: "ticket-icon")
+                    Text(LocalizedStringKey("Buy Ticket"))
+                  }
+                  .padding()
+                }
+                Divider()
+              }
+              if let registeration = self.viewModel.repository.links?.first { $0.role == "REGISTRATION" } {
+                Button {
+                  UIApplication.shared.open(URL(string: registeration.url )!)
+                } label: {
+                  HStack {
+                    Image(decorative: "register-icon")
+                    Text(LocalizedStringKey("Register in Event"))
+                  }
+                  .padding()
+                }
+                Divider()
+              }
               HStack {
                 Image(decorative: "clock-icon")
                 Text(DateHelper.dateWith(self.viewModel.repository.startDate ?? "TBA", showTime: true))
@@ -58,7 +82,7 @@ struct EventDetailView: View {
               Divider()
               HStack {
                 Image(decorative: "address-icon")
-                Text(self.viewModel.repository.venue?.adddress ?? "-")
+                Text(self.viewModel.repository.venue?.adress ?? "-")
               }
               .padding()
             }
@@ -72,11 +96,22 @@ struct EventDetailView: View {
                 ImagePlaceholder()
               }
               .resizable()
-              .scaledToFit()
+              .scaledToFill()
               .frame(width: fullView.size.width, height: 200)
               .onTapGesture {
                 UIApplication.shared.open(URL(string: self.viewModel.repository.venue?.mapLink ?? Constants.placeholderUrl)!)
               }
+            
+            NavigationLink(destination: SponsorsView()) {
+              HStack {
+                Spacer()
+                Text(LocalizedStringKey("Sponsors"))
+                Spacer()
+              }
+              .padding()
+              .customStyle(withBackgroundColor: Colors.primaryRed)
+            }
+
             
           } // VStack
           if self.viewModel.statusView == .error {
@@ -93,7 +128,7 @@ struct EventDetailView: View {
       
     } // GeometryReader
     .navigationBarColor(UIColor(named: "primaryRed"))
-    .navigationBarTitle(Text("Home"), displayMode: .inline)
+    .navigationBarTitle(Text(LocalizedStringKey("Home")), displayMode: .inline)
     .navigationBarItems(leading: NavigationLink(destination: SettingsView().environmentObject(IconNames()), label: {
       Image(systemName: "gear")
         .resizable()
@@ -114,6 +149,6 @@ struct EventDetailView: View {
 
 struct EventDetailView_Previews: PreviewProvider {
   static var previews: some View {
-    EventDetailView(viewModel: EventViewModel())
+    EventDetailView().environmentObject(EventViewModel())
   }
 }

@@ -61,7 +61,7 @@ struct TalkDetailView: View {
             .padding(.horizontal)
             
             VStack(alignment: .leading, spacing: 10) {
-              Text("Description")
+              Text(LocalizedStringKey("Description"))
                 .foregroundColor(.secondary)
                 .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom)
                           .foregroundColor(Colors.primaryRed), alignment: .bottom)
@@ -72,7 +72,7 @@ struct TalkDetailView: View {
             .padding(.vertical, 10)
             
             VStack(alignment: .leading, spacing: 10) {
-              Text("Suggested Talks")
+              Text(LocalizedStringKey("Suggested Talks"))
                 .foregroundColor(.secondary)
                 .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom)
                           .foregroundColor(Colors.primaryRed), alignment: .bottom)

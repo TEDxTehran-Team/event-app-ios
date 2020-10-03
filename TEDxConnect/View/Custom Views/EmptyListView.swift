@@ -12,10 +12,10 @@ struct EmptyListView: View {
   var body: some View {
     VStack(spacing: 16) {
       Image(decorative: Images.emptyList)
-      Text("No Results Found")
+      Text(LocalizedStringKey("No Results Found"))
         .customFont(name: Fonts.shabnam, style: .title3)
         .foregroundColor(.primary)
-      Text("Try Again")
+      Text(LocalizedStringKey("Try Again"))
         .customFont(name: Fonts.shabnam, style: .subheadline)
         .foregroundColor(.secondary)
     }

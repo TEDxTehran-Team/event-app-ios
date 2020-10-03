@@ -24,11 +24,11 @@ struct EventView: View {
       
       if self.selectedTab == 0 {
         
-        EventDetailView(viewModel: eventDetailViewModel)
+        EventDetailView(viewModel: _eventDetailViewModel)
         
       } else {
         
-        TimeTableView(viewModel: dayViewModel)
+        TimeTableView(viewModel: _dayViewModel)
           .background(Colors.primaryBackground)
           
       }

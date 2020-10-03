@@ -20,7 +20,7 @@ struct SectionView: View {
       Text(section.title)
       Spacer()
       Text(DateHelper.ommitSeconds(fromTime: section.startTime))
-      Text("to")
+      Text(LocalizedStringKey("to"))
       Text(DateHelper.ommitSeconds(fromTime: section.endTime))
     }
     .foregroundColor(.secondary)
