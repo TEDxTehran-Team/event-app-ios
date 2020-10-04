@@ -8,6 +8,7 @@
 
 import SwiftUI
 import struct Kingfisher.KFImage
+import Sentry
 
 struct EventDetailView: View {
   
