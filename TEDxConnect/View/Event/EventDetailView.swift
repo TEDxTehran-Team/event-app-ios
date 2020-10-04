@@ -13,6 +13,9 @@ import Sentry
 struct EventDetailView: View {
   
   @EnvironmentObject var viewModel: EventViewModel
+  @State private var showingSheet = false
+  @State private var url = ""
+  @State private var titleLocalizedKey = ""
   
   var body: some View {
     GeometryReader { fullView in
@@ -30,8 +33,9 @@ struct EventDetailView: View {
               .clipped()
             
             Button(action: {
-              UIApplication.shared.open(URL(string: self.viewModel.repository.links?.first { $0.role == "LIVE" }?.url ?? Constants.placeholderUrl)!)
-              
+              url = viewModel.repository.links?.first { $0.role == "LIVE" }?.url ?? Constants.placeholderUrl
+              titleLocalizedKey = "Watch Live"
+              showingSheet = true
             }) {
               HStack {
                 Spacer()
@@ -46,7 +50,9 @@ struct EventDetailView: View {
             VStack(alignment: .leading) {
               if let ticket = self.viewModel.repository.links?.first { $0.role == "TICKET" } {
                 Button {
-                  UIApplication.shared.open(URL(string: ticket.url )!)
+                  url = ticket.url
+                  titleLocalizedKey = "Buy Ticket"
+                  showingSheet = true
                 } label: {
                   HStack {
                     Image(decorative: "ticket-icon")
@@ -54,11 +60,14 @@ struct EventDetailView: View {
                   }
                   .padding()
                 }
+                .foregroundColor(Colors.primaryRed)
                 Divider()
               }
               if let registeration = self.viewModel.repository.links?.first { $0.role == "REGISTRATION" } {
                 Button {
-                  UIApplication.shared.open(URL(string: registeration.url )!)
+                  url = registeration.url
+                  titleLocalizedKey = "Register in Event"
+                  showingSheet = true
                 } label: {
                   HStack {
                     Image(decorative: "register-icon")
@@ -66,6 +75,7 @@ struct EventDetailView: View {
                   }
                   .padding()
                 }
+                .foregroundColor(Colors.primaryRed)
                 Divider()
               }
               NavigationLink(destination: SpeakersView()) {
@@ -75,6 +85,7 @@ struct EventDetailView: View {
                 }
                 .padding()
               }
+              .foregroundColor(Colors.primaryRed)
               Divider()
               HStack {
                 Image(decorative: "clock-icon")
@@ -108,7 +119,9 @@ struct EventDetailView: View {
               .scaledToFill()
               .frame(width: fullView.size.width, height: 200)
               .onTapGesture {
-                UIApplication.shared.open(URL(string: self.viewModel.repository.venue?.mapLink ?? Constants.placeholderUrl)!)
+                url = viewModel.repository.venue?.mapLink ?? Constants.placeholderUrl
+                titleLocalizedKey = ""
+                showingSheet = true
               }
             
             NavigationLink(destination: SponsorsView()) {
@@ -148,6 +161,9 @@ struct EventDetailView: View {
         .foregroundColor(.white)
     }))
     .environment(\.layoutDirection, .rightToLeft)
+    .sheet(isPresented: $showingSheet) {
+      WebViewSheet(url: url, titleLocalizedKey: titleLocalizedKey)
+    }
   } // Body
   
   

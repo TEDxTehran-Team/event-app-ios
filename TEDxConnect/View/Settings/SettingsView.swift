@@ -12,9 +12,14 @@ struct SettingsView: View {
   
   @EnvironmentObject var iconSettings: IconNames
   @ObservedObject private var toggleModel = ToggleModel()
+  
   @State private var showingAlert = false
   @State private var alertTitle = ""
   @State private var alertMessage = ""
+  
+  @State private var showingSheet = false
+  @State private var url = ""
+  @State private var titleLocalizedKey = ""
   
   var body: some View {
     
@@ -77,7 +82,9 @@ struct SettingsView: View {
         }
         
         Button(action: {
-          UIApplication.shared.open(URL(string: Constants.acknowledgmentsUrl)!)
+          url = Constants.acknowledgmentsUrl
+          titleLocalizedKey = "Acknowledgments"
+          showingSheet = true
         }) {
           HStack(spacing: 10) {
             Image(systemName: "heart")
@@ -92,7 +99,9 @@ struct SettingsView: View {
       Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text(LocalizedStringKey("OK"))))
     }
     .environment(\.layoutDirection, .rightToLeft)
-    
+    .sheet(isPresented: $showingSheet) {
+      WebViewSheet(url: url, titleLocalizedKey: titleLocalizedKey)
+    }
   }
 }
 

@@ -14,15 +14,18 @@ struct TalkDetailView: View {
   let id: String
   @ObservedObject var viewModel = TalkDetailViewModel()
   
+  @State private var showingSheet = false
+  @State private var url = ""
+  @State private var titleLocalizedKey = ""
+  
   var body: some View {
     GeometryReader { fullView in
       ScrollView(.vertical) {
         ZStack {
           VStack(alignment: .leading) {
             Button(action: {
-              
-              UIApplication.shared.open(URL(string: self.viewModel.repository.talk.videoLink ?? Constants.placeholderUrl)!)
-              
+              url = viewModel.repository.talk.videoLink ?? Constants.placeholderUrl
+              showingSheet = true
             }) {
               ZStack {
                 
@@ -98,6 +101,9 @@ struct TalkDetailView: View {
       self.viewModel.setup(withId: Int(self.id) ?? 0)
     }
     .environment(\.layoutDirection, .rightToLeft)
+    .sheet(isPresented: $showingSheet) {
+      WebViewSheet(url: url, titleLocalizedKey: titleLocalizedKey)
+    }
   }
 }
 
