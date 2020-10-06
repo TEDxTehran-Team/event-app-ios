@@ -26,7 +26,7 @@ struct SponsorWithType: Decodable, Hashable {
     var title: String
     
     static var example: SponsorType {
-      SponsorType(title: "")
+      SponsorType(title: "-")
     }
   }
   

@@ -14,7 +14,7 @@ struct Speaker: Decodable, Hashable {
   var description: String
   
   static var example: Speaker {
-    Speaker(title: "", image: Images.example, description: "")
+    Speaker(title: "-", image: Images.example, description: "-")
   }
 }
 

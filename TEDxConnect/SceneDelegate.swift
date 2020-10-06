@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import CoreTelephony
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   
@@ -25,9 +26,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     UITabBar.appearance().isTranslucent = true
     UITabBar.appearance().backgroundColor = UIColor(named: "primaryBarBackground")
     
-    // If you want your app to support RTL, please comment the line below & uncomment the line after that
-    // let contentView = AppView()
-    let contentView = AppView().environment(\.locale, .init(identifier: "fa_IR"))
+    let contentView = AppView()
+      .environment(\.locale, CTTelephonyNetworkInfo().serviceSubscriberCellularProviders?.first?.value.isoCountryCode == "ir" ? .init(identifier: "fa_IR") : .init(identifier: "en"))
     
     // Use a UIHostingController as window root view controller.
     if let windowScene = scene as? UIWindowScene {

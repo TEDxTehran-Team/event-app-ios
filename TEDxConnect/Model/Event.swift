@@ -26,7 +26,7 @@ struct Event: Decodable, Hashable {
     var url: String
     
     static var example: Link {
-      Link(role: "live", url: "http://tedxtehran.com/live")
+      Link(role: "LIVE", url: "https://tedxtehran.com/live")
     }
   }
   

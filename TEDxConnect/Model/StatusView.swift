@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 enum StatusView  {
   case none
   case loading
