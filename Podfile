@@ -6,10 +6,10 @@ target 'TEDxConnect' do
   use_frameworks!
 
   # Pods for TEDxConnect
-  pod 'Apollo'
-  pod 'Apollo/SQLite'
+  pod 'Apollo', '~> 0.32.1'
+  pod 'Apollo/SQLite', '~> 0.32.1'
   pod 'Kingfisher/SwiftUI', '~> 5.15.5'
   pod 'Firebase/Analytics'
-  pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '6.0.0'
+  pod 'Sentry', '~> 6.0.1'
 
 end
