@@ -8,14 +8,19 @@
 
 import Foundation
 
-struct Album: Codable, Hashable {
+struct Album: Decodable, Hashable {
   
-  var id: Int
+  var id: String
   var title: String
   var cover: String
   
   static var example: Album {
-    return Album(id: 1, title: "تداکس‌تهران ۲۰۱۹: خوشبینی مسئولانه", cover: "gallery_cover_test")
+    return Album(id: "1", title: "-", cover: Images.example)
   }
   
 }
+
+struct AlbumResponse: Decodable {
+  var albums: [Album]
+}
+ 

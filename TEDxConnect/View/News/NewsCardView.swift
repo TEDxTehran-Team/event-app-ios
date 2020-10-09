@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import struct Kingfisher.KFImage
 
 struct NewsCardView: View {
   let news: News
@@ -15,16 +16,21 @@ struct NewsCardView: View {
     ZStack {
       RoundedRectangle(cornerRadius: 25, style: .continuous)
         .fill(Colors.primaryBackground)
-        .shadow(radius: 4)
+        .shadow(color: Color.black.opacity(0.2), radius: 6, x: 0, y: 3)
       
       VStack(alignment: .leading) {
         HStack(alignment: .center, spacing: 20) {
-          Image(news.icon ?? "heart.fill")
+          
+          KFImage(URL(string: Images.urlExtension + (news.icon ?? ""))!)
+            .placeholder {
+              ImagePlaceholder()
+            }
             .resizable()
             .scaledToFit()
-            .frame(width: 65, height: 40)
+            .frame(width: 55, height: 30)
+          
           Text(news.title)
-            .customFont(name: Fonts.shabnam, style: .title1, weight: .bold)
+            .customFont(name: Fonts.shabnam, style: .headline, weight: .bold)
             .foregroundColor(.primary)
         }
         Text(news.description)
@@ -32,6 +38,7 @@ struct NewsCardView: View {
           .customFont(name: Fonts.shabnam, style: .body, weight: .regular)
       }
       .padding(20)
+      .environment(\.layoutDirection, .rightToLeft)
     }
     .padding(.vertical, 10)
   }

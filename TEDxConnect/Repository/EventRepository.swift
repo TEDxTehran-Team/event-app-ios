@@ -10,11 +10,16 @@ import Foundation
 
 class EventRepository {
   
-  func get(completion: @escaping (Event?) -> ()) {
+  func get(completion: @escaping (Event?, XException?) -> ()) {
     
-    Network.shared.apollo.fetch(query: MainEventInfoQuery()) { result in
-      guard let _ = try? result.get().data else { return }
-      completion(Event.example)
+    Network.shared.apollo.fetch(query: MainEventInfoQuery(), cachePolicy: .returnCacheDataAndFetch) { result in
+      switch result {
+        case .failure(let error):
+          completion(nil, XException(message: error.localizedDescription, code: 0))
+        case .success(let data):
+          let model = data.data?.organizer?.mainEvent?.decodeModel(type: Event.self)
+          completion(model, nil)
+      }
     }
     
   }

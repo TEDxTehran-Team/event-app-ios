@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import struct Kingfisher.KFImage
 
 struct AboutDetailView: View {
   
@@ -17,14 +18,20 @@ struct AboutDetailView: View {
       
       ScrollView(.vertical) {
         VStack {
-          Image(decorative: self.about.image)
+          
+          KFImage(URL(string: Images.urlExtension + (self.about.image ?? ""))!)
+            .placeholder {
+              ImagePlaceholder()
+            }
             .resizable()
             .scaledToFit()
             .frame(width: geometry.size.width)
           
+          
           Text(self.about.description)
             .padding()
         }
+        .environment(\.layoutDirection, .rightToLeft)
       }
       
     }

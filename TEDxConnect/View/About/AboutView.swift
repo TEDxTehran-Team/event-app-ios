@@ -13,21 +13,45 @@ struct AboutView: View {
   @ObservedObject var viewModel = AboutViewModel()
   
   var body: some View {
-    VStack {
-      Image("tedx_logo")
-        .resizable()
-        .scaledToFit()
-        .frame(width: 300)
-        .padding(20)
-      
-      List(viewModel.repositories, id: \.self) { about in
-        NavigationLink(destination: AboutDetailView(about: about)) {
-          Text(about.title)
+    ZStack {
+      if self.viewModel.statusView == .complete {
+        if self.viewModel.repositories.count != 0 {
+          VStack {
+            Image(Images.logo)
+              .resizable()
+              .scaledToFit()
+              .frame(width: 300)
+              .padding(20)
+            
+            List(viewModel.repositories, id: \.self) { about in
+              NavigationLink(destination: AboutDetailView(about: about)) {
+                Text(about.title)
+              }
+            }
+            .environment(\.layoutDirection, .rightToLeft)
+
+          }
+        } else {
+          EmptyListView()
+            .onTapGesture {
+              self.viewModel.setup()
+          }
         }
+      }
+      
+      if self.viewModel.statusView == .loading {
+        Indicator()
+      }
+      
+      if self.viewModel.statusView == .error {
+        ErrorView(errorText: self.viewModel.errorMessage)
+          .onTapGesture {
+            self.viewModel.setup()
+          }
       }
     }
     .navigationBarColor(UIColor(named: "primaryRed"))
-    .navigationBarTitle(Text("About"), displayMode: .inline)
+    .navigationBarTitle(Text(LocalizedStringKey("About")), displayMode: .inline)
     .onAppear {
       self.viewModel.setup()
     }

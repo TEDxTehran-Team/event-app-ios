@@ -9,44 +9,47 @@
 import SwiftUI
 
 struct NewsView: View {
-    
-    @ObservedObject var viewModel = NewsViewModel()
-    
-    var body: some View {
-        ZStack {
-            VStack {
-                List(viewModel.repositories, id: \.self) { news in
-                    NewsCardView(news: news)
-                }
+  
+  @EnvironmentObject var viewModel: NewsViewModel
+  
+  var body: some View {
+    ZStack {
+      if self.viewModel.statusView == .complete {
+        if viewModel.repositories.count != 0 {
+          ScrollView(.vertical) {
+            ForEach(viewModel.repositories, id: \.self) { news in
+              NewsCardView(news: news)
             }
-            
-            if self.viewModel.statusView == .loading {
-                Indicator()
+            .padding()
+          }
+        } else {
+          EmptyListView()
+            .onTapGesture {
+              self.viewModel.setup()
             }
-            
-            if self.viewModel.statusView == .error {
-                Text(self.viewModel.errorMessage)
-                    .customFont(name: Fonts.shabnam, style: .caption1, weight: .medium)
-            }
-            
-            
         }
-            
-        .navigationBarColor(UIColor(named: "primaryRed"))
-        .navigationBarTitle(Text("News"))
-        .onAppear {
-            UITableView.appearance().separatorStyle = .none
+      }
+      
+      if self.viewModel.statusView == .loading {
+        Indicator()
+      }
+      
+      if self.viewModel.statusView == .error {
+        ErrorView(errorText: self.viewModel.errorMessage)
+          .onTapGesture {
             self.viewModel.setup()
-        }
-        .onDisappear {
-            UITableView.appearance().separatorStyle = .singleLine
-        }
+          }
+      }
+      
     }
-    
+    .navigationBarColor(UIColor(named: "primaryRed"))
+    .navigationBarTitle(Text(LocalizedStringKey("News")), displayMode: .inline)
+  }
+  
 }
 
 struct NewsView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewsView()
-    }
+  static var previews: some View {
+    NewsView().environmentObject(NewsViewModel())
+  }
 }

@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import struct Kingfisher.KFImage
 
 struct GalleryDetailView: View {
   
@@ -16,20 +17,44 @@ struct GalleryDetailView: View {
   let width = (UIScreen.main.bounds.width/3) - 20
   
   var body: some View {
-    
-    GridStack(minCellWidth: width, spacing: 10, numItems: viewModel.repositories.count) { index, cellWidth in
-      NavigationLink(destination: Image(self.viewModel.repositories[index].image).resizable().scaledToFit()) {
-        Image(self.viewModel.repositories[index].thumbnail)
-        .resizable()
-        .scaledToFill()
-        .frame(width: cellWidth, height: cellWidth)
-        .cornerRadius(10)
+    ZStack {
+      GridStack(minCellWidth: width, spacing: 15, numItems: viewModel.repositories.count) { index, cellWidth in
+        NavigationLink(destination:
+            KFImage(URL(string: Images.urlExtension + self.viewModel.repositories[index].image)!)
+            .placeholder {
+              ImagePlaceholder()
+            }
+            .resizable()
+            .scaledToFit()
+        ) {
+        
+          KFImage(URL(string: Images.urlExtension + self.viewModel.repositories[index].thumbnail)!)
+            .placeholder {
+              ImagePlaceholder()
+            }
+            .resizable()
+            .scaledToFill()
+            .frame(width: cellWidth, height: cellWidth)
+            .cornerRadius(10)
+          
+        }
+        .buttonStyle(PlainButtonStyle())
       }
-      .buttonStyle(PlainButtonStyle())
+      
+      if self.viewModel.statusView == .loading {
+        Indicator()
+      }
+      
+      if self.viewModel.statusView == .error {
+        ErrorView(errorText: self.viewModel.errorMessage)
+          .onTapGesture {
+            self.viewModel.setup(withAlbumId: Int(self.album.id) ?? 0)
+          }
+      }
     }
     .navigationBarTitle(Text(album.title), displayMode: .inline)
     .onAppear {
-      self.viewModel.setup(withAlbumId: self.album.id)
+      self.viewModel.setup(withAlbumId: Int(self.album.id) ?? 0)
     }
   }
   

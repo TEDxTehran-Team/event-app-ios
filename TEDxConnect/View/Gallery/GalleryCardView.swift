@@ -7,23 +7,24 @@
 //
 
 import SwiftUI
+import struct Kingfisher.KFImage
 
 struct GalleryCardView: View {
   
   let album: Album
+  let width = UIScreen.main.bounds.width
   
   var body: some View {
-    ZStack {
-      Image(album.cover)
+    NavigationLink(destination: GalleryDetailView(album: album)) {
+      KFImage(URL(string: Images.urlExtension + album.cover)!)
+        .placeholder {
+          ImagePlaceholder()
+        }
         .resizable()
-        .overlay(ImageOverlay(text: album.title), alignment: .bottomLeading)
+        .frame(height: 200)
+        .overlay(ImageOverlay(text: self.album.title), alignment: .bottomLeading)
         .cornerRadius(10)
         .padding(.vertical, 10)
-        .frame(height: 200)
-      NavigationLink(destination: GalleryDetailView(album: album)) {
-        EmptyView()
-      }
-      .buttonStyle(PlainButtonStyle())
     }
     
   }

@@ -7,15 +7,19 @@
 //
 
 import Foundation
-import Apollo
 
 class PhotoRepository {
   
-  func get(withAlbumId albumId: Int, completion: @escaping ([Photo]?) -> ()) {
+  func get(withAlbumId albumId: Int, completion: @escaping ([Photo]?, XException?) -> ()) {
     
-    Network.shared.apollo.fetch(query: GetAlbumPhotosQuery(id: albumId)) { result in
-      guard let _ = try? result.get().data else { return }
-      completion([Photo](repeating: Photo.example, count: 10))
+    Network.shared.apollo.fetch(query: GetAlbumPhotosQuery(id: albumId), cachePolicy: .returnCacheDataAndFetch) { result in
+      switch result {
+        case .failure(let error):
+          completion(nil, XException(message: error.localizedDescription, code: 0))
+        case .success(let data):
+          let model = data.data?.album?.decodeModel(type: PhotoResponse.self)
+          completion(model?.photo, nil)
+      }
     }
     
   }

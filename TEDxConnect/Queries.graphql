@@ -1,8 +1,8 @@
-query GetAllNews {
-  allNews {
+query GetNews {
+  news {
     title
     description
-    iconUrl
+    icon
   }
 }
 
@@ -28,6 +28,7 @@ query GetAbouts {
     abouts {
       title
       description
+      image
     }
   }
 }
@@ -45,11 +46,113 @@ query MainEventInfo {
       }
       venue {
         title
-        adddress
+        adress
         mapLink
         mapImage
       }
       
+    }
+  }
+}
+
+query GetDays {
+  organizer {
+    mainEvent {
+      days {
+        title
+        sessions {
+          title
+          startTime
+          sections {
+            title
+            type
+            startTime
+            endTime
+          }
+        }
+      }
+    }
+  }
+}
+
+query GetTalks {
+  talksWithEvent {
+    talks {
+      id
+      title
+      speakers {
+        title
+      }
+      section {
+        image
+      }
+    }
+    event {
+      title
+    }
+  }
+}
+
+query GetFeaturedTalk {
+  featuredTalk {
+    id
+    title
+    speakers {
+      title
+    }
+    section {
+      image
+    }
+  }
+}
+
+query GetTalkDetail($id: Int!) {
+  talk(id: $id) {
+    id
+    title
+    description
+    videoLink
+    extraLink
+    speakers {
+      title
+    }
+    section {
+      image
+    }
+  }
+  suggestedTalks(talk: $id) {
+    id
+    title
+    speakers {
+      title
+    }
+    section {
+      image
+    }
+  }
+}
+
+query GetEventSponsors {
+  sponsorsWithType(event: 1) {
+    sponsors {
+      title
+      logo
+    }
+    type {
+      title
+    }
+  }
+}
+
+
+query GetEventSpeakers {
+  organizer {
+    mainEvent {
+      speakers {
+        title
+        description
+        image
+      }
     }
   }
 }
