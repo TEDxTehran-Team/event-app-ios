@@ -11,6 +11,7 @@ import SwiftUI
 struct SponsorsView: View {
   
   @ObservedObject var viewModel = SponsorViewModel()
+  let eventId: Int
   
   var body: some View {
     ZStack {
@@ -39,7 +40,7 @@ struct SponsorsView: View {
         } else {
           EmptyListView()
             .onTapGesture {
-              self.viewModel.setup()
+              self.viewModel.setup(withEventId: eventId)
             }
         }
       }
@@ -51,12 +52,12 @@ struct SponsorsView: View {
       if self.viewModel.statusView == .error {
         ErrorView(errorText: self.viewModel.errorMessage)
           .onTapGesture {
-            self.viewModel.setup()
+            self.viewModel.setup(withEventId: eventId)
           }
       }
     }
     .onAppear {
-      self.viewModel.setup()
+      self.viewModel.setup(withEventId: eventId)
     }
     .navigationBarColor(UIColor(named: "primaryRed"))
     .navigationBarTitle(Text(LocalizedStringKey("Sponsors")), displayMode: .inline)
@@ -65,6 +66,6 @@ struct SponsorsView: View {
 
 struct SponsorsView_Previews: PreviewProvider {
   static var previews: some View {
-    SponsorsView()
+    SponsorsView(eventId: 1)
   }
 }

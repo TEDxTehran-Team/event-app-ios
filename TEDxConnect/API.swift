@@ -593,6 +593,7 @@ public final class MainEventInfoQuery: GraphQLQuery {
         __typename
         mainEvent {
           __typename
+          id
           title
           banner
           startDate
@@ -692,6 +693,7 @@ public final class MainEventInfoQuery: GraphQLQuery {
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("title", type: .nonNull(.scalar(String.self))),
             GraphQLField("banner", type: .scalar(String.self)),
             GraphQLField("startDate", type: .scalar(String.self)),
@@ -707,8 +709,8 @@ public final class MainEventInfoQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(title: String, banner: String? = nil, startDate: String? = nil, endDate: String? = nil, links: [Link], venue: Venue? = nil) {
-          self.init(unsafeResultMap: ["__typename": "EventSchemaType", "title": title, "banner": banner, "startDate": startDate, "endDate": endDate, "links": links.map { (value: Link) -> ResultMap in value.resultMap }, "venue": venue.flatMap { (value: Venue) -> ResultMap in value.resultMap }])
+        public init(id: GraphQLID, title: String, banner: String? = nil, startDate: String? = nil, endDate: String? = nil, links: [Link], venue: Venue? = nil) {
+          self.init(unsafeResultMap: ["__typename": "EventSchemaType", "id": id, "title": title, "banner": banner, "startDate": startDate, "endDate": endDate, "links": links.map { (value: Link) -> ResultMap in value.resultMap }, "venue": venue.flatMap { (value: Venue) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -717,6 +719,15 @@ public final class MainEventInfoQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return resultMap["id"]! as! GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
           }
         }
 
@@ -2166,8 +2177,8 @@ public final class GetEventSponsorsQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query GetEventSponsors {
-      sponsorsWithType(event: 1) {
+    query GetEventSponsors($eventId: Int!) {
+      sponsorsWithType(event: $eventId) {
         __typename
         sponsors {
           __typename
@@ -2184,7 +2195,14 @@ public final class GetEventSponsorsQuery: GraphQLQuery {
 
   public let operationName: String = "GetEventSponsors"
 
-  public init() {
+  public var eventId: Int
+
+  public init(eventId: Int) {
+    self.eventId = eventId
+  }
+
+  public var variables: GraphQLMap? {
+    return ["eventId": eventId]
   }
 
   public struct Data: GraphQLSelectionSet {
@@ -2192,7 +2210,7 @@ public final class GetEventSponsorsQuery: GraphQLQuery {
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("sponsorsWithType", arguments: ["event": 1], type: .list(.object(SponsorsWithType.selections))),
+        GraphQLField("sponsorsWithType", arguments: ["event": GraphQLVariable("eventId")], type: .list(.object(SponsorsWithType.selections))),
       ]
     }
 

@@ -36,6 +36,7 @@ query GetAbouts {
 query MainEventInfo {
   organizer {
     mainEvent {
+      id
       title
       banner
       startDate
@@ -132,8 +133,8 @@ query GetTalkDetail($id: Int!) {
   }
 }
 
-query GetEventSponsors {
-  sponsorsWithType(event: 1) {
+query GetEventSponsors($eventId: Int!) {
+  sponsorsWithType(event: $eventId) {
     sponsors {
       title
       logo

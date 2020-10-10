@@ -16,9 +16,9 @@ class SponsorViewModel: ObservableObject {
   @Published var errorMessage: String = ""
   @Published var statusView: StatusView = .none
   
-  func setup() {
+  func setup(withEventId eventId: Int) {
     self.statusView = .loading
-    repo.get() { repositories, exception  in
+    repo.get(withEventId: eventId) { repositories, exception  in
       
       if let error = exception {
         self.statusView = .error
