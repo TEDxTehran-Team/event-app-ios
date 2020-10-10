@@ -605,7 +605,7 @@ public final class MainEventInfoQuery: GraphQLQuery {
           venue {
             __typename
             title
-            adress
+            address
             mapLink
             mapImage
           }
@@ -837,7 +837,7 @@ public final class MainEventInfoQuery: GraphQLQuery {
             return [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
               GraphQLField("title", type: .nonNull(.scalar(String.self))),
-              GraphQLField("adress", type: .scalar(String.self)),
+              GraphQLField("address", type: .scalar(String.self)),
               GraphQLField("mapLink", type: .scalar(String.self)),
               GraphQLField("mapImage", type: .scalar(String.self)),
             ]
@@ -849,8 +849,8 @@ public final class MainEventInfoQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(title: String, adress: String? = nil, mapLink: String? = nil, mapImage: String? = nil) {
-            self.init(unsafeResultMap: ["__typename": "VenueSchemaType", "title": title, "adress": adress, "mapLink": mapLink, "mapImage": mapImage])
+          public init(title: String, address: String? = nil, mapLink: String? = nil, mapImage: String? = nil) {
+            self.init(unsafeResultMap: ["__typename": "VenueSchemaType", "title": title, "address": address, "mapLink": mapLink, "mapImage": mapImage])
           }
 
           public var __typename: String {
@@ -872,12 +872,12 @@ public final class MainEventInfoQuery: GraphQLQuery {
           }
 
           /// venue's address.
-          public var adress: String? {
+          public var address: String? {
             get {
-              return resultMap["adress"] as? String
+              return resultMap["address"] as? String
             }
             set {
-              resultMap.updateValue(newValue, forKey: "adress")
+              resultMap.updateValue(newValue, forKey: "address")
             }
           }
 

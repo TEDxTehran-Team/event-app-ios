@@ -16,7 +16,7 @@ struct SponsorCell: View {
   
   var body: some View {
     Button {
-      print("tapped")
+      UIApplication.shared.open(URL(string: sponsor.link)!)
     } label: {
       VStack {
         
