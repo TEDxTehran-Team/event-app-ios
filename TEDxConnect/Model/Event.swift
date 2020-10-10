@@ -12,12 +12,12 @@ struct Event: Decodable, Hashable {
   
   struct Venue: Decodable, Hashable {
     var title: String
-    var adress: String
+    var address: String
     var mapLink: String
     var mapImage: String
     
     static var example: Venue {
-      Venue(title: "-", adress: "-", mapLink: "-", mapImage: Images.example)
+      Venue(title: "-", address: "-", mapLink: "-", mapImage: Images.example)
     }
   }
   

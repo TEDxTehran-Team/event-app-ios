@@ -46,7 +46,7 @@ query MainEventInfo {
       }
       venue {
         title
-        adress
+        address
         mapLink
         mapImage
       }

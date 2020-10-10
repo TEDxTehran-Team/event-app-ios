@@ -102,7 +102,7 @@ struct EventDetailView: View {
               Divider()
               HStack {
                 Image(decorative: "address-icon")
-                Text(self.viewModel.repository.venue?.adress ?? "-")
+                Text(self.viewModel.repository.venue?.address ?? "-")
               }
               .padding()
             }
