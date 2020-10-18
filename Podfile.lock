@@ -5,22 +5,11 @@ PODS:
   - Apollo/SQLite (0.32.1):
     - Apollo/Core
     - SQLite.swift (~> 0.12.2)
-  - Firebase/Analytics (6.34.0):
-    - Firebase/Core
-  - Firebase/Core (6.34.0):
-    - Firebase/CoreOnly
-    - FirebaseAnalytics (= 6.9.0)
   - Firebase/CoreOnly (6.34.0):
     - FirebaseCore (= 6.10.4)
-  - FirebaseAnalytics (6.9.0):
-    - FirebaseCore (~> 6.10)
-    - FirebaseInstallations (~> 1.7)
-    - GoogleAppMeasurement (= 6.9.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
-    - GoogleUtilities/MethodSwizzler (~> 6.7)
-    - GoogleUtilities/Network (~> 6.7)
-    - "GoogleUtilities/NSData+zlib (~> 6.7)"
-    - nanopb (~> 1.30906.0)
+  - Firebase/Messaging (6.34.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 4.7.1)
   - FirebaseCore (6.10.4):
     - FirebaseCoreDiagnostics (~> 1.6)
     - GoogleUtilities/Environment (~> 6.7)
@@ -35,12 +24,19 @@ PODS:
     - GoogleUtilities/Environment (~> 6.7)
     - GoogleUtilities/UserDefaults (~> 6.7)
     - PromisesObjC (~> 1.2)
-  - GoogleAppMeasurement (6.9.0):
+  - FirebaseInstanceID (4.8.0):
+    - FirebaseCore (~> 6.10)
+    - FirebaseInstallations (~> 1.6)
+    - GoogleUtilities/Environment (~> 6.7)
+    - GoogleUtilities/UserDefaults (~> 6.7)
+  - FirebaseMessaging (4.7.1):
+    - FirebaseCore (~> 6.10)
+    - FirebaseInstanceID (~> 4.7)
     - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
-    - GoogleUtilities/MethodSwizzler (~> 6.7)
-    - GoogleUtilities/Network (~> 6.7)
-    - "GoogleUtilities/NSData+zlib (~> 6.7)"
-    - nanopb (~> 1.30906.0)
+    - GoogleUtilities/Environment (~> 6.7)
+    - GoogleUtilities/Reachability (~> 6.7)
+    - GoogleUtilities/UserDefaults (~> 6.7)
+    - Protobuf (>= 3.9.2, ~> 3.9)
   - GoogleDataTransport (7.5.1):
     - nanopb (~> 1.30906.0)
   - GoogleUtilities/AppDelegateSwizzler (6.7.2):
@@ -51,8 +47,6 @@ PODS:
     - PromisesObjC (~> 1.2)
   - GoogleUtilities/Logger (6.7.2):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (6.7.2):
-    - GoogleUtilities/Logger
   - GoogleUtilities/Network (6.7.2):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
@@ -71,6 +65,10 @@ PODS:
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.11)
+  - Protobuf (3.13.0)
+  - Pushe (1.0.12):
+    - Firebase/Messaging
+    - Sentry
   - Sentry (6.0.1):
     - Sentry/Core (= 6.0.1)
   - Sentry/Core (6.0.1)
@@ -81,43 +79,47 @@ PODS:
 DEPENDENCIES:
   - Apollo (~> 0.32.1)
   - Apollo/SQLite (~> 0.32.1)
-  - Firebase/Analytics
   - Kingfisher/SwiftUI (~> 5.15.5)
+  - Pushe (= 1.0.12)
   - Sentry (~> 6.0.1)
 
 SPEC REPOS:
   trunk:
     - Apollo
     - Firebase
-    - FirebaseAnalytics
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseInstallations
-    - GoogleAppMeasurement
+    - FirebaseInstanceID
+    - FirebaseMessaging
     - GoogleDataTransport
     - GoogleUtilities
     - Kingfisher
     - nanopb
     - PromisesObjC
+    - Protobuf
+    - Pushe
     - Sentry
     - SQLite.swift
 
 SPEC CHECKSUMS:
   Apollo: 55d9a99774dd06dd6cc865d16a6c13d0d6804211
   Firebase: c23a36d9e4cdf7877dfcba8dd0c58add66358999
-  FirebaseAnalytics: 3bb096873ee0d7fa4b6c70f5e9166b6da413cc7f
   FirebaseCore: d3a978a3cfa3240bf7e4ba7d137fdf5b22b628ec
   FirebaseCoreDiagnostics: 770ac5958e1372ce67959ae4b4f31d8e127c3ac1
   FirebaseInstallations: 466c7b4d1f58fe16707693091da253726a731ed2
-  GoogleAppMeasurement: a6a3a066369828db64eda428cb2856dc1cdc7c4e
+  FirebaseInstanceID: bd3ffc24367f901a43c063b36c640b345a4a5dd1
+  FirebaseMessaging: 5eca4ef173de76253352511aafef774caa1cba2a
   GoogleDataTransport: f56af7caa4ed338dc8e138a5d7c5973e66440833
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   Kingfisher: e3ec347a5ab8817b7585ef46923a2d2b9a7d8fbe
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
+  Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
+  Pushe: 7a5463c9effddef58ef157f7c62326b8e21e8549
   Sentry: 2130c956d0d6824d4d9aaa98fd55140b1d55c030
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
 
-PODFILE CHECKSUM: 3fa080b3affb316f4fa455db02d4564d88d5af9b
+PODFILE CHECKSUM: 6dcd2365008a21650ef23d9d66cea436ce36352c
 
 COCOAPODS: 1.8.4
