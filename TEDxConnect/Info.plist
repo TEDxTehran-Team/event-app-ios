@@ -53,6 +53,13 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>Pushe</key>
+	<dict>
+		<key>AppGroupsId</key>
+		<string>group.com.talexani.xconnect.pushe</string>
+		<key>ManifestKey</key>
+		<string>NWRuNm12d2xtMzk4azRrZUBrbG1AMTA3MjkxNDY0MTY3</string>
+	</dict>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Shabnam-FD.ttf</string>
@@ -75,11 +82,6 @@
 			</array>
 		</dict>
 	</dict>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>fetch</string>
-		<string>remote-notification</string>
-	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -103,12 +105,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>Pushe</key>
-	<dict>
-		<key>ManifestKey</key>
-		<string>NWRuNm12d2xtMzk4azRrZUBrbG1AMTA3MjkxNDY0MTY3</string>
-		<key>AppGroupsId</key>
-		<string>group.com.talexani.xconnect.pushe</string>
-	</dict>
 </dict>
 </plist>
