@@ -21,7 +21,7 @@ struct HomeTabUIView: View {
     
     var eventViewModel : EventViewModel
     var dayViewModel : DayViewModel
-    
+    var speakerViewModel:SpeakerViewModel
     
     var body: some View {
         VStack {
@@ -41,6 +41,7 @@ struct HomeTabUIView: View {
                     .environmentObject(self.eventViewModel)
             }else if self.mainViewType == .speakers {
                 SpeakersView()
+                    .environmentObject(self.speakerViewModel)
             }else {
                 TimeTableView()
                     .environmentObject(self.dayViewModel)
@@ -54,6 +55,6 @@ struct HomeTabUIView: View {
 
 struct HomeTabUIView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeTabUIView(eventViewModel: EventViewModel(), dayViewModel: DayViewModel())
+        HomeTabUIView(eventViewModel: EventViewModel(), dayViewModel: DayViewModel(),speakerViewModel:SpeakerViewModel())
     }
 }

@@ -158,7 +158,7 @@ struct EventDetailView: View {
                 HStack {
                     Spacer()
                     Text(LocalizedStringKey("Sponsors"))
-                        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                        .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
                     Spacer()
                 }
                 .padding()

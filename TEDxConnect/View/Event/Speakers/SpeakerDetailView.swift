@@ -10,38 +10,34 @@ import SwiftUI
 import struct Kingfisher.KFImage
 
 struct SpeakerDetailView: View {
-  
-  let speaker: Speaker
-  
-  var body: some View {
-    GeometryReader { geometry in
-      
-      ScrollView(.vertical) {
-        VStack {
-          
-          KFImage(URL(string: Images.urlExtension + (self.speaker.image)))
-            .placeholder {
-              ImagePlaceholder()
+    
+    let speaker: Speaker
+    
+    var body: some View {
+        
+        ScrollView(.vertical) {
+            VStack {
+                
+                KFImage(URL(string: Images.urlExtension + (self.speaker.image)))
+                    .placeholder {
+                        ImagePlaceholder()
+                    }
+                    .resizable()
+                    .scaledToFit()
+                    .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity)
+                
+                Text(self.speaker.description)
+                    .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                    .padding()
             }
-            .resizable()
-            .scaledToFit()
-            .frame(width: geometry.size.width)
-          
-          
-          Text(self.speaker.description)
-            .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
-            .padding()
+            
         }
-        .environment(\.layoutDirection, .rightToLeft)
-      }
-      
+        .navigationBarTitle(Text(self.speaker.title), displayMode: .inline)
     }
-    .navigationBarTitle(Text(self.speaker.title), displayMode: .inline)
-  }
 }
 
 struct SpeakerDetailView_Previews: PreviewProvider {
-  static var previews: some View {
-    SpeakerDetailView(speaker: Speaker.example)
-  }
+    static var previews: some View {
+        SpeakerDetailView(speaker: Speaker.example)
+    }
 }

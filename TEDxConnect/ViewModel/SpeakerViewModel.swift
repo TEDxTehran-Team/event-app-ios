@@ -17,6 +17,7 @@ class SpeakerViewModel: ObservableObject {
   @Published var statusView: StatusView = .none
   
   func setup() {
+
     self.statusView = .loading
     repo.get() { repositories, exception  in
       

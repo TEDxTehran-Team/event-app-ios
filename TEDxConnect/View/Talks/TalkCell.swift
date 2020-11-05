@@ -12,7 +12,7 @@ import struct Kingfisher.KFImage
 struct TalkCell: View {
   
   let talk: Talk
-  let cellWidth: CGFloat = 120
+  let cellWidth: CGFloat = 130
   
   var body: some View {
     NavigationLink(destination: TalkDetailView(id: talk.id)) {
@@ -27,13 +27,14 @@ struct TalkCell: View {
           .frame(width: self.cellWidth, height: self.cellWidth)
           .cornerRadius(10)
         
-        VStack(alignment: .leading) {
+        VStack(alignment: .center) {
           Text(talk.title)
-            .customFont(name: Fonts.shabnam, style: .headline)
+            .customFont(name: Fonts.shabnam, style: .caption1, weight: .regular)
             .lineLimit(2)
+            
           Text(talk.speakers.map { $0.title }.joined(separator: ", "))
-            .customFont(name: Fonts.shabnam, style: .subheadline)
-            .foregroundColor(.secondary)
+            .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+            .lineLimit(1)
         }
       }
       .frame(width: self.cellWidth)

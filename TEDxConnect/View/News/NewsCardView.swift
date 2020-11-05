@@ -30,12 +30,13 @@ struct NewsCardView: View {
             .frame(width: 55, height: 30)
           
           Text(news.title)
-            .customFont(name: Fonts.shabnam, style: .headline, weight: .bold)
+            .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
             .foregroundColor(.primary)
         }
         Text(news.description)
           .foregroundColor(.secondary)
-          .customFont(name: Fonts.shabnam, style: .body, weight: .regular)
+            .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+            .padding(.top)
       }
       .padding(20)
       .environment(\.layoutDirection, .rightToLeft)

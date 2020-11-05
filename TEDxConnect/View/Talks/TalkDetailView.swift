@@ -81,6 +81,7 @@ struct TalkDetailView: View {
                           .foregroundColor(Colors.primaryRed), alignment: .bottom)
                 .padding(.horizontal)
               TalksRow(talks: self.viewModel.repository.suggestedTalk)
+                .padding(.top)
             }
             .layoutPriority(1)
             
