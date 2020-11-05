@@ -14,7 +14,7 @@ struct NewsCardView: View {
   
   var body: some View {
     ZStack {
-      RoundedRectangle(cornerRadius: 25, style: .continuous)
+      RoundedRectangle(cornerRadius: 10, style: .continuous)
         .fill(Colors.primaryBackground)
         .shadow(color: Color.black.opacity(0.2), radius: 6, x: 0, y: 3)
       

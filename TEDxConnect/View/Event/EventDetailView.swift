@@ -11,167 +11,161 @@ import struct Kingfisher.KFImage
 import Sentry
 
 struct EventDetailView: View {
-  
-  @EnvironmentObject var viewModel: EventViewModel
-  @State private var showingSheet = false
-  @State private var url = ""
-  @State private var titleLocalizedKey = ""
-  
-  var body: some View {
-    GeometryReader { fullView in
-      ScrollView(.vertical) {
-        ZStack {
-          VStack {
-
+    
+    @EnvironmentObject var viewModel: EventViewModel
+    
+    var body: some View {
+        ScrollView {
+            VStack {
+                if self.viewModel.statusView == .error {
+                    ErrorView(errorText: self.viewModel.errorMessage)
+                        .onTapGesture {
+                            self.viewModel.setup()
+                        }
+                }else {
+                    self.mainContent
+                }
+            }
+            
+            
+        } // ScrollView
+        .background(Colors.primaryLightGray)
+        .navigationBarColor(UIColor(named: "primaryRed"))
+        .navigationBarTitle(Text(LocalizedStringKey("Home")), displayMode: .inline)
+        .navigationBarItems(leading: NavigationLink(destination: SettingsView().environmentObject(IconNames()), label: {
+            Image(systemName: "gear")
+                .resizable()
+                .frame(width: 24, height: 24)
+                .foregroundColor(.white)
+        }), trailing: NavigationLink(destination: AboutView(), label: {
+            Image(systemName: "info.circle")
+                .resizable()
+                .frame(width: 24, height: 24)
+                .foregroundColor(.white)
+        }))
+        .environment(\.layoutDirection, .rightToLeft)
+        
+    } // Body
+    
+    private var mainContent : some View {
+        VStack {
             KFImage(URL(string: Images.urlExtension + (self.viewModel.repository.banner ?? ""))!)
-              .placeholder {
-                ImagePlaceholder()
-              }
-              .resizable()
-              .scaledToFill()
-              .frame(width: fullView.size.width, height: 200)
-              .clipped()
+                .placeholder {
+                    ImagePlaceholder()
+                }
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .cornerRadius(10)
+                .frame(height: 200)
+                .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity)
+                .padding()
+            
             
             Button(action: {
-              url = viewModel.repository.links?.first { $0.role == "LIVE" }?.url ?? Constants.placeholderUrl
-              titleLocalizedKey = "Watch Live"
-              showingSheet = true
+                if let url = URL(string: viewModel.repository.links?.first { $0.role == "LIVE" }?.url ?? Constants.placeholderUrl) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
             }) {
-              HStack {
-                Spacer()
-                Image(systemName: "play.rectangle")
-                Text(LocalizedStringKey("Watch Live"))
-                Spacer()
-              }
-              .padding()
+                HStack(alignment: .center) {
+                    Spacer()
+                    Image(systemName: "play.rectangle")
+                    Text(LocalizedStringKey("Watch Live"))
+                    Spacer()
+                }
+                .padding(.vertical)
             }
             .customStyle(withBackgroundColor: Colors.primaryRed)
             
             VStack(alignment: .leading) {
-              if let ticket = self.viewModel.repository.links?.first { $0.role == "TICKET" } {
-                Button {
-                  url = ticket.url
-                  titleLocalizedKey = "Buy Ticket"
-                  showingSheet = true
-                } label: {
-                  HStack {
-                    Image(decorative: "ticket-icon")
-                    Text(LocalizedStringKey("Buy Ticket"))
-                  }
-                  .padding()
+                if let ticket = self.viewModel.repository.links?.first { $0.role == "TICKET" } {
+                    Button {
+                        if let url = URL(string: ticket.url) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                    } label: {
+                        HStack {
+                            Image(decorative: "ticket-icon")
+                            Text(LocalizedStringKey("Buy Ticket"))
+                        }
+                        .padding(.vertical)
+                    }
+                    .foregroundColor(Colors.primaryRed)
+                    Divider()
                 }
-                .foregroundColor(Colors.primaryRed)
-                Divider()
-              }
-              if let registeration = self.viewModel.repository.links?.first { $0.role == "REGISTRATION" } {
-                Button {
-                  url = registeration.url
-                  titleLocalizedKey = "Register in Event"
-                  showingSheet = true
-                } label: {
-                  HStack {
-                    Image(decorative: "register-icon")
-                    Text(LocalizedStringKey("Register in Event"))
-                  }
-                  .padding()
+                if let registeration = self.viewModel.repository.links?.first { $0.role == "REGISTRATION" } {
+                    Button {
+                        if let urlMap = URL(string: registeration.url) {
+                            UIApplication.shared.open(urlMap, options: [:], completionHandler: nil)
+                        }
+                    } label: {
+                        HStack {
+                            Image(decorative: "register-icon")
+                            Text(LocalizedStringKey("Register in Event"))
+                        }
+                        .padding(.vertical)
+                    }
+                    .foregroundColor(Colors.primaryRed)
+                    Divider()
                 }
-                .foregroundColor(Colors.primaryRed)
-                Divider()
-              }
-              NavigationLink(destination: SpeakersView()) {
+                
                 HStack {
-                  Image(decorative: "speaker-icon")
-                  Text(LocalizedStringKey("Speakers"))
+                    Image(decorative: "clock-icon")
+                    Text(DateHelper.dateWith(self.viewModel.repository.startDate ?? "TBA", showTime: true))
+                    Text(DateHelper.dateWith(self.viewModel.repository.endDate  ?? "TBA", showTime: true))
                 }
                 .padding()
-              }
-              .foregroundColor(Colors.primaryRed)
-              Divider()
-              HStack {
-                Image(decorative: "clock-icon")
-                Text(DateHelper.dateWith(self.viewModel.repository.startDate ?? "TBA", showTime: true))
-                Text(DateHelper.dateWith(self.viewModel.repository.endDate  ?? "TBA", showTime: true))
-              }
-              .padding()
-              Divider()
-              HStack {
-                Image(decorative: "venue-icon")
-                Text(self.viewModel.repository.venue?.title ?? "-")
-              }
-              .padding()
-              Divider()
-              HStack {
-                Image(decorative: "address-icon")
-                Text(self.viewModel.repository.venue?.address ?? "-")
-              }
-              .padding()
+                Divider()
+                HStack {
+                    Image(decorative: "venue-icon")
+                    Text(self.viewModel.repository.venue?.title ?? "-")
+                }
+                .padding()
+                Divider()
+                HStack {
+                    Image(decorative: "address-icon")
+                    Text(self.viewModel.repository.venue?.address ?? "-")
+                }
+                .padding()
             }
             .background(Colors.primaryBackground)
             .cornerRadius(10)
             .foregroundColor(.secondary)
-            .padding([.horizontal, .bottom])
+            .padding([.vertical, .bottom])
             
             KFImage(URL(string: Images.urlExtension + (self.viewModel.repository.venue?.mapImage ?? ""))!)
-              .placeholder {
-                ImagePlaceholder()
-              }
-              .resizable()
-              .scaledToFill()
-              .frame(width: fullView.size.width, height: 200)
-              .onTapGesture {
-                url = viewModel.repository.venue?.mapLink ?? Constants.placeholderUrl
-                titleLocalizedKey = ""
-                showingSheet = true
-              }
+                .placeholder {
+                    ImagePlaceholder()
+                }
+                .resizable()
+                .scaledToFill()
+                .frame(height: 200)
+                .onTapGesture {
+                    if let url = URL(string: viewModel.repository.venue?.mapLink ?? Constants.placeholderUrl) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+                    
+                }
+                .padding(.bottom)
             
-            NavigationLink(destination: SponsorsView(eventId: viewModel.repository.id ?? "1")) {
-              HStack {
-                Spacer()
-                Text(LocalizedStringKey("Sponsors"))
-                Spacer()
-              }
-              .padding()
-              .customStyle(withBackgroundColor: Colors.primaryRed)
+            NavigationLink(destination: SponsorsView(eventId: viewModel.repository.id)) {
+                HStack {
+                    Spacer()
+                    Text(LocalizedStringKey("Sponsors"))
+                    Spacer()
+                }
+                .padding()
+                .customStyle(withBackgroundColor: Colors.primaryRed)
             }
-
-          } // VStack
-          if self.viewModel.statusView == .error {
-            ErrorView(errorText: self.viewModel.errorMessage)
-              .onTapGesture {
-                self.viewModel.setup()
-              }
-          }
-        } // ZStack
-        
-      } // ScrollView
-      .background(Colors.primaryLightGray)
-      
-    } // GeometryReader
-    .navigationBarColor(UIColor(named: "primaryRed"))
-    .navigationBarTitle(Text(LocalizedStringKey("Home")), displayMode: .inline)
-    .navigationBarItems(leading: NavigationLink(destination: SettingsView().environmentObject(IconNames()), label: {
-      Image(systemName: "gear")
-        .resizable()
-        .frame(width: 24, height: 24)
-        .foregroundColor(.white)
-    }), trailing: NavigationLink(destination: AboutView(), label: {
-      Image(systemName: "info.circle")
-        .resizable()
-        .frame(width: 24, height: 24)
-        .foregroundColor(.white)
-    }))
-    .environment(\.layoutDirection, .rightToLeft)
-    .sheet(isPresented: $showingSheet) {
-      WebViewSheet(url: url, titleLocalizedKey: titleLocalizedKey)
+            
+        } // VStack
+        .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity)
+        .padding(.horizontal)
     }
-  } // Body
-  
-  
-  
+    
 }
 
 struct EventDetailView_Previews: PreviewProvider {
-  static var previews: some View {
-    EventDetailView().environmentObject(EventViewModel())
-  }
+    static var previews: some View {
+        EventDetailView().environmentObject(EventViewModel())
+    }
 }

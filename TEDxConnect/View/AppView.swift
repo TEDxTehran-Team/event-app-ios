@@ -52,21 +52,11 @@ struct AppView: View {
         Text(LocalizedStringKey("News"))
       }
     
-      NavigationView {
-        TimeTableView()
-          .environmentObject(dayViewModel)
-      }
-      .tag(3)
-      .tabItem {
-        Image(systemName: "clock")
-        Text(LocalizedStringKey("Timetable"))
-      }
       
       NavigationView {
-        EventDetailView()
-          .environmentObject(eventViewModel)
+        HomeTabUIView(eventViewModel: self.eventViewModel,dayViewModel: self.dayViewModel)
       }
-      .tag(4)
+      .tag(3)
       .tabItem {
         Image(systemName: "house")
         Text(LocalizedStringKey("Home"))

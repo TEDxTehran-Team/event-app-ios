@@ -2195,6 +2195,7 @@ public final class GetEventSponsorsQuery: GraphQLQuery {
           __typename
           title
           logo
+          link
         }
         type {
           __typename
@@ -2300,6 +2301,7 @@ public final class GetEventSponsorsQuery: GraphQLQuery {
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("title", type: .nonNull(.scalar(String.self))),
             GraphQLField("logo", type: .scalar(String.self)),
+            GraphQLField("link", type: .scalar(String.self)),
           ]
         }
 
@@ -2309,8 +2311,8 @@ public final class GetEventSponsorsQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(title: String, logo: String? = nil) {
-          self.init(unsafeResultMap: ["__typename": "SponsorSchemaType", "title": title, "logo": logo])
+        public init(title: String, logo: String? = nil, link: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "SponsorSchemaType", "title": title, "logo": logo, "link": link])
         }
 
         public var __typename: String {
@@ -2338,6 +2340,16 @@ public final class GetEventSponsorsQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "logo")
+          }
+        }
+
+        /// an external link to the sponsor's website.
+        public var link: String? {
+          get {
+            return resultMap["link"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "link")
           }
         }
       }
