@@ -17,7 +17,7 @@ struct AppView: View {
   var talkViewModel = TalkViewModel()
   var featuredTalkViewModel = FeaturedTalkViewModel()
   
-  @State private var selection = 4
+  @State private var selection = 3
 
   var body: some View {
     TabView(selection: $selection) {

@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-@available(iOS 13, macCatalyst 13, tvOS 13, watchOS 6, *)
 struct ScaledFont: ViewModifier {
   @Environment(\.sizeCategory) var sizeCategory
   
@@ -24,7 +23,6 @@ struct ScaledFont: ViewModifier {
   }
 }
 
-@available(iOS 13, macCatalyst 13, tvOS 13, watchOS 6, *)
 extension View {
   func customFont(
     name: String,

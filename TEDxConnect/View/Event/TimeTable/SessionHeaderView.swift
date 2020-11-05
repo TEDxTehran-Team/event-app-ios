@@ -15,11 +15,12 @@ struct SessionHeaderView: View {
   var body: some View {
     HStack(spacing: 10) {
       Text(DateHelper.ommitSeconds(fromTime: session.startTime))
-        .customFont(name: Fonts.shabnam, style: .title3)
+        .customFont(name: Fonts.shabnam, style: .subheadline, weight: .regular)
         .foregroundColor(Colors.primaryRed)
+        
       Text(session.title)
-        .customFont(name: Fonts.shabnam, style: .title3)
-        .foregroundColor(.secondary)
+        .customFont(name: Fonts.shabnam, style: .subheadline, weight: .regular)
+        .foregroundColor(.black)
     }
   }
 }

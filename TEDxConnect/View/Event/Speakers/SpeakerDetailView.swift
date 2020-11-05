@@ -29,6 +29,7 @@ struct SpeakerDetailView: View {
           
           
           Text(self.speaker.description)
+            .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
             .padding()
         }
         .environment(\.layoutDirection, .rightToLeft)

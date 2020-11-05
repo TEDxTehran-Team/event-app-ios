@@ -70,6 +70,7 @@ struct EventDetailView: View {
                     Spacer()
                     Image(systemName: "play.rectangle")
                     Text(LocalizedStringKey("Watch Live"))
+                        .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
                     Spacer()
                 }
                 .padding(.vertical)
@@ -86,6 +87,7 @@ struct EventDetailView: View {
                         HStack {
                             Image(decorative: "ticket-icon")
                             Text(LocalizedStringKey("Buy Ticket"))
+                                .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
                         }
                         .padding(.vertical)
                     }
@@ -101,6 +103,7 @@ struct EventDetailView: View {
                         HStack {
                             Image(decorative: "register-icon")
                             Text(LocalizedStringKey("Register in Event"))
+                                .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
                         }
                         .padding(.vertical)
                     }
@@ -111,19 +114,23 @@ struct EventDetailView: View {
                 HStack {
                     Image(decorative: "clock-icon")
                     Text(DateHelper.dateWith(self.viewModel.repository.startDate ?? "TBA", showTime: true))
+                        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
                     Text(DateHelper.dateWith(self.viewModel.repository.endDate  ?? "TBA", showTime: true))
+                        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
                 }
                 .padding()
                 Divider()
                 HStack {
                     Image(decorative: "venue-icon")
                     Text(self.viewModel.repository.venue?.title ?? "-")
+                        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
                 }
                 .padding()
                 Divider()
                 HStack {
                     Image(decorative: "address-icon")
                     Text(self.viewModel.repository.venue?.address ?? "-")
+                        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
                 }
                 .padding()
             }
@@ -151,6 +158,7 @@ struct EventDetailView: View {
                 HStack {
                     Spacer()
                     Text(LocalizedStringKey("Sponsors"))
+                        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
                     Spacer()
                 }
                 .padding()

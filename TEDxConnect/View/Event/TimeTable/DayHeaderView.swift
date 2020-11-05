@@ -14,11 +14,12 @@ struct DayHeaderView: View {
   
   var body: some View {
     Text(day.title)
+        .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
       .padding(.horizontal, 16)
       .padding(.vertical, 5)
       .background(Colors.primaryLightGray)
       .cornerRadius(20)
-      .foregroundColor(.secondary)
+      .foregroundColor(.black)
   }
 }
 

@@ -34,7 +34,7 @@ struct HomeTabUIView: View {
                     .tag(MainViewType.timeDay)
             }
             .pickerStyle(SegmentedPickerStyle())
-            .padding()
+            .padding([.top,.horizontal])
             
             if self.mainViewType == .home {
                 EventDetailView()
