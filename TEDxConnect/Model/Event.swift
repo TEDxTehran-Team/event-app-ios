@@ -30,7 +30,7 @@ struct Event: Decodable, Hashable {
     }
   }
   
-  var id: Int?
+  var id: String
   var title: String?
   var banner: String?
   var startDate: String?
@@ -39,7 +39,7 @@ struct Event: Decodable, Hashable {
   var venue: Venue?
   
   static var example: Event {
-    Event(id: 1, title: "-", banner: Images.example, startDate: "2020-09-01T08:00:00+00:00", endDate: "2020-09-01T15:00:00+00:00", links: [Link.example], venue: Venue.example)
+    Event(id: "1", title: "-", banner: Images.example, startDate: "2020-09-01T08:00:00+00:00", endDate: "2020-09-01T15:00:00+00:00", links: [Link.example], venue: Venue.example)
   }
   
   static func == (lhs: Event, rhs: Event) -> Bool {

@@ -19,7 +19,7 @@ extension JSONDecoder {
     do {
       return try JSONDecoder().decode(type, from: str!.data(using: .utf8)!)
     } catch {
-      print("Decode JSON Catch: \(error)")
+        print("Decode JSON Catch: \(type) \(error)")
     }
     return nil
   }

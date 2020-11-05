@@ -22,7 +22,7 @@ struct SpeakersView: View {
           ) {
             
             VStack {
-              KFImage(URL(string: Images.urlExtension + self.viewModel.repositories[index].image)!)
+              KFImage(URL(string: Images.urlExtension + self.viewModel.repositories[index].image))
                 .placeholder {
                   ImagePlaceholder()
                 }

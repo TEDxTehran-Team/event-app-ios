@@ -124,7 +124,7 @@ struct EventDetailView: View {
                 showingSheet = true
               }
             
-            NavigationLink(destination: SponsorsView(eventId: viewModel.repository.id ?? 1)) {
+            NavigationLink(destination: SponsorsView(eventId: viewModel.repository.id ?? "1")) {
               HStack {
                 Spacer()
                 Text(LocalizedStringKey("Sponsors"))

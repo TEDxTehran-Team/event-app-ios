@@ -1267,6 +1267,7 @@ public final class GetTalksQuery: GraphQLQuery {
         }
         event {
           __typename
+          id
           title
         }
       }
@@ -1510,6 +1511,7 @@ public final class GetTalksQuery: GraphQLQuery {
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("title", type: .nonNull(.scalar(String.self))),
           ]
         }
@@ -1520,8 +1522,8 @@ public final class GetTalksQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(title: String) {
-          self.init(unsafeResultMap: ["__typename": "EventSchemaType", "title": title])
+        public init(id: GraphQLID, title: String) {
+          self.init(unsafeResultMap: ["__typename": "EventSchemaType", "id": id, "title": title])
         }
 
         public var __typename: String {
@@ -1530,6 +1532,15 @@ public final class GetTalksQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return resultMap["id"]! as! GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
           }
         }
 

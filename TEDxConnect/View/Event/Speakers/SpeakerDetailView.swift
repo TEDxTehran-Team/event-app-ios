@@ -19,7 +19,7 @@ struct SpeakerDetailView: View {
       ScrollView(.vertical) {
         VStack {
           
-          KFImage(URL(string: Images.urlExtension + (self.speaker.image))!)
+          KFImage(URL(string: Images.urlExtension + (self.speaker.image)))
             .placeholder {
               ImagePlaceholder()
             }

@@ -89,6 +89,7 @@ query GetTalks {
       }
     }
     event {
+      id
       title
     }
   }

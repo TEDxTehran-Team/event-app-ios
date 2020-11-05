@@ -11,7 +11,7 @@ import SwiftUI
 struct SponsorsView: View {
   
   @ObservedObject var viewModel = SponsorViewModel()
-  let eventId: Int
+  let eventId: String
   
   var body: some View {
     ZStack {
@@ -66,6 +66,6 @@ struct SponsorsView: View {
 
 struct SponsorsView_Previews: PreviewProvider {
   static var previews: some View {
-    SponsorsView(eventId: 1)
+    SponsorsView(eventId: "1")
   }
 }
