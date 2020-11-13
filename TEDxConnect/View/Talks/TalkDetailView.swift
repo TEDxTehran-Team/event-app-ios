@@ -80,7 +80,7 @@ struct TalkDetailView: View {
                 .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom)
                           .foregroundColor(Colors.primaryRed), alignment: .bottom)
                 .padding(.horizontal)
-              TalksRow(talks: self.viewModel.repository.suggestedTalk)
+              TalksRow(talks: self.viewModel.repository.suggestedTalks)
                 .padding(.top)
             }
             .layoutPriority(1)

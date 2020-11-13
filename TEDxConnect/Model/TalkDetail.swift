@@ -11,10 +11,10 @@ import Foundation
 struct TalkDetail: Decodable {
   
   var talk: Talk
-  var suggestedTalk: [Talk]
+  var suggestedTalks: [Talk]
   
   static var example: TalkDetail {
-    TalkDetail(talk: Talk.example, suggestedTalk: [Talk.example])
+    TalkDetail(talk: Talk.example, suggestedTalks: [Talk.example])
   }
   
 }

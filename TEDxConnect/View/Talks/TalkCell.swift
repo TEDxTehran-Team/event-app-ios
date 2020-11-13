@@ -18,7 +18,7 @@ struct TalkCell: View {
     NavigationLink(destination: TalkDetailView(id: talk.id)) {
       VStack {
         
-        KFImage(URL(string: Images.urlExtension + talk.section.image)!)
+        KFImage(URL(string: Images.urlExtension + talk.section.image))
           .placeholder {
             ImagePlaceholder()
           }
