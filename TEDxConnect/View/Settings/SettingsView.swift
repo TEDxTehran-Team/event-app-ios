@@ -61,7 +61,7 @@ struct SettingsView: View {
         
       }
       
-      Section(header: Text(LocalizedStringKey("More")).customFont(name: Fonts.shabnam, style: .footnote), footer: Text(LocalizedStringKey("We're tracking potential bugs with Crashlytics and will fix all of them ASAP.")).customFont(name: Fonts.shabnam, style: .footnote)) {
+      Section(header: Text(LocalizedStringKey("More")).customFont(name: Fonts.shabnam, style: .footnote), footer: Text(LocalizedStringKey("We're tracking potential bugs with Sentry and will fix all of them ASAP.")).customFont(name: Fonts.shabnam, style: .footnote)) {
         Button(action: {
           Network.shared.apollo.clearCache() { result in
             switch result {

@@ -39,7 +39,9 @@
 		6D8CE97F25020ED200F47ADF /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8CE97E25020ED200F47ADF /* SectionView.swift */; };
 		6DAA3CE32502102C006528DB /* DayHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAA3CE22502102C006528DB /* DayHeaderView.swift */; };
 		6DAA3CE52502255A006528DB /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAA3CE42502255A006528DB /* EmptyListView.swift */; };
-		6DB27CC42535CA4D0000CEA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DB27CC32535CA4D0000CEA8 /* GoogleService-Info.plist */; };
+		6DB6E2B5255FC3960095F055 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DB6E2B4255FC3950095F055 /* GoogleService-Info.plist */; };
+		6DB6E2BE255FC49C0095F055 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB6E2BD255FC49C0095F055 /* NotificationService.swift */; };
+		6DB6E2C2255FC49C0095F055 /* TEDxConnectNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6DB6E2BB255FC49C0095F055 /* TEDxConnectNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6DC0A45524FBCD1D00CE535B /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC0A45424FBCD1D00CE535B /* About.swift */; };
 		6DC0A45724FBCDCE00CE535B /* AboutRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC0A45624FBCDCE00CE535B /* AboutRepository.swift */; };
 		6DC0A45924FBCE6D00CE535B /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC0A45824FBCE6D00CE535B /* AboutViewModel.swift */; };
@@ -105,12 +107,23 @@
 		6DFCAF4A24FD314F008AD550 /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFCAF4924FD314F008AD550 /* EventDetailView.swift */; };
 		6DFCAF4C24FD32FC008AD550 /* EventRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFCAF4B24FD32FC008AD550 /* EventRepository.swift */; };
 		6DFCAF4E24FD3332008AD550 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFCAF4D24FD3332008AD550 /* EventViewModel.swift */; };
+		B9E8E3FD329107C656D54B51 /* Pods_TEDxConnectNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 826EF2B1EF249357A3DC2E59 /* Pods_TEDxConnectNotificationServiceExtension.framework */; };
 		E834C0872554056400AC827F /* HomeTabUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E834C0862554056400AC827F /* HomeTabUIView.swift */; };
 		E837435C24FFEB21009FEB5B /* JSON+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837435B24FFEB21009FEB5B /* JSON+Extension.swift */; };
 		E837435F24FFF327009FEB5B /* XException.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837435E24FFF327009FEB5B /* XException.swift */; };
 		E837436124FFF605009FEB5B /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837436024FFF605009FEB5B /* StatusView.swift */; };
 		E837436424FFF69D009FEB5B /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837436324FFF69D009FEB5B /* Indicator.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6DB6E2C0255FC49C0095F055 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DC754CD24DE6BD600F96518 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6DB6E2BA255FC49C0095F055;
+			remoteInfo = TEDxConnectNotificationServiceExtension;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		6D7CDA5F2535B4AC00FCBF2D /* Embed App Extensions */ = {
@@ -119,6 +132,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				6DB6E2C2255FC49C0095F055 /* TEDxConnectNotificationServiceExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,7 +174,11 @@
 		6D8CE97E25020ED200F47ADF /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		6DAA3CE22502102C006528DB /* DayHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayHeaderView.swift; sourceTree = "<group>"; };
 		6DAA3CE42502255A006528DB /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
-		6DB27CC32535CA4D0000CEA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6DB6E2B4255FC3950095F055 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6DB6E2BB255FC49C0095F055 /* TEDxConnectNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TEDxConnectNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DB6E2BD255FC49C0095F055 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		6DB6E2BF255FC49C0095F055 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6DB6E2C8255FC53B0095F055 /* TEDxConnectNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TEDxConnectNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
 		6DC0A45424FBCD1D00CE535B /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		6DC0A45624FBCDCE00CE535B /* AboutRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutRepository.swift; sourceTree = "<group>"; };
 		6DC0A45824FBCE6D00CE535B /* AboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
@@ -229,6 +247,9 @@
 		6DFCAF4924FD314F008AD550 /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 		6DFCAF4B24FD32FC008AD550 /* EventRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepository.swift; sourceTree = "<group>"; };
 		6DFCAF4D24FD3332008AD550 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
+		826EF2B1EF249357A3DC2E59 /* Pods_TEDxConnectNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TEDxConnectNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E79FF73709D64DCE0076B1C /* Pods-TEDxConnectNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TEDxConnectNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-TEDxConnectNotificationServiceExtension/Pods-TEDxConnectNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		DFCC8ED4F0C6F140561ACD68 /* Pods-TEDxConnectNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TEDxConnectNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-TEDxConnectNotificationServiceExtension/Pods-TEDxConnectNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		E834C0862554056400AC827F /* HomeTabUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabUIView.swift; sourceTree = "<group>"; };
 		E837435B24FFEB21009FEB5B /* JSON+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON+Extension.swift"; sourceTree = "<group>"; };
 		E837435E24FFF327009FEB5B /* XException.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XException.swift; sourceTree = "<group>"; };
@@ -238,6 +259,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6DB6E2B8255FC49C0095F055 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9E8E3FD329107C656D54B51 /* Pods_TEDxConnectNotificationServiceExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6DC754D224DE6BD700F96518 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -254,6 +283,8 @@
 			children = (
 				46FC8003828D7FF1E37E2D7B /* Pods-TEDxConnect.debug.xcconfig */,
 				0C78EAE8563C806EC280BFE2 /* Pods-TEDxConnect.release.xcconfig */,
+				9E79FF73709D64DCE0076B1C /* Pods-TEDxConnectNotificationServiceExtension.debug.xcconfig */,
+				DFCC8ED4F0C6F140561ACD68 /* Pods-TEDxConnectNotificationServiceExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -262,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				EE3FC41E73709FFC71B88FF2 /* Pods_TEDxConnect.framework */,
+				826EF2B1EF249357A3DC2E59 /* Pods_TEDxConnectNotificationServiceExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -296,6 +328,16 @@
 			path = TimeTable;
 			sourceTree = "<group>";
 		};
+		6DB6E2BC255FC49C0095F055 /* TEDxConnectNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				6DB6E2C8255FC53B0095F055 /* TEDxConnectNotificationServiceExtension.entitlements */,
+				6DB6E2BD255FC49C0095F055 /* NotificationService.swift */,
+				6DB6E2BF255FC49C0095F055 /* Info.plist */,
+			);
+			path = TEDxConnectNotificationServiceExtension;
+			sourceTree = "<group>";
+		};
 		6DC0A45A24FBCE8D00CE535B /* About */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				6DC754D724DE6BD700F96518 /* TEDxConnect */,
+				6DB6E2BC255FC49C0095F055 /* TEDxConnectNotificationServiceExtension */,
 				6DC754D624DE6BD700F96518 /* Products */,
 				0CCC391DA23E7AB0EF549177 /* Pods */,
 				4C947098944FB0F2EFC2E686 /* Frameworks */,
@@ -319,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				6DC754D524DE6BD700F96518 /* TEDxConnect.app */,
+				6DB6E2BB255FC49C0095F055 /* TEDxConnectNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -327,7 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				6D3B49642529BC290002EBF8 /* TEDxConnect.entitlements */,
-				6DB27CC32535CA4D0000CEA8 /* GoogleService-Info.plist */,
+				6DB6E2B4255FC3950095F055 /* GoogleService-Info.plist */,
 				6DC754D824DE6BD700F96518 /* AppDelegate.swift */,
 				6DC754DA24DE6BD700F96518 /* SceneDelegate.swift */,
 				6DCFBC7324FA4FD8005103E5 /* Constants.swift */,
@@ -574,6 +618,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6DB6E2BA255FC49C0095F055 /* TEDxConnectNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DB6E2C3255FC49C0095F055 /* Build configuration list for PBXNativeTarget "TEDxConnectNotificationServiceExtension" */;
+			buildPhases = (
+				5A1C9DC5D8A1A7157290968E /* [CP] Check Pods Manifest.lock */,
+				6DB6E2B7255FC49C0095F055 /* Sources */,
+				6DB6E2B8255FC49C0095F055 /* Frameworks */,
+				6DB6E2B9255FC49C0095F055 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TEDxConnectNotificationServiceExtension;
+			productName = TEDxConnectNotificationServiceExtension;
+			productReference = 6DB6E2BB255FC49C0095F055 /* TEDxConnectNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		6DC754D424DE6BD700F96518 /* TEDxConnect */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6DC754EC24DE6BD900F96518 /* Build configuration list for PBXNativeTarget "TEDxConnect" */;
@@ -590,6 +652,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				6DB6E2C1255FC49C0095F055 /* PBXTargetDependency */,
 			);
 			name = TEDxConnect;
 			productName = TEDxConnect;
@@ -606,6 +669,9 @@
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = Alexani;
 				TargetAttributes = {
+					6DB6E2BA255FC49C0095F055 = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
 					6DC754D424DE6BD700F96518 = {
 						CreatedOnToolsVersion = 11.5;
 					};
@@ -626,11 +692,19 @@
 			projectRoot = "";
 			targets = (
 				6DC754D424DE6BD700F96518 /* TEDxConnect */,
+				6DB6E2BA255FC49C0095F055 /* TEDxConnectNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6DB6E2B9255FC49C0095F055 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6DC754D324DE6BD700F96518 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -644,7 +718,7 @@
 				6DCFBC7024FA47C2005103E5 /* Shabnam-FD.ttf in Resources */,
 				6DD12DCA2519D9CE0055D611 /* White@2x.png in Resources */,
 				6DD12DB52519CE980055D611 /* Localizable.strings in Resources */,
-				6DB27CC42535CA4D0000CEA8 /* GoogleService-Info.plist in Resources */,
+				6DB6E2B5255FC3960095F055 /* GoogleService-Info.plist in Resources */,
 				6DC754E824DE6BD900F96518 /* LaunchScreen.storyboard in Resources */,
 				6DD12DCC2519D9CE0055D611 /* Black@2x.png in Resources */,
 				6DD12DC82519D9CE0055D611 /* Black.png in Resources */,
@@ -672,6 +746,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TEDxConnect/Pods-TEDxConnect-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5A1C9DC5D8A1A7157290968E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TEDxConnectNotificationServiceExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6D3B495A2529AE220002EBF8 /* ShellScript */ = {
@@ -735,6 +831,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6DB6E2B7255FC49C0095F055 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DB6E2BE255FC49C0095F055 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6DC754D124DE6BD700F96518 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -830,6 +934,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		6DB6E2C1255FC49C0095F055 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6DB6E2BA255FC49C0095F055 /* TEDxConnectNotificationServiceExtension */;
+			targetProxy = 6DB6E2C0255FC49C0095F055 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		6DC754E624DE6BD900F96518 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -851,6 +963,53 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6DB6E2C4255FC49C0095F055 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E79FF73709D64DCE0076B1C /* Pods-TEDxConnectNotificationServiceExtension.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TEDxConnectNotificationServiceExtension/TEDxConnectNotificationServiceExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = X937JJ6EU8;
+				INFOPLIST_FILE = TEDxConnectNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.talexani.xconnect.TEDxConnectNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6DB6E2C5255FC49C0095F055 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFCC8ED4F0C6F140561ACD68 /* Pods-TEDxConnectNotificationServiceExtension.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TEDxConnectNotificationServiceExtension/TEDxConnectNotificationServiceExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X937JJ6EU8;
+				INFOPLIST_FILE = TEDxConnectNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.talexani.xconnect.TEDxConnectNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		6DC754EA24DE6BD900F96518 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -973,13 +1132,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 46FC8003828D7FF1E37E2D7B /* Pods-TEDxConnect.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TEDxConnect/TEDxConnect.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"TEDxConnect/Preview Content\"";
-				DEVELOPMENT_TEAM = D47RCEDQHZ;
+				DEVELOPMENT_TEAM = X937JJ6EU8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TEDxConnect/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -988,7 +1148,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.talexani.xconnect.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.talexani.xconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1000,12 +1160,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0C78EAE8563C806EC280BFE2 /* Pods-TEDxConnect.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TEDxConnect/TEDxConnect.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TEDxConnect/Preview Content\"";
-				DEVELOPMENT_TEAM = D47RCEDQHZ;
+				DEVELOPMENT_TEAM = X937JJ6EU8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TEDxConnect/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1014,7 +1175,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.talexani.xconnect.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.talexani.xconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1025,6 +1186,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6DB6E2C3255FC49C0095F055 /* Build configuration list for PBXNativeTarget "TEDxConnectNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DB6E2C4255FC49C0095F055 /* Debug */,
+				6DB6E2C5255FC49C0095F055 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6DC754D024DE6BD600F96518 /* Build configuration list for PBXProject "TEDxConnect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
