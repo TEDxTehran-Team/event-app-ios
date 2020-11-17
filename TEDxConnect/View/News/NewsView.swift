@@ -10,7 +10,7 @@ import SwiftUI
 
 struct NewsView: View {
   
-  @EnvironmentObject var viewModel: NewsViewModel
+  @ObservedObject var viewModel: NewsViewModel
   
   var body: some View {
     ZStack {
@@ -50,6 +50,6 @@ struct NewsView: View {
 
 struct NewsView_Previews: PreviewProvider {
   static var previews: some View {
-    NewsView().environmentObject(NewsViewModel())
+    NewsView(viewModel: NewsViewModel())
   }
 }

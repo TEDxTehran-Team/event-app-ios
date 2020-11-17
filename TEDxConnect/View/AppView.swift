@@ -32,8 +32,7 @@ struct AppView: View {
             }
             
             NavigationView {
-                GalleryView()
-                    .environmentObject(albumViewModel)
+                GalleryView(viewModel: self.albumViewModel)
             }
             .tag(1)
             .tabItem {
@@ -42,8 +41,7 @@ struct AppView: View {
             }
             
             NavigationView {
-                NewsView()
-                    .environmentObject(newsViewModel)
+                NewsView(viewModel: self.newsViewModel)
             }
             .tag(2)
             .tabItem {
