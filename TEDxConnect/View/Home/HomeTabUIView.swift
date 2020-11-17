@@ -26,9 +26,9 @@ struct HomeTabUIView: View {
     var body: some View {
         VStack {
             Picker("", selection: self.$mainViewType) {
-                Text("Home")
+                Text(" Home ")
                     .tag(MainViewType.home)
-                Text("Speakers")
+                Text(" Speakers ")
                     .tag(MainViewType.speakers)
                 Text("Time Day")
                     .tag(MainViewType.timeDay)

@@ -91,6 +91,7 @@ struct EventDetailView: View {
                         }
                         .padding(.vertical)
                     }
+                    .padding(.horizontal)
                     .foregroundColor(Colors.primaryRed)
                     Divider()
                 }
@@ -107,6 +108,7 @@ struct EventDetailView: View {
                         }
                         .padding(.vertical)
                     }
+                    .padding(.horizontal)
                     .foregroundColor(Colors.primaryRed)
                     Divider()
                 }
@@ -139,20 +141,24 @@ struct EventDetailView: View {
             .foregroundColor(.secondary)
             .padding([.vertical, .bottom])
             
-            KFImage(URL(string: Images.urlExtension + (self.viewModel.repository.venue?.mapImage ?? ""))!)
-                .placeholder {
-                    ImagePlaceholder()
-                }
-                .resizable()
-                .scaledToFill()
-                .frame(height: 200)
-                .onTapGesture {
-                    if let url = URL(string: viewModel.repository.venue?.mapLink ?? Constants.placeholderUrl) {
-                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            if !(self.viewModel.repository.venue?.mapImage ?? "").isEmpty {
+                KFImage(URL(string: Images.urlExtension + (self.viewModel.repository.venue?.mapImage ?? ""))!)
+                    .placeholder {
+                        ImagePlaceholder()
                     }
-                    
-                }
-                .padding(.bottom)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 200)
+                    .onTapGesture {
+                        if let url = URL(string: viewModel.repository.venue?.mapLink ?? Constants.placeholderUrl) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                        
+                    }
+                    .padding(.bottom)
+            }
+            
+            
             
             NavigationLink(destination: SponsorsView(eventId: viewModel.repository.id)) {
                 HStack {

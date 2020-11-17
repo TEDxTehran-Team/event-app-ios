@@ -51,8 +51,17 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>Pushe</key>
+	<dict>
+		<key>AppGroupsId</key>
+		<string>group.com.talexani.xconnect.pusheShared</string>
+		<key>ManifestKey</key>
+		<string>NWRuNm12d2xtMzk4azRrZUBrbG1AMTA3MjkxNDY0MTY3</string>
+	</dict>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Shabnam-FD.ttf</string>
@@ -103,14 +112,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>FirebaseAppDelegateProxyEnabled</key>
-	<false/>
-	<key>Pushe</key>
-	<dict>
-		<key>AppGroupsId</key>
-		<string>group.com.talexani.xconnect.pusheShared</string>
-		<key>ManifestKey</key>
-		<string>NWRuNm12d2xtMzk4azRrZUBrbG1AMTA3MjkxNDY0MTY3</string>
-	</dict>
 </dict>
 </plist>

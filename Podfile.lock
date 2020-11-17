@@ -56,8 +56,8 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (6.7.2):
     - GoogleUtilities/Logger
-  - Kingfisher/Core (5.15.5)
-  - Kingfisher/SwiftUI (5.15.5):
+  - Kingfisher/Core (5.15.7)
+  - Kingfisher/SwiftUI (5.15.7):
     - Kingfisher/Core
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
@@ -69,9 +69,9 @@ PODS:
   - Pushe (1.0.16):
     - Firebase/Messaging (~> 6.34.0)
     - Sentry (~> 6.0.0)
-  - Sentry (6.0.1):
-    - Sentry/Core (= 6.0.1)
-  - Sentry/Core (6.0.1)
+  - Sentry (6.0.9):
+    - Sentry/Core (= 6.0.9)
+  - Sentry/Core (6.0.9)
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
@@ -112,14 +112,14 @@ SPEC CHECKSUMS:
   FirebaseMessaging: 5eca4ef173de76253352511aafef774caa1cba2a
   GoogleDataTransport: f56af7caa4ed338dc8e138a5d7c5973e66440833
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
-  Kingfisher: e3ec347a5ab8817b7585ef46923a2d2b9a7d8fbe
+  Kingfisher: 6e1a13523fcb1c86924ce53affe4ac957e544d59
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
   Pushe: b45eb94e6344c74b9fd5cfda4cfc216cbe2faf4d
-  Sentry: 2130c956d0d6824d4d9aaa98fd55140b1d55c030
+  Sentry: 388c9dc093b2fd3a264466a5c5b21e25959610a9
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
 
 PODFILE CHECKSUM: 27e4957344f19eca7cc188bd576f134c11441f91
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.0
