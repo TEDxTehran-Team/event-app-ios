@@ -40,6 +40,10 @@ struct GalleryDetailView: View {
         }
         .buttonStyle(PlainButtonStyle())
       }
+        
+        if self.viewModel.repositories.isEmpty && self.viewModel.statusView != .loading  {
+            EmptyListView()
+        }
       
       if self.viewModel.statusView == .loading {
         Indicator()

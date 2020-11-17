@@ -29,7 +29,7 @@ struct TalkDetailView: View {
             }) {
               ZStack {
                 
-                KFImage(URL(string: Images.urlExtension + (self.viewModel.repository.talk.section.image))!)
+                KFImage(URL(string: Images.urlExtension + (self.viewModel.repository.talk.section.image)))
                   .placeholder {
                     ImagePlaceholder()
                   }

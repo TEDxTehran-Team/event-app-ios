@@ -9,22 +9,21 @@
 import SwiftUI
 
 struct EmptyListView: View {
-  var body: some View {
-    VStack(spacing: 16) {
-      Image(decorative: Images.emptyList)
-      Text(LocalizedStringKey("No Results Found"))
-        .customFont(name: Fonts.shabnam, style: .title3)
-        .foregroundColor(.primary)
-      Text(LocalizedStringKey("Try Again"))
-        .customFont(name: Fonts.shabnam, style: .subheadline)
-        .foregroundColor(.secondary)
+    var body: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "eyes.inverse")
+                .resizable()
+                .frame(width: 100, height: 50)
+            Text(LocalizedStringKey("No Results Found"))
+                .customFont(name: Fonts.shabnam, style: .title3)
+                .foregroundColor(.primary)
+        }
+        
     }
-    
-  }
 }
 
 struct EmptyListView_Previews: PreviewProvider {
-  static var previews: some View {
-    EmptyListView()
-  }
+    static var previews: some View {
+        EmptyListView()
+    }
 }

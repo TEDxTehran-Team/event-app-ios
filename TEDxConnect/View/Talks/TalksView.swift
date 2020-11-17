@@ -10,8 +10,8 @@ import SwiftUI
 
 struct TalksView: View {
     
-    @EnvironmentObject var talkViewModel: TalkViewModel
-    @EnvironmentObject var featuredTalkViewModel: FeaturedTalkViewModel
+    @ObservedObject var talkViewModel: TalkViewModel
+    @ObservedObject var featuredTalkViewModel: FeaturedTalkViewModel
     
     var body: some View {
         VStack {
@@ -63,8 +63,8 @@ struct TalksView: View {
 
 struct TalksView_Previews: PreviewProvider {
     static var previews: some View {
-        TalksView()
-            .environmentObject(TalkViewModel())
-            .environmentObject(FeaturedTalkViewModel())
+        TalksView(talkViewModel: TalkViewModel(), featuredTalkViewModel: FeaturedTalkViewModel())
+//            .environmentObject(TalkViewModel())
+//            .environmentObject(FeaturedTalkViewModel())
     }
 }

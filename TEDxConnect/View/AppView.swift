@@ -10,22 +10,20 @@ import SwiftUI
 
 struct AppView: View {
     
-    var eventViewModel = EventViewModel()
-    var dayViewModel = DayViewModel()
-    var newsViewModel = NewsViewModel()
-    var albumViewModel = AlbumViewModel()
-    var speakerViewModel = SpeakerViewModel()
-    var talkViewModel = TalkViewModel()
-    var featuredTalkViewModel = FeaturedTalkViewModel()
+    @ObservedObject var eventViewModel = EventViewModel()
+    @ObservedObject var dayViewModel = DayViewModel()
+    @ObservedObject var newsViewModel = NewsViewModel()
+    @ObservedObject var albumViewModel = AlbumViewModel()
+    @ObservedObject var speakerViewModel = SpeakerViewModel()
+    @ObservedObject var talkViewModel = TalkViewModel()
+    @ObservedObject var featuredTalkViewModel = FeaturedTalkViewModel()
     
     @State private var selection = 3
     
     var body: some View {
         TabView(selection: $selection) {
             NavigationView {
-                TalksView()
-                    .environmentObject(talkViewModel)
-                    .environmentObject(featuredTalkViewModel)
+                TalksView(talkViewModel: self.talkViewModel, featuredTalkViewModel: self.featuredTalkViewModel)
             }
             .tag(0)
             .tabItem {
