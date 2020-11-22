@@ -32,9 +32,19 @@ struct TalksView: View {
                                     
                                 }
                                 .padding(.top)
-                                
-                                TalksRow(talks: talkWithEvent.talks)
-                                    .padding(.top,5)
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack(alignment: .top, spacing: 10) {
+                                        ForEach(talkWithEvent.talks, id: \.self) { talk in
+                                            NavigationLink(destination: TalkDetailView(id: talk.id)) {
+                                                TalkCell(talk: talk)
+                                                    .padding(.horizontal,5)
+                                            }
+                                        }
+                                    }
+                                    .padding(.horizontal)
+                                    .padding(.horizontal)
+                                }
+                                .padding(.top,5)
                             }
                         }
                         

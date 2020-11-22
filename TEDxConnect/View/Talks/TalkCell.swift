@@ -12,7 +12,6 @@ import struct Kingfisher.KFImage
 struct TalkCell: View {
     
     @State var talk: Talk
-    let cellWidth: CGFloat = 130
     
     var body: some View {
        
@@ -24,7 +23,7 @@ struct TalkCell: View {
                     }
                     .resizable()
                     .scaledToFill()
-                    .frame(width: self.cellWidth, height: self.cellWidth)
+                    .frame(width: 130, height: 130)
                     .cornerRadius(10)
                 
                 VStack(alignment: .center) {
@@ -37,7 +36,7 @@ struct TalkCell: View {
                         .lineLimit(1)
                 }
             }
-            .frame(width: self.cellWidth)
+            .frame(width: 130)
         
         .buttonStyle(PlainButtonStyle())
         
