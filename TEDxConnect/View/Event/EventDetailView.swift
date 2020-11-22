@@ -55,9 +55,10 @@ struct EventDetailView: View {
                 }) {
                     HStack(alignment: .center) {
                         Spacer()
-                        Image(systemName: "play.rectangle")
                         Text(LocalizedStringKey("Watch Live"))
                             .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
+                        
+                        Image(systemName: "play.rectangle")
                         Spacer()
                     }
                     .padding(.vertical)
@@ -75,9 +76,10 @@ struct EventDetailView: View {
                         }
                     } label: {
                         HStack {
-                            Image(decorative: "ticket-icon")
+                            Spacer()
                             Text(LocalizedStringKey("Buy Ticket"))
                                 .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                            Image(decorative: "ticket-icon")
                         }
                         .padding(.vertical)
                     }
@@ -92,9 +94,10 @@ struct EventDetailView: View {
                         }
                     } label: {
                         HStack {
-                            Image(decorative: "register-icon")
+                            Spacer()
                             Text(LocalizedStringKey("Register in Event"))
                                 .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                            Image(decorative: "register-icon")
                         }
                         .padding(.vertical)
                     }
@@ -104,25 +107,31 @@ struct EventDetailView: View {
                 }
                 
                 HStack {
-                    Image(decorative: "clock-icon")
+                    
+                    Spacer()
+                    
                     Text(DateHelper.dateWith(self.viewModel.event.startDate ?? "TBA", showTime: true))
                         .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                    Text("|")
                     Text(DateHelper.dateWith(self.viewModel.event.endDate  ?? "TBA", showTime: true))
                         .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                    Image(decorative: "clock-icon")
                 }
                 .padding()
                 Divider()
                 HStack {
-                    Image(decorative: "venue-icon")
+                    Spacer()
                     Text(self.viewModel.event.venue?.title ?? "-")
                         .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                    Image(decorative: "venue-icon")
                 }
                 .padding()
                 Divider()
                 HStack {
-                    Image(decorative: "address-icon")
+                    Spacer()
                     Text(self.viewModel.event.venue?.address ?? "-")
                         .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                    Image(decorative: "address-icon")
                 }
                 .padding()
             }

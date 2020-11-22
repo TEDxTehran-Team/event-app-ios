@@ -19,8 +19,13 @@ struct NewsCardView: View {
                 .fill(Colors.primaryBackground)
                 .shadow(color: Color.black.opacity(0.2), radius: 6, x: 0, y: 3)
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .center) {
                 HStack(alignment: .center, spacing: 20) {
+                    
+                    Spacer()
+                    Text(news.title)
+                        .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
+                        .foregroundColor(.primary)
                     
                     KFImage(URL(string: Images.urlExtension + (news.icon ?? ""))!)
                         .placeholder {
@@ -29,10 +34,6 @@ struct NewsCardView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 55, height: 30)
-                    
-                    Text(news.title)
-                        .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
-                        .foregroundColor(.primary)
                 }
                 Text(news.description)
                     .foregroundColor(.secondary)

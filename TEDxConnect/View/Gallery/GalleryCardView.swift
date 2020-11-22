@@ -21,7 +21,7 @@ struct GalleryCardView: View {
                 }
                 .resizable()
                 .frame(height: 200)
-                .overlay(ImageOverlay(text: self.album.title), alignment: .bottomLeading)
+                .overlay(ImageOverlay(text: self.album.title), alignment: .bottomTrailing)
                 .cornerRadius(10)
                 .padding(.vertical, 10)
             
