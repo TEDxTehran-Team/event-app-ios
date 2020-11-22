@@ -11,7 +11,7 @@ import Foundation
 class EventViewModel: ObservableObject {
   
   var repo = EventRepository()
-  @Published var repository = Event.example
+  @Published var event = Event.example
   
   @Published var errorMessage: String = ""
   @Published var statusView: StatusView = .none
@@ -19,7 +19,7 @@ class EventViewModel: ObservableObject {
   func setup() {
 
     self.statusView = .loading
-    repo.get() { repository, exception  in
+    repo.get() { event, exception  in
       
       if let error = exception {
         self.statusView = .error
@@ -27,11 +27,11 @@ class EventViewModel: ObservableObject {
         return
       }
       
-      guard let repository = repository else {
+      guard let event = event else {
         return
       }
       self.statusView = .complete
-      self.repository = repository
+      self.event = event
     }
   }
   

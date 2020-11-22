@@ -12,7 +12,7 @@ class SponsorRepository {
   
   func get(withEventId eventId: String, completion: @escaping ([SponsorWithType]?, XException?) -> ()) {
     
-    Network.shared.apollo.fetch(query: GetEventSponsorsQuery(eventId: Int(eventId) ?? 1), cachePolicy: .returnCacheDataAndFetch) { result in
+    Network.shared.apollo.fetch(query: GetEventSponsorsQuery(eventId: Int(eventId) ?? 1)) { result in
       switch result {
         case .failure(let error):
           completion(nil, XException(message: error.localizedDescription, code: 0))

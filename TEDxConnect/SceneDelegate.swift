@@ -20,14 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
     Self.shared = self
-    
-    UITabBar.appearance().shadowImage = UIImage()
-    UITabBar.appearance().backgroundImage = UIImage()
-    UITabBar.appearance().isTranslucent = true
-    UITabBar.appearance().backgroundColor = UIColor(named: "primaryBarBackground")
-    
+
     let contentView = AppView()
-      .environment(\.locale, CTTelephonyNetworkInfo().serviceSubscriberCellularProviders?.first?.value.isoCountryCode == "ir" ? .init(identifier: "fa_IR") : .init(identifier: "en"))
+//        .environment(\.locale,.init(identifier: "fa_IR"))
     
     // Use a UIHostingController as window root view controller.
     if let windowScene = scene as? UIWindowScene {

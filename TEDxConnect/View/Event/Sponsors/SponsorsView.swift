@@ -36,7 +36,6 @@ struct SponsorsView: View {
             }
             
           }
-          .environment(\.layoutDirection, .rightToLeft)
         } else {
           EmptyListView()
             .onTapGesture {

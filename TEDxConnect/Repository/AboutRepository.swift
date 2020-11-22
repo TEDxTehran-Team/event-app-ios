@@ -9,19 +9,20 @@
 import Foundation
 
 class AboutRepository {
-  
-  func get(completion: @escaping ([About]?, XException?) -> ()) {
     
-    Network.shared.apollo.fetch(query: GetAboutsQuery(), cachePolicy: .returnCacheDataAndFetch) { result in
-      switch result {
-        case .failure(let error):
-          completion(nil, XException(message: error.localizedDescription, code: 0))
-        case .success(let data):
-          let model = data.data?.organizer?.decodeModel(type: AboutResponse.self)
-          completion(model?.abouts, nil)
-      }
+    func get(completion: @escaping ([About]?, XException?) -> ()) {
+        
+        Network.shared.apollo.fetch(query: GetAboutsQuery()) { result in
+            switch result {
+            case .failure(let error):
+                print("About Error \(error)")
+                completion(nil, XException(message: error.localizedDescription, code: 0))
+            case .success(let data):                
+                let model = data.data?.organizer?.decodeModel(type: AboutResponse.self)
+                completion(model?.abouts, nil)
+            }
+        }
+        
     }
     
-  }
-  
 }

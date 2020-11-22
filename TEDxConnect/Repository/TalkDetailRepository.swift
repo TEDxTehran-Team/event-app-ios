@@ -9,19 +9,19 @@
 import Foundation
 
 class TalkDetailRepository {
-  
-  func get(withId id: Int, completion: @escaping (TalkDetail?, XException?) -> ()) {
     
-    Network.shared.apollo.fetch(query: GetTalkDetailQuery(id: id), cachePolicy: .returnCacheDataAndFetch) { result in
-      switch result {
-        case .failure(let error):
-          completion(nil, XException(message: error.localizedDescription, code: 0))
-        case .success(let data):
-          let model = data.data?.decodeModel(type: TalkDetail.self)
-          completion(model, nil)
-      }
+    func get(withId id: Int, completion: @escaping (TalkDetail?, XException?) -> ()) {
+        
+        Network.shared.apollo.fetch(query: GetTalkDetailQuery(id: id)) { result in
+            switch result {
+            case .failure(let error):
+                completion(nil, XException(message: error.localizedDescription, code: 0))
+            case .success(let data):
+                let model = data.data?.decodeModel(type: TalkDetail.self)
+                completion(model, nil)
+            }
+        }
+        
     }
     
-  }
-  
 }

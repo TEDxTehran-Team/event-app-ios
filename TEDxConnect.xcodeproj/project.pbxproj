@@ -113,6 +113,8 @@
 		E837435F24FFF327009FEB5B /* XException.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837435E24FFF327009FEB5B /* XException.swift */; };
 		E837436124FFF605009FEB5B /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837436024FFF605009FEB5B /* StatusView.swift */; };
 		E837436424FFF69D009FEB5B /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837436324FFF69D009FEB5B /* Indicator.swift */; };
+		E8EAE3A4256ACD6A00B43FB1 /* Model+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EAE3A3256ACD6A00B43FB1 /* Model+Extension.swift */; };
+		E8EAE3A8256AD01900B43FB1 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EAE3A7256AD01900B43FB1 /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -255,6 +257,8 @@
 		E837435E24FFF327009FEB5B /* XException.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XException.swift; sourceTree = "<group>"; };
 		E837436024FFF605009FEB5B /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
 		E837436324FFF69D009FEB5B /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
+		E8EAE3A3256ACD6A00B43FB1 /* Model+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Extension.swift"; sourceTree = "<group>"; };
+		E8EAE3A7256AD01900B43FB1 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		F659F0324A81EFD7192A31CC /* Pods-TEDxConnect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TEDxConnect.debug.xcconfig"; path = "Target Support Files/Pods-TEDxConnect/Pods-TEDxConnect.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -472,6 +476,8 @@
 				6DD9719C24F8FB180044D596 /* View+Extension.swift */,
 				6D1325BB24FE706400FFA202 /* DateHelper.swift */,
 				E837435B24FFEB21009FEB5B /* JSON+Extension.swift */,
+				E8EAE3A3256ACD6A00B43FB1 /* Model+Extension.swift */,
+				E8EAE3A7256AD01900B43FB1 /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -879,6 +885,7 @@
 				6D3B49072528A1340002EBF8 /* Speaker.swift in Sources */,
 				6D1325B824FE65D200FFA202 /* PhotoViewModel.swift in Sources */,
 				6DCFBC6A24FA45F7005103E5 /* GridCalculator.swift in Sources */,
+				E8EAE3A4256ACD6A00B43FB1 /* Model+Extension.swift in Sources */,
 				6D3B49252528B1AF0002EBF8 /* SponsorsRow.swift in Sources */,
 				6DD12DEE2519E79D0055D611 /* ToggleModel.swift in Sources */,
 				6D3B490B2528A1880002EBF8 /* SpeakerRepository.swift in Sources */,
@@ -898,6 +905,7 @@
 				6DE7941124F939A500CEEE0E /* Album.swift in Sources */,
 				6D3B49302528BBD20002EBF8 /* SpeakerDetailView.swift in Sources */,
 				6D1325B424FE658F00FFA202 /* PhotoRepository.swift in Sources */,
+				E8EAE3A8256AD01900B43FB1 /* String+Extension.swift in Sources */,
 				6DD06807250A06DE008BBC08 /* TalkDetailView.swift in Sources */,
 				6DDAEABD251DC8370008CCEE /* TabBar.swift in Sources */,
 				E834C0872554056400AC827F /* HomeTabUIView.swift in Sources */,

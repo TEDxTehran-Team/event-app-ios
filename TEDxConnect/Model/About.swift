@@ -8,17 +8,16 @@
 
 import Foundation
 
-struct About: Decodable, Hashable {
-  
-  var title: String
-  var description: String
-  var image: String?
-  
-  static var example: About {
-    About(title: "-", description: "-", image: Images.example)
-  }
+struct About: Decodable,Hashable {
+    var title: String
+    var description: String
+    var image: String?
+    
+    static var example: About {
+        About(title: "-", description: "-", image: Images.example)
+    }
 }
 
-struct AboutResponse: Decodable {
-  var abouts: [About]
+struct AboutResponse: Decodable,Hashable {
+    var abouts: [About]
 }

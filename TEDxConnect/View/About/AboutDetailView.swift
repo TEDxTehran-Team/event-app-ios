@@ -10,37 +10,32 @@ import SwiftUI
 import struct Kingfisher.KFImage
 
 struct AboutDetailView: View {
-  
-  let about: About
-  
-  var body: some View {
-    GeometryReader { geometry in
-      
-      ScrollView(.vertical) {
-        VStack {
-          
-          KFImage(URL(string: Images.urlExtension + (self.about.image ?? ""))!)
-            .placeholder {
-              ImagePlaceholder()
+    
+    @State var item: About
+    
+    var body: some View {
+        
+        ScrollView(.vertical) {
+            VStack {
+                
+                KFImage(URL(string: Images.urlExtension + (self.item.image ?? "")))
+                    .placeholder {
+                        ImagePlaceholder()
+                    }
+                    .resizable()
+                    .scaledToFit()
+                
+                Text(self.item.description)
+                    .padding()
+                Spacer()
             }
-            .resizable()
-            .scaledToFit()
-            .frame(width: geometry.size.width)
-          
-          
-          Text(self.about.description)
-            .padding()
         }
-        .environment(\.layoutDirection, .rightToLeft)
-      }
-      
+        .navigationBarTitle(Text(self.item.title), displayMode: .inline)
     }
-    .navigationBarTitle(Text(self.about.title), displayMode: .inline)
-  }
 }
 
 struct AboutDetailView_Previews: PreviewProvider {
-  static var previews: some View {
-    AboutDetailView(about: About.example)
-  }
+    static var previews: some View {
+        AboutDetailView(item: About.example)
+    }
 }

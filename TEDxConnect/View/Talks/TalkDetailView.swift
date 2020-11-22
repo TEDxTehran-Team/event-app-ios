@@ -101,7 +101,7 @@ struct TalkDetailView: View {
     .onAppear {
       self.viewModel.setup(withId: Int(self.id) ?? 0)
     }
-    .environment(\.layoutDirection, .rightToLeft)
+    
     .sheet(isPresented: $showingSheet) {
       WebViewSheet(url: url, titleLocalizedKey: titleLocalizedKey)
     }

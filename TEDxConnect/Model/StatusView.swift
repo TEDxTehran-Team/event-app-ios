@@ -9,8 +9,9 @@
 import Foundation
 
 enum StatusView  {
-  case none
-  case loading
-  case error
-  case complete
+    case none
+    case loading
+    case error
+    case complete
+    case emptyState
 }

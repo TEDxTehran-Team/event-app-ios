@@ -10,8 +10,8 @@ import SwiftUI
 
 struct TalksView: View {
     
-    @ObservedObject var talkViewModel: TalkViewModel
-    @ObservedObject var featuredTalkViewModel: FeaturedTalkViewModel
+    var talkViewModel: TalkViewModel
+    var featuredTalkViewModel: FeaturedTalkViewModel
     
     var body: some View {
         VStack {
@@ -25,16 +25,17 @@ struct TalksView: View {
                             if talkWithEvent.talks.count != 0 {
                                 VStack {
                                     HStack {
+                                        Spacer()
+                                        
                                         Text(talkWithEvent.event.title ?? "")
                                             .foregroundColor(.secondary)
                                             .padding(.horizontal)
                                         
-                                        Spacer()
-                                        
-                                    }.padding(.horizontal)
-                                    .padding(.horizontal)
+                                    }
+                                    .padding(.top)
                                     
                                     TalksRow(talks: talkWithEvent.talks)
+                                        .padding(.top,5)
                                 }
                                 
                             } else {
@@ -45,7 +46,7 @@ struct TalksView: View {
                     }
                     
                 }
-                .environment(\.layoutDirection, .rightToLeft)
+                
                 
             }else if self.talkViewModel.statusView == .loading && self.featuredTalkViewModel.statusView == .loading {
                 Indicator()
@@ -56,15 +57,11 @@ struct TalksView: View {
                     }
             }
         }
-        .navigationBarColor(UIColor(named: "primaryRed"))
-        .navigationBarTitle(Text(LocalizedStringKey("Talks")), displayMode: .inline)
     }
 }
 
 struct TalksView_Previews: PreviewProvider {
     static var previews: some View {
         TalksView(talkViewModel: TalkViewModel(), featuredTalkViewModel: FeaturedTalkViewModel())
-//            .environmentObject(TalkViewModel())
-//            .environmentObject(FeaturedTalkViewModel())
     }
 }

@@ -54,9 +54,7 @@ struct TimeTableView: View {
       }
     }
     .navigationBarColor(UIColor(named: "primaryRed"))
-    .navigationBarTitle(Text(LocalizedStringKey("Timetable")), displayMode: .inline)
-    .environment(\.layoutDirection, .rightToLeft)
-    
+    .navigationBarTitle(Text("Timetable".localized()), displayMode: .inline)    
   }
 }
 

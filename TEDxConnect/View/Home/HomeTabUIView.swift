@@ -19,18 +19,18 @@ struct HomeTabUIView: View {
     
     @State var mainViewType: MainViewType = .home
     
-    var eventViewModel : EventViewModel
+    var  eventViewModel : EventViewModel
     var dayViewModel : DayViewModel
     var speakerViewModel:SpeakerViewModel
     
     var body: some View {
         VStack {
             Picker("", selection: self.$mainViewType) {
-                Text(" Home ")
+                Text("Home".localized())
                     .tag(MainViewType.home)
-                Text(" Speakers ")
+                Text("Speakers".localized())
                     .tag(MainViewType.speakers)
-                Text("Time Day")
+                Text("TimeDay".localized())
                     .tag(MainViewType.timeDay)
             }
             .pickerStyle(SegmentedPickerStyle())
@@ -40,8 +40,7 @@ struct HomeTabUIView: View {
                 EventDetailView()
                     .environmentObject(self.eventViewModel)
             }else if self.mainViewType == .speakers {
-                SpeakersView()
-                    .environmentObject(self.speakerViewModel)
+                SpeakersView(viewModel: self.speakerViewModel)
             }else {
                 TimeTableView()
                     .environmentObject(self.dayViewModel)

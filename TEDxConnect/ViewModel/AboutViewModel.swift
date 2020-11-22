@@ -9,29 +9,35 @@
 import Foundation
 
 class AboutViewModel: ObservableObject {
-  
-  var repo = AboutRepository()
-  @Published var repositories = [About]()
-  
-  @Published var errorMessage: String = ""
-  @Published var statusView: StatusView = .none
-  
-  func setup() {
-    self.statusView = .loading
-    repo.get() { repositories, exception  in
-      
-      if let error = exception {
-        self.statusView = .error
-        self.errorMessage = error.message
-        return
-      }
-      
-      guard let repositories = repositories else {
-        return
-      }
-      self.statusView = .complete
-      self.repositories = repositories
+    
+    let repository = AboutRepository()
+    
+    @Published var repositories = [About]()
+    @Published var errorMessage: String = ""
+    @Published var statusView: StatusView = .none
+    
+    
+    func setup() {
+        self.statusView = .loading
+
+        self.repository.get() { repositories, exception  in
+
+            if let error = exception {
+                self.statusView = .error
+                self.errorMessage = error.message
+                return
+            }
+
+            guard let repositories = repositories else {
+                self.statusView = .error
+                self.errorMessage = ""
+                return
+            }
+            self.statusView = repositories.isEmpty ? .emptyState :  .complete
+            repositories.forEach { (item) in
+                self.repositories.append(item)
+            }
+        }
     }
-  }
-  
+    
 }

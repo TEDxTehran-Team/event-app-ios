@@ -8,6 +8,14 @@
 
 import SwiftUI
 
+
+enum AppTabViewItem {
+    case home
+    case news
+    case gallery
+    case talks
+}
+
 struct AppView: View {
     
     @ObservedObject var eventViewModel = EventViewModel()
@@ -18,66 +26,84 @@ struct AppView: View {
     @ObservedObject var talkViewModel = TalkViewModel()
     @ObservedObject var featuredTalkViewModel = FeaturedTalkViewModel()
     
-    @State private var selection = 3
+    
+    @State private var tabSelected:AppTabViewItem = .home
     
     var body: some View {
-        TabView(selection: $selection) {
-            NavigationView {
+        NavigationView {
+            TabView(selection: self.$tabSelected) {
                 TalksView(talkViewModel: self.talkViewModel, featuredTalkViewModel: self.featuredTalkViewModel)
-            }
-            .tag(0)
-            .tabItem {
-                Image(systemName: "music.mic")
-                Text(LocalizedStringKey("Talks"))
-            }
-            
-            NavigationView {
+                    .tag(AppTabViewItem.talks)
+                    .tabItem {
+                        Image(systemName: "music.mic")
+                        Text("Talks".localized())
+                    }
+                
                 GalleryView(viewModel: self.albumViewModel)
-            }
-            .tag(1)
-            .tabItem {
-                Image(systemName: "photo.on.rectangle")
-                Text(LocalizedStringKey("Gallery"))
-            }
-            
-            NavigationView {
+                    .tag(AppTabViewItem.gallery)
+                    .tabItem {
+                        Image(systemName: "photo.on.rectangle")
+                        Text("Gallery".localized())
+                    }
+                
                 NewsView(viewModel: self.newsViewModel)
-            }
-            .tag(2)
-            .tabItem {
-                Image(systemName: "text.aligncenter")
-                Text(LocalizedStringKey("News"))
-            }
-            
-            
-            NavigationView {
+                    .tag(AppTabViewItem.news)
+                    .tabItem {
+                        Image(systemName: "text.aligncenter")
+                        Text("News".localized())
+                        
+                    }
+                
+                
                 HomeTabUIView(eventViewModel: self.eventViewModel,dayViewModel: self.dayViewModel, speakerViewModel: self.speakerViewModel)
+                    .tag(AppTabViewItem.home)
+                    .tabItem {
+                        Image(systemName: "house")
+                        Text("Home".localized())
+                    }
+                
             }
-            .tag(3)
-            .tabItem {
-                Image(systemName: "house")
-                Text(LocalizedStringKey("Home"))
+            .navigationBarTitle(Text(self.tabSelected.title), displayMode: .inline)
+            .navigationBarItems(trailing: NavigationLink(destination: AboutView(), label: {
+                Image(systemName: "info.circle")
+            }))
+            .accentColor(Colors.primaryRed)
+            .onAppear {
+                self.eventViewModel.setup()
+                self.dayViewModel.setup()
+                self.newsViewModel.setup()
+                self.albumViewModel.setup()
+                self.talkViewModel.setup()
+                self.featuredTalkViewModel.setup()
+                self.speakerViewModel.setup()
             }
-            
-        }
-        .customFont(name: Fonts.shabnam, style: .headline)
-        .accentColor(Colors.primaryRed)
-        .onAppear {
-            self.eventViewModel.setup()
-            self.dayViewModel.setup()
-            self.newsViewModel.setup()
-            self.albumViewModel.setup()
-            self.talkViewModel.setup()
-            self.featuredTalkViewModel.setup()
-            self.speakerViewModel.setup()
         }
         
     }
     
 }
 
+extension AppTabViewItem {
+    var title :String {
+        
+        var value = "Home"
+        switch self {
+        case .home:
+            value = "Home"
+        case .gallery:
+            value = "Gallery"
+        case .news:
+            value  = "News"
+        case .talks:
+            value = "Talks"
+        }
+        
+        return value.localized()
+    }
+}
+
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {
-        AppView().environment(\.locale, .init(identifier: "fa_IR"))
+        AppView()
     }
 }

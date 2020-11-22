@@ -9,58 +9,63 @@
 import SwiftUI
 
 struct AboutView: View {
-  
-  @ObservedObject var viewModel = AboutViewModel()
-  
-  var body: some View {
-    ZStack {
-      if self.viewModel.statusView == .complete {
-        if self.viewModel.repositories.count != 0 {
-          VStack {
-            Image(Images.logo)
-              .resizable()
-              .scaledToFit()
-              .frame(width: 300)
-              .padding(20)
-            
-            List(viewModel.repositories, id: \.self) { about in
-              NavigationLink(destination: AboutDetailView(about: about)) {
-                Text(about.title)
-              }
+    
+   @ObservedObject var aboutViewModel = AboutViewModel()
+    
+    init() {
+        print("initnitnt")
+    }
+    
+    var body: some View {
+        ZStack {
+            VStack {
+                if TimeZone.current.isMasterData {
+                    Image(Images.logo)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 300)
+                        .padding(20)
+                }
+                ForEach(aboutViewModel.repositories,id: \.self) { about in
+                    NavigationLink(destination: AboutDetailView(item: about)) {
+                        Text(about.title)
+                            .padding()
+                    }
+                }
+                Spacer()
             }
-            .environment(\.layoutDirection, .rightToLeft)
-
-          }
-        } else {
-          EmptyListView()
-            .onTapGesture {
-              self.viewModel.setup()
-          }
+            
+            
+            if self.aboutViewModel.statusView == .emptyState {
+                EmptyListView()
+                    .onTapGesture {
+                        self.aboutViewModel.setup()
+                    }
+            }
+            
+            if self.aboutViewModel.statusView == .loading {
+                Indicator()
+            }
+            
+            if self.aboutViewModel.statusView == .error {
+                ErrorView(errorText: self.aboutViewModel.errorMessage)
+                    .onTapGesture {
+                        self.aboutViewModel.setup()
+                    }
+            }
         }
-      }
-      
-      if self.viewModel.statusView == .loading {
-        Indicator()
-      }
-      
-      if self.viewModel.statusView == .error {
-        ErrorView(errorText: self.viewModel.errorMessage)
-          .onTapGesture {
-            self.viewModel.setup()
-          }
-      }
+        .onAppear(perform: {
+            if self.aboutViewModel.statusView == .none {
+                self.aboutViewModel.setup()
+            }
+        })
+        .navigationBarTitle(Text("About"), displayMode: .inline)
     }
-    .navigationBarColor(UIColor(named: "primaryRed"))
-    .navigationBarTitle(Text(LocalizedStringKey("About")), displayMode: .inline)
-    .onAppear {
-      self.viewModel.setup()
-    }
-  }
-  
+    
 }
 
 struct AboutView_Previews: PreviewProvider {
-  static var previews: some View {
-    AboutView()
-  }
+    static var previews: some View {
+        AboutView()
+    }
 }

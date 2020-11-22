@@ -30,26 +30,13 @@ struct EventDetailView: View {
             
         } // ScrollView
         .background(Colors.primaryLightGray)
-        .navigationBarColor(UIColor(named: "primaryRed"))
-        .navigationBarTitle(Text(LocalizedStringKey("Home")), displayMode: .inline)
-        .navigationBarItems(leading: NavigationLink(destination: SettingsView().environmentObject(IconNames()), label: {
-            Image(systemName: "gear")
-                .resizable()
-                .frame(width: 24, height: 24)
-                .foregroundColor(.white)
-        }), trailing: NavigationLink(destination: AboutView(), label: {
-            Image(systemName: "info.circle")
-                .resizable()
-                .frame(width: 24, height: 24)
-                .foregroundColor(.white)
-        }))
-        .environment(\.layoutDirection, .rightToLeft)
+       
         
     } // Body
     
     private var mainContent : some View {
         VStack {
-            KFImage(URL(string: Images.urlExtension + (self.viewModel.repository.banner ?? ""))!)
+            KFImage(URL(string: Images.urlExtension + (self.viewModel.event.banner ?? ""))!)
                 .placeholder {
                     ImagePlaceholder()
                 }
@@ -60,27 +47,30 @@ struct EventDetailView: View {
                 .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity)
                 .padding()
             
-            
-            Button(action: {
-                if let url = URL(string: viewModel.repository.links?.first { $0.role == "LIVE" }?.url ?? Constants.placeholderUrl) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            if !self.viewModel.event.liveUrl.isEmpty {
+                Button(action: {
+                    if let url = URL(string: viewModel.event.liveUrl) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+                }) {
+                    HStack(alignment: .center) {
+                        Spacer()
+                        Image(systemName: "play.rectangle")
+                        Text(LocalizedStringKey("Watch Live"))
+                            .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
+                        Spacer()
+                    }
+                    .padding(.vertical)
                 }
-            }) {
-                HStack(alignment: .center) {
-                    Spacer()
-                    Image(systemName: "play.rectangle")
-                    Text(LocalizedStringKey("Watch Live"))
-                        .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
-                    Spacer()
-                }
-                .padding(.vertical)
+                .customStyle(withBackgroundColor: Colors.primaryRed)
             }
-            .customStyle(withBackgroundColor: Colors.primaryRed)
+            
+            
             
             VStack(alignment: .leading) {
-                if let ticket = self.viewModel.repository.links?.first { $0.role == "TICKET" } {
+                if !self.viewModel.event.ticketUrl.isEmpty {
                     Button {
-                        if let url = URL(string: ticket.url) {
+                        if let url = URL(string: self.viewModel.event.ticketUrl) {
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }
                     } label: {
@@ -95,9 +85,9 @@ struct EventDetailView: View {
                     .foregroundColor(Colors.primaryRed)
                     Divider()
                 }
-                if let registeration = self.viewModel.repository.links?.first { $0.role == "REGISTRATION" } {
+                if !self.viewModel.event.registerationUrl.isEmpty {
                     Button {
-                        if let urlMap = URL(string: registeration.url) {
+                        if let urlMap = URL(string: self.viewModel.event.registerationUrl) {
                             UIApplication.shared.open(urlMap, options: [:], completionHandler: nil)
                         }
                     } label: {
@@ -115,23 +105,23 @@ struct EventDetailView: View {
                 
                 HStack {
                     Image(decorative: "clock-icon")
-                    Text(DateHelper.dateWith(self.viewModel.repository.startDate ?? "TBA", showTime: true))
+                    Text(DateHelper.dateWith(self.viewModel.event.startDate ?? "TBA", showTime: true))
                         .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
-                    Text(DateHelper.dateWith(self.viewModel.repository.endDate  ?? "TBA", showTime: true))
+                    Text(DateHelper.dateWith(self.viewModel.event.endDate  ?? "TBA", showTime: true))
                         .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
                 }
                 .padding()
                 Divider()
                 HStack {
                     Image(decorative: "venue-icon")
-                    Text(self.viewModel.repository.venue?.title ?? "-")
+                    Text(self.viewModel.event.venue?.title ?? "-")
                         .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
                 }
                 .padding()
                 Divider()
                 HStack {
                     Image(decorative: "address-icon")
-                    Text(self.viewModel.repository.venue?.address ?? "-")
+                    Text(self.viewModel.event.venue?.address ?? "-")
                         .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
                 }
                 .padding()
@@ -141,8 +131,8 @@ struct EventDetailView: View {
             .foregroundColor(.secondary)
             .padding([.vertical, .bottom])
             
-            if !(self.viewModel.repository.venue?.mapImage ?? "").isEmpty {
-                KFImage(URL(string: Images.urlExtension + (self.viewModel.repository.venue?.mapImage ?? ""))!)
+            if !(self.viewModel.event.venue?.mapImage ?? "").isEmpty {
+                KFImage(URL(string: Images.urlExtension + (self.viewModel.event.venue?.mapImage ?? ""))!)
                     .placeholder {
                         ImagePlaceholder()
                     }
@@ -150,7 +140,7 @@ struct EventDetailView: View {
                     .scaledToFill()
                     .frame(height: 200)
                     .onTapGesture {
-                        if let url = URL(string: viewModel.repository.venue?.mapLink ?? Constants.placeholderUrl) {
+                        if let url = URL(string: viewModel.event.venue?.mapLink ?? Constants.placeholderUrl) {
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }
                         
@@ -160,15 +150,17 @@ struct EventDetailView: View {
             
             
             
-            NavigationLink(destination: SponsorsView(eventId: viewModel.repository.id)) {
-                HStack {
-                    Spacer()
-                    Text(LocalizedStringKey("Sponsors"))
-                        .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
-                    Spacer()
+            if TimeZone.current.isMasterData {
+                NavigationLink(destination: SponsorsView(eventId: viewModel.event.id)) {
+                    HStack {
+                        Spacer()
+                        Text(LocalizedStringKey("Sponsors"))
+                            .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
+                        Spacer()
+                    }
+                    .padding()
+                    .customStyle(withBackgroundColor: Colors.primaryRed)
                 }
-                .padding()
-                .customStyle(withBackgroundColor: Colors.primaryRed)
             }
             
         } // VStack

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct GalleryView: View {
     
-    @ObservedObject var viewModel: AlbumViewModel
+    var viewModel: AlbumViewModel
     
     var body: some View {
         ZStack {
@@ -18,10 +18,11 @@ struct GalleryView: View {
                 if self.viewModel.repositories.count != 0 {
                     ScrollView(.vertical) {
                         ForEach(viewModel.repositories, id: \.self) { album in
-                            GalleryCardView(album: album)
+                            NavigationLink(destination: GalleryDetailView(album: album)) {
+                                GalleryCardView(album: album)
+                            }
                         }
                         .padding()
-                        .environment(\.layoutDirection, .rightToLeft)
                     }
                 } else {
                     EmptyListView()
@@ -42,8 +43,7 @@ struct GalleryView: View {
                     }
             }
         }
-        .navigationBarColor(UIColor(named: "primaryRed"))
-        .navigationBarTitle(Text(LocalizedStringKey("Gallery")), displayMode: .inline)
+        
     }
     
 }

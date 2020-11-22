@@ -24,6 +24,5 @@ struct TabBar : View {
     .background(Colors.primaryLightRed)
     .clipShape(Capsule())
     .animation(.default)
-    .environment(\.layoutDirection, .rightToLeft)
   }
 }
