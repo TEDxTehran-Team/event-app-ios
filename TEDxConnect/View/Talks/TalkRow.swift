@@ -16,8 +16,10 @@ struct TalksRow: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .top, spacing: 10) {
                 ForEach(0..<talks.count) { index in
+                    NavigationLink(destination: TalkDetailView(id: self.talks[index].id)) {
                     TalkCell(talk: self.talks[index])
                         .padding(.horizontal,5)
+                    }
                 }
             }
             .padding(.horizontal)

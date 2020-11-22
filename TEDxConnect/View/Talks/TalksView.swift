@@ -22,24 +22,19 @@ struct TalksView: View {
                     
                     ForEach(talkViewModel.repositories, id: \.self) { talkWithEvent in
                         VStack  {
-                            if talkWithEvent.talks.count != 0 {
-                                VStack {
-                                    HStack {
-                                        Spacer()
-                                        
-                                        Text(talkWithEvent.event.title ?? "")
-                                            .foregroundColor(.secondary)
-                                            .padding(.horizontal)
-                                        
-                                    }
-                                    .padding(.top)
+                            VStack {
+                                HStack {
+                                    Spacer()
                                     
-                                    TalksRow(talks: talkWithEvent.talks)
-                                        .padding(.top,5)
+                                    Text(talkWithEvent.event.title ?? "")
+                                        .foregroundColor(.secondary)
+                                        .padding(.horizontal)
+                                    
                                 }
+                                .padding(.top)
                                 
-                            } else {
-                                EmptyView()
+                                TalksRow(talks: talkWithEvent.talks)
+                                    .padding(.top,5)
                             }
                         }
                         

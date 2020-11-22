@@ -15,7 +15,7 @@ struct TalkCell: View {
     let cellWidth: CGFloat = 130
     
     var body: some View {
-        NavigationLink(destination: TalkDetailView(id: talk.id)) {
+       
             VStack {
                 
                 KFImage(URL(string: Images.urlExtension + talk.section.image))
@@ -38,7 +38,7 @@ struct TalkCell: View {
                 }
             }
             .frame(width: self.cellWidth)
-        }
+        
         .buttonStyle(PlainButtonStyle())
         
     }
