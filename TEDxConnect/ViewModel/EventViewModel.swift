@@ -15,6 +15,11 @@ class EventViewModel: ObservableObject {
   
   @Published var errorMessage: String = ""
   @Published var statusView: StatusView = .none
+    
+    
+    init() {
+        setup()
+    }
   
   func setup() {
 

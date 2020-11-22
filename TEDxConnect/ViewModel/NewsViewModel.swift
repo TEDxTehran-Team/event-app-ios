@@ -9,29 +9,34 @@
 import Foundation
 
 class NewsViewModel: ObservableObject {
-  
-  var repo = NewsRepository()
-  @Published var repositories = [News]()
-  
-  @Published var errorMessage: String = ""
-  @Published var statusView: StatusView = .none
-  
-  func setup() {
-    self.statusView = .loading
-    repo.get() { repositories, exception  in
-      
-      if let error = exception {
-        self.statusView = .error
-        self.errorMessage = error.message
-        return
-      }
-      
-      guard let repositories = repositories else {
-        return
-      }
-      self.statusView = .complete
-      self.repositories = repositories
+    
+    var repo = NewsRepository()
+    @Published var repositories = [News]()
+    
+    @Published var errorMessage: String = ""
+    @Published var statusView: StatusView = .none
+    
+    
+    init() {
+        setup()
     }
-  }
-  
+    
+    func setup() {
+        self.statusView = .loading
+        repo.get() { repositories, exception  in
+            
+            if let error = exception {
+                self.statusView = .error
+                self.errorMessage = error.message
+                return
+            }
+            
+            guard let repositories = repositories else {
+                return
+            }
+            self.statusView = .complete
+            self.repositories = repositories
+        }
+    }
+    
 }

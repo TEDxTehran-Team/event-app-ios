@@ -67,16 +67,8 @@ struct AppView: View {
             .navigationBarItems(trailing: NavigationLink(destination: AboutView(), label: {
                 Image(systemName: "info.circle")
             }))
-            .accentColor(Colors.primaryRed)
-            .onAppear {
-                self.eventViewModel.setup()
-                self.dayViewModel.setup()
-                self.newsViewModel.setup()
-                self.albumViewModel.setup()
-                self.talkViewModel.setup()
-                self.featuredTalkViewModel.setup()
-                self.speakerViewModel.setup()
-            }
+//            .accentColor(Colors.primaryRed)
+            
         }
         
     }
