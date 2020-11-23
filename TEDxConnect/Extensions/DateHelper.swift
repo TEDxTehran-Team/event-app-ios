@@ -48,12 +48,11 @@ extension TimeZone {
         if self.isMasterData {
             return "7b9c5f16-0882-4334-a828-e67ce8ccf201"
         }
-        print("not master")
         return "6f279260-680d-40bd-af33-da3084b43af0"
     }
     
     var isMasterData : Bool {
-        return self.identifier.lowercased() != "asia/tehran"
+        return self.identifier.lowercased() == "asia/tehran"
     }
 }
 
