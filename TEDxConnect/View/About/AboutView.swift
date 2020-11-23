@@ -11,8 +11,6 @@ import SwiftUI
 struct AboutView: View {
     
    @ObservedObject var aboutViewModel = AboutViewModel()
-   @Environment(\.presentationMode) var presentation
-
     
     init() {
         print("initnitnt")
@@ -34,7 +32,6 @@ struct AboutView: View {
                         Text(about.title)
                             .padding()
                     }
-                    .isDetailLink(false)
                 }
                 Spacer()
             }
@@ -64,11 +61,6 @@ struct AboutView: View {
             }
         })
         .navigationBarTitle(Text("About"), displayMode: .inline)
-        .navigationBarItems(trailing: Button(action: {
-          presentation.wrappedValue.dismiss()
-        }, label: {
-          Image(systemName: "xmark")
-        }))
       }
     }
     

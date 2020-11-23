@@ -19,13 +19,10 @@ struct HomeTabUIView: View {
     
     @State var mainViewType: MainViewType = .home
     
-  
     var  eventViewModel : EventViewModel
     var dayViewModel : DayViewModel
     var speakerViewModel:SpeakerViewModel
     
-    @State private var showingAbout = false
-  
     var body: some View {
       NavigationView {
         VStack {
@@ -54,14 +51,9 @@ struct HomeTabUIView: View {
         }
         .background(Colors.primaryLightGray)
         .navigationBarTitle(Text(LocalizedStringKey("Home")), displayMode: .inline)
-//        .navigationBarItems(trailing: Button(action: {
-//          showingAbout = true
-//        }, label: {
-//          Image(systemName: "info.circle")
+//        .navigationBarItems(trailing: NavigationLink(destination: AboutView(), label: {
+//            Image(systemName: "info.circle")
 //        }))
-        .sheet(isPresented: $showingAbout) {
-          AboutView()
-        }
       }
     }
     
