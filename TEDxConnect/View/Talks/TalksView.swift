@@ -42,6 +42,7 @@ struct TalksView: View {
                                             }
                                         }
                                     }
+                                    .buttonStyle(PlainButtonStyle())
                                     .padding(.horizontal)
                                     .padding(.horizontal)
                                 }

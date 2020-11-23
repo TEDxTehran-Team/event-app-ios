@@ -2,7 +2,8 @@ query GetNews {
   news {
     title
     description
-    icon
+    iconUrl
+    extraLink
   }
 }
 

@@ -9,16 +9,17 @@
 import Foundation
 
 struct News: Decodable, Hashable {
-  
-  var title: String
-  var description: String
-  var icon: String?
-  
-  static var example: News {
-    News(title: "-", description: "-", icon: Images.newsIconExample)
-  }
+    
+    var title: String
+    var description: String
+    var iconUrl: String?
+    var extraLink:String?
+    
+    static var example: News {
+        News(title: "-", description: "-", iconUrl: Images.newsIconExample,extraLink: "")
+    }
 }
 
 struct NewsResponse: Decodable {
-  var news: [News]
+    var news: [News]
 }

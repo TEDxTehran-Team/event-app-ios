@@ -13,39 +13,39 @@ struct GalleryView: View {
     var viewModel: AlbumViewModel
     
     var body: some View {
-      NavigationView {
-        ZStack {
-            if self.viewModel.statusView == .complete {
-                if self.viewModel.repositories.count != 0 {
-                    ScrollView(.vertical) {
-                        ForEach(viewModel.repositories, id: \.self) { album in
-                            NavigationLink(destination: GalleryDetailView(album: album)) {
-                                GalleryCardView(album: album)
+        NavigationView {
+            ZStack {
+                if self.viewModel.statusView == .complete {
+                    if self.viewModel.repositories.count != 0 {
+                        ScrollView(.vertical, showsIndicators: false) {
+                            ForEach(viewModel.repositories, id: \.self) { album in
+                                NavigationLink(destination: GalleryDetailView(album: album)) {
+                                    GalleryCardView(album: album)
+                                }
                             }
+                            .padding()
                         }
-                        .padding()
+                    } else {
+                        EmptyListView()
+                            .onTapGesture {
+                                self.viewModel.setup()
+                            }
                     }
-                } else {
-                    EmptyListView()
+                }
+                
+                if self.viewModel.statusView == .loading {
+                    Indicator()
+                }
+                
+                if self.viewModel.statusView == .error {
+                    ErrorView(errorText: self.viewModel.errorMessage)
                         .onTapGesture {
                             self.viewModel.setup()
                         }
                 }
             }
-            
-            if self.viewModel.statusView == .loading {
-                Indicator()
-            }
-            
-            if self.viewModel.statusView == .error {
-                ErrorView(errorText: self.viewModel.errorMessage)
-                    .onTapGesture {
-                        self.viewModel.setup()
-                    }
-            }
+            .navigationBarTitle(Text(LocalizedStringKey("Gallery")), displayMode: .inline)
         }
-        .navigationBarTitle(Text(LocalizedStringKey("Gallery")), displayMode: .inline)
-      }
         
     }
     

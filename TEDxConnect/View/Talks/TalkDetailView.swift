@@ -14,8 +14,6 @@ struct TalkDetailView: View {
     let id: String
     @ObservedObject var viewModel = TalkDetailViewModel()
     
-    @State private var showingSheet = false
-    @State private var url = ""
     @State private var titleLocalizedKey = ""
     
     var body: some View {
@@ -43,17 +41,15 @@ struct TalkDetailView: View {
         .onAppear {
             self.viewModel.setup(withId: Int(self.id) ?? 0)
         }
-        
-        .sheet(isPresented: $showingSheet) {
-            WebViewSheet(url: url, titleLocalizedKey: titleLocalizedKey)
-        }
     }
     
     private var content : some View {
         VStack(alignment: .trailing) {
             Button(action: {
-                url = viewModel.repository.talk.videoLink ?? Constants.placeholderUrl
-                showingSheet = true
+                if let  url = URL(string: viewModel.repository.talk.videoLink ?? Constants.placeholderUrl){
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+                
             }) {
                 ZStack {
                     
@@ -113,6 +109,7 @@ struct TalkDetailView: View {
                 TalksRow(talks: self.viewModel.repository.suggestedTalks)
                     .padding(.top)
             }
+            .buttonStyle(PlainButtonStyle())
             .layoutPriority(1)
             
         } // VStack

@@ -27,7 +27,7 @@ struct NewsCardView: View {
                         .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
                         .foregroundColor(.primary)
                     
-                    KFImage(URL(string: Images.urlExtension + (news.icon ?? ""))!)
+                    KFImage(URL(string: Images.urlExtension + (news.iconUrl ?? ""))!)
                         .placeholder {
                             ImagePlaceholder()
                         }
@@ -41,6 +41,11 @@ struct NewsCardView: View {
                     .padding(.top)
             }
             .padding(20)
+        }
+        .onTapGesture {
+            if let url = URL(string: self.news.extraLink ?? "") {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
         }
         .padding(.vertical, 10)
     }

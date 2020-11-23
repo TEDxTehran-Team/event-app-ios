@@ -74,7 +74,8 @@ public final class GetNewsQuery: GraphQLQuery {
         __typename
         title
         description
-        icon
+        iconUrl
+        extraLink
       }
     }
     """
@@ -120,7 +121,8 @@ public final class GetNewsQuery: GraphQLQuery {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("title", type: .nonNull(.scalar(String.self))),
           GraphQLField("description", type: .scalar(String.self)),
-          GraphQLField("icon", type: .scalar(String.self)),
+          GraphQLField("iconUrl", type: .scalar(String.self)),
+          GraphQLField("extraLink", type: .scalar(String.self)),
         ]
       }
 
@@ -130,8 +132,8 @@ public final class GetNewsQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(title: String, description: String? = nil, icon: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "NewsSchemaType", "title": title, "description": description, "icon": icon])
+      public init(title: String, description: String? = nil, iconUrl: String? = nil, extraLink: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "NewsSchemaType", "title": title, "description": description, "iconUrl": iconUrl, "extraLink": extraLink])
       }
 
       public var __typename: String {
@@ -161,13 +163,22 @@ public final class GetNewsQuery: GraphQLQuery {
         }
       }
 
-      /// an icon for the news
-      public var icon: String? {
+      public var iconUrl: String? {
         get {
-          return resultMap["icon"] as? String
+          return resultMap["iconUrl"] as? String
         }
         set {
-          resultMap.updateValue(newValue, forKey: "icon")
+          resultMap.updateValue(newValue, forKey: "iconUrl")
+        }
+      }
+
+      /// any extra link related to the talk?
+      public var extraLink: String? {
+        get {
+          return resultMap["extraLink"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "extraLink")
         }
       }
     }

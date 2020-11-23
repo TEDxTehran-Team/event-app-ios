@@ -9,7 +9,7 @@
 import SwiftUI
 
 
-enum AppTabViewItem {
+enum AppTabViewItem : String{
     case home
     case news
     case gallery
@@ -18,8 +18,8 @@ enum AppTabViewItem {
 
 struct AppView: View {
     
-    @ObservedObject var eventViewModel = EventViewModel()
-    @ObservedObject var dayViewModel = DayViewModel()
+    @ObservedObject  var eventViewModel = EventViewModel()
+    @ObservedObject  var dayViewModel = DayViewModel()
     @ObservedObject var newsViewModel = NewsViewModel()
     @ObservedObject var albumViewModel = AlbumViewModel()
     @ObservedObject var speakerViewModel = SpeakerViewModel()
@@ -28,46 +28,48 @@ struct AppView: View {
     
     
     @State private var tabSelected:AppTabViewItem = .home
+    @State var isShowAbout = false
     
     var body: some View {
-//        NavigationView {
-            TabView(selection: self.$tabSelected) {
-                TalksView(talkViewModel: self.talkViewModel, featuredTalkViewModel: self.featuredTalkViewModel)
-                    .tag(AppTabViewItem.talks)
-                    .tabItem {
-                        Image(systemName: "music.mic")
-                        Text("Talks".localized())
-                    }
-                
+        
+        TabView(selection: self.$tabSelected) {
+            TalksView(talkViewModel: self.talkViewModel, featuredTalkViewModel: self.featuredTalkViewModel)
+                .tag(AppTabViewItem.talks)
+                .tabItem {
+                    Image(systemName: "music.mic")
+                    Text("Talks".localized())
+                }
+            
+            VStack {
                 GalleryView(viewModel: self.albumViewModel)
-                    .tag(AppTabViewItem.gallery)
-                    .tabItem {
-                        Image(systemName: "photo.on.rectangle")
-                        Text("Gallery".localized())
-                    }
-                
-                NewsView(viewModel: self.newsViewModel)
-                    .tag(AppTabViewItem.news)
-                    .tabItem {
-                        Image(systemName: "text.aligncenter")
-                        Text("News".localized())
-                        
-                    }
-                
-                
-                HomeTabUIView(eventViewModel: self.eventViewModel,dayViewModel: self.dayViewModel, speakerViewModel: self.speakerViewModel)
-                    .tag(AppTabViewItem.home)
-                    .tabItem {
-                        Image(systemName: "house")
-                        Text("Home".localized())
-                    }
+            }.tag(AppTabViewItem.gallery)
+            .tabItem {
+                Image(systemName: "photo.on.rectangle")
+                Text("Gallery".localized())
+            }
+            
+            NewsView(viewModel: self.newsViewModel)
+                .tag(AppTabViewItem.news)
+                .tabItem {
+                    Image(systemName: "text.aligncenter")
+                    Text("News".localized())
+                    
+                }
+            
+            NavigationView {
+                VStack {
+                    HomeTabUIView(eventViewModel: self.eventViewModel,dayViewModel: self.dayViewModel, speakerViewModel: self.speakerViewModel)
+                }
+                .navigationBarTitle(Text(LocalizedStringKey("Home")),displayMode: .inline)
                 
             }
-//            .navigationBarTitle(Text(self.tabSelected.title), displayMode: .inline)
-//            .accentColor(Colors.primaryRed)
+            .tag(AppTabViewItem.home)
+            .tabItem {
+                Image(systemName: "house")
+                Text("Home".localized())
+            }
             
-//        }
-        
+        }
     }
     
 }

@@ -7,61 +7,74 @@
 //
 
 import SwiftUI
+import struct Kingfisher.KFImage
 
 struct AboutView: View {
     
-   @ObservedObject var aboutViewModel = AboutViewModel()
+    @ObservedObject var aboutViewModel = AboutViewModel()
     
-    init() {
-        print("initnitnt")
-    }
     
     var body: some View {
-      NavigationView {
-        ZStack {
-            VStack {
-                if TimeZone.current.isMasterData {
-                    Image(Images.logo)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 300)
-                        .padding(20)
-                }
-                ForEach(aboutViewModel.repositories,id: \.self) { about in
-                    NavigationLink(destination: AboutDetailView(item: about)) {
-                        Text(about.title)
-                            .padding()
+            ZStack {
+                ScrollView {
+                    VStack {
+                        if TimeZone.current.isMasterData {
+                            Image(Images.logo)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 300)
+                                .padding(20)
+                        }
+                        ForEach(aboutViewModel.repositories,id: \.self) { about in
+                            VStack {
+                                
+                                KFImage(URL(string: Images.urlExtension + (about.image ?? "")))
+                                    .placeholder {
+                                        ImagePlaceholder()
+                                    }
+                                    .resizable()
+                                    .scaledToFit()
+                                    .cornerRadius(10)
+                                
+                                Text(about.description)
+                                    .padding()
+                                Spacer()
+                            }
+                            .background(RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                            .fill(Colors.primaryBackground)
+                                            .shadow(color: Color.black.opacity(0.2), radius: 6, x: 0, y: 3))
+                            .padding(.horizontal)
+                            .padding(.vertical,5)
+                        }
+                        Spacer()
                     }
                 }
-                Spacer()
+                
+                
+                if self.aboutViewModel.statusView == .emptyState {
+                    EmptyListView()
+                        .onTapGesture {
+                            self.aboutViewModel.setup()
+                        }
+                }
+                
+                if self.aboutViewModel.statusView == .loading {
+                    Indicator()
+                }
+                
+                if self.aboutViewModel.statusView == .error {
+                    ErrorView(errorText: self.aboutViewModel.errorMessage)
+                        .onTapGesture {
+                            self.aboutViewModel.setup()
+                        }
+                }
             }
-            
-            
-            if self.aboutViewModel.statusView == .emptyState {
-                EmptyListView()
-                    .onTapGesture {
-                        self.aboutViewModel.setup()
-                    }
-            }
-            
-            if self.aboutViewModel.statusView == .loading {
-                Indicator()
-            }
-            
-            if self.aboutViewModel.statusView == .error {
-                ErrorView(errorText: self.aboutViewModel.errorMessage)
-                    .onTapGesture {
-                        self.aboutViewModel.setup()
-                    }
-            }
-        }
-        .onAppear(perform: {
-            if self.aboutViewModel.statusView == .none {
-                self.aboutViewModel.setup()
-            }
-        })
-        .navigationBarTitle(Text("About"), displayMode: .inline)
-      }
+            .onAppear(perform: {
+                if self.aboutViewModel.statusView == .none {
+                    self.aboutViewModel.setup()
+                }
+            })
+        
     }
     
 }

@@ -12,7 +12,7 @@ import Sentry
 
 struct EventDetailView: View {
     
-    @EnvironmentObject var viewModel: EventViewModel
+    @ObservedObject var viewModel: EventViewModel
     
     var body: some View {
         ScrollView {
@@ -181,6 +181,6 @@ struct EventDetailView: View {
 
 struct EventDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        EventDetailView().environmentObject(EventViewModel())
+        EventDetailView(viewModel: EventViewModel())
     }
 }

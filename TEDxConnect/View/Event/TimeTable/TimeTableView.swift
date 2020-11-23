@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TimeTableView: View {
   
-  @EnvironmentObject var viewModel: DayViewModel
+  @ObservedObject var viewModel: DayViewModel
   
   var body: some View {
     ZStack {
@@ -60,6 +60,6 @@ struct TimeTableView: View {
 
 struct TimeTableView_Previews: PreviewProvider {
   static var previews: some View {
-    TimeTableView().environmentObject(DayViewModel())
+    TimeTableView(viewModel: DayViewModel())
   }
 }

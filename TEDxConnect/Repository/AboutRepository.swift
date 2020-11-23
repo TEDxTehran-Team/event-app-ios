@@ -12,7 +12,7 @@ class AboutRepository {
     
     func get(completion: @escaping ([About]?, XException?) -> ()) {
         
-        Network.shared.apollo.fetch(query: GetAboutsQuery()) { result in
+        Network.shared.apollo.fetch(query: GetAboutsQuery(),cachePolicy: .fetchIgnoringCacheCompletely) { result in
             switch result {
             case .failure(let error):
                 print("About Error \(error)")

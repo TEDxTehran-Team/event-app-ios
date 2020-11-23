@@ -38,8 +38,6 @@ struct TalkCell: View {
             }
             .frame(width: 130)
         
-        .buttonStyle(PlainButtonStyle())
-        
     }
 }
 

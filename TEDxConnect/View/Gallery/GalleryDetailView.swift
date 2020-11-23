@@ -16,7 +16,6 @@ struct GalleryDetailView: View {
     @State var album: Album
     
     var body: some View {
-      NavigationView {
         ZStack {
             GridStack(minCellWidth: (UIScreen.main.bounds.width/3) - 20, spacing: 15, numItems: viewModel.repositories.count) { index, cellWidth in
                 NavigationLink(destination:
@@ -57,11 +56,9 @@ struct GalleryDetailView: View {
             }
         }
         .navigationBarTitle(Text(album.title), displayMode: .inline)
-          .onAppear {
-              self.viewModel.setup(withAlbumId: Int(self.album.id) ?? 0)
-          }
-      }
-
+        .onAppear {
+            self.viewModel.setup(withAlbumId: Int(self.album.id) ?? 0)
+        }
     }
     
 }

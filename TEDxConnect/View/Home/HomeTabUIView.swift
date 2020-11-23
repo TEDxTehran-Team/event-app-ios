@@ -19,12 +19,13 @@ struct HomeTabUIView: View {
     
     @State var mainViewType: MainViewType = .home
     
-    var  eventViewModel : EventViewModel
-    var dayViewModel : DayViewModel
-    var speakerViewModel:SpeakerViewModel
+    @ObservedObject var eventViewModel : EventViewModel
+    @ObservedObject var dayViewModel : DayViewModel
+    @ObservedObject var speakerViewModel:SpeakerViewModel
+    
+    @State var isShowAbout = false
     
     var body: some View {
-      NavigationView {
         VStack {
             Picker("", selection: self.$mainViewType) {
                 Text("Home".localized())
@@ -38,23 +39,23 @@ struct HomeTabUIView: View {
             .padding([.top,.horizontal])
             
             if self.mainViewType == .home {
-                EventDetailView()
-                    .environmentObject(self.eventViewModel)
+                EventDetailView(viewModel: self.eventViewModel)
             }else if self.mainViewType == .speakers {
                 SpeakersView(viewModel: self.speakerViewModel)
             }else {
-                TimeTableView()
-                    .environmentObject(self.dayViewModel)
+                TimeTableView(viewModel: self.dayViewModel)
             }
             
             Spacer()
+                .background(Colors.primaryLightGray)
+                .navigationBarTitle(Text(LocalizedStringKey("Home")), displayMode: .inline)
+                .navigationBarItems(trailing: NavigationLink(
+                                        destination: AboutView(),
+                                        label: {
+                                            Image(systemName: "info.circle")
+                                        }))
+                .navigationViewStyle(StackNavigationViewStyle())
         }
-        .background(Colors.primaryLightGray)
-        .navigationBarTitle(Text(LocalizedStringKey("Home")), displayMode: .inline)
-//        .navigationBarItems(trailing: NavigationLink(destination: AboutView(), label: {
-//            Image(systemName: "info.circle")
-//        }))
-      }
     }
     
 }
