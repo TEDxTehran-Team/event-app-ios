@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import Pushe
+//import Pushe
 import Sentry
-
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

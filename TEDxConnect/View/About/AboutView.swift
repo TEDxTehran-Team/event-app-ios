@@ -38,6 +38,8 @@ struct AboutView: View {
                                 
                                 Text(about.description)
                                     .padding()
+                                    .customFont(name: Fonts.shabnam, style: .body)
+                                    .multilineTextAlignment(.trailing)
                                 Spacer()
                             }
                             .background(RoundedRectangle(cornerRadius: 10, style: .continuous)

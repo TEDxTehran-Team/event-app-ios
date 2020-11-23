@@ -35,7 +35,6 @@ class Network {
             }
             return "6f279260-680d-40bd-af33-da3084b43af0"
         }
-        print(token)
         
         configuration.httpAdditionalHeaders = ["Application-Token": token]
         

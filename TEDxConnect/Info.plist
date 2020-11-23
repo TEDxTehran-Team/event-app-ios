@@ -51,17 +51,8 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>FirebaseAppDelegateProxyEnabled</key>
-	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>Pushe</key>
-	<dict>
-		<key>AppGroupsId</key>
-		<string>group.com.talexani.xconnect.pusheShared</string>
-		<key>ManifestKey</key>
-		<string>NWRuNm12d2xtMzk4azRrZUBrbG1AMTA3MjkxNDY0MTY3</string>
-	</dict>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Shabnam-FD.ttf</string>
@@ -84,19 +75,12 @@
 			</array>
 		</dict>
 	</dict>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>processing</string>
-		<string>remote-notification</string>
-	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
 	</array>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleLightContent</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

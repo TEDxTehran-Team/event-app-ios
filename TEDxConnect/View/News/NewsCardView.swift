@@ -24,6 +24,7 @@ struct NewsCardView: View {
                     
                     Spacer()
                     Text(news.title)
+                        .multilineTextAlignment(.center)
                         .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
                         .foregroundColor(.primary)
                     
