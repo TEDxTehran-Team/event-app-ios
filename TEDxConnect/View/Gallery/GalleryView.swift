@@ -13,6 +13,7 @@ struct GalleryView: View {
     var viewModel: AlbumViewModel
     
     var body: some View {
+      NavigationView {
         ZStack {
             if self.viewModel.statusView == .complete {
                 if self.viewModel.repositories.count != 0 {
@@ -43,6 +44,8 @@ struct GalleryView: View {
                     }
             }
         }
+        .navigationBarTitle(Text(LocalizedStringKey("Gallery")), displayMode: .inline)
+      }
         
     }
     

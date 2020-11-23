@@ -16,10 +16,9 @@ class AboutViewModel: ObservableObject {
     @Published var errorMessage: String = ""
     @Published var statusView: StatusView = .none
     
-    
     func setup() {
         self.statusView = .loading
-
+      
         self.repository.get() { repositories, exception  in
 
             if let error = exception {

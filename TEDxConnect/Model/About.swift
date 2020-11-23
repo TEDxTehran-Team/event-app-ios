@@ -9,15 +9,20 @@
 import Foundation
 
 struct About: Decodable,Hashable {
-    var title: String
-    var description: String
-    var image: String?
-    
-    static var example: About {
-        About(title: "-", description: "-", image: Images.example)
-    }
+  var id: String
+  var title: String
+  var description: String
+  var image: String?
+  
+  static var example: About {
+    About(id: "1", title: "-", description: "-", image: Images.example)
+  }
+  
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(id)
+  }
 }
 
 struct AboutResponse: Decodable,Hashable {
-    var abouts: [About]
+  var abouts: [About]
 }

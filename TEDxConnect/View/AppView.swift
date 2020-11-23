@@ -30,7 +30,7 @@ struct AppView: View {
     @State private var tabSelected:AppTabViewItem = .home
     
     var body: some View {
-        NavigationView {
+//        NavigationView {
             TabView(selection: self.$tabSelected) {
                 TalksView(talkViewModel: self.talkViewModel, featuredTalkViewModel: self.featuredTalkViewModel)
                     .tag(AppTabViewItem.talks)
@@ -63,13 +63,10 @@ struct AppView: View {
                     }
                 
             }
-            .navigationBarTitle(Text(self.tabSelected.title), displayMode: .inline)
-            .navigationBarItems(trailing: NavigationLink(destination: AboutView(), label: {
-                Image(systemName: "info.circle")
-            }))
+//            .navigationBarTitle(Text(self.tabSelected.title), displayMode: .inline)
 //            .accentColor(Colors.primaryRed)
             
-        }
+//        }
         
     }
     

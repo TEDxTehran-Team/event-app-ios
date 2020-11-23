@@ -441,6 +441,7 @@ public final class GetAboutsQuery: GraphQLQuery {
         __typename
         abouts {
           __typename
+          id
           title
           description
           image
@@ -527,6 +528,7 @@ public final class GetAboutsQuery: GraphQLQuery {
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("title", type: .nonNull(.scalar(String.self))),
             GraphQLField("description", type: .scalar(String.self)),
             GraphQLField("image", type: .scalar(String.self)),
@@ -539,8 +541,8 @@ public final class GetAboutsQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(title: String, description: String? = nil, image: String? = nil) {
-          self.init(unsafeResultMap: ["__typename": "AboutOrganizerSchemaType", "title": title, "description": description, "image": image])
+        public init(id: GraphQLID, title: String, description: String? = nil, image: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "AboutOrganizerSchemaType", "id": id, "title": title, "description": description, "image": image])
         }
 
         public var __typename: String {
@@ -549,6 +551,15 @@ public final class GetAboutsQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return resultMap["id"]! as! GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
           }
         }
 

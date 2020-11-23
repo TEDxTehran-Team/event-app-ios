@@ -19,11 +19,15 @@ struct HomeTabUIView: View {
     
     @State var mainViewType: MainViewType = .home
     
+  
     var  eventViewModel : EventViewModel
     var dayViewModel : DayViewModel
     var speakerViewModel:SpeakerViewModel
     
+    @State private var showingAbout = false
+  
     var body: some View {
+      NavigationView {
         VStack {
             Picker("", selection: self.$mainViewType) {
                 Text("Home".localized())
@@ -47,7 +51,18 @@ struct HomeTabUIView: View {
             }
             
             Spacer()
-        }.background(Colors.primaryLightGray)
+        }
+        .background(Colors.primaryLightGray)
+        .navigationBarTitle(Text(LocalizedStringKey("Home")), displayMode: .inline)
+//        .navigationBarItems(trailing: Button(action: {
+//          showingAbout = true
+//        }, label: {
+//          Image(systemName: "info.circle")
+//        }))
+        .sheet(isPresented: $showingAbout) {
+          AboutView()
+        }
+      }
     }
     
 }

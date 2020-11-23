@@ -14,6 +14,7 @@ struct TalksView: View {
     var featuredTalkViewModel: FeaturedTalkViewModel
     
     var body: some View {
+      NavigationView {
         VStack {
             if self.talkViewModel.statusView == .complete {
                 ScrollView(.vertical) {
@@ -62,6 +63,8 @@ struct TalksView: View {
                     }
             }
         }
+        .navigationBarTitle(Text(LocalizedStringKey("Talks")), displayMode: .inline)
+      }
     }
 }
 
