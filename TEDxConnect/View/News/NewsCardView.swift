@@ -36,6 +36,7 @@ struct NewsCardView: View {
                         .frame(width: 55, height: 30)
                 }
                 Text(news.description)
+                    .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
                     .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
                     .padding(.top)

@@ -9,22 +9,25 @@
 import SwiftUI
 
 struct DayHeaderView: View {
-  
-  let day: Day
-  
-  var body: some View {
-    Text(day.title)
-        .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
-      .padding(.horizontal, 16)
-      .padding(.vertical, 5)
-      .background(Colors.primaryLightGray)
-      .cornerRadius(20)
-      .foregroundColor(.black)
-  }
+    
+    let day: Day
+    
+    var body: some View {
+        HStack {
+            Spacer()
+            Text(day.title)
+                .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 5)
+                .background(Colors.primaryLightGray)
+                .cornerRadius(20)
+                .foregroundColor(.black)
+        }
+    }
 }
 
 struct DayHeaderView_Previews: PreviewProvider {
-  static var previews: some View {
-    DayHeaderView(day: Day.example)
-  }
+    static var previews: some View {
+        DayHeaderView(day: Day.example)
+    }
 }

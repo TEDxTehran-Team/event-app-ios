@@ -35,6 +35,7 @@ struct SpeakersView: View {
                                         .lineLimit(2)
                                     Spacer()
                                     Text(item.description)
+                                        .multilineTextAlignment(.center)
                                         .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
                                         .lineLimit(2)
                                     Spacer()

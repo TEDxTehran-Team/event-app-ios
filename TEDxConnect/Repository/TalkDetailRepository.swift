@@ -12,7 +12,7 @@ class TalkDetailRepository {
     
     func get(withId id: Int, completion: @escaping (TalkDetail?, XException?) -> ()) {
         
-        Network.shared.apollo.fetch(query: GetTalkDetailQuery(id: id)) { result in
+        Network.shared.apollo.fetch(query: GetTalkDetailQuery(id: id),cachePolicy: .fetchIgnoringCacheCompletely) { result in
             switch result {
             case .failure(let error):
                 completion(nil, XException(message: error.localizedDescription, code: 0))

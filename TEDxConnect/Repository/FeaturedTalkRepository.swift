@@ -12,7 +12,7 @@ class FeaturedTalkRepository {
   
   func get(completion: @escaping (Talk?, XException?) -> ()) {
     
-    Network.shared.apollo.fetch(query: GetFeaturedTalkQuery()) { result in
+    Network.shared.apollo.fetch(query: GetFeaturedTalkQuery(),cachePolicy: .fetchIgnoringCacheCompletely) { result in
       switch result {
         case .failure(let error):
           completion(nil, XException(message: error.localizedDescription, code: 0))

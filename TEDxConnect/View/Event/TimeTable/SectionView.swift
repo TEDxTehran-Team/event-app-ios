@@ -9,34 +9,35 @@
 import SwiftUI
 
 struct SectionView: View {
-  
-  let section: Day.Session.Section
-  
-  var body: some View {
-    HStack {
-      Circle()
-        .fill(Day.Session.Section.sectionTypeColor(withType: section.type))
-        .frame(width: 8, height: 8)
-      Text(section.title)
-        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
-      Spacer()
-      Text(DateHelper.ommitSeconds(fromTime: section.startTime))
-        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
-        
-      Text(LocalizedStringKey("to"))
-        .customFont(name: Fonts.shabnam, style: .footnote)
-        
-      Text(DateHelper.ommitSeconds(fromTime: section.endTime))
-        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
-
+    
+    let section: Day.Session.Section
+    
+    var body: some View {
+        HStack {
+            Spacer()
+            Circle()
+                .fill(Day.Session.Section.sectionTypeColor(withType: section.type))
+                .frame(width: 8, height: 8)
+            Text(section.title)
+                .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+            Spacer()
+            Text(DateHelper.ommitSeconds(fromTime: section.startTime))
+                .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+            
+            Text(LocalizedStringKey("to"))
+                .customFont(name: Fonts.shabnam, style: .footnote)
+            
+            Text(DateHelper.ommitSeconds(fromTime: section.endTime))
+                .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+            
+        }
+        .foregroundColor(.secondary)
+        .padding(.horizontal)
     }
-    .foregroundColor(.secondary)
-    .padding(.horizontal)
-  }
 }
 
 struct SectionView_Previews: PreviewProvider {
-  static var previews: some View {
-    SectionView(section: Day.Session.Section.example)
-  }
+    static var previews: some View {
+        SectionView(section: Day.Session.Section.example)
+    }
 }
