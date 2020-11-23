@@ -37,7 +37,7 @@ struct AppView: View {
                 .tag(AppTabViewItem.talks)
                 .tabItem {
                     Image(systemName: "music.mic")
-                    Text("Talks".localized())
+                    Text(LocalizedStringKey("Talks"))
                 }
             
             VStack {
@@ -45,14 +45,14 @@ struct AppView: View {
             }.tag(AppTabViewItem.gallery)
             .tabItem {
                 Image(systemName: "photo.on.rectangle")
-                Text("Gallery".localized())
+                Text(LocalizedStringKey("Gallery"))
             }
             
             NewsView(viewModel: self.newsViewModel)
                 .tag(AppTabViewItem.news)
                 .tabItem {
                     Image(systemName: "text.aligncenter")
-                    Text("News".localized())
+                    Text(LocalizedStringKey("News"))
                     
                 }
             
@@ -66,31 +66,12 @@ struct AppView: View {
             .tag(AppTabViewItem.home)
             .tabItem {
                 Image(systemName: "house")
-                Text("Home".localized())
+                Text(LocalizedStringKey("Home"))
             }
             
-        }
+        }.accentColor(Colors.primaryRed)
     }
     
-}
-
-extension AppTabViewItem {
-    var title :String {
-        
-        var value = "Home"
-        switch self {
-        case .home:
-            value = "Home"
-        case .gallery:
-            value = "Gallery"
-        case .news:
-            value  = "News"
-        case .talks:
-            value = "Talks"
-        }
-        
-        return value.localized()
-    }
 }
 
 struct AppView_Previews: PreviewProvider {

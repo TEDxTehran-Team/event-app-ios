@@ -8,12 +8,12 @@
 
 import Foundation
 
-
-extension String {
-    func localized() -> String{
-        if TimeZone.current.isMasterData {
-            return  NSLocalizedString(self, comment: "")
-        }
-        return self
-    }
-}
+//
+//extension String {
+//    func localized() -> String{
+//        if TimeZone.current.isMasterData {
+//            return  NSLocalizedString(self, comment: "")
+//        }
+//        return self
+//    }
+//}
