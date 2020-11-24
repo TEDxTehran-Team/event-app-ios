@@ -51,7 +51,7 @@ struct AppView: View {
             NewsView(viewModel: self.newsViewModel)
                 .tag(AppTabViewItem.news)
                 .tabItem {
-                    Image(systemName: "text.aligncenter")
+                    Image(systemName: "newspaper")
                     Text(LocalizedStringKey("News"))
                     
                 }

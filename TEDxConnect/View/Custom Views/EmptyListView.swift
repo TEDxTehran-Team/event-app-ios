@@ -11,9 +11,9 @@ import SwiftUI
 struct EmptyListView: View {
     var body: some View {
         VStack(spacing: 16) {
-            Image(systemName: "eyes.inverse")
-                .resizable()
-                .frame(width: 100, height: 50)
+//            Image(systemName: "eyes.inverse")
+//                .resizable()
+//                .frame(width: 100, height: 50)
             Text(LocalizedStringKey("No Results Found"))
                 .customFont(name: Fonts.shabnam, style: .title3)
                 .foregroundColor(.primary)
