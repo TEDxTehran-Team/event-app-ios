@@ -12,7 +12,7 @@ import Sentry
 
 struct EventDetailView: View {
     
-    @EnvironmentObject var viewModel: EventViewModel
+    @ObservedObject var viewModel: EventViewModel
     
     var body: some View {
         ScrollView {
@@ -30,26 +30,13 @@ struct EventDetailView: View {
             
         } // ScrollView
         .background(Colors.primaryLightGray)
-        .navigationBarColor(UIColor(named: "primaryRed"))
-        .navigationBarTitle(Text(LocalizedStringKey("Home")), displayMode: .inline)
-        .navigationBarItems(leading: NavigationLink(destination: SettingsView().environmentObject(IconNames()), label: {
-            Image(systemName: "gear")
-                .resizable()
-                .frame(width: 24, height: 24)
-                .foregroundColor(.white)
-        }), trailing: NavigationLink(destination: AboutView(), label: {
-            Image(systemName: "info.circle")
-                .resizable()
-                .frame(width: 24, height: 24)
-                .foregroundColor(.white)
-        }))
-        .environment(\.layoutDirection, .rightToLeft)
+       
         
     } // Body
     
     private var mainContent : some View {
         VStack {
-            KFImage(URL(string: Images.urlExtension + (self.viewModel.repository.banner ?? ""))!)
+            KFImage(URL(string: Images.urlExtension + (self.viewModel.event.banner ?? ""))!)
                 .placeholder {
                     ImagePlaceholder()
                 }
@@ -60,77 +47,92 @@ struct EventDetailView: View {
                 .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity)
                 .padding()
             
-            
-            Button(action: {
-                if let url = URL(string: viewModel.repository.links?.first { $0.role == "LIVE" }?.url ?? Constants.placeholderUrl) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            if !self.viewModel.event.liveUrl.isEmpty {
+                Button(action: {
+                    if let url = URL(string: viewModel.event.liveUrl) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+                }) {
+                    HStack(alignment: .center) {
+                        Spacer()
+                        Text(LocalizedStringKey("Watch Live"))
+                            .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
+                        
+                        Image(systemName: "play.rectangle")
+                        Spacer()
+                    }
+                    .padding(.vertical)
                 }
-            }) {
-                HStack(alignment: .center) {
-                    Spacer()
-                    Image(systemName: "play.rectangle")
-                    Text(LocalizedStringKey("Watch Live"))
-                        .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
-                    Spacer()
-                }
-                .padding(.vertical)
+                .customStyle(withBackgroundColor: Colors.primaryRed)
             }
-            .customStyle(withBackgroundColor: Colors.primaryRed)
+            
+            
             
             VStack(alignment: .leading) {
-                if let ticket = self.viewModel.repository.links?.first { $0.role == "TICKET" } {
+                if !self.viewModel.event.ticketUrl.isEmpty {
                     Button {
-                        if let url = URL(string: ticket.url) {
+                        if let url = URL(string: self.viewModel.event.ticketUrl) {
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }
                     } label: {
                         HStack {
-                            Image(decorative: "ticket-icon")
+                            Spacer()
                             Text(LocalizedStringKey("Buy Ticket"))
                                 .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                            Image(decorative: "ticket-icon")
                         }
                         .padding(.vertical)
                     }
+                    .padding(.horizontal)
                     .foregroundColor(Colors.primaryRed)
                     Divider()
                 }
-                if let registeration = self.viewModel.repository.links?.first { $0.role == "REGISTRATION" } {
+                if !self.viewModel.event.registerationUrl.isEmpty {
                     Button {
-                        if let urlMap = URL(string: registeration.url) {
+                        if let urlMap = URL(string: self.viewModel.event.registerationUrl) {
                             UIApplication.shared.open(urlMap, options: [:], completionHandler: nil)
                         }
                     } label: {
                         HStack {
-                            Image(decorative: "register-icon")
+                            Spacer()
                             Text(LocalizedStringKey("Register in Event"))
                                 .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                            Image(decorative: "register-icon")
                         }
                         .padding(.vertical)
                     }
+                    .padding(.horizontal)
                     .foregroundColor(Colors.primaryRed)
                     Divider()
                 }
                 
                 HStack {
+                    
+                    Spacer()
+                    
+                    Text(DateHelper.dateWith(self.viewModel.event.startDate ?? "TBA", showTime: true))
+                        .customFont(name: TimeZone.current.isMasterData ? Fonts.shabnam : "", style: .footnote, weight: .regular)
+                    Text("|")
+                    Text(DateHelper.dateWith(self.viewModel.event.endDate  ?? "TBA", showTime: true))
+                        .customFont(name: TimeZone.current.isMasterData ? Fonts.shabnam : "", style: .footnote, weight: .regular)
                     Image(decorative: "clock-icon")
-                    Text(DateHelper.dateWith(self.viewModel.repository.startDate ?? "TBA", showTime: true))
-                        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
-                    Text(DateHelper.dateWith(self.viewModel.repository.endDate  ?? "TBA", showTime: true))
-                        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
                 }
                 .padding()
                 Divider()
                 HStack {
+                    Spacer()
+                    Text(self.viewModel.event.venue?.title ?? "-")
+                        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
                     Image(decorative: "venue-icon")
-                    Text(self.viewModel.repository.venue?.title ?? "-")
-                        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
                 }
                 .padding()
                 Divider()
                 HStack {
-                    Image(decorative: "address-icon")
-                    Text(self.viewModel.repository.venue?.address ?? "-")
+                    Spacer()
+                    Text(self.viewModel.event.venue?.address ?? "-")
                         .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                        .multilineTextAlignment(.trailing)
+                    Image(decorative: "address-icon")
                 }
                 .padding()
             }
@@ -139,30 +141,36 @@ struct EventDetailView: View {
             .foregroundColor(.secondary)
             .padding([.vertical, .bottom])
             
-            KFImage(URL(string: Images.urlExtension + (self.viewModel.repository.venue?.mapImage ?? ""))!)
-                .placeholder {
-                    ImagePlaceholder()
-                }
-                .resizable()
-                .scaledToFill()
-                .frame(height: 200)
-                .onTapGesture {
-                    if let url = URL(string: viewModel.repository.venue?.mapLink ?? Constants.placeholderUrl) {
-                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            if !(self.viewModel.event.venue?.mapImage ?? "").isEmpty {
+                KFImage(URL(string: Images.urlExtension + (self.viewModel.event.venue?.mapImage ?? ""))!)
+                    .placeholder {
+                        ImagePlaceholder()
                     }
-                    
-                }
-                .padding(.bottom)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 200)
+                    .onTapGesture {
+                        if let url = URL(string: viewModel.event.venue?.mapLink ?? Constants.placeholderUrl) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                        
+                    }
+                    .padding(.bottom)
+            }
             
-            NavigationLink(destination: SponsorsView(eventId: viewModel.repository.id)) {
-                HStack {
-                    Spacer()
-                    Text(LocalizedStringKey("Sponsors"))
-                        .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
-                    Spacer()
+            
+            
+            if TimeZone.current.isMasterData {
+                NavigationLink(destination: SponsorsView(eventId: viewModel.event.id)) {
+                    HStack {
+                        Spacer()
+                        Text(LocalizedStringKey("Sponsors"))
+                            .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
+                        Spacer()
+                    }
+                    .padding()
+                    .customStyle(withBackgroundColor: Colors.primaryRed)
                 }
-                .padding()
-                .customStyle(withBackgroundColor: Colors.primaryRed)
             }
             
         } // VStack
@@ -174,6 +182,6 @@ struct EventDetailView: View {
 
 struct EventDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        EventDetailView().environmentObject(EventViewModel())
+        EventDetailView(viewModel: EventViewModel())
     }
 }

@@ -11,7 +11,7 @@ import struct Kingfisher.KFImage
 
 struct SpeakersView: View {
     
-    @EnvironmentObject var viewModel:SpeakerViewModel
+    @ObservedObject var viewModel:SpeakerViewModel
     
     var body: some View {
         ScrollView {
@@ -26,19 +26,16 @@ struct SpeakersView: View {
                         }
                 }else {
                     ForEach(self.viewModel.repositories, id: \.self){ item in
-                        NavigationLink(destination:
-                                        SpeakerDetailView(speaker: item)
-                        ) {
-                            
+                        NavigationLink(destination: SpeakerDetailView(speaker: item)) {
                             HStack {
-                                
-                                VStack(alignment: .trailing) {
+                                VStack() {
                                     Spacer()
                                     Text(item.title)
-                                        .customFont(name: Fonts.shabnam, style: .callout)
+                                        .customFont(name: Fonts.shabnamBold, style: .callout, weight: .bold)
                                         .lineLimit(2)
                                     Spacer()
                                     Text(item.description)
+                                        .multilineTextAlignment(.center)
                                         .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
                                         .lineLimit(2)
                                     Spacer()
@@ -70,6 +67,6 @@ struct SpeakersView: View {
 
 struct SpeakersView_Previews: PreviewProvider {
     static var previews: some View {
-        SpeakersView().environmentObject(SpeakerViewModel())
+        SpeakersView(viewModel:SpeakerViewModel())
     }
 }

@@ -20,22 +20,23 @@ struct SponsorCell: View {
     } label: {
       VStack {
         
-        KFImage(URL(string: Images.urlExtension + sponsor.logo)!)
+        KFImage(URL(string: Images.urlExtension + sponsor.logo))
           .placeholder {
             ImagePlaceholder()
           }
           .resizable()
-          .scaledToFill()
+            .aspectRatio(contentMode: .fit)
           .frame(width: self.cellWidth, height: self.cellWidth)
           .cornerRadius(10)
         
-        VStack(alignment: .leading) {
+        VStack(alignment: .center) {
           Text(sponsor.title)
             .customFont(name: Fonts.shabnam, style: .headline)
             .lineLimit(2)
         }
       }
       .frame(width: self.cellWidth)
+      .padding()
     }
   }
   

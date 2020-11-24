@@ -9,26 +9,27 @@
 import SwiftUI
 
 struct TalksRow: View {
-  
-  let talks: [Talk]
-  @Environment(\.locale) var locale: Locale
-  
-  var body: some View {
-    ScrollView(.horizontal, showsIndicators: false) {
-      HStack(alignment: .top, spacing: 10) {
-        ForEach(0..<talks.count) { index in
-            TalkCell(talk: self.talks[index])
-                .padding(.horizontal,5)
+    
+    @State var talks: [Talk]
+    
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(alignment: .top, spacing: 10) {
+                ForEach(0..<talks.count) { index in
+                    NavigationLink(destination: TalkDetailView(id: self.talks[index].id)) {
+                    TalkCell(talk: self.talks[index])
+                        .padding(.horizontal,5)
+                    }
+                }
+            }
+            .padding(.horizontal)
+            .padding(.horizontal)
         }
-      }
-      .padding(.horizontal)
-      .padding(.horizontal)
     }
-  }
 }
 
 struct TalkRow_Previews: PreviewProvider {
-  static var previews: some View {
-    TalksRow(talks: [Talk.example])
-  }
+    static var previews: some View {
+        TalksRow(talks: [Talk.example])
+    }
 }

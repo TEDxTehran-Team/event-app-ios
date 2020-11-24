@@ -19,36 +19,50 @@ struct HomeTabUIView: View {
     
     @State var mainViewType: MainViewType = .home
     
-    var eventViewModel : EventViewModel
-    var dayViewModel : DayViewModel
-    var speakerViewModel:SpeakerViewModel
+    @ObservedObject var eventViewModel : EventViewModel
+    @ObservedObject var dayViewModel : DayViewModel
+    @ObservedObject var speakerViewModel:SpeakerViewModel
+    
+    @State var isShowAbout = false
     
     var body: some View {
         VStack {
             Picker("", selection: self.$mainViewType) {
-                Text("Home")
-                    .tag(MainViewType.home)
-                Text("Speakers")
-                    .tag(MainViewType.speakers)
-                Text("Time Day")
+                Text(LocalizedStringKey("TimeDay"))
                     .tag(MainViewType.timeDay)
+                Text(LocalizedStringKey("Speakers"))
+                    .tag(MainViewType.speakers)
+                Text(LocalizedStringKey("Home"))
+                    .tag(MainViewType.home)
             }
             .pickerStyle(SegmentedPickerStyle())
             .padding([.top,.horizontal])
             
-            if self.mainViewType == .home {
-                EventDetailView()
-                    .environmentObject(self.eventViewModel)
-            }else if self.mainViewType == .speakers {
-                SpeakersView()
-                    .environmentObject(self.speakerViewModel)
+            if self.eventViewModel.statusView == .loading {
+                Spacer()
+                Indicator()
             }else {
-                TimeTableView()
-                    .environmentObject(self.dayViewModel)
+                if self.mainViewType == .home {
+                    EventDetailView(viewModel: self.eventViewModel)
+                }else if self.mainViewType == .speakers {
+                    SpeakersView(viewModel: self.speakerViewModel)
+                }else {
+                    TimeTableView(viewModel: self.dayViewModel)
+                }
             }
             
+          
+            
             Spacer()
-        }.background(Colors.primaryLightGray)
+                .background(Colors.primaryLightGray)
+                .navigationBarTitle(Text(LocalizedStringKey("Home")), displayMode: .inline)
+                .navigationBarItems(trailing: NavigationLink(
+                                        destination: AboutView(),
+                                        label: {
+                                            Image(systemName: "info.circle")
+                                        }))
+                .navigationViewStyle(StackNavigationViewStyle())
+        }
     }
     
 }

@@ -10,42 +10,41 @@ import SwiftUI
 import struct Kingfisher.KFImage
 
 struct TalkCell: View {
-  
-  let talk: Talk
-  let cellWidth: CGFloat = 130
-  
-  var body: some View {
-    NavigationLink(destination: TalkDetailView(id: talk.id)) {
-      VStack {
-        
-        KFImage(URL(string: Images.urlExtension + talk.section.image))
-          .placeholder {
-            ImagePlaceholder()
-          }
-          .resizable()
-          .scaledToFill()
-          .frame(width: self.cellWidth, height: self.cellWidth)
-          .cornerRadius(10)
-        
-        VStack(alignment: .center) {
-          Text(talk.title)
-            .customFont(name: Fonts.shabnam, style: .caption1, weight: .regular)
-            .lineLimit(2)
-            
-          Text(talk.speakers.map { $0.title }.joined(separator: ", "))
-            .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
-            .lineLimit(1)
-        }
-      }
-      .frame(width: self.cellWidth)
-    }
-    .buttonStyle(PlainButtonStyle())
     
-  }
+    @State var talk: Talk
+    
+    var body: some View {
+       
+            VStack {
+                
+                KFImage(URL(string: Images.urlExtension + talk.section.image))
+                    .placeholder {
+                        ImagePlaceholder()
+                    }
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 130, height: 130)
+                    .cornerRadius(10)
+                
+                VStack(alignment: .center) {
+                    Text(talk.title)
+                        .customFont(name: Fonts.shabnam, style: .caption1, weight: .regular)
+                        .lineLimit(2)
+                        .multilineTextAlignment(.trailing)
+                    
+                    Text(talk.speakers.map { $0.title }.joined(separator: ", "))
+                        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                        .lineLimit(1)
+                        .foregroundColor(.secondary)
+                }
+            }
+            .frame(width: 130, height: 200)
+        
+    }
 }
 
 struct TalkCell_Previews: PreviewProvider {
-  static var previews: some View {
-    TalkCell(talk: Talk.example)
-  }
+    static var previews: some View {
+        TalkCell(talk: Talk.example)
+    }
 }

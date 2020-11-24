@@ -12,7 +12,7 @@ class NewsRepository {
   
   func get(completion: @escaping ([News]?, XException?) -> ()) {
     
-    Network.shared.apollo.fetch(query: GetNewsQuery(), cachePolicy: .returnCacheDataAndFetch) { result in
+    Network.shared.apollo.fetch(query: GetNewsQuery(),cachePolicy: .fetchIgnoringCacheCompletely) { result in
       switch result {
         case .failure(let error):
           completion(nil, XException(message: error.localizedDescription, code: 0))

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TimeTableView: View {
   
-  @EnvironmentObject var viewModel: DayViewModel
+  @ObservedObject var viewModel: DayViewModel
   
   var body: some View {
     ZStack {
@@ -54,14 +54,12 @@ struct TimeTableView: View {
       }
     }
     .navigationBarColor(UIColor(named: "primaryRed"))
-    .navigationBarTitle(Text(LocalizedStringKey("Timetable")), displayMode: .inline)
-    .environment(\.layoutDirection, .rightToLeft)
-    
+    .navigationBarTitle(Text(LocalizedStringKey("TimeDay")), displayMode: .inline)    
   }
 }
 
 struct TimeTableView_Previews: PreviewProvider {
   static var previews: some View {
-    TimeTableView().environmentObject(DayViewModel())
+    TimeTableView(viewModel: DayViewModel())
   }
 }

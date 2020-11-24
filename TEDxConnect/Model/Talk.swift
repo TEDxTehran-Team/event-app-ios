@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Talk: Decodable, Hashable {
+struct Talk: Codable, Hashable {
   
   var id: String
   var title: String
@@ -18,7 +18,7 @@ struct Talk: Decodable, Hashable {
   var videoLink: String?
   var extraLink: String?
   
-  struct Speaker: Decodable, Hashable {
+  struct Speaker: Codable, Hashable {
     var title: String
     
     static var example: Speaker {
@@ -26,7 +26,7 @@ struct Talk: Decodable, Hashable {
     }
   }
   
-  struct Section: Decodable, Hashable {
+  struct Section: Codable, Hashable {
     var image: String
     
     static var example: Section {

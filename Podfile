@@ -9,11 +9,14 @@ target 'TEDxConnect' do
   pod 'Apollo/SQLite', '~> 0.32.1'
   pod 'Kingfisher/SwiftUI', '~> 5.15.5'
   pod 'Sentry', '~> 6.0.1'
-  pod 'Pushe', '1.0.16'
+  pod 'Firebase'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Analytics'
+  #pod 'Pushe', '1.0.16'
   
 end
 
-target 'TEDxConnectNotificationServiceExtension' do
-  use_frameworks!
-  pod 'Pushe', '1.0.16'
-end
+#target 'TEDxConnectNotificationServiceExtension' do
+#  use_frameworks!
+#  pod 'Pushe', '1.0.16'
+#end

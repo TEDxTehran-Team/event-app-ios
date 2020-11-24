@@ -22,11 +22,16 @@ struct SponsorsView: View {
             ForEach(viewModel.repositories, id: \.self) { sponsorWithEvent in
               Group {
                 if sponsorWithEvent.sponsors.count != 0 {
-                  VStack(alignment: .leading, spacing: 10) {
+                  VStack(alignment: .center, spacing: 10) {
                     Text(sponsorWithEvent.type.title)
                       .foregroundColor(.secondary)
                       .padding()
+                      .customFont(name: Fonts.shabnam, style: .headline, weight: .regular)
                     SponsorsRow(sponsors: sponsorWithEvent.sponsors)
+                        .background(RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                        .fill(Colors.primaryBackground)
+                                        .shadow(color: Color.black.opacity(0.2), radius: 6, x: 0, y: 3))
+                        .padding(.horizontal)
                   }
                 } else {
                   EmptyView()
@@ -36,7 +41,6 @@ struct SponsorsView: View {
             }
             
           }
-          .environment(\.layoutDirection, .rightToLeft)
         } else {
           EmptyListView()
             .onTapGesture {

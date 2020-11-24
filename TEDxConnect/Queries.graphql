@@ -3,6 +3,7 @@ query GetNews {
     title
     description
     icon
+    extraLink
   }
 }
 
@@ -26,6 +27,7 @@ query GetAlbumPhotos($id: Int!) {
 query GetAbouts {
   organizer{
     abouts {
+      id
       title
       description
       image

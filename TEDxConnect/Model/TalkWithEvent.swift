@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TalkWithEevent: Decodable, Hashable {
+struct TalkWithEevent: Codable,Hashable {
   
   var talks: [Talk]
   var event: Event
@@ -19,6 +19,6 @@ struct TalkWithEevent: Decodable, Hashable {
   
 }
 
-struct TalkWithEventResponse: Decodable {
+struct TalkWithEventResponse: Codable {
   var talksWithEvent: [TalkWithEevent]
 }
