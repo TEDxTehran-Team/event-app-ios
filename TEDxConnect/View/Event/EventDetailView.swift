@@ -131,6 +131,7 @@ struct EventDetailView: View {
                     Spacer()
                     Text(self.viewModel.event.venue?.address ?? "-")
                         .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                        .multilineTextAlignment(.trailing)
                     Image(decorative: "address-icon")
                 }
                 .padding()

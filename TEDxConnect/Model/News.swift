@@ -12,11 +12,11 @@ struct News: Decodable, Hashable {
     
     var title: String
     var description: String
-    var iconUrl: String?
+    var icon: String?
     var extraLink:String?
     
     static var example: News {
-        News(title: "-", description: "-", iconUrl: Images.newsIconExample,extraLink: "")
+        News(title: "-", description: "-", icon: Images.newsIconExample, extraLink: "")
     }
 }
 

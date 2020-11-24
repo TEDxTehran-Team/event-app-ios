@@ -28,12 +28,12 @@ struct NewsCardView: View {
                         .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
                         .foregroundColor(.primary)
                     
-                    KFImage(URL(string: Images.urlExtension + (news.iconUrl ?? ""))!)
+                    KFImage(URL(string: Images.urlExtension + (news.icon ?? ""))!)
                         .placeholder {
                             ImagePlaceholder()
                         }
                         .resizable()
-                        .scaledToFit()
+                        .scaledToFill()
                         .frame(width: 55, height: 30)
                 }
                 Text(news.description)

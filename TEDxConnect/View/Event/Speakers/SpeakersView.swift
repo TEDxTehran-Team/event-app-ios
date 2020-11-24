@@ -31,7 +31,7 @@ struct SpeakersView: View {
                                 VStack() {
                                     Spacer()
                                     Text(item.title)
-                                        .customFont(name: Fonts.shabnam, style: .callout)
+                                        .customFont(name: Fonts.shabnamBold, style: .callout, weight: .bold)
                                         .lineLimit(2)
                                     Spacer()
                                     Text(item.description)
