@@ -67,6 +67,7 @@ struct TalksView: View {
             }
             .navigationBarTitle(Text(LocalizedStringKey("Talks")), displayMode: .inline)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

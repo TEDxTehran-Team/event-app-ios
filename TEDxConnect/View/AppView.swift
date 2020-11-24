@@ -64,6 +64,7 @@ struct AppView: View {
                 .navigationBarTitle(Text(LocalizedStringKey("Home")),displayMode: .inline)
                 
             }
+            .navigationViewStyle(StackNavigationViewStyle())
             .tag(AppTabViewItem.home)
             .tabItem {
                 Image(systemName: "house")
