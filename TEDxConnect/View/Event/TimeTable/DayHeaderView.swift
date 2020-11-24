@@ -21,7 +21,6 @@ struct DayHeaderView: View {
                 .padding(.vertical, 5)
                 .background(Colors.primaryLightGray)
                 .cornerRadius(20)
-                .foregroundColor(.black)
         }
     }
 }

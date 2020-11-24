@@ -21,7 +21,6 @@ struct SessionHeaderView: View {
             
             Text(session.title)
                 .customFont(name: Fonts.shabnam, style: .subheadline, weight: .regular)
-                .foregroundColor(.black)
         }
     }
 }
