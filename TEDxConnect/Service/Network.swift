@@ -29,14 +29,7 @@ class Network {
         
         let configuration = URLSessionConfiguration.default
         
-        var token : String {
-            if TimeZone.current.identifier.lowercased() == "asia/tehran" {
-                return "7b9c5f16-0882-4334-a828-e67ce8ccf201"
-            }
-            return "6f279260-680d-40bd-af33-da3084b43af0"
-        }
-        
-        configuration.httpAdditionalHeaders = ["Application-Token": token]
+        configuration.httpAdditionalHeaders = ["Application-Token": TimeZone.current.token]
         
         return ApolloClient(
             networkTransport: HTTPNetworkTransport(url: url, client: URLSessionClient(sessionConfiguration: configuration, callbackQueue: nil)),

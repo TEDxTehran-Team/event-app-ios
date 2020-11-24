@@ -38,13 +38,20 @@ struct HomeTabUIView: View {
             .pickerStyle(SegmentedPickerStyle())
             .padding([.top,.horizontal])
             
-            if self.mainViewType == .home {
-                EventDetailView(viewModel: self.eventViewModel)
-            }else if self.mainViewType == .speakers {
-                SpeakersView(viewModel: self.speakerViewModel)
+            if self.eventViewModel.statusView == .loading {
+                Spacer()
+                Indicator()
             }else {
-                TimeTableView(viewModel: self.dayViewModel)
+                if self.mainViewType == .home {
+                    EventDetailView(viewModel: self.eventViewModel)
+                }else if self.mainViewType == .speakers {
+                    SpeakersView(viewModel: self.speakerViewModel)
+                }else {
+                    TimeTableView(viewModel: self.dayViewModel)
+                }
             }
+            
+          
             
             Spacer()
                 .background(Colors.primaryLightGray)

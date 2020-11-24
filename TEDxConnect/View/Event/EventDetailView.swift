@@ -111,10 +111,10 @@ struct EventDetailView: View {
                     Spacer()
                     
                     Text(DateHelper.dateWith(self.viewModel.event.startDate ?? "TBA", showTime: true))
-                        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                        .customFont(name: TimeZone.current.isMasterData ? Fonts.shabnam : "", style: .footnote, weight: .regular)
                     Text("|")
                     Text(DateHelper.dateWith(self.viewModel.event.endDate  ?? "TBA", showTime: true))
-                        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                        .customFont(name: TimeZone.current.isMasterData ? Fonts.shabnam : "", style: .footnote, weight: .regular)
                     Image(decorative: "clock-icon")
                 }
                 .padding()
