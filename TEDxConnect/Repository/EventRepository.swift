@@ -12,7 +12,7 @@ class EventRepository {
   
   func get(completion: @escaping (Event?, XException?) -> ()) {
     
-    Network.shared.apollo.fetch(query: MainEventInfoQuery(), cachePolicy: .returnCacheDataAndFetch) { result in
+    Network.shared.apollo.fetch(query: MainEventInfoQuery(),cachePolicy: .fetchIgnoringCacheCompletely) { result in
       switch result {
         case .failure(let error):
           completion(nil, XException(message: error.localizedDescription, code: 0))

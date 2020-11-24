@@ -9,30 +9,23 @@
 import SwiftUI
 
 struct SponsorsRow: View {
-  
-  let sponsors: [SponsorWithType.Sponsor]
-  @Environment(\.locale) var locale: Locale
-  
-  var body: some View {
-    ScrollView(.horizontal, showsIndicators: false) {
-      HStack(alignment: .top, spacing: 10) {
-        ForEach(0..<sponsors.count) { index in
-          if index == (locale == Locale(identifier: "fa_IR") ? sponsors.count-1 : 0) {
-            SponsorCell(sponsor: self.sponsors[index])
-              .padding(locale == Locale(identifier: "fa_IR") ? .trailing : .leading)
-          } else {
-            SponsorCell(sponsor: self.sponsors[index])
-          }
+    
+    let sponsors: [SponsorWithType.Sponsor]
+    @Environment(\.locale) var locale: Locale
+    
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(alignment: .top, spacing: 10) {
+                ForEach(0..<sponsors.count) { index in
+                    SponsorCell(sponsor: self.sponsors[index])
+                }
+            }
         }
-      }
-      .rotation3DEffect(Angle(degrees: 180), axis: (x: CGFloat(0), y: CGFloat(10), z: CGFloat(0)))
     }
-    .flipsForRightToLeftLayoutDirection(true)
-  }
 }
 
 struct SponsorsRow_Previews: PreviewProvider {
-  static var previews: some View {
-    SponsorsRow(sponsors: [SponsorWithType.Sponsor.example])
-  }
+    static var previews: some View {
+        SponsorsRow(sponsors: [SponsorWithType.Sponsor.example])
+    }
 }

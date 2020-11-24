@@ -10,28 +10,27 @@ import SwiftUI
 import struct Kingfisher.KFImage
 
 struct GalleryCardView: View {
-  
-  let album: Album
-  let width = UIScreen.main.bounds.width
-  
-  var body: some View {
-    NavigationLink(destination: GalleryDetailView(album: album)) {
-      KFImage(URL(string: Images.urlExtension + album.cover)!)
-        .placeholder {
-          ImagePlaceholder()
-        }
-        .resizable()
-        .frame(height: 200)
-        .overlay(ImageOverlay(text: self.album.title), alignment: .bottomLeading)
-        .cornerRadius(10)
-        .padding(.vertical, 10)
-    }
     
-  }
+    @State var album: Album
+    
+    var body: some View {
+        VStack {
+            KFImage(URL(string: Images.urlExtension + album.cover)!)
+                .placeholder {
+                    ImagePlaceholder()
+                }
+                .resizable()
+                .frame(height: 200)
+                .overlay(ImageOverlay(text: self.album.title), alignment: .bottomTrailing)
+                .cornerRadius(10)
+                .padding(.vertical, 10)
+            
+        }
+    }
 }
 
 struct GalleryCardView_Previews: PreviewProvider {
-  static var previews: some View {
-    GalleryCardView(album: Album.example)
-  }
+    static var previews: some View {
+        GalleryCardView(album: Album.example)
+    }
 }

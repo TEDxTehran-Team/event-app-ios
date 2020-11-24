@@ -8,88 +8,74 @@
 
 import SwiftUI
 
+
+enum AppTabViewItem : String{
+    case home
+    case news
+    case gallery
+    case talks
+}
+
 struct AppView: View {
-  
-  var eventViewModel = EventViewModel()
-  var dayViewModel = DayViewModel()
-  var newsViewModel = NewsViewModel()
-  var albumViewModel = AlbumViewModel()
-  var talkViewModel = TalkViewModel()
-  var featuredTalkViewModel = FeaturedTalkViewModel()
-  
-  @State private var selection = 4
-
-  var body: some View {
-    TabView(selection: $selection) {
-      NavigationView {
-        TalksView()
-          .environmentObject(talkViewModel)
-          .environmentObject(featuredTalkViewModel)
-      }
-      .tag(0)
-      .tabItem {
-        Image(systemName: "music.mic")
-        Text(LocalizedStringKey("Talks"))
-      }
-      
-      NavigationView {
-        GalleryView()
-          .environmentObject(albumViewModel)
-      }
-      .tag(1)
-      .tabItem {
-        Image(systemName: "photo.on.rectangle")
-        Text(LocalizedStringKey("Gallery"))
-      }
-
-      NavigationView {
-        NewsView()
-          .environmentObject(newsViewModel)
-      }
-      .tag(2)
-      .tabItem {
-        Image(systemName: "text.aligncenter")
-        Text(LocalizedStringKey("News"))
-      }
     
-      NavigationView {
-        TimeTableView()
-          .environmentObject(dayViewModel)
-      }
-      .tag(3)
-      .tabItem {
-        Image(systemName: "clock")
-        Text(LocalizedStringKey("Timetable"))
-      }
-      
-      NavigationView {
-        EventDetailView()
-          .environmentObject(eventViewModel)
-      }
-      .tag(4)
-      .tabItem {
-        Image(systemName: "house")
-        Text(LocalizedStringKey("Home"))
-      }
-      
-    }
-    .customFont(name: Fonts.shabnam, style: .headline)
-    .accentColor(Colors.primaryRed)
-    .onAppear {
-      self.eventViewModel.setup()
-      self.dayViewModel.setup()
-      self.newsViewModel.setup()
-      self.albumViewModel.setup()
-      self.talkViewModel.setup()
-      self.featuredTalkViewModel.setup()
+    @ObservedObject  var eventViewModel = EventViewModel()
+    @ObservedObject  var dayViewModel = DayViewModel()
+    @ObservedObject var newsViewModel = NewsViewModel()
+    @ObservedObject var albumViewModel = AlbumViewModel()
+    @ObservedObject var speakerViewModel = SpeakerViewModel()
+    @ObservedObject var talkViewModel = TalkViewModel()
+    @ObservedObject var featuredTalkViewModel = FeaturedTalkViewModel()
+    
+    
+    @State private var tabSelected:AppTabViewItem = .home
+    @State var isShowAbout = false
+    
+    var body: some View {
+        
+        TabView(selection: self.$tabSelected) {
+            TalksView(talkViewModel: self.talkViewModel, featuredTalkViewModel: self.featuredTalkViewModel)
+                .tag(AppTabViewItem.talks)
+                .tabItem {
+                    Image(systemName: "music.mic")
+                    Text(LocalizedStringKey("Talks"))
+                }
+            
+            VStack {
+                GalleryView(viewModel: self.albumViewModel)
+            }.tag(AppTabViewItem.gallery)
+            .tabItem {
+                Image(systemName: "photo.on.rectangle")
+                Text(LocalizedStringKey("Gallery"))
+            }
+            
+            NewsView(viewModel: self.newsViewModel)
+                .tag(AppTabViewItem.news)
+                .tabItem {
+                    Image(systemName: "newspaper")
+                    Text(LocalizedStringKey("News"))
+                    
+                }
+            
+            NavigationView {
+                VStack {
+                    HomeTabUIView(eventViewModel: self.eventViewModel,dayViewModel: self.dayViewModel, speakerViewModel: self.speakerViewModel)
+                }
+                .navigationBarTitle(Text(LocalizedStringKey("Home")),displayMode: .inline)
+                
+            }
+            .tag(AppTabViewItem.home)
+            .tabItem {
+                Image(systemName: "house")
+                Text(LocalizedStringKey("Home"))
+            }
+            
+        }.accentColor(Colors.primaryRed)
     }
     
-  }
-  
 }
 
 struct AppView_Previews: PreviewProvider {
-  static var previews: some View {
-    AppView().environment(\.locale, .init(identifier: "fa_IR"))
-  }
+    static var previews: some View {
+        AppView()
+    }
 }

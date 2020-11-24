@@ -7,11 +7,26 @@
 		<key>TEDxConnect.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>18</integer>
+			<integer>0</integer>
+		</dict>
+		<key>TEDxConnectNotificationServiceExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>19</integer>
+		</dict>
+		<key>TEDxNotificationServiceExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>19</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>6D7CDA532535B4AC00FCBF2D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6DC754D424DE6BD700F96518</key>
 		<dict>
 			<key>primary</key>

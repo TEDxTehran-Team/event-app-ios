@@ -16,7 +16,7 @@ struct ImagePlaceholder: View {
         .scaledToFill()
         .frame(maxHeight: 200)
         .clipped()
-      Indicator()
+//      Indicator()
     }
   }
 }

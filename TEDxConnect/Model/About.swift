@@ -8,17 +8,21 @@
 
 import Foundation
 
-struct About: Decodable, Hashable {
-  
+struct About: Decodable,Hashable {
+  var id: String
   var title: String
   var description: String
   var image: String?
   
   static var example: About {
-    About(title: "-", description: "-", image: Images.example)
+    About(id: "1", title: "-", description: "-", image: Images.example)
+  }
+  
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(id)
   }
 }
 
-struct AboutResponse: Decodable {
+struct AboutResponse: Decodable,Hashable {
   var abouts: [About]
 }

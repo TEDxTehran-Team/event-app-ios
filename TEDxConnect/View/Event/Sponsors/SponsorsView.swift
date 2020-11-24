@@ -11,6 +11,7 @@ import SwiftUI
 struct SponsorsView: View {
   
   @ObservedObject var viewModel = SponsorViewModel()
+  let eventId: String
   
   var body: some View {
     ZStack {
@@ -21,11 +22,16 @@ struct SponsorsView: View {
             ForEach(viewModel.repositories, id: \.self) { sponsorWithEvent in
               Group {
                 if sponsorWithEvent.sponsors.count != 0 {
-                  VStack(alignment: .leading, spacing: 10) {
+                  VStack(alignment: .center, spacing: 10) {
                     Text(sponsorWithEvent.type.title)
                       .foregroundColor(.secondary)
                       .padding()
+                      .customFont(name: Fonts.shabnam, style: .headline, weight: .regular)
                     SponsorsRow(sponsors: sponsorWithEvent.sponsors)
+                        .background(RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                        .fill(Colors.primaryBackground)
+                                        .shadow(color: Color.black.opacity(0.2), radius: 6, x: 0, y: 3))
+                        .padding(.horizontal)
                   }
                 } else {
                   EmptyView()
@@ -35,11 +41,10 @@ struct SponsorsView: View {
             }
             
           }
-          .environment(\.layoutDirection, .rightToLeft)
         } else {
           EmptyListView()
             .onTapGesture {
-              self.viewModel.setup()
+              self.viewModel.setup(withEventId: eventId)
             }
         }
       }
@@ -51,12 +56,12 @@ struct SponsorsView: View {
       if self.viewModel.statusView == .error {
         ErrorView(errorText: self.viewModel.errorMessage)
           .onTapGesture {
-            self.viewModel.setup()
+            self.viewModel.setup(withEventId: eventId)
           }
       }
     }
     .onAppear {
-      self.viewModel.setup()
+      self.viewModel.setup(withEventId: eventId)
     }
     .navigationBarColor(UIColor(named: "primaryRed"))
     .navigationBarTitle(Text(LocalizedStringKey("Sponsors")), displayMode: .inline)
@@ -65,6 +70,6 @@ struct SponsorsView: View {
 
 struct SponsorsView_Previews: PreviewProvider {
   static var previews: some View {
-    SponsorsView()
+    SponsorsView(eventId: "1")
   }
 }

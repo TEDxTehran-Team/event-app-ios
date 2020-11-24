@@ -15,7 +15,7 @@ struct ImageOverlay: View {
   var body: some View {
     ZStack {
       Text(text)
-        .customFont(name: Fonts.shabnam, style: .headline, weight: .bold)
+        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
         .padding(10)
         .foregroundColor(.white)
     }

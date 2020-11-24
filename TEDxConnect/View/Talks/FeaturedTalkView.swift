@@ -10,31 +10,30 @@ import SwiftUI
 import struct Kingfisher.KFImage
 
 struct FeaturedTalkView: View {
-  
-  let talk: Talk
-  
-  var body: some View {
-    NavigationLink(destination: TalkDetailView(id: talk.id)) {
-      ZStack {
-        
-        KFImage(URL(string: Images.urlExtension + (talk.section.image))!)
-          .placeholder {
-            ImagePlaceholder()
-          }
-          .resizable()
-          .scaledToFill()
-          .frame(height: 200)
-          .clipped()
-          .cornerRadius(10)
-        
-      }
-      .padding()
+    
+    @State var talk: Talk
+    
+    var body: some View {
+        NavigationLink(destination: TalkDetailView(id: talk.id)) {
+            ZStack {
+                
+                KFImage(URL(string: Images.urlExtension + (talk.section.image)))
+                    .placeholder {
+                        ImagePlaceholder()
+                    }
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 200)
+                    .clipped()
+                    .cornerRadius(10)
+            }
+            .padding()
+        }
     }
-  }
 }
 
 struct FeaturedTalkView_Previews: PreviewProvider {
-  static var previews: some View {
-    FeaturedTalkView(talk: Talk.example)
-  }
+    static var previews: some View {
+        FeaturedTalkView(talk: Talk.example)
+    }
 }

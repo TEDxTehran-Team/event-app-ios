@@ -3,6 +3,7 @@
 "Gallery" = "Gallery";
 "About" = "About";
 "Home" = "Home";
+"TimeDay" = "Time Day";
 "Watch Live" = "Watch Live";
 "Timetable" = "Timetable";
 "to" = "to";
@@ -24,8 +25,10 @@
 "More" = "More";
 "Detail" = "Detail";
 "Speakers" = "Speakers";
-"We're tracking potential bugs with Crashlytics and will fix all of them ASAP." = "We're tracking potential bugs with Crashlytics and will fix all of them ASAP.";
+"We're tracking potential bugs with Sentry and will fix all of them ASAP." = "We're tracking potential bugs with Sentry and will fix all of them ASAP.";
 "Buy Ticket" = "Buy Ticket";
 "Register in Event" = "Register in Event";
 "Sponsors" = "Sponsors";
 "Tap to retry" = "Tap to retry";
+"Description" = "Description";
+"Related Talks" = "Related Talks";

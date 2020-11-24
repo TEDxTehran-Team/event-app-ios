@@ -75,6 +75,7 @@ public final class GetNewsQuery: GraphQLQuery {
         title
         description
         icon
+        extraLink
       }
     }
     """
@@ -121,6 +122,7 @@ public final class GetNewsQuery: GraphQLQuery {
           GraphQLField("title", type: .nonNull(.scalar(String.self))),
           GraphQLField("description", type: .scalar(String.self)),
           GraphQLField("icon", type: .scalar(String.self)),
+          GraphQLField("extraLink", type: .scalar(String.self)),
         ]
       }
 
@@ -130,8 +132,8 @@ public final class GetNewsQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(title: String, description: String? = nil, icon: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "NewsSchemaType", "title": title, "description": description, "icon": icon])
+      public init(title: String, description: String? = nil, icon: String? = nil, extraLink: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "NewsSchemaType", "title": title, "description": description, "icon": icon, "extraLink": extraLink])
       }
 
       public var __typename: String {
@@ -168,6 +170,16 @@ public final class GetNewsQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "icon")
+        }
+      }
+
+      /// any extra link related to the talk?
+      public var extraLink: String? {
+        get {
+          return resultMap["extraLink"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "extraLink")
         }
       }
     }
@@ -441,6 +453,7 @@ public final class GetAboutsQuery: GraphQLQuery {
         __typename
         abouts {
           __typename
+          id
           title
           description
           image
@@ -527,6 +540,7 @@ public final class GetAboutsQuery: GraphQLQuery {
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("title", type: .nonNull(.scalar(String.self))),
             GraphQLField("description", type: .scalar(String.self)),
             GraphQLField("image", type: .scalar(String.self)),
@@ -539,8 +553,8 @@ public final class GetAboutsQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(title: String, description: String? = nil, image: String? = nil) {
-          self.init(unsafeResultMap: ["__typename": "AboutOrganizerSchemaType", "title": title, "description": description, "image": image])
+        public init(id: GraphQLID, title: String, description: String? = nil, image: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "AboutOrganizerSchemaType", "id": id, "title": title, "description": description, "image": image])
         }
 
         public var __typename: String {
@@ -549,6 +563,15 @@ public final class GetAboutsQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return resultMap["id"]! as! GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
           }
         }
 
@@ -593,6 +616,7 @@ public final class MainEventInfoQuery: GraphQLQuery {
         __typename
         mainEvent {
           __typename
+          id
           title
           banner
           startDate
@@ -605,7 +629,7 @@ public final class MainEventInfoQuery: GraphQLQuery {
           venue {
             __typename
             title
-            adress
+            address
             mapLink
             mapImage
           }
@@ -692,6 +716,7 @@ public final class MainEventInfoQuery: GraphQLQuery {
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("title", type: .nonNull(.scalar(String.self))),
             GraphQLField("banner", type: .scalar(String.self)),
             GraphQLField("startDate", type: .scalar(String.self)),
@@ -707,8 +732,8 @@ public final class MainEventInfoQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(title: String, banner: String? = nil, startDate: String? = nil, endDate: String? = nil, links: [Link], venue: Venue? = nil) {
-          self.init(unsafeResultMap: ["__typename": "EventSchemaType", "title": title, "banner": banner, "startDate": startDate, "endDate": endDate, "links": links.map { (value: Link) -> ResultMap in value.resultMap }, "venue": venue.flatMap { (value: Venue) -> ResultMap in value.resultMap }])
+        public init(id: GraphQLID, title: String, banner: String? = nil, startDate: String? = nil, endDate: String? = nil, links: [Link], venue: Venue? = nil) {
+          self.init(unsafeResultMap: ["__typename": "EventSchemaType", "id": id, "title": title, "banner": banner, "startDate": startDate, "endDate": endDate, "links": links.map { (value: Link) -> ResultMap in value.resultMap }, "venue": venue.flatMap { (value: Venue) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -717,6 +742,15 @@ public final class MainEventInfoQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return resultMap["id"]! as! GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
           }
         }
 
@@ -837,7 +871,7 @@ public final class MainEventInfoQuery: GraphQLQuery {
             return [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
               GraphQLField("title", type: .nonNull(.scalar(String.self))),
-              GraphQLField("adress", type: .scalar(String.self)),
+              GraphQLField("address", type: .scalar(String.self)),
               GraphQLField("mapLink", type: .scalar(String.self)),
               GraphQLField("mapImage", type: .scalar(String.self)),
             ]
@@ -849,8 +883,8 @@ public final class MainEventInfoQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(title: String, adress: String? = nil, mapLink: String? = nil, mapImage: String? = nil) {
-            self.init(unsafeResultMap: ["__typename": "VenueSchemaType", "title": title, "adress": adress, "mapLink": mapLink, "mapImage": mapImage])
+          public init(title: String, address: String? = nil, mapLink: String? = nil, mapImage: String? = nil) {
+            self.init(unsafeResultMap: ["__typename": "VenueSchemaType", "title": title, "address": address, "mapLink": mapLink, "mapImage": mapImage])
           }
 
           public var __typename: String {
@@ -872,12 +906,12 @@ public final class MainEventInfoQuery: GraphQLQuery {
           }
 
           /// venue's address.
-          public var adress: String? {
+          public var address: String? {
             get {
-              return resultMap["adress"] as? String
+              return resultMap["address"] as? String
             }
             set {
-              resultMap.updateValue(newValue, forKey: "adress")
+              resultMap.updateValue(newValue, forKey: "address")
             }
           }
 
@@ -1256,6 +1290,7 @@ public final class GetTalksQuery: GraphQLQuery {
         }
         event {
           __typename
+          id
           title
         }
       }
@@ -1499,6 +1534,7 @@ public final class GetTalksQuery: GraphQLQuery {
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("title", type: .nonNull(.scalar(String.self))),
           ]
         }
@@ -1509,8 +1545,8 @@ public final class GetTalksQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(title: String) {
-          self.init(unsafeResultMap: ["__typename": "EventSchemaType", "title": title])
+        public init(id: GraphQLID, title: String) {
+          self.init(unsafeResultMap: ["__typename": "EventSchemaType", "id": id, "title": title])
         }
 
         public var __typename: String {
@@ -1519,6 +1555,15 @@ public final class GetTalksQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return resultMap["id"]! as! GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
           }
         }
 
@@ -2166,13 +2211,14 @@ public final class GetEventSponsorsQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query GetEventSponsors {
-      sponsorsWithType(event: 1) {
+    query GetEventSponsors($eventId: Int!) {
+      sponsorsWithType(event: $eventId) {
         __typename
         sponsors {
           __typename
           title
           logo
+          link
         }
         type {
           __typename
@@ -2184,7 +2230,14 @@ public final class GetEventSponsorsQuery: GraphQLQuery {
 
   public let operationName: String = "GetEventSponsors"
 
-  public init() {
+  public var eventId: Int
+
+  public init(eventId: Int) {
+    self.eventId = eventId
+  }
+
+  public var variables: GraphQLMap? {
+    return ["eventId": eventId]
   }
 
   public struct Data: GraphQLSelectionSet {
@@ -2192,7 +2245,7 @@ public final class GetEventSponsorsQuery: GraphQLQuery {
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("sponsorsWithType", arguments: ["event": 1], type: .list(.object(SponsorsWithType.selections))),
+        GraphQLField("sponsorsWithType", arguments: ["event": GraphQLVariable("eventId")], type: .list(.object(SponsorsWithType.selections))),
       ]
     }
 
@@ -2271,6 +2324,7 @@ public final class GetEventSponsorsQuery: GraphQLQuery {
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("title", type: .nonNull(.scalar(String.self))),
             GraphQLField("logo", type: .scalar(String.self)),
+            GraphQLField("link", type: .scalar(String.self)),
           ]
         }
 
@@ -2280,8 +2334,8 @@ public final class GetEventSponsorsQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(title: String, logo: String? = nil) {
-          self.init(unsafeResultMap: ["__typename": "SponsorSchemaType", "title": title, "logo": logo])
+        public init(title: String, logo: String? = nil, link: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "SponsorSchemaType", "title": title, "logo": logo, "link": link])
         }
 
         public var __typename: String {
@@ -2309,6 +2363,16 @@ public final class GetEventSponsorsQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "logo")
+          }
+        }
+
+        /// an external link to the sponsor's website.
+        public var link: String? {
+          get {
+            return resultMap["link"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "link")
           }
         }
       }

@@ -9,58 +9,69 @@
 import SwiftUI
 
 struct TalksView: View {
-  
-  @EnvironmentObject var talkViewModel: TalkViewModel
-  @EnvironmentObject var featuredTalkViewModel: FeaturedTalkViewModel
-  
-  var body: some View {
-    ZStack {
-      if self.talkViewModel.statusView == .complete {
-        ScrollView(.vertical) {
-          
-          FeaturedTalkView(talk: featuredTalkViewModel.repository)
-          
-          ForEach(talkViewModel.repositories, id: \.self) { talkWithEvent in
-            Group {
-              if talkWithEvent.talks.count != 0 {
-                VStack(alignment: .leading, spacing: 10) {
-                  Text(talkWithEvent.event.title ?? "")
-                    .foregroundColor(.secondary)
-                    .padding()
-                  TalksRow(talks: talkWithEvent.talks)
+    
+    var talkViewModel: TalkViewModel
+    var featuredTalkViewModel: FeaturedTalkViewModel
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                if self.talkViewModel.statusView == .complete {
+                    ScrollView(.vertical) {
+                        
+                        FeaturedTalkView(talk: featuredTalkViewModel.repository)
+                        
+                        ForEach(talkViewModel.repositories, id: \.self) { talkWithEvent in
+                            VStack  {
+                                VStack {
+                                    HStack {
+                                        Spacer()
+                                        
+                                        Text(talkWithEvent.event.title ?? "")
+                                            .foregroundColor(.secondary)
+                                            .padding(.horizontal)
+                                            .customFont(name: Fonts.shabnam, style: .headline, weight: .regular)
+                                        
+                                    }
+                                    .padding(.top)
+                                    ScrollView(.horizontal, showsIndicators: false) {
+                                        HStack(alignment: .top, spacing: 10) {
+                                            ForEach(talkWithEvent.talks, id: \.self) { talk in
+                                                NavigationLink(destination: TalkDetailView(id: talk.id)) {
+                                                    TalkCell(talk: talk)
+                                                        .padding(.horizontal,5)
+                                                }
+                                            }
+                                        }
+                                        .buttonStyle(PlainButtonStyle())
+                                        .padding(.horizontal)
+                                        .padding(.horizontal)
+                                    }
+                                    .padding(.top,5)
+                                }
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                    
+                }else if self.talkViewModel.statusView == .loading && self.featuredTalkViewModel.statusView == .loading {
+                    Indicator()
+                }else if self.talkViewModel.statusView == .error || self.featuredTalkViewModel.statusView == .error {
+                    ErrorView(errorText: self.talkViewModel.errorMessage == "" ? self.featuredTalkViewModel.errorMessage : self.talkViewModel.errorMessage)
+                        .onTapGesture {
+                            self.talkViewModel.errorMessage == "" ? featuredTalkViewModel.setup() : talkViewModel.setup()
+                        }
                 }
-              } else {
-                EmptyView()
-              }
             }
-            
-          }
-          
+            .navigationBarTitle(Text(LocalizedStringKey("Talks")), displayMode: .inline)
         }
-        .environment(\.layoutDirection, .rightToLeft)
-        
-      }
-      
-      if self.talkViewModel.statusView == .loading && self.featuredTalkViewModel.statusView == .loading {
-        Indicator()
-      }
-      
-      if self.talkViewModel.statusView == .error || self.featuredTalkViewModel.statusView == .error {
-        ErrorView(errorText: self.talkViewModel.errorMessage == "" ? self.featuredTalkViewModel.errorMessage : self.talkViewModel.errorMessage)
-          .onTapGesture {
-            self.talkViewModel.errorMessage == "" ? featuredTalkViewModel.setup() : talkViewModel.setup()
-          }
-      }
     }
-    .navigationBarColor(UIColor(named: "primaryRed"))
-    .navigationBarTitle(Text(LocalizedStringKey("Talks")), displayMode: .inline)
-  }
 }
 
 struct TalksView_Previews: PreviewProvider {
-  static var previews: some View {
-    TalksView()
-      .environmentObject(TalkViewModel())
-      .environmentObject(FeaturedTalkViewModel())
-  }
+    static var previews: some View {
+        TalksView(talkViewModel: TalkViewModel(), featuredTalkViewModel: FeaturedTalkViewModel())
+    }
 }

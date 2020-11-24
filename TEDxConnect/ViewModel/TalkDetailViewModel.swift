@@ -27,6 +27,8 @@ class TalkDetailViewModel: ObservableObject {
       }
       
       guard let repository = repository else {
+        self.statusView = .error
+        self.errorMessage = "Error"
         return
       }
       self.statusView = .complete

@@ -12,7 +12,7 @@ class TalkRepository {
   
   func get(completion: @escaping ([TalkWithEevent]?, XException?) -> ()) {
     
-    Network.shared.apollo.fetch(query: GetTalksQuery(), cachePolicy: .returnCacheDataAndFetch) { result in
+    Network.shared.apollo.fetch(query: GetTalksQuery(),cachePolicy: .fetchIgnoringCacheCompletely) { result in
       switch result {
         case .failure(let error):
           completion(nil, XException(message: error.localizedDescription, code: 0))

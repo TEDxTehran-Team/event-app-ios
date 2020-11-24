@@ -11,167 +11,177 @@ import struct Kingfisher.KFImage
 import Sentry
 
 struct EventDetailView: View {
-  
-  @EnvironmentObject var viewModel: EventViewModel
-  @State private var showingSheet = false
-  @State private var url = ""
-  @State private var titleLocalizedKey = ""
-  
-  var body: some View {
-    GeometryReader { fullView in
-      ScrollView(.vertical) {
-        ZStack {
-          VStack {
-
-            KFImage(URL(string: Images.urlExtension + (self.viewModel.repository.banner ?? ""))!)
-              .placeholder {
-                ImagePlaceholder()
-              }
-              .resizable()
-              .scaledToFill()
-              .frame(width: fullView.size.width, height: 200)
-              .clipped()
-            
-            Button(action: {
-              url = viewModel.repository.links?.first { $0.role == "LIVE" }?.url ?? Constants.placeholderUrl
-              titleLocalizedKey = "Watch Live"
-              showingSheet = true
-            }) {
-              HStack {
-                Spacer()
-                Image(systemName: "play.rectangle")
-                Text(LocalizedStringKey("Watch Live"))
-                Spacer()
-              }
-              .padding()
+    
+    @ObservedObject var viewModel: EventViewModel
+    
+    var body: some View {
+        ScrollView {
+            VStack {
+                if self.viewModel.statusView == .error {
+                    ErrorView(errorText: self.viewModel.errorMessage)
+                        .onTapGesture {
+                            self.viewModel.setup()
+                        }
+                }else {
+                    self.mainContent
+                }
             }
-            .customStyle(withBackgroundColor: Colors.primaryRed)
+            
+            
+        } // ScrollView
+        .background(Colors.primaryLightGray)
+       
+        
+    } // Body
+    
+    private var mainContent : some View {
+        VStack {
+            KFImage(URL(string: Images.urlExtension + (self.viewModel.event.banner ?? ""))!)
+                .placeholder {
+                    ImagePlaceholder()
+                }
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .cornerRadius(10)
+                .frame(height: 200)
+                .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity)
+                .padding()
+            
+            if !self.viewModel.event.liveUrl.isEmpty {
+                Button(action: {
+                    if let url = URL(string: viewModel.event.liveUrl) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+                }) {
+                    HStack(alignment: .center) {
+                        Spacer()
+                        Text(LocalizedStringKey("Watch Live"))
+                            .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
+                        
+                        Image(systemName: "play.rectangle")
+                        Spacer()
+                    }
+                    .padding(.vertical)
+                }
+                .customStyle(withBackgroundColor: Colors.primaryRed)
+            }
+            
+            
             
             VStack(alignment: .leading) {
-              if let ticket = self.viewModel.repository.links?.first { $0.role == "TICKET" } {
-                Button {
-                  url = ticket.url
-                  titleLocalizedKey = "Buy Ticket"
-                  showingSheet = true
-                } label: {
-                  HStack {
-                    Image(decorative: "ticket-icon")
-                    Text(LocalizedStringKey("Buy Ticket"))
-                  }
-                  .padding()
+                if !self.viewModel.event.ticketUrl.isEmpty {
+                    Button {
+                        if let url = URL(string: self.viewModel.event.ticketUrl) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Text(LocalizedStringKey("Buy Ticket"))
+                                .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                            Image(decorative: "ticket-icon")
+                        }
+                        .padding(.vertical)
+                    }
+                    .padding(.horizontal)
+                    .foregroundColor(Colors.primaryRed)
+                    Divider()
                 }
-                .foregroundColor(Colors.primaryRed)
-                Divider()
-              }
-              if let registeration = self.viewModel.repository.links?.first { $0.role == "REGISTRATION" } {
-                Button {
-                  url = registeration.url
-                  titleLocalizedKey = "Register in Event"
-                  showingSheet = true
-                } label: {
-                  HStack {
-                    Image(decorative: "register-icon")
-                    Text(LocalizedStringKey("Register in Event"))
-                  }
-                  .padding()
+                if !self.viewModel.event.registerationUrl.isEmpty {
+                    Button {
+                        if let urlMap = URL(string: self.viewModel.event.registerationUrl) {
+                            UIApplication.shared.open(urlMap, options: [:], completionHandler: nil)
+                        }
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Text(LocalizedStringKey("Register in Event"))
+                                .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                            Image(decorative: "register-icon")
+                        }
+                        .padding(.vertical)
+                    }
+                    .padding(.horizontal)
+                    .foregroundColor(Colors.primaryRed)
+                    Divider()
                 }
-                .foregroundColor(Colors.primaryRed)
-                Divider()
-              }
-              NavigationLink(destination: SpeakersView()) {
+                
                 HStack {
-                  Image(decorative: "speaker-icon")
-                  Text(LocalizedStringKey("Speakers"))
+                    
+                    Spacer()
+                    
+                    Text(DateHelper.dateWith(self.viewModel.event.startDate ?? "TBA", showTime: true))
+                        .customFont(name: TimeZone.current.isMasterData ? Fonts.shabnam : "", style: .footnote, weight: .regular)
+                    Text("|")
+                    Text(DateHelper.dateWith(self.viewModel.event.endDate  ?? "TBA", showTime: true))
+                        .customFont(name: TimeZone.current.isMasterData ? Fonts.shabnam : "", style: .footnote, weight: .regular)
+                    Image(decorative: "clock-icon")
                 }
                 .padding()
-              }
-              .foregroundColor(Colors.primaryRed)
-              Divider()
-              HStack {
-                Image(decorative: "clock-icon")
-                Text(DateHelper.dateWith(self.viewModel.repository.startDate ?? "TBA", showTime: true))
-                Text(DateHelper.dateWith(self.viewModel.repository.endDate  ?? "TBA", showTime: true))
-              }
-              .padding()
-              Divider()
-              HStack {
-                Image(decorative: "venue-icon")
-                Text(self.viewModel.repository.venue?.title ?? "-")
-              }
-              .padding()
-              Divider()
-              HStack {
-                Image(decorative: "address-icon")
-                Text(self.viewModel.repository.venue?.adress ?? "-")
-              }
-              .padding()
+                Divider()
+                HStack {
+                    Spacer()
+                    Text(self.viewModel.event.venue?.title ?? "-")
+                        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                    Image(decorative: "venue-icon")
+                }
+                .padding()
+                Divider()
+                HStack {
+                    Spacer()
+                    Text(self.viewModel.event.venue?.address ?? "-")
+                        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                        .multilineTextAlignment(.trailing)
+                    Image(decorative: "address-icon")
+                }
+                .padding()
             }
             .background(Colors.primaryBackground)
             .cornerRadius(10)
             .foregroundColor(.secondary)
-            .padding([.horizontal, .bottom])
+            .padding([.vertical, .bottom])
             
-            KFImage(URL(string: Images.urlExtension + (self.viewModel.repository.venue?.mapImage ?? ""))!)
-              .placeholder {
-                ImagePlaceholder()
-              }
-              .resizable()
-              .scaledToFill()
-              .frame(width: fullView.size.width, height: 200)
-              .onTapGesture {
-                url = viewModel.repository.venue?.mapLink ?? Constants.placeholderUrl
-                titleLocalizedKey = ""
-                showingSheet = true
-              }
-            
-            NavigationLink(destination: SponsorsView()) {
-              HStack {
-                Spacer()
-                Text(LocalizedStringKey("Sponsors"))
-                Spacer()
-              }
-              .padding()
-              .customStyle(withBackgroundColor: Colors.primaryRed)
+            if !(self.viewModel.event.venue?.mapImage ?? "").isEmpty {
+                KFImage(URL(string: Images.urlExtension + (self.viewModel.event.venue?.mapImage ?? ""))!)
+                    .placeholder {
+                        ImagePlaceholder()
+                    }
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 200)
+                    .onTapGesture {
+                        if let url = URL(string: viewModel.event.venue?.mapLink ?? Constants.placeholderUrl) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                        
+                    }
+                    .padding(.bottom)
             }
-
-          } // VStack
-          if self.viewModel.statusView == .error {
-            ErrorView(errorText: self.viewModel.errorMessage)
-              .onTapGesture {
-                self.viewModel.setup()
-              }
-          }
-        } // ZStack
-        
-      } // ScrollView
-      .background(Colors.primaryLightGray)
-      
-    } // GeometryReader
-    .navigationBarColor(UIColor(named: "primaryRed"))
-    .navigationBarTitle(Text(LocalizedStringKey("Home")), displayMode: .inline)
-    .navigationBarItems(leading: NavigationLink(destination: SettingsView().environmentObject(IconNames()), label: {
-      Image(systemName: "gear")
-        .resizable()
-        .frame(width: 24, height: 24)
-        .foregroundColor(.white)
-    }), trailing: NavigationLink(destination: AboutView(), label: {
-      Image(systemName: "info.circle")
-        .resizable()
-        .frame(width: 24, height: 24)
-        .foregroundColor(.white)
-    }))
-    .environment(\.layoutDirection, .rightToLeft)
-    .sheet(isPresented: $showingSheet) {
-      WebViewSheet(url: url, titleLocalizedKey: titleLocalizedKey)
+            
+            
+            
+            if TimeZone.current.isMasterData {
+                NavigationLink(destination: SponsorsView(eventId: viewModel.event.id)) {
+                    HStack {
+                        Spacer()
+                        Text(LocalizedStringKey("Sponsors"))
+                            .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
+                        Spacer()
+                    }
+                    .padding()
+                    .customStyle(withBackgroundColor: Colors.primaryRed)
+                }
+            }
+            
+        } // VStack
+        .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity)
+        .padding(.horizontal)
     }
-  } // Body
-  
-  
-  
+    
 }
 
 struct EventDetailView_Previews: PreviewProvider {
-  static var previews: some View {
-    EventDetailView().environmentObject(EventViewModel())
-  }
+    static var previews: some View {
+        EventDetailView(viewModel: EventViewModel())
+    }
 }

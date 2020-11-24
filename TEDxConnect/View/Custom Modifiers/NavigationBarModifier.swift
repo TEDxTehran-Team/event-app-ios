@@ -12,23 +12,19 @@ struct NavigationBarModifier: ViewModifier {
   
   var backgroundColor: UIColor?
   
-  init( backgroundColor: UIColor?) {
-    let coloredAppearance = UINavigationBarAppearance()
-    coloredAppearance.configureWithTransparentBackground()
-    coloredAppearance.backgroundColor = backgroundColor
-    coloredAppearance.titleTextAttributes = [
-      .font : UIFont(name: Fonts.shabnam, size: 17)!,
-      .foregroundColor: UIColor.white
-    ]
-    coloredAppearance.largeTitleTextAttributes = [
-      .font : UIFont(name: Fonts.shabnamBold, size: 34)!,
-      .foregroundColor: UIColor.white
-    ]
+  init(backgroundColor: UIColor?) {
+//    let coloredAppearance = UINavigationBarAppearance()
+//    coloredAppearance.configureWithTransparentBackground()
+//    coloredAppearance.backgroundColor = backgroundColor
+//    coloredAppearance.titleTextAttributes = [
+//      .font : UIFont(name: Fonts.shabnam, size: 17)!]
+//    coloredAppearance.largeTitleTextAttributes = [
+//      .font : UIFont(name: Fonts.shabnamBold, size: 34)!]
     
-    UINavigationBar.appearance().standardAppearance = coloredAppearance
-    UINavigationBar.appearance().compactAppearance = coloredAppearance
-    UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
-    UINavigationBar.appearance().tintColor = .white
+//    UINavigationBar.appearance().standardAppearance = coloredAppearance
+//    UINavigationBar.appearance().compactAppearance = coloredAppearance
+//    UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
+//    UINavigationBar.appearance().tintColor = .white
     
   }
   

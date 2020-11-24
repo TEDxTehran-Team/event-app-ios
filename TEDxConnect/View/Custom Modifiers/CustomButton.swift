@@ -16,8 +16,7 @@ struct CustomButton: ViewModifier {
     content
       .foregroundColor(.white)
       .background(backgroundColor)
-      .cornerRadius(5)
-      .padding()
+      .cornerRadius(10)
   }
 }
 

@@ -10,57 +10,63 @@ import SwiftUI
 import struct Kingfisher.KFImage
 
 struct SpeakersView: View {
-  
-  @ObservedObject var viewModel = SpeakerViewModel()
-  
-  var body: some View {
-    GeometryReader { geo in
-      ZStack {
-        GridStack(minCellWidth: (geo.size.width/3)-20, spacing: 15, numItems: viewModel.repositories.count) { index, cellWidth in
-          NavigationLink(destination:
-                          SpeakerDetailView(speaker: self.viewModel.repositories[index])
-          ) {
-            
-            VStack {
-              KFImage(URL(string: Images.urlExtension + self.viewModel.repositories[index].image)!)
-                .placeholder {
-                  ImagePlaceholder()
+    
+    @ObservedObject var viewModel:SpeakerViewModel
+    
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .center) {
+                
+                if self.viewModel.statusView == .loading {
+                    Indicator()
+                }else if self.viewModel.statusView == .error {
+                    ErrorView(errorText: self.viewModel.errorMessage)
+                        .onTapGesture {
+                            self.viewModel.setup()
+                        }
+                }else {
+                    ForEach(self.viewModel.repositories, id: \.self){ item in
+                        NavigationLink(destination: SpeakerDetailView(speaker: item)) {
+                            HStack {
+                                VStack() {
+                                    Spacer()
+                                    Text(item.title)
+                                        .customFont(name: Fonts.shabnamBold, style: .callout, weight: .bold)
+                                        .lineLimit(2)
+                                    Spacer()
+                                    Text(item.description)
+                                        .multilineTextAlignment(.center)
+                                        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                                        .lineLimit(2)
+                                    Spacer()
+                                }
+                                Spacer()
+                                KFImage(URL(string: Images.urlExtension + item.image))
+                                    .placeholder {
+                                        ImagePlaceholder()
+                                    }
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 100, height: 100)
+                                    .cornerRadius(10)
+                                
+                            }
+                            .padding(.vertical,6)
+                            .padding(.horizontal)
+                            
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                    }
                 }
-                .resizable()
-                .scaledToFill()
-                .frame(width: cellWidth, height: cellWidth)
-                .cornerRadius(10)
-              
-              Text(self.viewModel.repositories[index].title)
-                .customFont(name: Fonts.shabnam, style: .headline)
-                .lineLimit(2)
             }
-            
-          }
-          .buttonStyle(PlainButtonStyle())
+            .navigationBarTitle(Text(LocalizedStringKey("Speakers")), displayMode: .inline)
         }
         
-        if self.viewModel.statusView == .loading {
-          Indicator()
-        }
-        
-        if self.viewModel.statusView == .error {
-          ErrorView(errorText: self.viewModel.errorMessage)
-            .onTapGesture {
-              self.viewModel.setup()
-            }
-        }
-      }
-      .navigationBarTitle(Text(LocalizedStringKey("Speakers")), displayMode: .inline)
-      .onAppear {
-        self.viewModel.setup()
-      }
     }
-  }
 }
 
 struct SpeakersView_Previews: PreviewProvider {
-  static var previews: some View {
-    SpeakersView().environmentObject(SpeakerViewModel())
-  }
+    static var previews: some View {
+        SpeakersView(viewModel:SpeakerViewModel())
+    }
 }

@@ -3,6 +3,7 @@ query GetNews {
     title
     description
     icon
+    extraLink
   }
 }
 
@@ -26,6 +27,7 @@ query GetAlbumPhotos($id: Int!) {
 query GetAbouts {
   organizer{
     abouts {
+      id
       title
       description
       image
@@ -36,6 +38,7 @@ query GetAbouts {
 query MainEventInfo {
   organizer {
     mainEvent {
+      id
       title
       banner
       startDate
@@ -46,7 +49,7 @@ query MainEventInfo {
       }
       venue {
         title
-        adress
+        address
         mapLink
         mapImage
       }
@@ -88,6 +91,7 @@ query GetTalks {
       }
     }
     event {
+      id
       title
     }
   }
@@ -132,11 +136,12 @@ query GetTalkDetail($id: Int!) {
   }
 }
 
-query GetEventSponsors {
-  sponsorsWithType(event: 1) {
+query GetEventSponsors($eventId: Int!) {
+  sponsorsWithType(event: $eventId) {
     sponsors {
       title
       logo
+      link
     }
     type {
       title

@@ -3,6 +3,7 @@
 "Gallery" = "گالری";
 "About" = "درباره ما";
 "Home" = "خانه";
+"TimeDay" = "برنامه زمانی";
 "Watch Live" = "پخش زنده رویداد";
 "Timetable" = "برنامه زمانی";
 "to" = "الی";
@@ -24,8 +25,10 @@
 "More" = "بیشتر";
 "Detail" = "جزییات";
 "Speakers" = "سخنرانان";
-"We're tracking potential bugs with Crashlytics and will fix all of them ASAP." = "ما تمام باگ‌ها را به کمک Crashlytics رصد می‌کنیم و تمام آن‌ها را به محض ممکن حل می‌کنیم.";
+"We're tracking potential bugs with Sentry and will fix all of them ASAP." = "ما تمام باگ‌ها را به کمک Sentry رصد می‌کنیم و تمام آن‌ها را به محض ممکن حل می‌کنیم.";
 "Buy Ticket" = "خرید بلیت";
 "Register in Event" = "ثبت‌نام در رویداد";
 "Sponsors" = "حامیان";
 "Tap to retry" = "دوباره سعی کنید";
+"Description" = "توضیحات";
+"Related Talks" = "سخنرانی‌های مرتبط";

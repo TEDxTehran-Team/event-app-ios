@@ -12,8 +12,8 @@ struct EventView: View {
   
   @State private var selectedTab = 0
   
-  @EnvironmentObject var eventDetailViewModel: EventViewModel
-  @EnvironmentObject var dayViewModel: DayViewModel
+  @ObservedObject var eventDetailViewModel: EventViewModel
+  @ObservedObject var dayViewModel: DayViewModel
   
   var body: some View {
     
@@ -24,11 +24,11 @@ struct EventView: View {
       
       if self.selectedTab == 0 {
         
-        EventDetailView(viewModel: _eventDetailViewModel)
+        EventDetailView(viewModel: eventDetailViewModel)
         
       } else {
         
-        TimeTableView(viewModel: _dayViewModel)
+        TimeTableView(viewModel: dayViewModel)
           .background(Colors.primaryBackground)
           
       }
@@ -40,8 +40,6 @@ struct EventView: View {
 
 struct EventView_Previews: PreviewProvider {
   static var previews: some View {
-    EventView()
-      .environmentObject(EventViewModel())
-      .environmentObject(DayViewModel())
+    EventView(eventDetailViewModel: EventViewModel(), dayViewModel: DayViewModel())
   }
 }

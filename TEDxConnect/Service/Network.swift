@@ -13,7 +13,6 @@ class Network {
     static let shared = Network()
     
     private(set) lazy var apollo: ApolloClient = {
-        //    let token = "ed021b80f7890b8ad017e896617703caae3a3458"
         
         let url = URL(string: Constants.baseUrl)!
         
@@ -29,6 +28,8 @@ class Network {
         let store = ApolloStore(cache: sqliteCache)
         
         let configuration = URLSessionConfiguration.default
+        
+        configuration.httpAdditionalHeaders = ["Application-Token": TimeZone.current.token]
         
         return ApolloClient(
             networkTransport: HTTPNetworkTransport(url: url, client: URLSessionClient(sessionConfiguration: configuration, callbackQueue: nil)),
