@@ -2,9 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:TEDxConnect.xcodeproj">
+      location = "group:/Users/farshid/Desktop/project/ios/tedxtehran-ios-swift/XConnect.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:XConnect.xcodeproj">
    </FileRef>
 </Workspace>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F13E112CA0327A9E521D01B /* Pods_XConnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FDF7BFECECBDA340B6E97B /* Pods_XConnect.framework */; };
 		6D1325B424FE658F00FFA202 /* PhotoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1325B324FE658F00FFA202 /* PhotoRepository.swift */; };
 		6D1325B624FE65C100FFA202 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1325B524FE65C100FFA202 /* Photo.swift */; };
 		6D1325B824FE65D200FFA202 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1325B724FE65D200FFA202 /* PhotoViewModel.swift */; };
@@ -104,7 +105,6 @@
 		6DFCAF4A24FD314F008AD550 /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFCAF4924FD314F008AD550 /* EventDetailView.swift */; };
 		6DFCAF4C24FD32FC008AD550 /* EventRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFCAF4B24FD32FC008AD550 /* EventRepository.swift */; };
 		6DFCAF4E24FD3332008AD550 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFCAF4D24FD3332008AD550 /* EventViewModel.swift */; };
-		97DED37106CAA742CE72EE41 /* Pods_TEDxConnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 769D6C199A31C8EBA8438C8E /* Pods_TEDxConnect.framework */; };
 		E834C0872554056400AC827F /* HomeTabUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E834C0862554056400AC827F /* HomeTabUIView.swift */; };
 		E837435C24FFEB21009FEB5B /* JSON+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837435B24FFEB21009FEB5B /* JSON+Extension.swift */; };
 		E837435F24FFF327009FEB5B /* XException.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837435E24FFF327009FEB5B /* XException.swift */; };
@@ -128,10 +128,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		088740C50CD6DBB759288AA5 /* Pods_TEDxConnectNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TEDxConnectNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		252CB9C73BB79E4D2DEF174E /* Pods-TEDxConnectNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TEDxConnectNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-TEDxConnectNotificationServiceExtension/Pods-TEDxConnectNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
-		3E6BD732C2CD52E8A2D1E066 /* Pods-TEDxConnectNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TEDxConnectNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-TEDxConnectNotificationServiceExtension/Pods-TEDxConnectNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		4C8AE9BE241534A142B7C798 /* Pods-TEDxConnect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TEDxConnect.release.xcconfig"; path = "Target Support Files/Pods-TEDxConnect/Pods-TEDxConnect.release.xcconfig"; sourceTree = "<group>"; };
 		6D1325B324FE658F00FFA202 /* PhotoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRepository.swift; sourceTree = "<group>"; };
 		6D1325B524FE65C100FFA202 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		6D1325B724FE65D200FFA202 /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
@@ -151,7 +147,7 @@
 		6D3B49332528BD130002EBF8 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		6D3B495C2529B1EB0002EBF8 /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		6D3B495F2529B2470002EBF8 /* WebViewSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewSheet.swift; sourceTree = "<group>"; };
-		6D3B49642529BC290002EBF8 /* TEDxConnect.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TEDxConnect.entitlements; sourceTree = "<group>"; };
+		6D3B49642529BC290002EBF8 /* XConnect.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XConnect.entitlements; sourceTree = "<group>"; };
 		6D460C6C24DE7F3500F50DAF /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		6D8CE96925011B8000F47ADF /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		6D8CE96E2501237A00F47ADF /* ImagePlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePlaceholder.swift; sourceTree = "<group>"; };
@@ -170,7 +166,7 @@
 		6DC0A45824FBCE6D00CE535B /* AboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
 		6DC0A45B24FBCE9B00CE535B /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		6DC0A45D24FBD01C00CE535B /* AboutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutDetailView.swift; sourceTree = "<group>"; };
-		6DC754D524DE6BD700F96518 /* TEDxConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TEDxConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DC754D524DE6BD700F96518 /* XConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DC754D824DE6BD700F96518 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DC754DA24DE6BD700F96518 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6DC754E124DE6BD900F96518 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -203,7 +199,6 @@
 		6DD0680A250A0B71008BBC08 /* TalkDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkDetailRepository.swift; sourceTree = "<group>"; };
 		6DD0680C250A0C0B008BBC08 /* TalkDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkDetailViewModel.swift; sourceTree = "<group>"; };
 		6DD12DB62519CE980055D611 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		6DD12DB92519CEDF0055D611 /* fa-IR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fa-IR"; path = "fa-IR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		6DD12DBC2519D9CC0055D611 /* White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = White.png; sourceTree = "<group>"; };
 		6DD12DBD2519D9CD0055D611 /* White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "White@3x.png"; sourceTree = "<group>"; };
 		6DD12DBF2519D9CD0055D611 /* Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Black.png; sourceTree = "<group>"; };
@@ -233,7 +228,11 @@
 		6DFCAF4924FD314F008AD550 /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 		6DFCAF4B24FD32FC008AD550 /* EventRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepository.swift; sourceTree = "<group>"; };
 		6DFCAF4D24FD3332008AD550 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
-		769D6C199A31C8EBA8438C8E /* Pods_TEDxConnect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TEDxConnect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4FDF7BFECECBDA340B6E97B /* Pods_XConnect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XConnect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D25FC2DABD48409F9003C7CA /* Pods-XConnect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XConnect.release.xcconfig"; path = "Target Support Files/Pods-XConnect/Pods-XConnect.release.xcconfig"; sourceTree = "<group>"; };
+		DBB0362805CC118DC039FD67 /* Pods-XConnect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XConnect.debug.xcconfig"; path = "Target Support Files/Pods-XConnect/Pods-XConnect.debug.xcconfig"; sourceTree = "<group>"; };
+		E806528C256FD41D0095806B /* ar-QA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-QA"; path = "ar-QA.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		E806528D256FD41D0095806B /* ar-QA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-QA"; path = "ar-QA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E834C0862554056400AC827F /* HomeTabUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabUIView.swift; sourceTree = "<group>"; };
 		E837435B24FFEB21009FEB5B /* JSON+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON+Extension.swift"; sourceTree = "<group>"; };
 		E837435E24FFF327009FEB5B /* XException.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XException.swift; sourceTree = "<group>"; };
@@ -241,7 +240,6 @@
 		E837436324FFF69D009FEB5B /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		E8EAE3A3256ACD6A00B43FB1 /* Model+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Extension.swift"; sourceTree = "<group>"; };
 		E8EAE3A7256AD01900B43FB1 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
-		F659F0324A81EFD7192A31CC /* Pods-TEDxConnect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TEDxConnect.debug.xcconfig"; path = "Target Support Files/Pods-TEDxConnect/Pods-TEDxConnect.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,7 +247,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97DED37106CAA742CE72EE41 /* Pods_TEDxConnect.framework in Frameworks */,
+				4F13E112CA0327A9E521D01B /* Pods_XConnect.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,12 +257,18 @@
 		0CCC391DA23E7AB0EF549177 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F659F0324A81EFD7192A31CC /* Pods-TEDxConnect.debug.xcconfig */,
-				4C8AE9BE241534A142B7C798 /* Pods-TEDxConnect.release.xcconfig */,
-				3E6BD732C2CD52E8A2D1E066 /* Pods-TEDxConnectNotificationServiceExtension.debug.xcconfig */,
-				252CB9C73BB79E4D2DEF174E /* Pods-TEDxConnectNotificationServiceExtension.release.xcconfig */,
+				DBB0362805CC118DC039FD67 /* Pods-XConnect.debug.xcconfig */,
+				D25FC2DABD48409F9003C7CA /* Pods-XConnect.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		2F5B3E7D55CD6DDCFB86E73C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4FDF7BFECECBDA340B6E97B /* Pods_XConnect.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		6D3B490E2528A2030002EBF8 /* Speakers */ = {
@@ -309,25 +313,25 @@
 		6DC754CC24DE6BD600F96518 = {
 			isa = PBXGroup;
 			children = (
-				6DC754D724DE6BD700F96518 /* TEDxConnect */,
+				6DC754D724DE6BD700F96518 /* XConnect */,
 				6DC754D624DE6BD700F96518 /* Products */,
 				0CCC391DA23E7AB0EF549177 /* Pods */,
-				9B218432D3ED3287EFDF5133 /* Frameworks */,
+				2F5B3E7D55CD6DDCFB86E73C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		6DC754D624DE6BD700F96518 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6DC754D524DE6BD700F96518 /* TEDxConnect.app */,
+				6DC754D524DE6BD700F96518 /* XConnect.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6DC754D724DE6BD700F96518 /* TEDxConnect */ = {
+		6DC754D724DE6BD700F96518 /* XConnect */ = {
 			isa = PBXGroup;
 			children = (
-				6D3B49642529BC290002EBF8 /* TEDxConnect.entitlements */,
+				6D3B49642529BC290002EBF8 /* XConnect.entitlements */,
 				6DB6E2B4255FC3950095F055 /* GoogleService-Info.plist */,
 				6DC754D824DE6BD700F96518 /* AppDelegate.swift */,
 				6DC754DA24DE6BD700F96518 /* SceneDelegate.swift */,
@@ -350,7 +354,7 @@
 				6DE7CEE424E120BA00910DF7 /* API.swift */,
 				6DD12DB72519CE980055D611 /* Localizable.strings */,
 			);
-			path = TEDxConnect;
+			path = XConnect;
 			sourceTree = "<group>";
 		};
 		6DC754E324DE6BD900F96518 /* Preview Content */ = {
@@ -542,15 +546,6 @@
 			path = Event;
 			sourceTree = "<group>";
 		};
-		9B218432D3ED3287EFDF5133 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				769D6C199A31C8EBA8438C8E /* Pods_TEDxConnect.framework */,
-				088740C50CD6DBB759288AA5 /* Pods_TEDxConnectNotificationServiceExtension.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		E834C0852554045F00AC827F /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -586,26 +581,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6DC754D424DE6BD700F96518 /* TEDxConnect */ = {
+		6DC754D424DE6BD700F96518 /* XConnect */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6DC754EC24DE6BD900F96518 /* Build configuration list for PBXNativeTarget "TEDxConnect" */;
+			buildConfigurationList = 6DC754EC24DE6BD900F96518 /* Build configuration list for PBXNativeTarget "XConnect" */;
 			buildPhases = (
-				88AA5726952DFBB60C90AEDA /* [CP] Check Pods Manifest.lock */,
+				6C3B3E916CC2BBC6A6B7491A /* [CP] Check Pods Manifest.lock */,
 				6D4FAC6624DE7B1D002202D9 /* Generate Apollo GraphQL API */,
 				6DC754D124DE6BD700F96518 /* Sources */,
 				6DC754D224DE6BD700F96518 /* Frameworks */,
 				6DC754D324DE6BD700F96518 /* Resources */,
 				6D3B495A2529AE220002EBF8 /* ShellScript */,
 				6D7CDA5F2535B4AC00FCBF2D /* Embed App Extensions */,
-				49B7125E4FE6C42FB0C11B48 /* [CP] Embed Pods Frameworks */,
+				BA73F3C76D77A527C57BAE96 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = TEDxConnect;
+			name = XConnect;
 			productName = TEDxConnect;
-			productReference = 6DC754D524DE6BD700F96518 /* TEDxConnect.app */;
+			productReference = 6DC754D524DE6BD700F96518 /* XConnect.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -623,21 +618,21 @@
 					};
 				};
 			};
-			buildConfigurationList = 6DC754D024DE6BD600F96518 /* Build configuration list for PBXProject "TEDxConnect" */;
+			buildConfigurationList = 6DC754D024DE6BD600F96518 /* Build configuration list for PBXProject "XConnect" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
-				"fa-IR",
+				"ar-QA",
 			);
 			mainGroup = 6DC754CC24DE6BD600F96518;
 			productRefGroup = 6DC754D624DE6BD700F96518 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6DC754D424DE6BD700F96518 /* TEDxConnect */,
+				6DC754D424DE6BD700F96518 /* XConnect */,
 			);
 		};
 /* End PBXProject section */
@@ -669,21 +664,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		49B7125E4FE6C42FB0C11B48 /* [CP] Embed Pods Frameworks */ = {
+		6C3B3E916CC2BBC6A6B7491A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TEDxConnect/Pods-TEDxConnect-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TEDxConnect/Pods-TEDxConnect-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-XConnect-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TEDxConnect/Pods-TEDxConnect-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6D3B495A2529AE220002EBF8 /* ShellScript */ = {
@@ -722,26 +722,21 @@
 			shellPath = /bin/sh;
 			shellScript = "SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n";
 		};
-		88AA5726952DFBB60C90AEDA /* [CP] Check Pods Manifest.lock */ = {
+		BA73F3C76D77A527C57BAE96 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-XConnect/Pods-XConnect-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TEDxConnect-checkManifestLockResult.txt",
+				"${PODS_ROOT}/Target Support Files/Pods-XConnect/Pods-XConnect-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-XConnect/Pods-XConnect-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -849,6 +844,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				6DC754E724DE6BD900F96518 /* Base */,
+				E806528C256FD41D0095806B /* ar-QA */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -857,7 +853,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				6DD12DB62519CE980055D611 /* en */,
-				6DD12DB92519CEDF0055D611 /* fa-IR */,
+				E806528D256FD41D0095806B /* ar-QA */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -985,19 +981,19 @@
 		};
 		6DC754ED24DE6BD900F96518 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F659F0324A81EFD7192A31CC /* Pods-TEDxConnect.debug.xcconfig */;
+			baseConfigurationReference = DBB0362805CC118DC039FD67 /* Pods-XConnect.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = TEDxConnect/TEDxConnect.entitlements;
+				CODE_SIGN_ENTITLEMENTS = XConnect/XConnect.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_ASSET_PATHS = "\"TEDxConnect/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"XConnect/Preview Content\"";
 				DEVELOPMENT_TEAM = X937JJ6EU8;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = TEDxConnect/Info.plist;
+				INFOPLIST_FILE = XConnect/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1014,18 +1010,18 @@
 		};
 		6DC754EE24DE6BD900F96518 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C8AE9BE241534A142B7C798 /* Pods-TEDxConnect.release.xcconfig */;
+			baseConfigurationReference = D25FC2DABD48409F9003C7CA /* Pods-XConnect.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = TEDxConnect/TEDxConnect.entitlements;
+				CODE_SIGN_ENTITLEMENTS = XConnect/XConnect.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_ASSET_PATHS = "\"TEDxConnect/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"XConnect/Preview Content\"";
 				DEVELOPMENT_TEAM = X937JJ6EU8;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = TEDxConnect/Info.plist;
+				INFOPLIST_FILE = XConnect/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1043,7 +1039,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6DC754D024DE6BD600F96518 /* Build configuration list for PBXProject "TEDxConnect" */ = {
+		6DC754D024DE6BD600F96518 /* Build configuration list for PBXProject "XConnect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6DC754EA24DE6BD900F96518 /* Debug */,
@@ -1052,7 +1048,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6DC754EC24DE6BD900F96518 /* Build configuration list for PBXNativeTarget "TEDxConnect" */ = {
+		6DC754EC24DE6BD900F96518 /* Build configuration list for PBXNativeTarget "XConnect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6DC754ED24DE6BD900F96518 /* Debug */,

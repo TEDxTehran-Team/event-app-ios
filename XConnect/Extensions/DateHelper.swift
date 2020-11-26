@@ -52,7 +52,7 @@ extension TimeZone {
     }
     
     var isMasterData : Bool {
-        return self.identifier.lowercased() != "asia/tehran"
+        return self.identifier.lowercased() == "asia/tehran"
     }
 }
 
