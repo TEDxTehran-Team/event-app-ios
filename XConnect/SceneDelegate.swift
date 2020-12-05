@@ -23,8 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     
     let contentView = AppView()
-        .environment(\.locale,.init(identifier: TimeZone.current.isMasterData ? "fa_IR" : "en"))
-    
+        .environment(\.locale,.init(identifier: TimeZone.current.isMasterData ? "ar_QA" : "en"))
+        
     // Use a UIHostingController as window root view controller.
     if let windowScene = scene as? UIWindowScene {
       let window = UIWindow(windowScene: windowScene)

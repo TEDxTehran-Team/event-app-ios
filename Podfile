@@ -1,10 +1,10 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '13.0'
 
-target 'TEDxConnect' do
+target 'XConnect' do
   use_frameworks!
 
-  # Pods for TEDxConnect
+  # Pods for XConnect
   pod 'Apollo', '~> 0.32.1'
   pod 'Apollo/SQLite', '~> 0.32.1'
   pod 'Kingfisher/SwiftUI', '~> 5.15.5'
@@ -16,7 +16,7 @@ target 'TEDxConnect' do
   
 end
 
-#target 'TEDxConnectNotificationServiceExtension' do
+#target 'XConnectNotificationServiceExtension' do
 #  use_frameworks!
 #  pod 'Pushe', '1.0.16'
 #end

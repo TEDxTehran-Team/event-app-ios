@@ -33,12 +33,14 @@ struct AppView: View {
     var body: some View {
         
         TabView(selection: self.$tabSelected) {
-            TalksView(talkViewModel: self.talkViewModel, featuredTalkViewModel: self.featuredTalkViewModel)
-                .tag(AppTabViewItem.talks)
-                .tabItem {
-                    Image(systemName: "music.mic")
-                    Text(LocalizedStringKey("Talks"))
-                }
+          
+          NewsView(viewModel: self.newsViewModel)
+              .tag(AppTabViewItem.news)
+              .tabItem {
+                  Image(systemName: "newspaper")
+                  Text(LocalizedStringKey("News"))
+                  
+              }
             
             VStack {
                 GalleryView(viewModel: self.albumViewModel)
@@ -48,14 +50,13 @@ struct AppView: View {
                 Text(LocalizedStringKey("Gallery"))
             }
             
-            NewsView(viewModel: self.newsViewModel)
-                .tag(AppTabViewItem.news)
-                .tabItem {
-                    Image(systemName: "newspaper")
-                    Text(LocalizedStringKey("News"))
-                    
-                }
-            
+          TalksView(talkViewModel: self.talkViewModel, featuredTalkViewModel: self.featuredTalkViewModel)
+              .tag(AppTabViewItem.talks)
+              .tabItem {
+                  Image(systemName: "music.mic")
+                  Text(LocalizedStringKey("Talks"))
+              }
+          
             NavigationView {
                 VStack {
                     HomeTabUIView(eventViewModel: self.eventViewModel,dayViewModel: self.dayViewModel, speakerViewModel: self.speakerViewModel)
@@ -63,6 +64,7 @@ struct AppView: View {
                 .navigationBarTitle(Text(LocalizedStringKey("Home")),displayMode: .inline)
                 
             }
+            .navigationViewStyle(StackNavigationViewStyle())
             .tag(AppTabViewItem.home)
             .tabItem {
                 Image(systemName: "house")
