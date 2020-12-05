@@ -9,57 +9,57 @@
 import SwiftUI
 
 struct TimeTableView: View {
-  
-  @ObservedObject var viewModel: DayViewModel
-  
-  var body: some View {
-    ZStack {
-      if self.viewModel.statusView == .complete {
-        if self.viewModel.repositories.count != 0 {
-          ScrollView(.vertical) {
-            ForEach(viewModel.repositories, id: \.self) { day in
-              VStack(alignment: .leading) {
-                DayHeaderView(day: day)
-                  .padding(.vertical, 4)
-                ForEach(day.sessions, id: \.self) { session in
-                  Group {
-                    SessionHeaderView(session: session)
-                    ForEach(session.sections, id: \.self) { section in
-                      SectionView(section: section)
+    
+    @ObservedObject var viewModel: DayViewModel
+    
+    var body: some View {
+        ZStack {
+            if self.viewModel.statusView == .complete {
+                if self.viewModel.repositories.count != 0 {
+                    ScrollView(.vertical) {
+                        ForEach(viewModel.repositories, id: \.self) { day in
+                            VStack(alignment: .leading) {
+                                DayHeaderView(day: day)
+                                    .padding(.vertical, 4)
+                                ForEach(day.sessions, id: \.self) { session in
+                                    Group {
+                                        SessionHeaderView(session: session)
+                                        ForEach(session.sections, id: \.self) { section in
+                                            SectionView(section: section)
+                                        }
+                                        Divider()
+                                    }
+                                }
+                            }
+                        }
+                        .padding()
                     }
-                    Divider()
-                  }
+                } else {
+                    EmptyListView()
+                        .onTapGesture {
+                            self.viewModel.setup()
+                        }
                 }
-              }
             }
-            .padding()
-          }
-        } else {
-          EmptyListView()
-            .onTapGesture {
-              self.viewModel.setup()
+            
+            if self.viewModel.statusView == .loading {
+                Indicator()
+            }
+            
+            if self.viewModel.statusView == .error {
+                ErrorView(errorText: self.viewModel.errorMessage)
+                    .onTapGesture {
+                        self.viewModel.setup()
+                    }
             }
         }
-      }
-      
-      if self.viewModel.statusView == .loading {
-        Indicator()
-      }
-      
-      if self.viewModel.statusView == .error {
-        ErrorView(errorText: self.viewModel.errorMessage)
-          .onTapGesture {
-            self.viewModel.setup()
-          }
-      }
+        .navigationBarColor(UIColor(named: "primaryRed"))
+        .navigationBarTitle(Text(LocalizedStringKey("TimeDay")), displayMode: .inline)
     }
-    .navigationBarColor(UIColor(named: "primaryRed"))
-    .navigationBarTitle(Text(LocalizedStringKey("TimeDay")), displayMode: .inline)    
-  }
 }
 
 struct TimeTableView_Previews: PreviewProvider {
-  static var previews: some View {
-    TimeTableView(viewModel: DayViewModel())
-  }
+    static var previews: some View {
+        TimeTableView(viewModel: DayViewModel())
+    }
 }

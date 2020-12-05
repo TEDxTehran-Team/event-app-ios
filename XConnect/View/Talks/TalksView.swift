@@ -43,10 +43,14 @@ struct TalksView: View {
                                                 }
                                             }
                                         }
+                                        .rotation3DEffect(Angle(degrees: 180), axis: (x: CGFloat(0), y: CGFloat(10), z: CGFloat(0)))
                                         .buttonStyle(PlainButtonStyle())
                                         .padding(.horizontal)
                                         .padding(.horizontal)
                                     }
+                                    
+                                    .flipsForRightToLeftLayoutDirection(true)
+                                    .environment(\.layoutDirection, .rightToLeft)
                                     .padding(.top,5)
                                 }
                             }
