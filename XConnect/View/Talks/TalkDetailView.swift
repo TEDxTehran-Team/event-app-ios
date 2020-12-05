@@ -94,7 +94,7 @@ struct TalkDetailView: View {
                 Text(LocalizedStringKey("Description"))
                     .foregroundColor(.secondary)
                     .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom)
-                    .foregroundColor(Colors.primaryRed), alignment: .bottom)
+                                .foregroundColor(Colors.primaryRed), alignment: .bottom)
                     .customFont(name: Fonts.shabnam, style: .body)
                 Text(self.viewModel.repository.talk.description ?? "")
                     .foregroundColor(.secondary)
@@ -104,16 +104,25 @@ struct TalkDetailView: View {
             .padding(.horizontal)
             .padding(.vertical, 10)
             
-            VStack(alignment: .trailing, spacing: 10) {
-                Text(LocalizedStringKey("Related Talks"))
-                    .foregroundColor(.secondary)
-                    .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom)
-                                .foregroundColor(Colors.primaryRed), alignment: .bottom)
-                    .padding(.horizontal)
-                    .customFont(name: Fonts.shabnam, style: .body)
+            VStack(spacing: 10) {
+                HStack {
+                    
+                    Text(LocalizedStringKey("Related Talks"))
+                        .foregroundColor(.secondary)
+                        .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom)
+                                    .foregroundColor(Colors.primaryRed), alignment: .bottom)
+                        .padding(.horizontal)
+                        .customFont(name: Fonts.shabnam, style: .body)
+                    
+                    Spacer()
+                }
+                
                 TalksRow(talks: self.viewModel.repository.suggestedTalks)
                     .padding(.top)
+                    .rotation3DEffect(Angle(degrees: 180), axis: (x: CGFloat(0), y: CGFloat(10), z: CGFloat(0)))
+                
             }
+            .environment(\.layoutDirection, .rightToLeft)
             .buttonStyle(PlainButtonStyle())
             .layoutPriority(1)
             

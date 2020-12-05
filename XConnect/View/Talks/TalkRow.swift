@@ -22,6 +22,7 @@ struct TalksRow: View {
                     }
                 }
             }
+            .rotation3DEffect(Angle(degrees: 180), axis: (x: CGFloat(0), y: CGFloat(10), z: CGFloat(0)))
             .padding(.horizontal)
             .padding(.horizontal)
         }
