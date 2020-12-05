@@ -30,7 +30,7 @@ struct EventDetailView: View {
             
         } // ScrollView
         .background(Colors.primaryLightGray)
-       
+        
         
     } // Body
     
@@ -111,10 +111,10 @@ struct EventDetailView: View {
                     Spacer()
                     
                     Text(DateHelper.dateWith(self.viewModel.event.startDate ?? "TBA", showTime: true))
-                        .customFont(name: TimeZone.current.isMasterData ? Fonts.shabnam : "", style: .footnote, weight: .regular)
+                        .customFont(name: Fonts.shabnam , style: .footnote, weight: .regular)
                     Text("|")
                     Text(DateHelper.dateWith(self.viewModel.event.endDate  ?? "TBA", showTime: true))
-                        .customFont(name: TimeZone.current.isMasterData ? Fonts.shabnam : "", style: .footnote, weight: .regular)
+                        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
                     Image(decorative: "clock-icon")
                 }
                 .padding()
@@ -159,18 +159,15 @@ struct EventDetailView: View {
             }
             
             
-            
-            if TimeZone.current.isMasterData {
-                NavigationLink(destination: SponsorsView(eventId: viewModel.event.id)) {
-                    HStack {
-                        Spacer()
-                        Text(LocalizedStringKey("Sponsors"))
-                            .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
-                        Spacer()
-                    }
-                    .padding()
-                    .customStyle(withBackgroundColor: Colors.primaryRed)
+            NavigationLink(destination: SponsorsView(eventId: viewModel.event.id)) {
+                HStack {
+                    Spacer()
+                    Text(LocalizedStringKey("Sponsors"))
+                        .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
+                    Spacer()
                 }
+                .padding()
+                .customStyle(withBackgroundColor: Colors.primaryRed)
             }
             
         } // VStack
