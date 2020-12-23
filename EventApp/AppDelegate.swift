@@ -7,31 +7,12 @@
 //
 
 import UIKit
-import Sentry
-import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        
-        UNUserNotificationCenter.current().delegate = self
-        
-        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-        UNUserNotificationCenter.current().requestAuthorization(
-            options: authOptions,
-            completionHandler: {_, _ in })
-        
-        application.registerForRemoteNotifications()
-        
-        FirebaseApp.configure()
-
-        
-        SentrySDK.start { options in
-            options.dsn = "https://8cd1c64e11d145bbb15b89d2154b5e87@o456588.ingest.sentry.io/5449812"
-        }
         
         return true
     }

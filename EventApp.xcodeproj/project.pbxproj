@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C262F0CFD6A257D3A6732ED /* Pods_EventApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79FF5A2BA58D3A5E78E7CB78 /* Pods_EventApp.framework */; };
 		6D1325B424FE658F00FFA202 /* PhotoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1325B324FE658F00FFA202 /* PhotoRepository.swift */; };
 		6D1325B624FE65C100FFA202 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1325B524FE65C100FFA202 /* Photo.swift */; };
 		6D1325B824FE65D200FFA202 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1325B724FE65D200FFA202 /* PhotoViewModel.swift */; };
@@ -38,7 +39,6 @@
 		6D8CE97F25020ED200F47ADF /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8CE97E25020ED200F47ADF /* SectionView.swift */; };
 		6DAA3CE32502102C006528DB /* DayHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAA3CE22502102C006528DB /* DayHeaderView.swift */; };
 		6DAA3CE52502255A006528DB /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAA3CE42502255A006528DB /* EmptyListView.swift */; };
-		6DB6E2B5255FC3960095F055 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DB6E2B4255FC3950095F055 /* GoogleService-Info.plist */; };
 		6DC0A45524FBCD1D00CE535B /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC0A45424FBCD1D00CE535B /* About.swift */; };
 		6DC0A45724FBCDCE00CE535B /* AboutRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC0A45624FBCDCE00CE535B /* AboutRepository.swift */; };
 		6DC0A45924FBCE6D00CE535B /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC0A45824FBCE6D00CE535B /* AboutViewModel.swift */; };
@@ -104,7 +104,6 @@
 		6DFCAF4A24FD314F008AD550 /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFCAF4924FD314F008AD550 /* EventDetailView.swift */; };
 		6DFCAF4C24FD32FC008AD550 /* EventRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFCAF4B24FD32FC008AD550 /* EventRepository.swift */; };
 		6DFCAF4E24FD3332008AD550 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFCAF4D24FD3332008AD550 /* EventViewModel.swift */; };
-		8F31C81109295729632E3367 /* Pods_XConnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DFFBD65FDE330B49269BB1C /* Pods_XConnect.framework */; };
 		E834C0872554056400AC827F /* HomeTabUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E834C0862554056400AC827F /* HomeTabUIView.swift */; };
 		E837435C24FFEB21009FEB5B /* JSON+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837435B24FFEB21009FEB5B /* JSON+Extension.swift */; };
 		E837435F24FFF327009FEB5B /* XException.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837435E24FFF327009FEB5B /* XException.swift */; };
@@ -147,7 +146,7 @@
 		6D3B49332528BD130002EBF8 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		6D3B495C2529B1EB0002EBF8 /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		6D3B495F2529B2470002EBF8 /* WebViewSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewSheet.swift; sourceTree = "<group>"; };
-		6D3B49642529BC290002EBF8 /* XConnect.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XConnect.entitlements; sourceTree = "<group>"; };
+		6D3B49642529BC290002EBF8 /* EventApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EventApp.entitlements; sourceTree = "<group>"; };
 		6D460C6C24DE7F3500F50DAF /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		6D8CE96925011B8000F47ADF /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		6D8CE96E2501237A00F47ADF /* ImagePlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePlaceholder.swift; sourceTree = "<group>"; };
@@ -160,13 +159,12 @@
 		6D8CE97E25020ED200F47ADF /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		6DAA3CE22502102C006528DB /* DayHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayHeaderView.swift; sourceTree = "<group>"; };
 		6DAA3CE42502255A006528DB /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
-		6DB6E2B4255FC3950095F055 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6DC0A45424FBCD1D00CE535B /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		6DC0A45624FBCDCE00CE535B /* AboutRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutRepository.swift; sourceTree = "<group>"; };
 		6DC0A45824FBCE6D00CE535B /* AboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
 		6DC0A45B24FBCE9B00CE535B /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		6DC0A45D24FBD01C00CE535B /* AboutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutDetailView.swift; sourceTree = "<group>"; };
-		6DC754D524DE6BD700F96518 /* XConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DC754D524DE6BD700F96518 /* EventApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DC754D824DE6BD700F96518 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DC754DA24DE6BD700F96518 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6DC754E124DE6BD900F96518 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -228,9 +226,8 @@
 		6DFCAF4924FD314F008AD550 /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 		6DFCAF4B24FD32FC008AD550 /* EventRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepository.swift; sourceTree = "<group>"; };
 		6DFCAF4D24FD3332008AD550 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
-		7DFFBD65FDE330B49269BB1C /* Pods_XConnect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XConnect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A2BAF7EDF0E7E08F96E8FC89 /* Pods-XConnect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XConnect.debug.xcconfig"; path = "Target Support Files/Pods-XConnect/Pods-XConnect.debug.xcconfig"; sourceTree = "<group>"; };
-		ACBE56D32D02A86AE0EDC1F1 /* Pods-XConnect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XConnect.release.xcconfig"; path = "Target Support Files/Pods-XConnect/Pods-XConnect.release.xcconfig"; sourceTree = "<group>"; };
+		79FF5A2BA58D3A5E78E7CB78 /* Pods_EventApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		87617D0EA05D41CD1AD8DABA /* Pods-EventApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventApp.debug.xcconfig"; path = "Target Support Files/Pods-EventApp/Pods-EventApp.debug.xcconfig"; sourceTree = "<group>"; };
 		E806528C256FD41D0095806B /* ar-QA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-QA"; path = "ar-QA.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		E806528D256FD41D0095806B /* ar-QA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-QA"; path = "ar-QA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E834C0862554056400AC827F /* HomeTabUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabUIView.swift; sourceTree = "<group>"; };
@@ -240,6 +237,7 @@
 		E837436324FFF69D009FEB5B /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		E8EAE3A3256ACD6A00B43FB1 /* Model+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Extension.swift"; sourceTree = "<group>"; };
 		E8EAE3A7256AD01900B43FB1 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		F0458B33231FCAD35F890B60 /* Pods-EventApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventApp.release.xcconfig"; path = "Target Support Files/Pods-EventApp/Pods-EventApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,7 +245,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F31C81109295729632E3367 /* Pods_XConnect.framework in Frameworks */,
+				0C262F0CFD6A257D3A6732ED /* Pods_EventApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,8 +255,8 @@
 		0CCC391DA23E7AB0EF549177 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A2BAF7EDF0E7E08F96E8FC89 /* Pods-XConnect.debug.xcconfig */,
-				ACBE56D32D02A86AE0EDC1F1 /* Pods-XConnect.release.xcconfig */,
+				87617D0EA05D41CD1AD8DABA /* Pods-EventApp.debug.xcconfig */,
+				F0458B33231FCAD35F890B60 /* Pods-EventApp.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -305,26 +303,25 @@
 		6DC754CC24DE6BD600F96518 = {
 			isa = PBXGroup;
 			children = (
-				6DC754D724DE6BD700F96518 /* XConnect */,
+				6DC754D724DE6BD700F96518 /* EventApp */,
 				6DC754D624DE6BD700F96518 /* Products */,
 				0CCC391DA23E7AB0EF549177 /* Pods */,
-				7F5720B723C76499CE186607 /* Frameworks */,
+				CAE7FB7ED80CC4031F15FC45 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		6DC754D624DE6BD700F96518 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6DC754D524DE6BD700F96518 /* XConnect.app */,
+				6DC754D524DE6BD700F96518 /* EventApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6DC754D724DE6BD700F96518 /* XConnect */ = {
+		6DC754D724DE6BD700F96518 /* EventApp */ = {
 			isa = PBXGroup;
 			children = (
-				6D3B49642529BC290002EBF8 /* XConnect.entitlements */,
-				6DB6E2B4255FC3950095F055 /* GoogleService-Info.plist */,
+				6D3B49642529BC290002EBF8 /* EventApp.entitlements */,
 				6DC754D824DE6BD700F96518 /* AppDelegate.swift */,
 				6DC754DA24DE6BD700F96518 /* SceneDelegate.swift */,
 				6DCFBC7324FA4FD8005103E5 /* Constants.swift */,
@@ -346,7 +343,7 @@
 				6DE7CEE424E120BA00910DF7 /* API.swift */,
 				6DD12DB72519CE980055D611 /* Localizable.strings */,
 			);
-			path = XConnect;
+			path = EventApp;
 			sourceTree = "<group>";
 		};
 		6DC754E324DE6BD900F96518 /* Preview Content */ = {
@@ -538,10 +535,10 @@
 			path = Event;
 			sourceTree = "<group>";
 		};
-		7F5720B723C76499CE186607 /* Frameworks */ = {
+		CAE7FB7ED80CC4031F15FC45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7DFFBD65FDE330B49269BB1C /* Pods_XConnect.framework */,
+				79FF5A2BA58D3A5E78E7CB78 /* Pods_EventApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -581,26 +578,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6DC754D424DE6BD700F96518 /* XConnect */ = {
+		6DC754D424DE6BD700F96518 /* EventApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6DC754EC24DE6BD900F96518 /* Build configuration list for PBXNativeTarget "XConnect" */;
+			buildConfigurationList = 6DC754EC24DE6BD900F96518 /* Build configuration list for PBXNativeTarget "EventApp" */;
 			buildPhases = (
-				B7E3E95AA06DF2117826C3DE /* [CP] Check Pods Manifest.lock */,
+				E3EE84FC1B9F464862AFBBF7 /* [CP] Check Pods Manifest.lock */,
 				6D4FAC6624DE7B1D002202D9 /* Generate Apollo GraphQL API */,
 				6DC754D124DE6BD700F96518 /* Sources */,
 				6DC754D224DE6BD700F96518 /* Frameworks */,
 				6DC754D324DE6BD700F96518 /* Resources */,
 				6D3B495A2529AE220002EBF8 /* ShellScript */,
 				6D7CDA5F2535B4AC00FCBF2D /* Embed App Extensions */,
-				B2863C106E89EFC995D73B4D /* [CP] Embed Pods Frameworks */,
+				2BB1717CC735009E9993EC16 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = XConnect;
+			name = EventApp;
 			productName = TEDxConnect;
-			productReference = 6DC754D524DE6BD700F96518 /* XConnect.app */;
+			productReference = 6DC754D524DE6BD700F96518 /* EventApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -618,7 +615,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6DC754D024DE6BD600F96518 /* Build configuration list for PBXProject "XConnect" */;
+			buildConfigurationList = 6DC754D024DE6BD600F96518 /* Build configuration list for PBXProject "EventApp" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -632,7 +629,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6DC754D424DE6BD700F96518 /* XConnect */,
+				6DC754D424DE6BD700F96518 /* EventApp */,
 			);
 		};
 /* End PBXProject section */
@@ -651,7 +648,6 @@
 				6DCFBC7024FA47C2005103E5 /* Shabnam-FD.ttf in Resources */,
 				6DD12DCA2519D9CE0055D611 /* White@2x.png in Resources */,
 				6DD12DB52519CE980055D611 /* Localizable.strings in Resources */,
-				6DB6E2B5255FC3960095F055 /* GoogleService-Info.plist in Resources */,
 				6DC754E824DE6BD900F96518 /* LaunchScreen.storyboard in Resources */,
 				6DD12DCC2519D9CE0055D611 /* Black@2x.png in Resources */,
 				6DD12DC82519D9CE0055D611 /* Black.png in Resources */,
@@ -664,6 +660,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2BB1717CC735009E9993EC16 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EventApp/Pods-EventApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EventApp/Pods-EventApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EventApp/Pods-EventApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6D3B495A2529AE220002EBF8 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -700,24 +713,7 @@
 			shellPath = /bin/sh;
 			shellScript = "SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n";
 		};
-		B2863C106E89EFC995D73B4D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-XConnect/Pods-XConnect-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-XConnect/Pods-XConnect-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-XConnect/Pods-XConnect-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B7E3E95AA06DF2117826C3DE /* [CP] Check Pods Manifest.lock */ = {
+		E3EE84FC1B9F464862AFBBF7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -732,7 +728,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-XConnect-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-EventApp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -981,26 +977,26 @@
 		};
 		6DC754ED24DE6BD900F96518 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2BAF7EDF0E7E08F96E8FC89 /* Pods-XConnect.debug.xcconfig */;
+			baseConfigurationReference = 87617D0EA05D41CD1AD8DABA /* Pods-EventApp.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = XConnect/XConnect.entitlements;
+				CODE_SIGN_ENTITLEMENTS = EventApp/EventApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_ASSET_PATHS = "\"XConnect/Preview Content\"";
-				DEVELOPMENT_TEAM = X937JJ6EU8;
+				DEVELOPMENT_ASSET_PATHS = "\"EventApp/Preview Content\"";
+				DEVELOPMENT_TEAM = D47RCEDQHZ;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = XConnect/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/EventApp/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.talexani.xconnect;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tedxtehran.event;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1010,25 +1006,25 @@
 		};
 		6DC754EE24DE6BD900F96518 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ACBE56D32D02A86AE0EDC1F1 /* Pods-XConnect.release.xcconfig */;
+			baseConfigurationReference = F0458B33231FCAD35F890B60 /* Pods-EventApp.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = XConnect/XConnect.entitlements;
+				CODE_SIGN_ENTITLEMENTS = EventApp/EventApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_ASSET_PATHS = "\"XConnect/Preview Content\"";
-				DEVELOPMENT_TEAM = X937JJ6EU8;
+				DEVELOPMENT_ASSET_PATHS = "\"EventApp/Preview Content\"";
+				DEVELOPMENT_TEAM = D47RCEDQHZ;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = XConnect/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/EventApp/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.talexani.xconnect;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tedxtehran.event;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1039,7 +1035,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6DC754D024DE6BD600F96518 /* Build configuration list for PBXProject "XConnect" */ = {
+		6DC754D024DE6BD600F96518 /* Build configuration list for PBXProject "EventApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6DC754EA24DE6BD900F96518 /* Debug */,
@@ -1048,7 +1044,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6DC754EC24DE6BD900F96518 /* Build configuration list for PBXNativeTarget "XConnect" */ = {
+		6DC754EC24DE6BD900F96518 /* Build configuration list for PBXNativeTarget "EventApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6DC754ED24DE6BD900F96518 /* Debug */,

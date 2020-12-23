@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6DC754D424DE6BD700F96518"
-               BuildableName = "XConnect.app"
-               BlueprintName = "XConnect"
-               ReferencedContainer = "container:XConnect.xcodeproj">
+               BuildableName = "EventApp.app"
+               BlueprintName = "EventApp"
+               ReferencedContainer = "container:EventApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6DC754D424DE6BD700F96518"
-            BuildableName = "XConnect.app"
-            BlueprintName = "XConnect"
-            ReferencedContainer = "container:XConnect.xcodeproj">
+            BuildableName = "EventApp.app"
+            BlueprintName = "EventApp"
+            ReferencedContainer = "container:EventApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6DC754D424DE6BD700F96518"
-            BuildableName = "XConnect.app"
-            BlueprintName = "XConnect"
-            ReferencedContainer = "container:XConnect.xcodeproj">
+            BuildableName = "EventApp.app"
+            BlueprintName = "EventApp"
+            ReferencedContainer = "container:EventApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
