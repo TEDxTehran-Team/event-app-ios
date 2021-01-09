@@ -29,7 +29,8 @@ class Network {
         
         let configuration = URLSessionConfiguration.default
         
-//        configuration.httpAdditionalHeaders = ["Application-Token": TimeZone.current.token]
+        // English Data Token
+        configuration.httpAdditionalHeaders = ["Application-Token": "56fe1591-c5c1-4113-aba3-73fca1f5aacd"]
         
         return ApolloClient(
             networkTransport: HTTPNetworkTransport(url: url, client: URLSessionClient(sessionConfiguration: configuration, callbackQueue: nil)),
