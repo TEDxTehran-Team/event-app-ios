@@ -20,6 +20,7 @@ struct GalleryCardView: View {
                     ImagePlaceholder()
                 }
                 .resizable()
+                .aspectRatio(contentMode: .fill)
                 .frame(height: 200)
                 .overlay(ImageOverlay(text: self.album.title), alignment: .bottomTrailing)
                 .cornerRadius(10)

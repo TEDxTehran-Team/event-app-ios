@@ -19,7 +19,7 @@ struct GalleryDetailView: View {
         ZStack {
             GridStack(minCellWidth: (UIScreen.main.bounds.width/3) - 20, spacing: 15, numItems: viewModel.repositories.count) { index, cellWidth in
                 NavigationLink(destination:
-                                KFImage(URL(string: Images.urlExtension + self.viewModel.repositories[index].image)!)
+                                KFImage(URL(string: Images.urlExtension + self.viewModel.repositories[index].thumbnail)!)
                                 .placeholder {
                                     ImagePlaceholder()
                                 }
@@ -35,7 +35,6 @@ struct GalleryDetailView: View {
                         .scaledToFill()
                         .frame(width: cellWidth, height: cellWidth)
                         .cornerRadius(10)
-                    
                 }
                 .buttonStyle(PlainButtonStyle())
             }

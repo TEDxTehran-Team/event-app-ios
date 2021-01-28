@@ -22,6 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         let contentView = AppView()
+//            .environment(\.locale,.init(identifier: "ar_QA"))
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
