@@ -14,13 +14,15 @@ struct SessionHeaderView: View {
     
     var body: some View {
         HStack(spacing: 10) {
-            Spacer()
-            Text(DateHelper.ommitSeconds(fromTime: session.startTime))
-                .customFont(name: Fonts.shabnam, style: .subheadline, weight: .regular)
-                .foregroundColor(Colors.primaryRed)
             
             Text(session.title)
                 .customFont(name: Fonts.shabnam, style: .subheadline, weight: .regular)
+            
+            Text(DateHelper.ommitSeconds(fromTime: session.startTime))
+                .customFont(name: Fonts.shabnam, style: .subheadline, weight: .regular)
+                .foregroundColor(Colors.primaryRed)
+                        
+            Spacer()
         }
     }
 }

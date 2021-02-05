@@ -26,12 +26,11 @@ struct EventDetailView: View {
                 }
             }
             
-            
-        } // ScrollView
+        }
         .background(Colors.primaryLightGray)
+        .environment(\.layoutDirection, Constants.direction)
         
-        
-    } // Body
+    }
     
     private var mainContent : some View {
         VStack {
@@ -54,12 +53,16 @@ struct EventDetailView: View {
                 }) {
                     HStack(alignment: .center) {
                         Spacer()
+                        
+                        Image(systemName: "play.rectangle")
+                        
                         Text(LocalizedStringKey("Watch Live"))
                             .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
                         
-                        Image(systemName: "play.rectangle")
+                        
                         Spacer()
                     }
+                    
                     .padding(.vertical)
                 }
                 .customStyle(withBackgroundColor: Colors.primaryRed)
@@ -75,10 +78,13 @@ struct EventDetailView: View {
                         }
                     } label: {
                         HStack {
-                            Spacer()
+                            
+                            Image(decorative: "ticket-icon")
+                            
                             Text(LocalizedStringKey("Buy Ticket"))
                                 .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
-                            Image(decorative: "ticket-icon")
+                            
+                            Spacer()
                         }
                         .padding(.vertical)
                     }
@@ -93,10 +99,12 @@ struct EventDetailView: View {
                         }
                     } label: {
                         HStack {
-                            Spacer()
+                            Image(decorative: "register-icon")
+                            
                             Text(LocalizedStringKey("Register in Event"))
                                 .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
-                            Image(decorative: "register-icon")
+                            
+                            Spacer()
                         }
                         .padding(.vertical)
                     }
@@ -106,32 +114,43 @@ struct EventDetailView: View {
                 }
                 
                 HStack {
+                    Image(decorative: "clock-icon")
                     
-                    Spacer()
                     
                     Text(DateHelper.dateWith(self.viewModel.event.startDate ?? "TBA", showTime: true))
                         .customFont(name: Fonts.shabnam , style: .footnote, weight: .regular)
                     Text("|")
                     Text(DateHelper.dateWith(self.viewModel.event.endDate  ?? "TBA", showTime: true))
                         .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
-                    Image(decorative: "clock-icon")
+                    
+                    Spacer()
+                    
                 }
+                
                 .padding()
                 Divider()
                 HStack {
-                    Spacer()
+                    
+                    
+                    Image(decorative: "venue-icon")
+                    
                     Text(self.viewModel.event.venue?.title ?? "-")
                         .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
-                    Image(decorative: "venue-icon")
+                    
+                    Spacer()
                 }
                 .padding()
                 Divider()
                 HStack {
-                    Spacer()
+                    
+                    
+                    Image(decorative: "address-icon")
+                    
                     Text(self.viewModel.event.venue?.address ?? "-")
                         .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
                         .multilineTextAlignment(.trailing)
-                    Image(decorative: "address-icon")
+                    
+                    Spacer()
                 }
                 .padding()
             }
@@ -139,6 +158,7 @@ struct EventDetailView: View {
             .cornerRadius(10)
             .foregroundColor(.secondary)
             .padding([.vertical, .bottom])
+            
             
             if !(self.viewModel.event.venue?.mapImage ?? "").isEmpty {
                 KFImage(URL(string: Images.urlExtension + (self.viewModel.event.venue?.mapImage ?? ""))!)

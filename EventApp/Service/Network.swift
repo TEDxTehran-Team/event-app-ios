@@ -21,7 +21,7 @@ class Network {
             .userDomainMask,
             true).first!
         let documentsURL = URL(fileURLWithPath: documentsPath)
-        let sqliteFileURL = documentsURL.appendingPathComponent("tedx_apollo_db.sqlite")
+        let sqliteFileURL = documentsURL.appendingPathComponent("event_ios_app_apollo_db.sqlite")
         
         let sqliteCache = try! SQLiteNormalizedCache(fileURL: sqliteFileURL)
         
@@ -30,7 +30,7 @@ class Network {
         let configuration = URLSessionConfiguration.default
         
         // English Data Token
-        configuration.httpAdditionalHeaders = ["Application-Token": "56fe1591-c5c1-4113-aba3-73fca1f5aacd"]
+        configuration.httpAdditionalHeaders = ["Application-Token": Constants.token]
         
         return ApolloClient(
             networkTransport: HTTPNetworkTransport(url: url, client: URLSessionClient(sessionConfiguration: configuration, callbackQueue: nil)),

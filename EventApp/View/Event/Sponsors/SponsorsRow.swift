@@ -19,8 +19,11 @@ struct SponsorsRow: View {
                 ForEach(0..<sponsors.count) { index in
                     SponsorCell(sponsor: self.sponsors[index])
                 }
+                .rotation3DEffect(TalksView.angleScrollView, axis: (x: CGFloat(0), y: CGFloat(10), z: CGFloat(0)))
             }
         }
+        .flipsForRightToLeftLayoutDirection(Constants.direction == .rightToLeft)
+        .environment(\.layoutDirection, Constants.direction)
     }
 }
 

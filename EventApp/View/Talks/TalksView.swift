@@ -25,14 +25,16 @@ struct TalksView: View {
                             VStack  {
                                 VStack {
                                     HStack {
-                                        Spacer()
                                         
                                         Text(talkWithEvent.event.title ?? "")
                                             .foregroundColor(.secondary)
                                             .padding(.horizontal)
                                             .customFont(name: Fonts.shabnam, style: .headline, weight: .regular)
                                         
+                                        Spacer()
+                                        
                                     }
+                                    .environment(\.layoutDirection, Constants.direction)
                                     .padding(.top)
                                     ScrollView(.horizontal, showsIndicators: false) {
                                         HStack(alignment: .top, spacing: 10) {
@@ -43,14 +45,14 @@ struct TalksView: View {
                                                 }
                                             }
                                         }
-                                        .rotation3DEffect(Angle(degrees: 180), axis: (x: CGFloat(0), y: CGFloat(10), z: CGFloat(0)))
+                                        .rotation3DEffect(TalksView.angleScrollView, axis: (x: CGFloat(0), y: CGFloat(10), z: CGFloat(0)))
                                         .buttonStyle(PlainButtonStyle())
                                         .padding(.horizontal)
-                                        .padding(.horizontal)
+                                       
                                     }
                                     
-                                    .flipsForRightToLeftLayoutDirection(true)
-                                    .environment(\.layoutDirection, .rightToLeft)
+                                    .flipsForRightToLeftLayoutDirection(Constants.direction == .rightToLeft)
+                                    .environment(\.layoutDirection, Constants.direction)
                                     .padding(.top,5)
                                 }
                             }

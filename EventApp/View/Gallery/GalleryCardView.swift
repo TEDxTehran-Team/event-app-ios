@@ -14,16 +14,23 @@ struct GalleryCardView: View {
     @State var album: Album
     
     var body: some View {
-        VStack {
+        ZStack(alignment: .bottom) {
             KFImage(URL(string: Images.urlExtension + album.cover)!)
                 .placeholder {
                     ImagePlaceholder()
                 }
                 .resizable()
+                .aspectRatio(contentMode: .fill)
                 .frame(height: 200)
-                .overlay(ImageOverlay(text: self.album.title), alignment: .bottomTrailing)
                 .cornerRadius(10)
                 .padding(.vertical, 10)
+            
+            HStack {
+                ImageOverlay(text: self.album.title)
+                Spacer()
+            }
+            .padding(.bottom,5)
+            .environment(\.layoutDirection, Constants.direction)
             
         }
     }

@@ -13,5 +13,12 @@ extension View {
   func navigationBarColor(_ backgroundColor: UIColor?) -> some View {
     self.modifier(NavigationBarModifier(backgroundColor: backgroundColor))
   }
-  
+    static var angleScrollView : Angle {
+        return Angle(degrees: Constants.direction == .rightToLeft ? 180 : 0)
+    }
+    
+    static var alignment:HorizontalAlignment {
+        return Constants.direction == .leftToRight ? .leading : .trailing
+    }
+
 }

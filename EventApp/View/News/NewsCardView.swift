@@ -22,12 +22,6 @@ struct NewsCardView: View {
             VStack(alignment: .center) {
                 HStack(alignment: .center, spacing: 20) {
                     
-                    Spacer()
-                    Text(news.title)
-                        .multilineTextAlignment(.center)
-                        .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
-                        .foregroundColor(.primary)
-                    
                     KFImage(URL(string: Images.urlExtension + (news.icon ?? ""))!)
                         .placeholder {
                             ImagePlaceholder()
@@ -35,6 +29,13 @@ struct NewsCardView: View {
                         .resizable()
                         .scaledToFill()
                         .frame(width: 55, height: 30)
+                   
+                    Text(news.title)
+                        .multilineTextAlignment(.center)
+                        .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
+                        .foregroundColor(.primary)
+                                        
+                    Spacer()
                 }
                 Text(news.description)
                     .multilineTextAlignment(.center)
@@ -44,6 +45,7 @@ struct NewsCardView: View {
             }
             .padding(20)
         }
+    
         .onTapGesture {
             if let url = URL(string: self.news.extraLink ?? "") {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
