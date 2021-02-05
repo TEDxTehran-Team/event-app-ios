@@ -16,7 +16,11 @@ struct SponsorCell: View {
   
   var body: some View {
     Button {
-      UIApplication.shared.open(URL(string: sponsor.link)!)
+        
+        if  let url = URL(string: sponsor.link ?? "") {
+            UIApplication.shared.open(url)
+        }
+        
     } label: {
       VStack {
         
