@@ -23,6 +23,8 @@ struct NewsView: View {
               }
               .padding()
             }
+            .environment(\.layoutDirection, Constants.direction)
+            
           } else {
             EmptyListView()
               .onTapGesture {

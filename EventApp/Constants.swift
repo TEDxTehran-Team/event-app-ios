@@ -16,6 +16,7 @@ enum Constants {
     static var direction:LayoutDirection = .leftToRight
     static var token:String = "56fe1591-c5c1-4113-aba3-73fca1f5aacd"
     static var locale:Locale =  Locale(identifier: "en") //Locale(identifier: "ar_QA")
+    
 }
 
 enum Fonts {

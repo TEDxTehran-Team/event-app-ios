@@ -30,7 +30,6 @@ struct TalkCell: View {
                 Text(talk.title)
                     .customFont(name: Fonts.shabnam, style: .caption1, weight: .regular)
                     .lineLimit(2)
-                    .multilineTextAlignment(.trailing)
                 
                 Text(talk.speakers.map { $0.title }.joined(separator: ", "))
                     .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)

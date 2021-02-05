@@ -22,10 +22,12 @@ struct TalksRow: View {
                     }
                 }
             }
-            .rotation3DEffect(Angle(degrees: 180), axis: (x: CGFloat(0), y: CGFloat(10), z: CGFloat(0)))
-            .padding(.horizontal)
+            .rotation3DEffect(TalksView.angleScrollView, axis: (x: CGFloat(0), y: CGFloat(10), z: CGFloat(0)))
+           
             .padding(.horizontal)
         }
+        .flipsForRightToLeftLayoutDirection(Constants.direction == .rightToLeft)
+        .environment(\.layoutDirection, Constants.direction)
     }
 }
 
