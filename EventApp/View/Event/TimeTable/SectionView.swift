@@ -14,26 +14,23 @@ struct SectionView: View {
     
     var body: some View {
         HStack {
+            Circle()
+                .fill(Day.Session.Section.sectionTypeColor(withType: section.type))
+                .frame(width: 8, height: 8)
             
-            Text(DateHelper.ommitSeconds(fromTime: section.endTime))
+            Text(section.title)
+                .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+            
+            Spacer()
+            
+            Text(DateHelper.ommitSeconds(fromTime: section.startTime))
                 .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
             
             Text(LocalizedStringKey("to"))
                 .customFont(name: Fonts.shabnam, style: .footnote)
             
-            Text(DateHelper.ommitSeconds(fromTime: section.startTime))
+            Text(DateHelper.ommitSeconds(fromTime: section.endTime))
                 .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
-            
-            Spacer()
-            
-            Text(section.title)
-                .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
-                .multilineTextAlignment(.trailing)
-            
-            Circle()
-                .fill(Day.Session.Section.sectionTypeColor(withType: section.type))
-                .frame(width: 8, height: 8)
-            
         }
         .foregroundColor(.secondary)
         .padding(.horizontal)

@@ -28,13 +28,19 @@ struct HomeTabUIView: View {
     var body: some View {
         VStack {
             Picker("", selection: self.$mainViewType) {
-                Text(LocalizedStringKey("TimeDay"))
-                    .tag(MainViewType.timeDay)
-                Text(LocalizedStringKey("Speakers"))
-                    .tag(MainViewType.speakers)
+                
                 Text(LocalizedStringKey("Home"))
                     .tag(MainViewType.home)
+                
+                Text(LocalizedStringKey("Speakers"))
+                    .tag(MainViewType.speakers)
+                
+                Text(LocalizedStringKey("TimeDay"))
+                    .tag(MainViewType.timeDay)
+                
+                
             }
+            .environment(\.layoutDirection, Constants.direction)
             .pickerStyle(SegmentedPickerStyle())
             .padding([.top,.horizontal])
             
@@ -51,7 +57,7 @@ struct HomeTabUIView: View {
                 }
             }
             
-          
+            
             
             Spacer()
                 .background(Colors.primaryLightGray)

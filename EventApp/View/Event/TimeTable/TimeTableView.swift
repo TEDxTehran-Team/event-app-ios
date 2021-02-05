@@ -34,6 +34,7 @@ struct TimeTableView: View {
                         }
                         .padding()
                     }
+                    .environment(\.layoutDirection, Constants.direction)
                 } else {
                     EmptyListView()
                         .onTapGesture {

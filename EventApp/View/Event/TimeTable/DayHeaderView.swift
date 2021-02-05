@@ -14,14 +14,17 @@ struct DayHeaderView: View {
     
     var body: some View {
         HStack {
-            Spacer()
+            
             Text(day.title)
                 .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 5)
                 .background(Colors.primaryLightGray)
                 .cornerRadius(20)
+            
+            Spacer()
         }
+        
     }
 }
 
