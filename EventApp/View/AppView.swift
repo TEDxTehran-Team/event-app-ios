@@ -75,7 +75,6 @@ struct AppView: View {
             
             
         }.accentColor(Colors.primaryRed)
-        .environment(\.layoutDirection, Constants.direction)
     }
     
 }
