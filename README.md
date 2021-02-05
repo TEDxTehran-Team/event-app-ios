@@ -19,7 +19,7 @@ Hello, we shared our projects in open source in **[TEDxTehran](http://tedxtehran
 
 ## How To Use
 
-- Clone project : `git clone : https://github.com/TEDxTehran-Team/event_app_ios`
+- Clone project : `git clone : https://github.com/TEDxTehran-Team/event-app-ios.git`
 - Pod Install : `pod install`
 - Import the project on Xcode
 
