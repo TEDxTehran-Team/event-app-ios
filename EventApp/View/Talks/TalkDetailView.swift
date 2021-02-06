@@ -80,9 +80,11 @@ struct TalkDetailView: View {
             .buttonStyle(PlainButtonStyle())
             
             VStack(alignment: TalkDetailView.alignment,spacing: 10) {
+                
                 Text(self.viewModel.repository.talk.title)
                     .customFont(name: Fonts.shabnam, style: .title3, weight: .bold)
                     .foregroundColor(Colors.primaryDarkGray)
+                    .multilineTextAlignment(TalkDetailView.textAlignment)
                 
                 Text(self.viewModel.repository.talk.speakers.map { $0.title }.joined(separator: ", "))
                     .customFont(name: Fonts.shabnamBold, style: .subheadline)

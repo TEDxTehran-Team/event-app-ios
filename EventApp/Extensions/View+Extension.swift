@@ -20,5 +20,9 @@ extension View {
     static var alignment:HorizontalAlignment {
         return Constants.direction == .leftToRight ? .leading : .trailing
     }
+    
+    static var textAlignment:TextAlignment {
+        return Constants.direction == .leftToRight ? .leading : .trailing
+    }
 
 }

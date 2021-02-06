@@ -14,14 +14,19 @@ enum Constants {
     static let acknowledgmentsUrl = "https://trello.com/b/9Vp84PlW"
     
     static var direction:LayoutDirection = .leftToRight
-    static var token:String = "56fe1591-c5c1-4113-aba3-73fca1f5aacd"
-    static var locale:Locale =  Locale(identifier: "en") //Locale(identifier: "ar_QA")
+    
+    static var token:String {
+        return "56fe1591-c5c1-4113-aba3-73fca1f5aacd" // English Data Token
+        //return "7b9c5f16-0882-4334-a828-e67ce8ccf201" // Persian Data Token
+    }
+    
+    static var locale:Locale = Locale(identifier: "en") //Locale(identifier: "ar_QA")
     
 }
 
 enum Fonts {
-    static let shabnam = ""//"Shabnam-FD"
-    static let shabnamBold = ""//"Shabnam-Bold-FD"
+    static let shabnam = "" //"Shabnam-FD"
+    static let shabnamBold = "" //"Shabnam-Bold-FD"
 }
 
 enum Colors {
