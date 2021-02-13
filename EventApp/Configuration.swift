@@ -22,7 +22,7 @@ class Configuration {
         //return "7b9c5f16-0882-4334-a828-e67ce8ccf201" // Persian Data Token
     }
     
-    internal static var locale:Locale = Locale(identifier: "en") //Locale(identifier: "ar_QA")
+    internal static var locale:Locale =  Locale(identifier: "en") //Locale(identifier: "fa_IR")
     
     internal static let shabnam = "" //"Shabnam-FD"
     internal static let shabnamBold = "" //"Shabnam-Bold-FD"
