@@ -29,12 +29,12 @@ struct TalksView: View {
                                         Text(talkWithEvent.event.title ?? "")
                                             .foregroundColor(.secondary)
                                             .padding(.horizontal)
-                                            .customFont(name: Fonts.shabnam, style: .headline, weight: .regular)
+                                            .customFont(name: Configuration.shabnam, style: .headline, weight: .regular)
                                         
                                         Spacer()
                                         
                                     }
-                                    .environment(\.layoutDirection, Constants.direction)
+                                    .environment(\.layoutDirection, Configuration.direction)
                                     .padding(.top)
                                     ScrollView(.horizontal, showsIndicators: false) {
                                         HStack(alignment: .top, spacing: 10) {
@@ -48,11 +48,11 @@ struct TalksView: View {
                                         .rotation3DEffect(TalksView.angleScrollView, axis: (x: CGFloat(0), y: CGFloat(10), z: CGFloat(0)))
                                         .buttonStyle(PlainButtonStyle())
                                         .padding(.horizontal)
-                                       
+                                        
                                     }
                                     
-                                    .flipsForRightToLeftLayoutDirection(Constants.direction == .rightToLeft)
-                                    .environment(\.layoutDirection, Constants.direction)
+                                    .flipsForRightToLeftLayoutDirection(Configuration.direction == .rightToLeft)
+                                    .environment(\.layoutDirection, Configuration.direction)
                                     .padding(.top,5)
                                 }
                             }

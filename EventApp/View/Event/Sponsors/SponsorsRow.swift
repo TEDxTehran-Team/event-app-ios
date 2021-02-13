@@ -11,6 +11,7 @@ import SwiftUI
 struct SponsorsRow: View {
     
     let sponsors: [SponsorWithType.Sponsor]
+    
     @Environment(\.locale) var locale: Locale
     
     var body: some View {
@@ -22,8 +23,8 @@ struct SponsorsRow: View {
                 .rotation3DEffect(TalksView.angleScrollView, axis: (x: CGFloat(0), y: CGFloat(10), z: CGFloat(0)))
             }
         }
-        .flipsForRightToLeftLayoutDirection(Constants.direction == .rightToLeft)
-        .environment(\.layoutDirection, Constants.direction)
+        .flipsForRightToLeftLayoutDirection(Configuration.direction == .rightToLeft)
+        .environment(\.layoutDirection, Configuration.direction)
     }
 }
 

@@ -26,8 +26,8 @@ struct TalksRow: View {
            
             .padding(.horizontal)
         }
-        .flipsForRightToLeftLayoutDirection(Constants.direction == .rightToLeft)
-        .environment(\.layoutDirection, Constants.direction)
+        .flipsForRightToLeftLayoutDirection(Configuration.direction == .rightToLeft)
+        .environment(\.layoutDirection, Configuration.direction)
     }
 }
 

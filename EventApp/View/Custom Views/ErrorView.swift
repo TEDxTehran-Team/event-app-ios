@@ -18,12 +18,12 @@ struct ErrorView: View {
         .foregroundColor(Colors.primaryRed)
         .font(.largeTitle)
       Text(errorText)
-        .customFont(name: Fonts.shabnam, style: .headline, weight: .medium)
+        .customFont(name: Configuration.shabnam, style: .headline, weight: .medium)
       HStack {
         Image(systemName: "arrow.clockwise")
         Text(LocalizedStringKey("Tap to retry"))
       }
-      .customFont(name: Fonts.shabnam, style: .subheadline, weight: .medium)
+      .customFont(name: Configuration.shabnam, style: .subheadline, weight: .medium)
       .foregroundColor(Colors.primaryDarkGray)
     }
     .padding()

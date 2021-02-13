@@ -16,10 +16,10 @@ struct SessionHeaderView: View {
         HStack(spacing: 10) {
             
             Text(session.title)
-                .customFont(name: Fonts.shabnam, style: .subheadline, weight: .regular)
+                .customFont(name: Configuration.shabnam, style: .subheadline, weight: .regular)
             
             Text(DateHelper.ommitSeconds(fromTime: session.startTime))
-                .customFont(name: Fonts.shabnam, style: .subheadline, weight: .regular)
+                .customFont(name: Configuration.shabnam, style: .subheadline, weight: .regular)
                 .foregroundColor(Colors.primaryRed)
                         
             Spacer()

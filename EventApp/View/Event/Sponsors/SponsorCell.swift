@@ -35,7 +35,7 @@ struct SponsorCell: View {
         
         VStack(alignment: .center) {
           Text(sponsor.title)
-            .customFont(name: Fonts.shabnam, style: .headline)
+            .customFont(name: Configuration.shabnam, style: .headline)
             .lineLimit(2)
         }
       }
