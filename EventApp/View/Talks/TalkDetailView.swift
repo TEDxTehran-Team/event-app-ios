@@ -110,7 +110,7 @@ struct TalkDetailView: View {
                     .foregroundColor(.secondary)
                     .customFont(name: Fonts.shabnamBold, style: .body)
             }
-            .environment(\.layoutDirection, Constants.direction)
+            .environment(\.layoutDirection, Configuration.direction)
             .padding(.horizontal)
             .padding(.vertical, 10)
             
@@ -134,7 +134,7 @@ struct TalkDetailView: View {
             }
             .buttonStyle(PlainButtonStyle())
             .layoutPriority(1)
-            .environment(\.layoutDirection, Constants.direction)
+            .environment(\.layoutDirection, Configuration.direction)
         } // VStack
     }
 }

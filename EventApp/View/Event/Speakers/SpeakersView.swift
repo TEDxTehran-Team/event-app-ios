@@ -31,12 +31,12 @@ struct SpeakersView: View {
                                 VStack() {
                                     Spacer()
                                     Text(item.title)
-                                        .customFont(name: Fonts.shabnamBold, style: .callout, weight: .bold)
+                                        .customFont(name: Configuration.shabnamBold, style: .callout, weight: .bold)
                                         .lineLimit(2)
                                     Spacer()
                                     Text(item.description)
                                         .multilineTextAlignment(.center)
-                                        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                                        .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
                                         .lineLimit(2)
                                     Spacer()
                                 }

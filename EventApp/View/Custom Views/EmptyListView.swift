@@ -15,7 +15,7 @@ struct EmptyListView: View {
 //                .resizable()
 //                .frame(width: 100, height: 50)
             Text(LocalizedStringKey("No Results Found"))
-                .customFont(name: Fonts.shabnam, style: .title3)
+                .customFont(name: Configuration.shabnam, style: .title3)
                 .foregroundColor(.primary)
         }
         

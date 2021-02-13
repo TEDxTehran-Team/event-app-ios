@@ -32,7 +32,7 @@ struct NewsCardView: View {
                    
                     Text(news.title)
                         .multilineTextAlignment(.center)
-                        .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
+                        .customFont(name: Configuration.shabnam, style: .body, weight: .bold)
                         .foregroundColor(.primary)
                                         
                     Spacer()
@@ -40,7 +40,7 @@ struct NewsCardView: View {
                 Text(news.description)
                     .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
-                    .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                    .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
                     .padding(.top)
             }
             .padding(20)

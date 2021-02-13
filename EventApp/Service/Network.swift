@@ -14,7 +14,7 @@ class Network {
     
     private(set) lazy var apollo: ApolloClient = {
         
-        let url = URL(string: Constants.baseUrl)!
+        let url = URL(string: Configuration.baseUrl)!
         
         let documentsPath = NSSearchPathForDirectoriesInDomains(
             .documentDirectory,
@@ -30,7 +30,7 @@ class Network {
         let configuration = URLSessionConfiguration.default
         
         // English Data Token
-        configuration.httpAdditionalHeaders = ["Application-Token": Constants.token]
+        configuration.httpAdditionalHeaders = ["Application-Token": Configuration.token]
         
         return ApolloClient(
             networkTransport: HTTPNetworkTransport(url: url, client: URLSessionClient(sessionConfiguration: configuration, callbackQueue: nil)),

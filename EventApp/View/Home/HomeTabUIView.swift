@@ -40,7 +40,7 @@ struct HomeTabUIView: View {
                 
                 
             }
-            .environment(\.layoutDirection, Constants.direction)
+            .environment(\.layoutDirection, Configuration.direction)
             .pickerStyle(SegmentedPickerStyle())
             .padding([.top,.horizontal])
             

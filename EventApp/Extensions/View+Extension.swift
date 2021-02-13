@@ -14,15 +14,15 @@ extension View {
     self.modifier(NavigationBarModifier(backgroundColor: backgroundColor))
   }
     static var angleScrollView : Angle {
-        return Angle(degrees: Constants.direction == .rightToLeft ? 180 : 0)
+        return Angle(degrees: Configuration.direction == .rightToLeft ? 180 : 0)
     }
     
     static var alignment:HorizontalAlignment {
-        return Constants.direction == .leftToRight ? .leading : .trailing
+        return Configuration.direction == .leftToRight ? .leading : .trailing
     }
     
     static var textAlignment:TextAlignment {
-        return Constants.direction == .leftToRight ? .leading : .trailing
+        return Configuration.direction == .leftToRight ? .leading : .trailing
     }
 
 }

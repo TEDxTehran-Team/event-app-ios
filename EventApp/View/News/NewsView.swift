@@ -23,7 +23,7 @@ struct NewsView: View {
               }
               .padding()
             }
-            .environment(\.layoutDirection, Constants.direction)
+            .environment(\.layoutDirection, Configuration.direction)
             
           } else {
             EmptyListView()

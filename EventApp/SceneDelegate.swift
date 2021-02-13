@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         let contentView = AppView()
-            .environment(\.locale,Constants.locale)
+            .environment(\.locale,Configuration.locale)
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

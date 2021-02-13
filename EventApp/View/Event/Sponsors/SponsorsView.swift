@@ -26,7 +26,7 @@ struct SponsorsView: View {
                     Text(sponsorWithEvent.type.title)
                       .foregroundColor(.secondary)
                       .padding()
-                      .customFont(name: Fonts.shabnam, style: .headline, weight: .regular)
+                      .customFont(name: Configuration.shabnam, style: .headline, weight: .regular)
                     
                     SponsorsRow(sponsors: sponsorWithEvent.sponsors)
                         .background(RoundedRectangle(cornerRadius: 10, style: .continuous)

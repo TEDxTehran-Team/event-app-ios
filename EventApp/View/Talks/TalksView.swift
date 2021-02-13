@@ -34,7 +34,7 @@ struct TalksView: View {
                                         Spacer()
                                         
                                     }
-                                    .environment(\.layoutDirection, Constants.direction)
+                                    .environment(\.layoutDirection, Configuration.direction)
                                     .padding(.top)
                                     ScrollView(.horizontal, showsIndicators: false) {
                                         HStack(alignment: .top, spacing: 10) {
@@ -51,8 +51,8 @@ struct TalksView: View {
                                        
                                     }
                                     
-                                    .flipsForRightToLeftLayoutDirection(Constants.direction == .rightToLeft)
-                                    .environment(\.layoutDirection, Constants.direction)
+                                    .flipsForRightToLeftLayoutDirection(Configuration.direction == .rightToLeft)
+                                    .environment(\.layoutDirection, Configuration.direction)
                                     .padding(.top,5)
                                 }
                             }

@@ -27,7 +27,7 @@ struct SpeakerDetailView: View {
                     .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity)
                 
                 Text(self.speaker.description)
-                    .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                    .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
                     .padding()
                     .multilineTextAlignment(.trailing)
             }

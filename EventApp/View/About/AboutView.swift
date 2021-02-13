@@ -37,7 +37,7 @@ struct AboutView: View {
                             
                             Text(about.description)
                                 .padding()
-                                .customFont(name: Fonts.shabnam, style: .body)
+                                .customFont(name: Configuration.shabnam, style: .body)
                                 .multilineTextAlignment(.trailing)
                             Spacer()
                         }

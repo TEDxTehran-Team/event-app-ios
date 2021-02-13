@@ -30,7 +30,7 @@ struct GalleryCardView: View {
                 Spacer()
             }
             .padding(.bottom,5)
-            .environment(\.layoutDirection, Constants.direction)
+            .environment(\.layoutDirection, Configuration.direction)
             
         }
     }

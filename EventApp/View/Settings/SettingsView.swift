@@ -24,7 +24,7 @@ struct SettingsView: View {
     var body: some View {
         
         Form {
-            Section(header: Text(LocalizedStringKey("Appearance")).customFont(name: Fonts.shabnam, style: .footnote)) {
+            Section(header: Text(LocalizedStringKey("Appearance")).customFont(name: Configuration.shabnam, style: .footnote)) {
                 
                 Picker(selection: $iconSettings.currentIndex, label: Text(LocalizedStringKey("Icons"))) {
                     ForEach(0..<iconSettings.iconNames.count) { i in
@@ -61,7 +61,7 @@ struct SettingsView: View {
                 
             }
             
-            Section(header: Text(LocalizedStringKey("More")).customFont(name: Fonts.shabnam, style: .footnote), footer: Text(LocalizedStringKey("We're tracking potential bugs with Sentry and will fix all of them ASAP.")).customFont(name: Fonts.shabnam, style: .footnote)) {
+            Section(header: Text(LocalizedStringKey("More")).customFont(name: Configuration.shabnam, style: .footnote), footer: Text(LocalizedStringKey("We're tracking potential bugs with Sentry and will fix all of them ASAP.")).customFont(name: Configuration.shabnam, style: .footnote)) {
                 Button(action: {
                     Network.shared.apollo.clearCache() { result in
                         switch result {
@@ -82,7 +82,7 @@ struct SettingsView: View {
                 }
                 
                 Button(action: {
-                    url = Constants.acknowledgmentsUrl
+                    url = Configuration.acknowledgmentsUrl
                     titleLocalizedKey = "Acknowledgments"
                     showingSheet = true
                 }) {

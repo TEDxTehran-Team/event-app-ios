@@ -28,7 +28,7 @@ struct EventDetailView: View {
             
         }
         .background(Colors.primaryLightGray)
-        .environment(\.layoutDirection, Constants.direction)
+        .environment(\.layoutDirection, Configuration.direction)
         
     }
     
@@ -57,7 +57,7 @@ struct EventDetailView: View {
                         Image(systemName: "play.rectangle")
                         
                         Text(LocalizedStringKey("Watch Live"))
-                            .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
+                            .customFont(name: Configuration.shabnam, style: .body, weight: .bold)
                         
                         
                         Spacer()
@@ -82,7 +82,7 @@ struct EventDetailView: View {
                             Image(decorative: "ticket-icon")
                             
                             Text(LocalizedStringKey("Buy Ticket"))
-                                .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                                .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
                             
                             Spacer()
                         }
@@ -102,7 +102,7 @@ struct EventDetailView: View {
                             Image(decorative: "register-icon")
                             
                             Text(LocalizedStringKey("Register in Event"))
-                                .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                                .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
                             
                             Spacer()
                         }
@@ -118,10 +118,10 @@ struct EventDetailView: View {
                     
                     
                     Text(DateHelper.dateWith(self.viewModel.event.startDate ?? "TBA", showTime: true))
-                        .customFont(name: Fonts.shabnam , style: .footnote, weight: .regular)
+                        .customFont(name: Configuration.shabnam , style: .footnote, weight: .regular)
                     Text("|")
                     Text(DateHelper.dateWith(self.viewModel.event.endDate  ?? "TBA", showTime: true))
-                        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                        .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
                     
                     Spacer()
                     
@@ -135,7 +135,7 @@ struct EventDetailView: View {
                     Image(decorative: "venue-icon")
                     
                     Text(self.viewModel.event.venue?.title ?? "-")
-                        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                        .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
                     
                     Spacer()
                 }
@@ -147,7 +147,7 @@ struct EventDetailView: View {
                     Image(decorative: "address-icon")
                     
                     Text(self.viewModel.event.venue?.address ?? "-")
-                        .customFont(name: Fonts.shabnam, style: .footnote, weight: .regular)
+                        .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
                         .multilineTextAlignment(.trailing)
                     
                     Spacer()
@@ -169,7 +169,7 @@ struct EventDetailView: View {
                     .scaledToFill()
                     .frame(height: 200)
                     .onTapGesture {
-                        if let url = URL(string: viewModel.event.venue?.mapLink ?? Constants.placeholderUrl) {
+                        if let url = URL(string: viewModel.event.venue?.mapLink ?? Configuration.placeholderUrl) {
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }
                         
@@ -182,7 +182,7 @@ struct EventDetailView: View {
                 HStack {
                     Spacer()
                     Text(LocalizedStringKey("Sponsors"))
-                        .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
+                        .customFont(name: Configuration.shabnam, style: .body, weight: .bold)
                     Spacer()
                 }
                 .padding()

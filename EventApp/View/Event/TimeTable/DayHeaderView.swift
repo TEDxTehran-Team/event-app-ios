@@ -16,7 +16,7 @@ struct DayHeaderView: View {
         HStack {
             
             Text(day.title)
-                .customFont(name: Fonts.shabnam, style: .body, weight: .bold)
+                .customFont(name: Configuration.shabnam, style: .body, weight: .bold)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 5)
                 .background(Colors.primaryLightGray)
