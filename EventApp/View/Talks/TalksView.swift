@@ -29,7 +29,7 @@ struct TalksView: View {
                                         Text(talkWithEvent.event.title ?? "")
                                             .foregroundColor(.secondary)
                                             .padding(.horizontal)
-                                            .customFont(name: Fonts.shabnam, style: .headline, weight: .regular)
+                                            .customFont(name: Configuration.shabnam, style: .headline, weight: .regular)
                                         
                                         Spacer()
                                         
@@ -48,7 +48,7 @@ struct TalksView: View {
                                         .rotation3DEffect(TalksView.angleScrollView, axis: (x: CGFloat(0), y: CGFloat(10), z: CGFloat(0)))
                                         .buttonStyle(PlainButtonStyle())
                                         .padding(.horizontal)
-                                       
+                                        
                                     }
                                     
                                     .flipsForRightToLeftLayoutDirection(Configuration.direction == .rightToLeft)

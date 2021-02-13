@@ -12,6 +12,7 @@ import struct Kingfisher.KFImage
 struct TalkDetailView: View {
     
     let id: String
+    
     @ObservedObject var viewModel = TalkDetailViewModel()
     
     @State private var titleLocalizedKey = ""
@@ -46,7 +47,7 @@ struct TalkDetailView: View {
     private var content : some View {
         VStack(alignment: .trailing) {
             Button(action: {
-                if let  url = URL(string: viewModel.repository.talk.videoLink ?? Constants.placeholderUrl){
+                if let  url = URL(string: viewModel.repository.talk.videoLink ?? Configuration.placeholderUrl){
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }
                 
@@ -82,12 +83,12 @@ struct TalkDetailView: View {
             VStack(alignment: TalkDetailView.alignment,spacing: 10) {
                 
                 Text(self.viewModel.repository.talk.title)
-                    .customFont(name: Fonts.shabnam, style: .title3, weight: .bold)
+                    .customFont(name: Configuration.shabnam, style: .title3, weight: .bold)
                     .foregroundColor(Colors.primaryDarkGray)
                     .multilineTextAlignment(TalkDetailView.textAlignment)
                 
                 Text(self.viewModel.repository.talk.speakers.map { $0.title }.joined(separator: ", "))
-                    .customFont(name: Fonts.shabnamBold, style: .subheadline)
+                    .customFont(name: Configuration.shabnamBold, style: .subheadline)
                     .foregroundColor(.secondary)
             }
             .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity)
@@ -100,7 +101,7 @@ struct TalkDetailView: View {
                         .foregroundColor(.secondary)
                         .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom)
                                     .foregroundColor(Colors.primaryRed), alignment: .bottom)
-                        .customFont(name: Fonts.shabnam, style: .body)
+                        .customFont(name: Configuration.shabnam, style: .body)
                     
                     Spacer()
                 }
@@ -108,7 +109,7 @@ struct TalkDetailView: View {
                 
                 Text(self.viewModel.repository.talk.description ?? "")
                     .foregroundColor(.secondary)
-                    .customFont(name: Fonts.shabnamBold, style: .body)
+                    .customFont(name: Configuration.shabnamBold, style: .body)
             }
             .environment(\.layoutDirection, Configuration.direction)
             .padding(.horizontal)
@@ -121,7 +122,7 @@ struct TalkDetailView: View {
                         .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom)
                                     .foregroundColor(Colors.primaryRed), alignment: .bottom)
                         .padding(.horizontal)
-                        .customFont(name: Fonts.shabnam, style: .body)
+                        .customFont(name: Configuration.shabnam, style: .body)
                     
                     Spacer()
                     

@@ -11,6 +11,7 @@ import SwiftUI
 struct SponsorsRow: View {
     
     let sponsors: [SponsorWithType.Sponsor]
+    
     @Environment(\.locale) var locale: Locale
     
     var body: some View {
