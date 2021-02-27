@@ -28,3 +28,11 @@ Hello, we shared our projects in open source in **[TEDxTehran](http://tedxtehran
 - Change Identifier Project
 - Add Crash Reporter [Sentry.io](https://docs.sentry.io/platforms/apple/guides/ios/) or [Firebase](https://firebase.google.com/docs/ios/setup) ...
 - Add Push Notification [Firebase](https://firebase.google.com/docs/cloud-messaging/ios/client) or ...
+
+## Goals : 
+
+- [ ] Routing in SwiftUI
+- [ ] Use [Combine](https://developer.apple.com/documentation/combine)
+- [ ] English Free and Open Source Font
+- [ ] Setting UI : Clear apollo cache and show open source licenses and EventApp Version      
+
