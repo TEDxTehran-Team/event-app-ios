@@ -13,16 +13,14 @@ import struct Kingfisher.KFImage
 struct TalkDetailView: View {
     
     let id: String
-    
     @ObservedObject var viewModel = TalkDetailViewModel()
-    
     @State private var titleLocalizedKey = ""
     
     var body: some View {
         ScrollView(.vertical) {
             ZStack {
                 if self.viewModel.statusView == .complete {
-                    TalkDetailView.ContentX()
+                    TalkDetailView.ContentX(viewModel: viewModel)
                 }
                 if self.viewModel.statusView == .error {
                     ErrorView(errorText: self.viewModel.errorMessage)
@@ -45,14 +43,14 @@ struct TalkDetailView: View {
     struct ContentX: View {
         
         @State var isPlaying = false
-        @ObservedObject var viewModel = TalkDetailViewModel()
+        @ObservedObject var viewModel: TalkDetailViewModel
         @State var height:CGFloat = 210
         
         var body: some View {
             VStack(alignment: .trailing) {
                 Button(action: {
                     isPlaying = true
-                    height = 280
+                    height = 420
                 }) {
                     if isPlaying {
                         ZStack {
