@@ -14,6 +14,7 @@ enum AppTabViewItem : String{
     case news
     case gallery
     case talks
+    case profile
 }
 
 struct AppView: View {
@@ -73,6 +74,13 @@ struct AppView: View {
                     
                 }
             
+                ProfileTabBar()
+                .tag(AppTabViewItem.profile)
+                .tabItem {
+                    Image(systemName: "person")
+                    Text(LocalizedStringKey("Profile"))
+                }
+            
             
         }.accentColor(Colors.primaryRed)
     }
@@ -81,6 +89,8 @@ struct AppView: View {
 
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {
-        AppView()
+        Group {
+            AppView()
+        }
     }
 }

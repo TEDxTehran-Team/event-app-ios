@@ -1,5 +1,8 @@
 // Persian
 "News" = "اخبار";
+"Profile" = "پروفایل";
+"Chats" = "چت‌ها";
+"YourProfile" = "پروفایل شما";
 "Gallery" = "گالری";
 "About" = "درباره ما";
 "Home" = "خانه";
@@ -32,3 +35,9 @@
 "Tap to retry" = "دوباره سعی کنید";
 "Description" = "توضیحات";
 "Related Talks" = "سخنرانی‌های مرتبط";
+
+"Job Title" = "عنوان شغلی";
+"Field" = "رشته‌ی تحصیلی";
+"My Story" = "داستان من";
+"Update Profile" = "تغییر مشخصات";
+"Chat With" = "صحبت با";
