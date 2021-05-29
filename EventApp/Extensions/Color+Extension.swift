@@ -11,6 +11,7 @@ import SwiftUI
 
 enum Colors {
     static let primaryRed = Color("primaryRed")
+    static let primaryBlue = Color("primaryBlue")
     static let primaryLightRed = Color("primaryLightRed")
     static let primaryBackground = Color("primaryBackground")
     static let primaryBarBackground = Color("primaryBarBackground")

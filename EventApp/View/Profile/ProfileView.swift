@@ -21,8 +21,10 @@ struct ProfileView: View {
         self.isMyProfile = isMyProfile
     }
     
+    
     var body: some View {
         //        if self.viewModel.statusView == .complete {
+        ScrollView {
         VStack {
             
             topView
@@ -33,6 +35,23 @@ struct ProfileView: View {
                 .customFont(name: Configuration.shabnamBold, style: .title2, weight: .bold)
                 .padding(.bottom, 20)
             
+//            if #available(iOS 14.0, *) {
+//                let layout = Array(repeating: GridItem(.adaptive(minimum: 50)), count: viewModel.repositories.interests.count)
+//                ScrollView {
+//                LazyVGrid(columns: layout, spacing: 5) {
+//                    interstsList
+//                }
+//                }
+//                .padding(.top, 5)
+//                .padding([.leading, .trailing], leadingTrailingPadding)
+//            } else {
+                ScrollView (.vertical, showsIndicators: false) {
+                        interstsList
+                }
+                .padding(.top, 5)
+                .padding([.leading, .trailing], leadingTrailingPadding)
+//            }
+
             
             jobView
             
@@ -73,6 +92,8 @@ struct ProfileView: View {
             })
             
             Spacer()
+        }
+        .frame(width: UIScreen.main.bounds.width)
         }
         //        }
         
@@ -171,6 +192,19 @@ extension ProfileView {
         .padding(.top, 5)
         .padding([.leading, .trailing], leadingTrailingPadding)
     }
+    
+    private var interstsList: some View {
+        ForEach(0..<viewModel.repositories.interests.count, id:\.self) { i in
+            Text("\(viewModel.repositories.interests[i].interest)")
+                .foregroundColor(.white)
+                .padding()
+                .lineLimit(1)
+                .frame(height: 36)
+                .background(Colors.primaryBlue)
+                .cornerRadius(18)
+        }
+    }
+    
 }
 
 struct ProfileView_Previews: PreviewProvider {

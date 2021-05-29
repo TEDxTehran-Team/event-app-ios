@@ -121,6 +121,9 @@
 		F5A65669263404BB00DAA5BC /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A65668263404BB00DAA5BC /* ProfileViewModel.swift */; };
 		F5A65672263448AB00DAA5BC /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A65671263448AB00DAA5BC /* ProfileRepository.swift */; };
 		F5A65675263449E500DAA5BC /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A65674263449E500DAA5BC /* Profile.swift */; };
+		F5DEFB4A2646CED5000FF25F /* PhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DEFB492646CED5000FF25F /* PhoneNumberView.swift */; };
+		F5DEFB4E2646CF2F000FF25F /* OTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DEFB4D2646CF2F000FF25F /* OTPView.swift */; };
+		F5E184B0264963C200270946 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E184AF264963C200270946 /* TextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -258,6 +261,9 @@
 		F5A65668263404BB00DAA5BC /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		F5A65671263448AB00DAA5BC /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		F5A65674263449E500DAA5BC /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		F5DEFB492646CED5000FF25F /* PhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberView.swift; sourceTree = "<group>"; };
+		F5DEFB4D2646CF2F000FF25F /* OTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPView.swift; sourceTree = "<group>"; };
+		F5E184AF264963C200270946 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -546,6 +552,7 @@
 				6DD9719624F8F4B20044D596 /* Custom Modifiers */,
 				6DCFBC6524FA45F7005103E5 /* GridStack */,
 				F554E472262994A400E849E5 /* Chat */,
+				F5DEFB482646CEBB000FF25F /* Login */,
 				F53010A02626E06A00948D9E /* Profile */,
 			);
 			path = View;
@@ -619,6 +626,16 @@
 				F554E473262994B000E849E5 /* ChatHistoryView.swift */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		F5DEFB482646CEBB000FF25F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				F5DEFB492646CED5000FF25F /* PhoneNumberView.swift */,
+				F5E184AF264963C200270946 /* TextField.swift */,
+				F5DEFB4D2646CF2F000FF25F /* OTPView.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -818,6 +835,7 @@
 				6DD12DD02519DC2F0055D611 /* SettingsView.swift in Sources */,
 				F5A656662633CF2200DAA5BC /* PagerView.swift in Sources */,
 				6DCFBC6924FA45F7005103E5 /* GridStack.swift in Sources */,
+				F5DEFB4A2646CED5000FF25F /* PhoneNumberView.swift in Sources */,
 				6D1325B624FE65C100FFA202 /* Photo.swift in Sources */,
 				6DCFBC7424FA4FD8005103E5 /* Configuration.swift in Sources */,
 				6DD067FB2509F0D6008BBC08 /* TalkRow.swift in Sources */,
@@ -853,6 +871,7 @@
 				6D1325B424FE658F00FFA202 /* PhotoRepository.swift in Sources */,
 				E8EAE3A8256AD01900B43FB1 /* String+Extension.swift in Sources */,
 				6DD06807250A06DE008BBC08 /* TalkDetailView.swift in Sources */,
+				F5DEFB4E2646CF2F000FF25F /* OTPView.swift in Sources */,
 				6DDAEABD251DC8370008CCEE /* TabBar.swift in Sources */,
 				E834C0872554056400AC827F /* HomeTabUIView.swift in Sources */,
 				6DD067FD2509F132008BBC08 /* TalkWithEvent.swift in Sources */,
@@ -865,6 +884,7 @@
 				6DD9718224F8D0D70044D596 /* News.swift in Sources */,
 				6D3B49012528A1040002EBF8 /* SpeakersView.swift in Sources */,
 				6D3B49152528AB1F0002EBF8 /* Sponsor.swift in Sources */,
+				F5E184B0264963C200270946 /* TextField.swift in Sources */,
 				6DC0A45524FBCD1D00CE535B /* About.swift in Sources */,
 				6DE7941324F93B1C00CEEE0E /* AlbumRepository.swift in Sources */,
 				E837435C24FFEB21009FEB5B /* JSON+Extension.swift in Sources */,

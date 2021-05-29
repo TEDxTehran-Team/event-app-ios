@@ -32,16 +32,16 @@ struct WidthPreferenceKey: PreferenceKey {
 struct ScrollableTabView : View {
     
     @Binding var activeIdx: Int
-    @State private var w: [CGFloat]
+    @State private var widthList: [CGFloat]
     private let dataSet: [LocalizedStringKey]
     init(activeIdx: Binding<Int>, dataSet: [LocalizedStringKey]) {
         self._activeIdx = activeIdx
         self.dataSet = dataSet
-        _w = State.init(initialValue: [CGFloat](repeating: 0, count: dataSet.count))
-        
+        _widthList = State.init(initialValue: [CGFloat](repeating: UIScreen.main.bounds.width/CGFloat(dataSet.count), count: dataSet.count))
     }
     
     var body: some View {
+        GeometryReader { geo in
         VStack(alignment: .underlineLeading) {
             HStack {
                 ForEach(0..<dataSet.count) { i in
@@ -49,30 +49,40 @@ struct ScrollableTabView : View {
                             .customFont(name: Configuration.shabnam, style: .headline)
                             .foregroundColor(Color.black)
                             .modifier(ScrollableTabViewModifier(activeIdx: $activeIdx, idx: i))
-                            .background(TextGeometry())
-                            .onPreferenceChange(WidthPreferenceKey.self, perform: { self.w[i] = $0 })
+                            .frame(width: geo.size.width / 2,  height: 25)
+//                            .background(Rectangle().fill(Color.clear))
+//                            .onPreferenceChange(WidthPreferenceKey.self, perform: { _ in
+//                                self.widthList[i] = UIScreen.main.bounds.width
+//                            })
                             .id(i)
-
-                    Spacer().frame(width: 70)
                 }
             }
             .padding(.horizontal, 5)
+            HStack {
             Colors.primaryRed
                 .clipShape(Rectangle(), style: FillStyle())
                 .alignmentGuide(.underlineLeading) { d in d[.leading]  }
-                .frame(width: w[activeIdx],  height: 4)
+                .frame(width: geo.size.width / 2,  height: 4)
                 .animation(.linear)
+            }
+//            if activeIdx == 0 {
+//
+//            } else {
+//
+//            }
+            .position(x: 0)
+        }
         }
     }
 }
 
-struct TextGeometry: View {
-    var body: some View {
-        GeometryReader { geometry in
-            return Rectangle().fill(Color.clear).preference(key: WidthPreferenceKey.self, value: geometry.size.width)
-        }
-    }
-}
+//struct TextGeometry: View {
+//    var body: some View {
+//        GeometryReader { geometry in
+//            return Rectangle().fill(Color.clear)
+//        }
+//    }
+//}
 
 struct ScrollableTabViewModifier: ViewModifier {
     @Binding var activeIdx: Int
