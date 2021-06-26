@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct ProfileTabBar: View {
-    @State private var selectedTab: Int = 0
+    
+    @State private var selectedTab:Int = 0
     
     var body: some View {
         VStack {
@@ -23,10 +24,9 @@ struct ProfileTabBar: View {
             
             
             Spacer()
-            switch(selectedTab) {
-            case 1: ProfileView(isMyProfile: true, userId: "!")
-            case 0: ChatHistoryView()
-            default:
+            if selectedTab == 0 {
+                ChatHistoryView()
+            } else {
                 ProfileView(isMyProfile: true, userId: "!")
             }
             Spacer()
@@ -36,6 +36,7 @@ struct ProfileTabBar: View {
 }
 
 struct ProfileTabBar_Previews: PreviewProvider {
+    
     static var previews: some View {
         ProfileTabBar()
     }

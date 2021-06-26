@@ -25,75 +25,62 @@ struct ProfileView: View {
     var body: some View {
         //        if self.viewModel.statusView == .complete {
         ScrollView {
-        VStack {
-            
-            topView
-                .scaledToFit()
-            
-            
-            Text(viewModel.repositories.firstName + " " +  viewModel.repositories.lastName )
-                .customFont(name: Configuration.shabnamBold, style: .title2, weight: .bold)
-                .padding(.bottom, 20)
-            
-//            if #available(iOS 14.0, *) {
-//                let layout = Array(repeating: GridItem(.adaptive(minimum: 50)), count: viewModel.repositories.interests.count)
-//                ScrollView {
-//                LazyVGrid(columns: layout, spacing: 5) {
-//                    interstsList
-//                }
-//                }
-//                .padding(.top, 5)
-//                .padding([.leading, .trailing], leadingTrailingPadding)
-//            } else {
-                ScrollView (.vertical, showsIndicators: false) {
-                        interstsList
+            VStack {
+                
+                topView
+                    .scaledToFit()
+                
+                
+                Text(viewModel.repositories.firstName + " " +  viewModel.repositories.lastName )
+                    .customFont(name: Configuration.shabnamBold, style: .title2, weight: .bold)
+                    .padding(.bottom, 20)
+                
+                interstsList
+                    .padding(.top, 5)
+                    .padding([.leading, .trailing], leadingTrailingPadding)
+                
+                
+                jobView
+                
+                fieldView
+                
+                HStack {
+                    Text(LocalizedStringKey("My Story"))
+                        .customFont(name: Configuration.shabnamBold, style: .headline, weight: .bold)
+                    
+                    Spacer()
                 }
                 .padding(.top, 5)
-                .padding([.leading, .trailing], leadingTrailingPadding)
-//            }
-
-            
-            jobView
-            
-            fieldView
-            
-            HStack {
-                Text(LocalizedStringKey("My Story"))
-                    .customFont(name: Configuration.shabnamBold, style: .headline, weight: .bold)
+                .padding([.leading, .trailing], 40)
+                
+                Text(viewModel.repositories.story)
+                    .customFont(name: Configuration.shabnam, style: .subheadline, weight: .regular)
+                    .padding(.top, 5)
+                    .padding([.leading, .trailing], leadingTrailingPadding)
+                
+                
+                HStack(alignment: .center) {
+                    phoneNumberView
+                        .padding(.trailing, 20)
+                    
+                    emailView
+                }
+                .padding(.top, 15)
+                .padding(.bottom, 30)
+                
+                Button(action: {
+                    
+                }, label: {
+                    if isMyProfile {
+                        updateProfileButton
+                    } else {
+                        chatButton
+                    }
+                })
                 
                 Spacer()
             }
-            .padding(.top, 5)
-            .padding([.leading, .trailing], 40)
-            
-            Text(viewModel.repositories.story)
-                .customFont(name: Configuration.shabnam, style: .subheadline, weight: .regular)
-                .padding(.top, 5)
-                .padding([.leading, .trailing], leadingTrailingPadding)
-            
-            
-            HStack(alignment: .center) {
-                phoneNumberView
-                    .padding(.trailing, 20)
-                
-                emailView
-            }
-            .padding(.top, 15)
-            .padding(.bottom, 30)
-            
-            Button(action: {
-                
-            }, label: {
-                if isMyProfile {
-                    updateProfileButton
-                } else {
-                    chatButton
-                }
-            })
-            
-            Spacer()
-        }
-        .frame(width: UIScreen.main.bounds.width)
+            .frame(width: UIScreen.main.bounds.width)
         }
         //        }
         
@@ -194,15 +181,15 @@ extension ProfileView {
     }
     
     private var interstsList: some View {
-        ForEach(0..<viewModel.repositories.interests.count, id:\.self) { i in
-            Text("\(viewModel.repositories.interests[i].interest)")
-                .foregroundColor(.white)
-                .padding()
-                .lineLimit(1)
-                .frame(height: 36)
-                .background(Colors.primaryBlue)
-                .cornerRadius(18)
-        }
+            ForEach(0..<viewModel.repositories.interests.count, id:\.self) { i in
+                Text("\(viewModel.repositories.interests[i].interest)")
+                    .foregroundColor(.white)
+                    .padding()
+                    .lineLimit(1)
+                    .frame(height: 36)
+                    .background(Colors.primaryBlue)
+                    .cornerRadius(18)
+            }
     }
     
 }

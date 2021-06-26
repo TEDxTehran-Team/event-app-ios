@@ -17,7 +17,7 @@ class NewsRepository {
         case .failure(let error):
           completion(nil, XException(message: error.localizedDescription, code: 0))
         case .success(let data):
-          let model = data.data?.decodeModel(type:  NewsResponse.self)
+          let model = data.data?.decodeModel(type: NewsResponse.self)
           completion(model?.news, nil)
       }
     }

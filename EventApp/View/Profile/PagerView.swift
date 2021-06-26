@@ -34,6 +34,7 @@ struct ScrollableTabView : View {
     @Binding var activeIdx: Int
     @State private var widthList: [CGFloat]
     private let dataSet: [LocalizedStringKey]
+    
     init(activeIdx: Binding<Int>, dataSet: [LocalizedStringKey]) {
         self._activeIdx = activeIdx
         self.dataSet = dataSet
@@ -42,36 +43,29 @@ struct ScrollableTabView : View {
     
     var body: some View {
         GeometryReader { geo in
-        VStack(alignment: .underlineLeading) {
-            HStack {
-                ForEach(0..<dataSet.count) { i in
+            VStack(alignment: .underlineLeading) {
+                HStack {
+                    ForEach(0..<dataSet.count) { i in
                         Text(dataSet[i])
                             .customFont(name: Configuration.shabnam, style: .headline)
-                            .foregroundColor(Color.black)
                             .modifier(ScrollableTabViewModifier(activeIdx: $activeIdx, idx: i))
                             .frame(width: geo.size.width / 2,  height: 25)
-//                            .background(Rectangle().fill(Color.clear))
-//                            .onPreferenceChange(WidthPreferenceKey.self, perform: { _ in
-//                                self.widthList[i] = UIScreen.main.bounds.width
-//                            })
+                            //                            .background(Rectangle().fill(Color.clear))
+                            //                            .onPreferenceChange(WidthPreferenceKey.self, perform: { _ in
+                            //                                self.widthList[i] = UIScreen.main.bounds.width
+                            //                            })
                             .id(i)
+                    }
                 }
+                .padding(.horizontal, 5)
+                HStack {
+                    Colors.primaryRed
+                        .clipShape(Rectangle(), style: FillStyle())
+                        .frame(width: (geo.size.width / 2) + 20,  height: 4)
+                        .animation(.linear)
+                }
+                .position(x: activeIdx == 0 ? 0 : geo.size.width / 8)
             }
-            .padding(.horizontal, 5)
-            HStack {
-            Colors.primaryRed
-                .clipShape(Rectangle(), style: FillStyle())
-                .alignmentGuide(.underlineLeading) { d in d[.leading]  }
-                .frame(width: geo.size.width / 2,  height: 4)
-                .animation(.linear)
-            }
-//            if activeIdx == 0 {
-//
-//            } else {
-//
-//            }
-            .position(x: 0)
-        }
         }
     }
 }
