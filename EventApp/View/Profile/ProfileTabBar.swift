@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ProfileTabBar: View {
     
-    @State private var selectedTab:Int = 0
+    @State private var selectedTab:Int = 1
     
     var body: some View {
         VStack {

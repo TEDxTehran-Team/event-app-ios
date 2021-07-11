@@ -21,44 +21,31 @@ struct ProfileView: View {
         self.isMyProfile = isMyProfile
     }
     
-    
     var body: some View {
         //        if self.viewModel.statusView == .complete {
         ScrollView {
             VStack {
-                
                 topView
                     .scaledToFit()
-                
-                
                 Text(viewModel.repositories.firstName + " " +  viewModel.repositories.lastName )
                     .customFont(name: Configuration.shabnamBold, style: .title2, weight: .bold)
                     .padding(.bottom, 20)
-                
                 interstsList
-                    .padding(.top, 5)
+                    .padding(.vertical, 5)
                     .padding([.leading, .trailing], leadingTrailingPadding)
-                
-                
                 jobView
-                
                 fieldView
-                
                 HStack {
                     Text(LocalizedStringKey("My Story"))
                         .customFont(name: Configuration.shabnamBold, style: .headline, weight: .bold)
-                    
                     Spacer()
                 }
                 .padding(.top, 5)
                 .padding([.leading, .trailing], 40)
-                
                 Text(viewModel.repositories.story)
                     .customFont(name: Configuration.shabnam, style: .subheadline, weight: .regular)
                     .padding(.top, 5)
                     .padding([.leading, .trailing], leadingTrailingPadding)
-                
-                
                 HStack(alignment: .center) {
                     phoneNumberView
                         .padding(.trailing, 20)
@@ -67,7 +54,6 @@ struct ProfileView: View {
                 }
                 .padding(.top, 15)
                 .padding(.bottom, 30)
-                
                 Button(action: {
                     
                 }, label: {
@@ -77,7 +63,6 @@ struct ProfileView: View {
                         chatButton
                     }
                 })
-                
                 Spacer()
             }
             .frame(width: UIScreen.main.bounds.width)
@@ -181,17 +166,55 @@ extension ProfileView {
     }
     
     private var interstsList: some View {
-            ForEach(0..<viewModel.repositories.interests.count, id:\.self) { i in
-                Text("\(viewModel.repositories.interests[i].interest)")
-                    .foregroundColor(.white)
-                    .padding()
-                    .lineLimit(1)
-                    .frame(height: 36)
-                    .background(Colors.primaryBlue)
-                    .cornerRadius(18)
+        
+        func generateContent(in g: GeometryProxy) -> some View {
+            var width = CGFloat.zero
+            var height = CGFloat.zero
+            return ZStack(alignment: .topLeading) {
+                ForEach(viewModel.repositories.interests.compactMap({$0.interest}), id: \.self) { platform in
+                    item(for: platform)
+                        .padding(4)
+                        .alignmentGuide(.leading, computeValue: { d in
+                            if (abs(width - d.width) > g.size.width) {
+                                width = 0
+                                height -= d.height
+                            }
+                            let result = width
+                            if platform == viewModel.repositories.interests.last!.interest {
+                                width = 0 //last item
+                            } else {
+                                width -= d.width
+                            }
+                            return result
+                        })
+                        .alignmentGuide(.top, computeValue: {d in
+                            let result = height
+                            if platform == viewModel.repositories.interests.last!.interest {
+                                height = 0 // last item
+                            }
+                            return result
+                        })
+                }
             }
+        }
+        
+        func item(for text: String) -> some View {
+            Text(text)
+                .foregroundColor(.white)
+                .padding()
+                .lineLimit(1)
+                .frame(height: 36)
+                .background(Colors.primaryBlue)
+                .cornerRadius(18)
+        }
+        
+        return VStack {
+            let sectionHeight = CGFloat(viewModel.repositories.interests.compactMap({$0.interest}).joined().count) * 2
+            GeometryReader { geometry in
+                generateContent(in: geometry)
+            }.frame(height: sectionHeight)
+        }
     }
-    
 }
 
 struct ProfileView_Previews: PreviewProvider {

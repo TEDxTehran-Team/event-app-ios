@@ -31,10 +31,14 @@ struct WidthPreferenceKey: PreferenceKey {
 
 struct ScrollableTabView : View {
     
+    let margin:CGFloat = 10
+    let screenWidth = UIScreen.main.bounds.width
     @Binding var activeIdx: Int
     @State private var widthList: [CGFloat]
     private let dataSet: [LocalizedStringKey]
-    
+    @State var selectedItem: String = "Tweets"
+    @State private var w: [CGFloat] = [0, 0, 0, 0]
+
     init(activeIdx: Binding<Int>, dataSet: [LocalizedStringKey]) {
         self._activeIdx = activeIdx
         self.dataSet = dataSet
@@ -42,63 +46,40 @@ struct ScrollableTabView : View {
     }
     
     var body: some View {
-        GeometryReader { geo in
-            VStack(alignment: .underlineLeading) {
-                HStack {
-                    ForEach(0..<dataSet.count) { i in
-                        Text(dataSet[i])
-                            .customFont(name: Configuration.shabnam, style: .headline)
-                            .modifier(ScrollableTabViewModifier(activeIdx: $activeIdx, idx: i))
-                            .frame(width: geo.size.width / 2,  height: 25)
-                            //                            .background(Rectangle().fill(Color.clear))
-                            //                            .onPreferenceChange(WidthPreferenceKey.self, perform: { _ in
-                            //                                self.widthList[i] = UIScreen.main.bounds.width
-                            //                            })
-                            .id(i)
-                    }
-                }
-                .padding(.horizontal, 5)
-                HStack {
-                    Colors.primaryRed
-                        .clipShape(Rectangle(), style: FillStyle())
-                        .frame(width: (geo.size.width / 2) + 20,  height: 4)
-                        .animation(.linear)
-                }
-                .position(x: activeIdx == 0 ? 0 : geo.size.width / 8)
+        return VStack(alignment: .underlineLeading) {
+            HStack {
+                Spacer()
+                Text(dataSet[0]).modifier(MagicStuff(activeIdx: $activeIdx, widths: $w, idx: 0))
+                Spacer()
+                Text(dataSet[1]).modifier(MagicStuff(activeIdx: $activeIdx, widths: $w, idx: 1))
+                Spacer()
             }
+            .frame(height: 20)
+            Rectangle()
+                .alignmentGuide(.underlineLeading) { d in d[.leading]  }
+                .frame(width: w[activeIdx],  height: 2)
+                .animation(.linear)
+                .colorMultiply(.red)
         }
     }
 }
 
-//struct TextGeometry: View {
-//    var body: some View {
-//        GeometryReader { geometry in
-//            return Rectangle().fill(Color.clear)
-//        }
-//    }
-//}
-
-struct ScrollableTabViewModifier: ViewModifier {
-    @Binding var activeIdx: Int
-    let idx: Int
+struct MagicStuff: ViewModifier {
     
+    @Binding var activeIdx: Int
+    @Binding var widths: [CGFloat]
+    let idx: Int
+
     func body(content: Content) -> some View {
         Group {
             if activeIdx == idx {
                 content.alignmentGuide(.underlineLeading) { d in
+                    DispatchQueue.main.async { self.widths[self.idx] = d.width }
                     return d[.leading]
-                }.onTapGesture {
-                    withAnimation{
-                        self.activeIdx = self.idx
-                    }
-                }
-                
+                }.onTapGesture { self.activeIdx = self.idx }
+
             } else {
-                content.onTapGesture {
-                    withAnimation{
-                        self.activeIdx = self.idx
-                    }
-                }
+                content.onTapGesture { self.activeIdx = self.idx }
             }
         }
     }
