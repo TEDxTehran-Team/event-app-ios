@@ -33,15 +33,16 @@ struct ChatHistory: Decodable, Hashable {
     var lastMessage: Message
     var id: String
     var newMessages: Int
+    var image: String
   
   static var exampleList: [ChatHistory] {
     [
-        ChatHistory(firstName: "مهدی", lastName: "درویشی", lastMessage: Message.exampleMessage2, id: "kkddhhkd", newMessages: 0),
-        ChatHistory(firstName: "احمد", lastName: "ترکاشوند", lastMessage: Message.exampleMessage1, id: "dofjfd", newMessages: 3),
-        ChatHistory(firstName: "یلدا", lastName: "سلطانی", lastMessage: Message.exampleMessage2, id: "ofjd", newMessages: 5),
-        ChatHistory(firstName: "علی", lastName: "جباری", lastMessage: Message.exampleMessage2, id: "dkd", newMessages: 0),
-        ChatHistory(firstName: "عباس", lastName: "مدنی", lastMessage: Message.exampleMessage1, id: "dkjffkdd", newMessages: 0),
-        ChatHistory(firstName: "طاده", lastName: "سالاری", lastMessage: Message.exampleMessage1, id: "fji", newMessages: 3),
+        ChatHistory(firstName: "مهدی", lastName: "درویشی", lastMessage: Message.exampleMessage2, id: "kkddhhkd", newMessages: 0, image: "https://sobarnes.com/wp-content/uploads/2021/06/ludmilla-makowski-copie-620x420.jpg" ),
+        ChatHistory(firstName: "احمد", lastName: "ترکاشوند", lastMessage: Message.exampleMessage1, id: "dofjfd", newMessages: 3, image: "https://sobarnes.com/wp-content/uploads/2021/06/ludmilla-makowski-copie-620x420.jpg" ),
+        ChatHistory(firstName: "یلدا", lastName: "سلطانی", lastMessage: Message.exampleMessage2, id: "ofjd", newMessages: 5, image: "https://sobarnes.com/wp-content/uploads/2021/06/ludmilla-makowski-copie-620x420.jpg" ),
+        ChatHistory(firstName: "علی", lastName: "جباری", lastMessage: Message.exampleMessage2, id: "dkd", newMessages: 0, image: "https://sobarnes.com/wp-content/uploads/2021/06/ludmilla-makowski-copie-620x420.jpg" ),
+        ChatHistory(firstName: "عباس", lastName: "مدنی", lastMessage: Message.exampleMessage1, id: "dkjffkdd", newMessages: 0, image: "https://sobarnes.com/wp-content/uploads/2021/06/ludmilla-makowski-copie-620x420.jpg" ),
+        ChatHistory(firstName: "طاده", lastName: "سالاری", lastMessage: Message.exampleMessage1, id: "fji", newMessages: 3, image: "https://sobarnes.com/wp-content/uploads/2021/06/ludmilla-makowski-copie-620x420.jpg" ),
     ]
   }
 }

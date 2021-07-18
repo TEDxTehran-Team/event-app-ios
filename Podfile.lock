@@ -5,8 +5,8 @@ PODS:
   - Apollo/SQLite (0.32.1):
     - Apollo/Core
     - SQLite.swift (~> 0.12.2)
-  - Kingfisher/Core (5.15.7)
-  - Kingfisher/SwiftUI (5.15.7):
+  - Kingfisher/Core (5.15.8)
+  - Kingfisher/SwiftUI (5.15.8):
     - Kingfisher/Core
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
@@ -25,7 +25,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Apollo: 55d9a99774dd06dd6cc865d16a6c13d0d6804211
-  Kingfisher: 6e1a13523fcb1c86924ce53affe4ac957e544d59
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
 
 PODFILE CHECKSUM: 3f9cc889146b9861b97f05a9607069417d36b125

@@ -84,6 +84,7 @@ struct ProfileView: View {
 }
 
 extension ProfileView {
+    
     private var topView: some View {
         ZStack {
             Image("person")

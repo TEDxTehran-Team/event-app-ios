@@ -78,6 +78,7 @@ struct TalksView: View {
 }
 
 struct TalksView_Previews: PreviewProvider {
+    
     static var previews: some View {
         TalksView(talkViewModel: TalkViewModel(), featuredTalkViewModel: FeaturedTalkViewModel())
     }

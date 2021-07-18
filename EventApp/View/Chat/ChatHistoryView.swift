@@ -7,10 +7,133 @@
 //
 
 import SwiftUI
+import struct Kingfisher.KFImage
 
 struct ChatHistoryView: View {
+    
+    let profiles = [Profile.example, Profile.example, Profile.example, Profile.example, Profile.example, Profile.example, Profile.example]
+    let chatHitory = ChatHistory.exampleList
+    
     var body: some View {
-        Text("ChatHistoryView")
+        VStack {
+            ChatHistoryTitleView(title: "شروع گفتگوی جدید")
+            Divider()
+            ChatHistoryProfileHorizontalList(profiles: profiles)
+            Divider()
+            ChatHistoryTitleView(title: "آخرین گفتگو های شما")
+            Divider()
+            ChatHistoryVerticalChatList(chats: chatHitory)
+        }
+    }
+}
+
+struct ChatHistoryVerticalChatList: View {
+    var chats: [ChatHistory]
+    var body: some View {
+        GeometryReader { geometry in
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack {
+                    ForEach(chats, id: \.self) { chat in
+                        ChatHistoryChatCell(chat: chat)
+                            .padding(.trailing)
+                    }
+                }
+            }
+            .frame(minWidth: 0, maxWidth: .infinity)
+        }
+        .frame(minWidth: 0, maxWidth: .infinity)
+        .frame(minHeight: 0, maxHeight: .infinity)
+    }
+}
+
+struct ChatHistoryChatCell: View {
+    var chat: ChatHistory
+    let height = UIScreen.main.bounds.width / 6
+    var body: some View {
+        HStack {
+            VStack(alignment: .center) {
+                Text("\(chat.newMessages)")
+                    .font(.body)
+                Text("\(chat.lastMessage.time)")
+                    .font(.footnote)
+            }
+            .frame(width: height, height: height)
+            Spacer()
+            VStack(alignment: .trailing) {
+                Text(chat.firstName + " " + chat.lastName)
+                    .font(.body)
+                Text(chat.lastMessage.messageText)
+                    .font(.footnote)
+                    .lineLimit(1)
+            }
+            KFImage(URL(string: chat.image))
+                .placeholder {
+                    ImagePlaceholder()
+                }
+                .resizable()
+                .scaledToFill()
+                .frame(width: height, height: height)
+                .clipShape(Circle())
+        }
+        .frame(minWidth: 0, maxWidth: .infinity)
+    }
+}
+
+struct ChatHistoryProfileHorizontalList: View {
+    let height =  10 + UIScreen.main.bounds.width / 4
+    var profiles: [Profile]
+    var body: some View {
+        GeometryReader { geometry in
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(profiles, id: \.self) { profile in
+                        ChatHistoryCell(profile: profile)
+                            .padding(.horizontal, 5)
+                    }
+                    ChatHistoryCell(profile: Profile(interests: [Interest(interest: "")], firstName: "+", lastName: "", jobTitle: "", field: "", email: "", phoneNumber: "", story: "", id: "0", image: ""))
+                }
+                .padding(.horizontal)
+            }
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .frame(height: height)
+        }
+        .frame(minWidth: 0, maxWidth: .infinity)
+        .frame(height: height)
+    }
+}
+
+struct ChatHistoryCell: View {
+    var profile: Profile
+    let width = UIScreen.main.bounds.width / 6
+    var body: some View {
+        VStack {
+            KFImage(URL(string: profile.image))
+                .placeholder {
+                    ImagePlaceholder()
+                }
+                .resizable()
+                .scaledToFill()
+                .frame(width: width, height: width)
+                .clipShape(Circle())
+            Text(profile.firstName + " " + profile.lastName)
+                .font(.body)
+            Text(profile.jobTitle)
+                .font(.footnote)
+                .foregroundColor(.gray)
+        }
+        .frame(width: width, height: width + 50, alignment: .center) // 50 is two text height
+    }
+}
+
+struct ChatHistoryTitleView: View {
+    var title: String
+    var body: some View {
+        HStack() {
+            Spacer()
+            Text(title)
+                .padding(.trailing)
+        }
+        .frame(minHeight: 0, maxHeight: 30)
     }
 }
 
