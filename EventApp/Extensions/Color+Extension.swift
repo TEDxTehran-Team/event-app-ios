@@ -17,6 +17,7 @@ enum Colors {
     static let primaryBarBackground = Color("primaryBarBackground")
     static let primaryLightGray = Color("primaryLightGray")
     static let primaryDarkGray = Color("primaryDarkGray")
+    static let darkTextColor = Color("darkTextColor")
 }
 
 extension Color {

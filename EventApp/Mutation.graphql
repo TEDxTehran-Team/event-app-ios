@@ -1,0 +1,34 @@
+mutation GetAuthenticate($phone: String!) {
+  authenticate(phone: $phone) {
+    success
+    errors
+    token
+  }
+}
+
+mutation GetVerifyAuthentication($token: String!, $code: String) {
+  verifyAuthentication(
+    token: $token
+    verificationCode: $code
+  ) {
+    success
+    errors
+    payload
+    token
+    refreshToken
+    refreshExpiresIn
+  }
+}
+
+mutation GetRefreshToken($refreshToken: String!){
+  refreshToken(
+    refreshToken: refreshToken
+  ) {
+    success
+    errors
+    payload
+    token
+    refreshToken
+    refreshExpiresIn
+  }
+}
