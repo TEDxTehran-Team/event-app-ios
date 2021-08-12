@@ -8,5 +8,6 @@ target 'EventApp' do
   pod 'Apollo', '~> 0.32.1'
   pod 'Apollo/SQLite', '~> 0.32.1'
   pod 'Kingfisher/SwiftUI', '~> 5.15.5'
-
+  pod 'lottie-ios'
+  
 end

@@ -334,7 +334,7 @@ public final class GetRefreshTokenMutation: GraphQLMutation {
   public let operationDefinition: String =
     """
     mutation GetRefreshToken($refreshToken: String!) {
-      refreshToken(refreshToken: refreshToken) {
+      refreshToken(refreshToken: $refreshToken) {
         __typename
         success
         errors
@@ -363,7 +363,7 @@ public final class GetRefreshTokenMutation: GraphQLMutation {
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("refreshToken", arguments: ["refreshToken": "refreshToken"], type: .object(RefreshToken.selections)),
+        GraphQLField("refreshToken", arguments: ["refreshToken": GraphQLVariable("refreshToken")], type: .object(RefreshToken.selections)),
       ]
     }
 

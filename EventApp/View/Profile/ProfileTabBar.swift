@@ -19,15 +19,16 @@ struct ProfileTabBar: View {
     @ObservedObject var userSettings = UserSettings()
 
     var body: some View {
-        if userSettings.token.isEmpty {
-            if userSettings.loginToken.isEmpty {
-                PhoneNumberView(loginToken: $userSettings.loginToken)
-            } else {
-                OTPView(loginToken: $userSettings.loginToken, token: $userSettings.token)
-            }
-        } else {
-            tabBarView
-        }
+//        if userSettings.token.isEmpty {
+//            if userSettings.loginToken.isEmpty {
+//                PhoneNumberView(loginToken: $userSettings.loginToken)
+//            } else {
+//                OTPView(loginToken: $userSettings.loginToken, token: $userSettings.token)
+//            }
+//        } else {
+//            tabBarView
+//        }
+        LoadingView()
     }
 }
 

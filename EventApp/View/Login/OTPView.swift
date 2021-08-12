@@ -53,7 +53,7 @@ struct OTPView: View {
 
 extension OTPView {
     private var chatButton: some View {
-        Text(LocalizedStringKey("register"))
+        Text("register".localized())
             .customFont(name: Configuration.shabnam, style: .headline, weight: .regular)
             .frame(width: 290, height: 62, alignment: .center)
             .foregroundColor(Color.white)
@@ -65,7 +65,7 @@ extension OTPView {
         HStack {
             Image(systemName: "iphone")
                 .padding([.leading, .trailing], 5)
-            TextField(LocalizedStringKey("verification_code").stringKey, text: $viewModel.code)
+            TextField("verification_code".localized(), text: $viewModel.code)
                 .padding([.trailing], 5)
                 .textContentType(.telephoneNumber)
                 .keyboardType(.phonePad)

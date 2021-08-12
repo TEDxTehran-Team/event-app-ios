@@ -19,7 +19,7 @@
 "Black" = "Black";
 "Dark Mode" = "Dark Mode";
 "OK" = "OK";
-"Error occurred" = "Error occured";
+"Error occurred" = "Error occurred";
 "Clear Cache" = "Clear Cache";
 "Done" = "Done";
 "Cache cleared successfully" = "Cache cleared successfully";
@@ -50,3 +50,5 @@
 "validation_message %@" = "Verification code will be sent to %@ in a few seconds, please wait";
 "verification_code" = "Verification Code";
 "register" = "Register";
+"cancel_search" = "Cancel Search";
+"loading_chat" = "Wait a few moments to connect with the right person";

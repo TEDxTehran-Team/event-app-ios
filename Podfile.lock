@@ -8,6 +8,7 @@ PODS:
   - Kingfisher/Core (5.15.8)
   - Kingfisher/SwiftUI (5.15.8):
     - Kingfisher/Core
+  - lottie-ios (3.2.3)
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
@@ -16,18 +17,21 @@ DEPENDENCIES:
   - Apollo (~> 0.32.1)
   - Apollo/SQLite (~> 0.32.1)
   - Kingfisher/SwiftUI (~> 5.15.5)
+  - lottie-ios
 
 SPEC REPOS:
   trunk:
     - Apollo
     - Kingfisher
+    - lottie-ios
     - SQLite.swift
 
 SPEC CHECKSUMS:
   Apollo: 55d9a99774dd06dd6cc865d16a6c13d0d6804211
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
+  lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
 
-PODFILE CHECKSUM: 3f9cc889146b9861b97f05a9607069417d36b125
+PODFILE CHECKSUM: 12e2c3402e7b7eb45179a094dd829e816ca3f0e2
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.10.2
