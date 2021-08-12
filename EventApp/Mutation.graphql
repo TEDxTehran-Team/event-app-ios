@@ -6,14 +6,13 @@ mutation GetAuthenticate($phone: String!) {
   }
 }
 
-mutation GetVerifyAuthentication($token: String!, $code: String) {
+mutation GetVerifyAuthentication($token: String!, $code: String!) {
   verifyAuthentication(
     token: $token
     verificationCode: $code
   ) {
     success
     errors
-    payload
     token
     refreshToken
     refreshExpiresIn
@@ -22,7 +21,7 @@ mutation GetVerifyAuthentication($token: String!, $code: String) {
 
 mutation GetRefreshToken($refreshToken: String!){
   refreshToken(
-    refreshToken: refreshToken
+    refreshToken: $refreshToken
   ) {
     success
     errors

@@ -10,7 +10,9 @@ import SwiftUI
 
 struct PhoneNumberView: View {
     
-    @State var phoneNumber: String = ""
+    @ObservedObject var viewModel = PhoneNumberViewModel()
+    @Binding var loginToken: String
+    
     
     var body: some View {
         VStack(alignment: .center) {
@@ -34,14 +36,16 @@ struct PhoneNumberView: View {
                 .padding(.bottom, 40)
                 .lineLimit(4)
 
-            CustomTextFieeld(text: phoneNumber, placeHolder: LocalizedStringKey("Phone Number").stringKey)
+            CustomTextField
             
             Spacer()
             
             chatButton
                 .padding(.bottom, 40)
                 .onTapGesture(count: 1, perform: {
-//                    viewmo
+                    viewModel.setup() { token in
+                        self.loginToken = token
+                    }
                 })
         }
     }
@@ -56,12 +60,29 @@ extension PhoneNumberView {
             .background(Colors.primaryRed)
             .cornerRadius(5)
     }
-}
-
-struct PhoneNumberView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            PhoneNumberView()
+    
+    var CustomTextField: some View {
+        HStack {
+            Image(systemName: "iphone")
+                .padding([.leading, .trailing], 5)
+            TextField(LocalizedStringKey("Phone Number").stringKey, text: $viewModel.phoneNumber)
+                .padding([.trailing], 5)
+                .textContentType(.telephoneNumber)
+                .keyboardType(.phonePad)
         }
+        .frame(height: 55)
+        .border(Color(.lightGray), width: 3)
+        .background(Color.clear)
+        .cornerRadius(6)
+        .padding(15)
     }
 }
+
+//struct PhoneNumberView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        @ObservedObject var settings = UserSettings()
+//        Group {
+//            PhoneNumberView(token: $settings.loginToken)
+//        }
+//    }
+//}

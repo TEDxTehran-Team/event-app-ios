@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct Authenticate: Codable {
-    var success: Bool
-    var errors: ErrorModel?
-    var token: String
-    
-    static var example: Authenticate {
-        Authenticate(success: true, errors: nil, token: "sJJEKhnqIDFEaXfAXSpI84GLq8in6k8K")
+struct Authenticate: Decodable, Hashable {
+    static func == (lhs: Authenticate, rhs: Authenticate) -> Bool {
+        lhs.token == rhs.token
     }
+    
+    var success: Bool?
+    var errors: ErrorModel?
+    var token: String?
 }

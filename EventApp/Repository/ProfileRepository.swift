@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class ProfilleRepository {
     func get(withUserId userId: String, completion: @escaping (Profile?, XException?) -> ()) {
         #warning("Complete later when API is available")

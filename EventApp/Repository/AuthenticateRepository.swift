@@ -9,13 +9,25 @@
 import Foundation
 
 class AuthenticateRepository {
-    func get(completion: @escaping (Authenticate?, XException?) -> ()) {
-        Network.shared.apollo.perform(mutation: GetAuthenticateMutation(phone: "")) { result in
+    func getOTP(phoneNumber: String, completion: @escaping (Authenticate?, XException?) -> ()) {
+        Network.shared.apollo.perform(mutation: GetAuthenticateMutation(phone: phoneNumber)) { result in
           switch result {
             case .failure(let error):
               completion(nil, XException(message: error.localizedDescription, code: 0))
             case .success(let data):
-              let model = data.data?.decodeModel(type: Authenticate.self)
+                let model = data.data?.authenticate?.decodeModel(type: Authenticate.self)
+              completion(model, nil)
+          }
+        }
+    }
+    
+    func sendOTP(token: String, code: String, completion: @escaping (VerifyAuthentication?, XException?) -> ()) {
+        Network.shared.apollo.perform(mutation: GetVerifyAuthenticationMutation(token: token, code: code)) { result in
+          switch result {
+            case .failure(let error):
+              completion(nil, XException(message: error.localizedDescription, code: 0))
+            case .success(let data):
+                let model = data.data?.verifyAuthentication?.decodeModel(type: VerifyAuthentication.self)
               completion(model, nil)
           }
         }

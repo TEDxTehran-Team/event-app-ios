@@ -46,3 +46,7 @@
 "Get Code" = "Get Verification Code";
 "Register" = "Register";
 "Phone Number" = "Phone Number";
+"validation" = "Verification";
+"validation_message %@" = "Verification code will be sent to %@ in a few seconds, please wait";
+"verification_code" = "Verification Code";
+"register" = "Register";

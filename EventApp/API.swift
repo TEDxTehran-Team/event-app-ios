@@ -188,12 +188,11 @@ public final class GetVerifyAuthenticationMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    mutation GetVerifyAuthentication($token: String!, $code: String) {
+    mutation GetVerifyAuthentication($token: String!, $code: String!) {
       verifyAuthentication(token: $token, verificationCode: $code) {
         __typename
         success
         errors
-        payload
         token
         refreshToken
         refreshExpiresIn
@@ -204,9 +203,9 @@ public final class GetVerifyAuthenticationMutation: GraphQLMutation {
   public let operationName: String = "GetVerifyAuthentication"
 
   public var token: String
-  public var code: String?
+  public var code: String
 
-  public init(token: String, code: String? = nil) {
+  public init(token: String, code: String) {
     self.token = token
     self.code = code
   }
@@ -255,7 +254,6 @@ public final class GetVerifyAuthenticationMutation: GraphQLMutation {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("success", type: .scalar(Bool.self)),
           GraphQLField("errors", type: .scalar(String.self)),
-          GraphQLField("payload", type: .scalar(String.self)),
           GraphQLField("token", type: .scalar(String.self)),
           GraphQLField("refreshToken", type: .scalar(String.self)),
           GraphQLField("refreshExpiresIn", type: .scalar(Int.self)),
@@ -268,8 +266,8 @@ public final class GetVerifyAuthenticationMutation: GraphQLMutation {
         self.resultMap = unsafeResultMap
       }
 
-      public init(success: Bool? = nil, errors: String? = nil, payload: String? = nil, token: String? = nil, refreshToken: String? = nil, refreshExpiresIn: Int? = nil) {
-        self.init(unsafeResultMap: ["__typename": "VerifyAuthentication", "success": success, "errors": errors, "payload": payload, "token": token, "refreshToken": refreshToken, "refreshExpiresIn": refreshExpiresIn])
+      public init(success: Bool? = nil, errors: String? = nil, token: String? = nil, refreshToken: String? = nil, refreshExpiresIn: Int? = nil) {
+        self.init(unsafeResultMap: ["__typename": "VerifyAuthentication", "success": success, "errors": errors, "token": token, "refreshToken": refreshToken, "refreshExpiresIn": refreshExpiresIn])
       }
 
       public var __typename: String {
@@ -296,15 +294,6 @@ public final class GetVerifyAuthenticationMutation: GraphQLMutation {
         }
         set {
           resultMap.updateValue(newValue, forKey: "errors")
-        }
-      }
-
-      public var payload: String? {
-        get {
-          return resultMap["payload"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "payload")
         }
       }
 

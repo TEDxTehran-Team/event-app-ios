@@ -6,14 +6,22 @@
 //  Copyright © 2020 Alexani. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-//
-//extension String {
-//    func localized() -> String{
-//        if TimeZone.current.isMasterData {
-//            return  NSLocalizedString(self, comment: "")
-//        }
-//        return self
-//    }
-//}
+extension String {
+    func localized(bundle:Bundle = .main, tableName:String = "Localizable") -> String {
+        return NSLocalizedString(self, tableName: tableName, value: "\(self)", comment: "")
+    }
+    
+    func localize(with arguments: CVarArg...) -> String {
+        let args = arguments.map {
+            if let arg = $0 as? Int { return String(arg) }
+            if let arg = $0 as? Float { return String(arg) }
+            if let arg = $0 as? Double { return String(arg) }
+            if let arg = $0 as? Int64 { return String(arg) }
+            if let arg = $0 as? String { return String(arg) }
+            return "(null)"
+        } as [CVarArg]
+        return String.init(format: self.localized(), arguments: args)
+    }
+}

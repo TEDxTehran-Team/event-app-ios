@@ -9,13 +9,77 @@
 import SwiftUI
 
 struct OTPView: View {
+    
+    @ObservedObject var viewModel = OTPViewModel()
+    @Binding var loginToken: String
+    @Binding var token: String
+
     var body: some View {
-        Text("Hello, World!")
+        VStack(alignment: .center) {
+            Spacer()
+            
+            Text(LocalizedStringKey("validation"))
+                .customFont(name: Configuration.shabnamBold, size: 36, weight: .bold)
+                .foregroundColor(Colors.darkTextColor)
+                .padding([.leading, .trailing], 10)
+                .padding(.bottom, 15)
+
+            
+            Text(LocalizedStringKey("validation_message %@"))
+                .customFont(name: Configuration.shabnam, size: 16, weight: .bold)
+                .foregroundColor(Colors.darkTextColor)
+                .padding([.leading, .trailing], 10)
+                .padding(.bottom, 40)
+                .lineLimit(4)
+
+            CustomTextField
+            
+            Spacer()
+            
+            chatButton
+                .padding(.bottom, 40)
+                .onTapGesture(count: 1, perform: {
+                    viewModel.setup(token: self.loginToken) { token in
+                        if token.isEmpty {
+                            loginToken = ""
+                        } else {
+                            self.token = token
+                        }
+                    }
+                })
+        }
     }
 }
 
-struct OTPView_Previews: PreviewProvider {
-    static var previews: some View {
-        OTPView()
+extension OTPView {
+    private var chatButton: some View {
+        Text(LocalizedStringKey("register"))
+            .customFont(name: Configuration.shabnam, style: .headline, weight: .regular)
+            .frame(width: 290, height: 62, alignment: .center)
+            .foregroundColor(Color.white)
+            .background(Colors.primaryRed)
+            .cornerRadius(5)
+    }
+    
+    var CustomTextField: some View {
+        HStack {
+            Image(systemName: "iphone")
+                .padding([.leading, .trailing], 5)
+            TextField(LocalizedStringKey("verification_code").stringKey, text: $viewModel.code)
+                .padding([.trailing], 5)
+                .textContentType(.telephoneNumber)
+                .keyboardType(.phonePad)
+        }
+        .frame(height: 55)
+        .border(Color(.lightGray), width: 3)
+        .background(Color.clear)
+        .cornerRadius(6)
+        .padding(15)
     }
 }
+
+//struct OTPView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OTPView()
+//    }
+//}

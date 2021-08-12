@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct ErrorModel: Codable {
+struct ErrorModel: Codable, Hashable {
     var message, code: String
 }

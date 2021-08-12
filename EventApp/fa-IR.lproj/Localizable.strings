@@ -46,3 +46,7 @@
 "Get Code" = "دریافت کد تایید";
 "Register" = "ثبت‌نام";
 "Phone Number" = "شماره تلفن";
+"validation" = "اعتبارسنجی";
+"validation_message %@" = "تا چند ثانیه دیگر کد تایید به شماره %@ ارسال می‌شود، لطفا منتظر بمانید";
+"verification_code" = "کد تایید";
+"register" = "ثبت نام";
