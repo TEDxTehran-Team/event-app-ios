@@ -17,12 +17,12 @@ struct WebViewSheet: View {
   var body: some View {
     NavigationView {
       WebView(url: url)
-        .navigationBarTitle(Text(LocalizedStringKey(titleLocalizedKey)), displayMode: .inline)
+        .navigationBarTitle(Text(titleLocalizedKey.localized()), displayMode: .inline)
         .navigationBarItems(trailing: Button(action: {
           presentationMode.wrappedValue.dismiss()
         }, label: {
           Image(systemName: "xmark")
-            .foregroundColor(.white)
+            .foregroundColor(Colors.primaryRed)
         }))
     }
   }

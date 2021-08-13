@@ -18,14 +18,14 @@ struct OTPView: View {
         VStack(alignment: .center) {
             Spacer()
             
-            Text(LocalizedStringKey("validation"))
+            Text("validation".localized())
                 .customFont(name: Configuration.shabnamBold, size: 36, weight: .bold)
                 .foregroundColor(Colors.darkTextColor)
                 .padding([.leading, .trailing], 10)
                 .padding(.bottom, 15)
 
             
-            Text(LocalizedStringKey("validation_message %@"))
+            Text("validation_message %@".localize(with: DataManager.shared.phoneNumber))
                 .customFont(name: Configuration.shabnam, size: 16, weight: .bold)
                 .foregroundColor(Colors.darkTextColor)
                 .padding([.leading, .trailing], 10)

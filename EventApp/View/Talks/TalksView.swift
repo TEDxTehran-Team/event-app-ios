@@ -71,7 +71,7 @@ struct TalksView: View {
                         }
                 }
             }
-            .navigationBarTitle(Text(LocalizedStringKey("Talks")), displayMode: .inline)
+            .navigationBarTitle(Text("Talks".localized()), displayMode: .inline)
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

@@ -45,7 +45,7 @@ struct NewsView: View {
         }
         
       }
-      .navigationBarTitle(Text(LocalizedStringKey("News")), displayMode: .inline)
+      .navigationBarTitle(Text("News".localized()), displayMode: .inline)
     }
     .navigationViewStyle(StackNavigationViewStyle())
   }

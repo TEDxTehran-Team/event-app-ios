@@ -29,13 +29,13 @@ struct HomeTabUIView: View {
         VStack {
             Picker("", selection: self.$mainViewType) {
                 
-                Text(LocalizedStringKey("Home"))
+                Text("Home".localized())
                     .tag(MainViewType.home)
                 
-                Text(LocalizedStringKey("Speakers"))
+                Text("Speakers".localized())
                     .tag(MainViewType.speakers)
                 
-                Text(LocalizedStringKey("TimeDay"))
+                Text("TimeDay".localized())
                     .tag(MainViewType.timeDay)
                 
                 
@@ -61,12 +61,16 @@ struct HomeTabUIView: View {
             
             Spacer()
                 .background(Colors.primaryLightGray)
-                .navigationBarTitle(Text(LocalizedStringKey("Home")), displayMode: .inline)
-                .navigationBarItems(trailing: NavigationLink(
-                                        destination: AboutView(),
+                .navigationBarTitle(Text("Home".localized()), displayMode: .inline)
+                .navigationBarItems(leading : NavigationLink(
+                                        destination: SettingsView(iconSettings: IconNames()),
                                         label: {
-                                            Image(systemName: "info.circle")
-                                        }))
+                                            Image(systemName: "gear")
+                                        }), trailing: NavigationLink(
+                                            destination: AboutView(),
+                                            label: {
+                                                Image(systemName: "info.circle")
+                                            }))
                 .navigationViewStyle(StackNavigationViewStyle())
         }
     }

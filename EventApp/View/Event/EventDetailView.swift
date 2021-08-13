@@ -56,7 +56,7 @@ struct EventDetailView: View {
                         
                         Image(systemName: "play.rectangle")
                         
-                        Text(LocalizedStringKey("Watch Live"))
+                        Text("Watch Live".localized())
                             .customFont(name: Configuration.shabnam, style: .body, weight: .bold)
                         
                         
@@ -81,7 +81,7 @@ struct EventDetailView: View {
                             
                             Image(decorative: "ticket-icon")
                             
-                            Text(LocalizedStringKey("Buy Ticket"))
+                            Text("Buy Ticket".localized())
                                 .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
                             
                             Spacer()
@@ -101,7 +101,7 @@ struct EventDetailView: View {
                         HStack {
                             Image(decorative: "register-icon")
                             
-                            Text(LocalizedStringKey("Register in Event"))
+                            Text("Register in Event".localized())
                                 .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
                             
                             Spacer()
@@ -181,7 +181,7 @@ struct EventDetailView: View {
             NavigationLink(destination: SponsorsView(eventId: viewModel.event.id)) {
                 HStack {
                     Spacer()
-                    Text(LocalizedStringKey("Sponsors"))
+                    Text("Sponsors".localized())
                         .customFont(name: Configuration.shabnam, style: .body, weight: .bold)
                     Spacer()
                 }

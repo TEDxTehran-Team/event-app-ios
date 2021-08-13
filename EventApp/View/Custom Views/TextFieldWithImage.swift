@@ -29,11 +29,11 @@ struct TextFieldWithImage: View {
                 
             }
             if isFieldSecure {
-                SecureField(LocalizedStringKey(placeholder), text: $text)
+                SecureField(placeholder.localized(), text: $text)
                     .accessibility(identifier: secureTextFieldIdentifier)
                 
             } else {
-                TextField(LocalizedStringKey(placeholder), text: $text)
+                TextField(placeholder.localized(), text: $text)
                     .accessibility(identifier: textFieldIdentifier)
                     .keyboardType(keyboardType)
             }

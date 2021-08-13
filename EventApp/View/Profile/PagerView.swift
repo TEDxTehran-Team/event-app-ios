@@ -35,11 +35,11 @@ struct ScrollableTabView : View {
     let screenWidth = UIScreen.main.bounds.width
     @Binding var activeIdx: Int
     @State private var widthList: [CGFloat]
-    private let dataSet: [LocalizedStringKey]
+    private let dataSet: [String]
     @State var selectedItem: String = "Tweets"
     @State private var w: [CGFloat] = [0, 0, 0, 0]
 
-    init(activeIdx: Binding<Int>, dataSet: [LocalizedStringKey]) {
+    init(activeIdx: Binding<Int>, dataSet: [String]) {
         self._activeIdx = activeIdx
         self.dataSet = dataSet
         _widthList = State.init(initialValue: [CGFloat](repeating: UIScreen.main.bounds.width/CGFloat(dataSet.count), count: dataSet.count))
@@ -49,9 +49,9 @@ struct ScrollableTabView : View {
         return VStack(alignment: .underlineLeading) {
             HStack {
                 Spacer()
-                Text(dataSet[0]).modifier(MagicStuff(activeIdx: $activeIdx, widths: $w, idx: 0))
+                Text(dataSet[0].localized()).modifier(MagicStuff(activeIdx: $activeIdx, widths: $w, idx: 0))
                 Spacer()
-                Text(dataSet[1]).modifier(MagicStuff(activeIdx: $activeIdx, widths: $w, idx: 1))
+                Text(dataSet[1].localized()).modifier(MagicStuff(activeIdx: $activeIdx, widths: $w, idx: 1))
                 Spacer()
             }
             .frame(height: 20)

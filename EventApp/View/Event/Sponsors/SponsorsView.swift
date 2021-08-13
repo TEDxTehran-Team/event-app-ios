@@ -66,7 +66,7 @@ struct SponsorsView: View {
             self.viewModel.setup(withEventId: eventId)
         }
         .navigationBarColor(UIColor(named: "primaryRed"))
-        .navigationBarTitle(Text(LocalizedStringKey("Sponsors")), displayMode: .inline)
+        .navigationBarTitle(Text("Sponsors".localized()), displayMode: .inline)
     }
 }
 

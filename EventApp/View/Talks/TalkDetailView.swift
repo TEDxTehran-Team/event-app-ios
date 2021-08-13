@@ -97,7 +97,7 @@ struct TalkDetailView: View {
             VStack(alignment: TalkDetailView.alignment,spacing: 10) {
                 HStack {
                     
-                    Text(LocalizedStringKey("Description"))
+                    Text("Description".localized())
                         .foregroundColor(.secondary)
                         .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom)
                                     .foregroundColor(Colors.primaryRed), alignment: .bottom)
@@ -117,7 +117,7 @@ struct TalkDetailView: View {
             
             VStack(spacing: 10) {
                 HStack {
-                    Text(LocalizedStringKey("Related Talks"))
+                    Text("Related Talks".localized())
                         .foregroundColor(.secondary)
                         .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom)
                                     .foregroundColor(Colors.primaryRed), alignment: .bottom)

@@ -21,7 +21,7 @@ struct ErrorView: View {
         .customFont(name: Configuration.shabnam, style: .headline, weight: .medium)
       HStack {
         Image(systemName: "arrow.clockwise")
-        Text(LocalizedStringKey("Tap to retry"))
+        Text("Tap to retry".localized())
       }
       .customFont(name: Configuration.shabnam, style: .subheadline, weight: .medium)
       .foregroundColor(Colors.primaryDarkGray)

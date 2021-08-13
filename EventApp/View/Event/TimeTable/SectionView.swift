@@ -26,7 +26,7 @@ struct SectionView: View {
             Text(DateHelper.ommitSeconds(fromTime: section.startTime))
                 .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
             
-            Text(LocalizedStringKey("to"))
+            Text("to".localized())
                 .customFont(name: Configuration.shabnam, style: .footnote)
             
             Text(DateHelper.ommitSeconds(fromTime: section.endTime))

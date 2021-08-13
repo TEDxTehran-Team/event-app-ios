@@ -70,7 +70,7 @@ struct AboutView: View {
                     }
             }
         }
-        .navigationBarTitle(Text(LocalizedStringKey("About")), displayMode: .inline)
+        .navigationBarTitle(Text("About".localized()), displayMode: .inline)
         .onAppear(perform: {
             if self.aboutViewModel.statusView == .none {
                 self.aboutViewModel.setup()

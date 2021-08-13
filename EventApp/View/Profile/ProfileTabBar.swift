@@ -34,7 +34,7 @@ struct ProfileTabBar: View {
 extension ProfileTabBar {
     private var tabBarView: some View {
         VStack{
-            ScrollableTabView(activeIdx: $selectedTab, dataSet: [LocalizedStringKey("Chats"), LocalizedStringKey("YourProfile")])
+            ScrollableTabView(activeIdx: $selectedTab, dataSet: ["Chats", "YourProfile"])
                 .frame(width: UIScreen.main.bounds.width, height: 40)
             
             //            if self.ViewModel.statusView == .loading {

@@ -36,7 +36,7 @@ struct ProfileView: View {
                 jobView
                 fieldView
                 HStack {
-                    Text(LocalizedStringKey("My Story"))
+                    Text("My Story".localized())
                         .customFont(name: Configuration.shabnamBold, style: .headline, weight: .bold)
                     Spacer()
                 }
@@ -103,7 +103,7 @@ extension ProfileView {
     }
     
     private var updateProfileButton: some View {
-        Text(LocalizedStringKey("Update Profile"))
+        Text("Update Profile".localized())
             .customFont(name: Configuration.shabnam, style: .headline, weight: .regular)
             .frame(width: 290, height: 62, alignment: .center)
             .foregroundColor(Color.white)
@@ -112,7 +112,7 @@ extension ProfileView {
     }
     
     private var chatButton: some View {
-        Text(LocalizedStringKey("").stringKey + " " + viewModel.repositories.firstName)
+        Text("".localized() + " " + viewModel.repositories.firstName)
             .customFont(name: Configuration.shabnam, style: .headline, weight: .regular)
             .frame(width: 290, height: 62, alignment: .center)
             .foregroundColor(Color.white)
@@ -142,7 +142,7 @@ extension ProfileView {
     
     private var jobView: some View {
         HStack {
-            Text(LocalizedStringKey("Job Title").stringKey + ": ")
+            Text("Job Title".localized() + ": ")
                 .customFont(name: Configuration.shabnamBold, style: .headline, weight: .bold)
             
             Text(viewModel.repositories.jobTitle)
@@ -155,7 +155,7 @@ extension ProfileView {
     
     private var fieldView: some View {
         HStack {
-            Text(LocalizedStringKey("Field").stringKey + ": ")
+            Text("Field".localized() + ": ")
                 .customFont(name: Configuration.shabnamBold, style: .headline, weight: .bold)
             
             Text(viewModel.repositories.field)

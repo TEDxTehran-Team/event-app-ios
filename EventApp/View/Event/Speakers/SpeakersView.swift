@@ -59,7 +59,7 @@ struct SpeakersView: View {
                     }
                 }
             }
-            .navigationBarTitle(Text(LocalizedStringKey("Speakers")), displayMode: .inline)
+            .navigationBarTitle(Text("Speakers".localized()), displayMode: .inline)
         }
         
     }

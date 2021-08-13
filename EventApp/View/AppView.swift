@@ -39,21 +39,21 @@ struct AppView: View {
                 VStack {
                     HomeTabUIView(eventViewModel: self.eventViewModel,dayViewModel: self.dayViewModel, speakerViewModel: self.speakerViewModel)
                 }
-                .navigationBarTitle(Text(LocalizedStringKey("Home")),displayMode: .inline)
+                .navigationBarTitle(Text("Home".localized()),displayMode: .inline)
                 
             }
             .navigationViewStyle(StackNavigationViewStyle())
             .tag(AppTabViewItem.home)
             .tabItem {
                 Image(systemName: "house")
-                Text(LocalizedStringKey("Home"))
+                Text("Home".localized())
             }
             
             TalksView(talkViewModel: self.talkViewModel, featuredTalkViewModel: self.featuredTalkViewModel)
                 .tag(AppTabViewItem.talks)
                 .tabItem {
                     Image(systemName: "music.mic")
-                    Text(LocalizedStringKey("Talks"))
+                    Text("Talks".localized())
                 }
             
             
@@ -63,14 +63,14 @@ struct AppView: View {
             .tag(AppTabViewItem.gallery)
             .tabItem {
                 Image(systemName: "photo.on.rectangle")
-                Text(LocalizedStringKey("Gallery"))
+                Text("Gallery".localized())
             }
             
             NewsView(viewModel: self.newsViewModel)
                 .tag(AppTabViewItem.news)
                 .tabItem {
                     Image(systemName: "newspaper")
-                    Text(LocalizedStringKey("News"))
+                    Text("News".localized())
                     
                 }
             
@@ -78,7 +78,7 @@ struct AppView: View {
                 .tag(AppTabViewItem.profile)
                 .tabItem {
                     Image(systemName: "person")
-                    Text(LocalizedStringKey("Profile"))
+                    Text("Profile".localized())
                 }
             
             

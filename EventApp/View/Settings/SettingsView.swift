@@ -24,9 +24,9 @@ struct SettingsView: View {
     var body: some View {
         
         Form {
-            Section(header: Text(LocalizedStringKey("Appearance")).customFont(name: Configuration.shabnam, style: .footnote)) {
+            Section(header: Text("Appearance".localized()).customFont(name: Configuration.shabnam, style: .footnote)) {
                 
-                Picker(selection: $iconSettings.currentIndex, label: Text(LocalizedStringKey("Icons"))) {
+                Picker(selection: $iconSettings.currentIndex, label: Text("Icons".localized())) {
                     ForEach(0..<iconSettings.iconNames.count) { i in
                         HStack {
                             Text(self.iconSettings.iconNames[i] ?? "AppIcon")
@@ -61,15 +61,15 @@ struct SettingsView: View {
                 
             }
             
-            Section(header: Text(LocalizedStringKey("More")).customFont(name: Configuration.shabnam, style: .footnote), footer: Text(LocalizedStringKey("We're tracking potential bugs with Sentry and will fix all of them ASAP.")).customFont(name: Configuration.shabnam, style: .footnote)) {
+            Section(header: Text("More".localized()).customFont(name: Configuration.shabnam, style: .footnote), footer: Text("We're tracking potential bugs with Sentry and will fix all of them ASAP.".localized()).customFont(name: Configuration.shabnam, style: .footnote)) {
                 Button(action: {
                     Network.shared.apollo.clearCache() { result in
                         switch result {
                         case .success():
-                            self.alertTitle = "Done"
-                            self.alertMessage = "Cache cleared successfully"
+                            self.alertTitle = "Done".localized()
+                            self.alertMessage = "Cache cleared successfully".localized()
                         case .failure(let error):
-                            self.alertTitle = "Error occurred"
+                            self.alertTitle = "Error occurred".localized()
                             self.alertMessage = error.localizedDescription
                         }
                         self.showingAlert = true
@@ -77,29 +77,28 @@ struct SettingsView: View {
                 }) {
                     HStack(spacing: 10) {
                         Image(systemName: "paintbrush")
-                        Text(LocalizedStringKey("Clear Cache"))
+                        Text("Clear Cache".localized())
                     }
                 }
                 
                 Button(action: {
-                    url = Configuration.acknowledgmentsUrl
-                    titleLocalizedKey = "Acknowledgments"
-                    showingSheet = true
+                    if let url = URL(string: Configuration.acknowledgmentsUrl) {
+                        if UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                    }
                 }) {
                     HStack(spacing: 10) {
                         Image(systemName: "heart")
-                        Text(LocalizedStringKey("Acknowledgments"))
+                        Text("Acknowledgments".localized())
                     }
                 }
             }
             
         }
-        .navigationBarTitle(Text(LocalizedStringKey("Settings")), displayMode: .inline)
+        .navigationBarTitle(Text("Settings".localized()), displayMode: .inline)
         .alert(isPresented: $showingAlert) {
-            Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text(LocalizedStringKey("OK"))))
-        }
-        .sheet(isPresented: $showingSheet) {
-            WebViewSheet(url: url, titleLocalizedKey: titleLocalizedKey)
+            Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK".localized())))
         }
     }
 }

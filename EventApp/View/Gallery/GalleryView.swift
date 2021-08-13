@@ -44,7 +44,7 @@ struct GalleryView: View {
                         }
                 }
             }
-            .navigationBarTitle(Text(LocalizedStringKey("Gallery")), displayMode: .inline)
+            .navigationBarTitle(Text("Gallery".localized()), displayMode: .inline)
         }
         .navigationViewStyle(StackNavigationViewStyle())
         
