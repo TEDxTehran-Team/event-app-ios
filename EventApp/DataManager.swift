@@ -21,7 +21,7 @@ class DataManager {
             return UserDefaults.standard.string(forKey: UserDefaultKeys.refreshToken.rawValue) ?? ""
         }
         set (newValue) {
-            UserDefaults.standard.string(forKey: UserDefaultKeys.refreshToken.rawValue)
+            UserDefaults.standard.setValue(newValue, forKey: UserDefaultKeys.refreshToken.rawValue)
         }
     }
     
@@ -30,7 +30,7 @@ class DataManager {
             return UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue) ?? ""
         }
         set (newValue) {
-            UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue)
+            UserDefaults.standard.setValue(newValue, forKey: UserDefaultKeys.token.rawValue)
         }
     }
     
@@ -39,7 +39,7 @@ class DataManager {
             return UserDefaults.standard.string(forKey: UserDefaultKeys.phoneNumber.rawValue) ?? ""
         }
         set (newValue) {
-            UserDefaults.standard.string(forKey: UserDefaultKeys.phoneNumber.rawValue)
+            UserDefaults.standard.setValue(newValue, forKey: UserDefaultKeys.phoneNumber.rawValue)
         }
     }
 }

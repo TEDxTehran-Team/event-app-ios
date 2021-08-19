@@ -11,7 +11,6 @@ import SwiftUI
 class PhoneNumberViewModel: ObservableObject {
     
     var repo = AuthenticateRepository()
-    @Published var authentication: Authenticate!
     
     @Published var errorMessage: String = ""
     @Published var statusView: StatusView = .none
@@ -22,7 +21,7 @@ class PhoneNumberViewModel: ObservableObject {
         
     }
     
-    func setup(completion: @escaping (String) -> Void) {
+    func sendCode(completion: @escaping (String) -> Void) {
         self.statusView = .loading
         repo.getOTP(phoneNumber: phoneNumber) { repository, exception  in
             
@@ -38,8 +37,6 @@ class PhoneNumberViewModel: ObservableObject {
                 return
             }
             self.statusView = .complete
-            self.authentication = repository
-            DataManager.shared.phoneNumber = self.phoneNumber
             completion(repository.token!)
         }
     }

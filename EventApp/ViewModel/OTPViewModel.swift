@@ -10,13 +10,12 @@ import SwiftUI
 class OTPViewModel: ObservableObject {
     
     var repo = AuthenticateRepository()
-    @Published var authentication: VerifyAuthentication!
-    
+
     @Published var errorMessage: String = ""
     @Published var statusView: StatusView = .none
     @Published var code: String = ""
     
-    func setup(token: String, completion: @escaping (String) -> Void) {
+    func login(token: String, completion: @escaping (String) -> Void) {
         self.statusView = .loading
         repo.sendOTP(token: token, code: code) { repository, exception  in
             
@@ -31,10 +30,29 @@ class OTPViewModel: ObservableObject {
                 completion("")
                 return
             }
-            self.statusView = .complete
-            self.authentication = repository
             DataManager.shared.refreshToken = repository.refreshToken!
             DataManager.shared.token = repository.token!
+            completion(repository.token!)
+            self.statusView = .complete
+        }
+    }
+    
+    func sendCode(phoneNumber: String, completion: @escaping (String) -> Void) {
+        self.statusView = .loading
+        repo.getOTP(phoneNumber: phoneNumber) { repository, exception  in
+            
+            if let error = exception {
+                self.statusView = .error
+                self.errorMessage = error.message
+                completion("")
+                return
+            }
+            
+            guard let repository = repository else {
+                completion("")
+                return
+            }
+            self.statusView = .complete
             completion(repository.token!)
         }
     }

@@ -22,19 +22,34 @@ struct ProfileView: View {
     }
     
     var body: some View {
+        GeometryReader { geo in
         //        if self.viewModel.statusView == .complete {
         ScrollView {
-            VStack {
-                topView
-                    .scaledToFit()
+            VStack(alignment: .leading, spacing: 20) {
+                    Color.gray
+                        .frame(width: geo.size.width, height: 200)
+                    
+                    Image("person")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: geo.size.width / 2, height: geo.size.width / 2, alignment: .center)
+                        .background(Color.blue)
+                        .cornerRadius(7)
+                        .padding(.top, -1 * (geo.size.width / 4))
+                
+                
                 Text(viewModel.repositories.firstName + " " +  viewModel.repositories.lastName )
                     .customFont(name: Configuration.shabnamBold, style: .title2, weight: .bold)
                     .padding(.bottom, 20)
+                
                 interstsList
                     .padding(.vertical, 5)
                     .padding([.leading, .trailing], leadingTrailingPadding)
+                
                 jobView
+                
                 fieldView
+                
                 HStack {
                     Text("My Story".localized())
                         .customFont(name: Configuration.shabnamBold, style: .headline, weight: .bold)
@@ -42,10 +57,12 @@ struct ProfileView: View {
                 }
                 .padding(.top, 5)
                 .padding([.leading, .trailing], 40)
+                
                 Text(viewModel.repositories.story)
                     .customFont(name: Configuration.shabnam, style: .subheadline, weight: .regular)
                     .padding(.top, 5)
                     .padding([.leading, .trailing], leadingTrailingPadding)
+                
                 HStack(alignment: .center) {
                     phoneNumberView
                         .padding(.trailing, 20)
@@ -63,9 +80,9 @@ struct ProfileView: View {
                         chatButton
                     }
                 })
-                Spacer()
             }
-            .frame(width: UIScreen.main.bounds.width)
+            .frame(width: geo.size.width)
+            .padding()
         }
         //        }
         
@@ -80,28 +97,11 @@ struct ProfileView: View {
         //                    self.viewModel.setup(withUserId: userId)
         //                }
         //        }
+        }
     }
 }
 
 extension ProfileView {
-    
-    private var topView: some View {
-        ZStack {
-            Image("person")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.width / 2, alignment: .top)
-                .background(Color.blue)
-                .cornerRadius(7)
-                .padding(.top, 10)
-            
-            Image("Profile Background Image")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: UIScreen.main.bounds.width, height: 300, alignment: .top)
-        }
-    }
-    
     private var updateProfileButton: some View {
         Text("Update Profile".localized())
             .customFont(name: Configuration.shabnam, style: .headline, weight: .regular)
