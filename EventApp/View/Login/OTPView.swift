@@ -11,9 +11,8 @@ import SwiftUI
 struct OTPView: View {
     
     @ObservedObject var viewModel = OTPViewModel()
-    @Binding var loginToken: String
-    @Binding var token: String
-
+    @Binding var loginSetting: LoginSetting
+    
     var body: some View {
         VStack(alignment: .center) {
             Spacer()
@@ -39,11 +38,11 @@ struct OTPView: View {
             chatButton
                 .padding(.bottom, 40)
                 .onTapGesture(count: 1, perform: {
-                    viewModel.setup(token: self.loginToken) { token in
+                    viewModel.setup(token: self.loginSetting.loginToken) { token in
                         if token.isEmpty {
-                            loginToken = ""
+                            loginSetting.loginToken = ""
                         } else {
-                            self.token = token
+                            loginSetting.token = token
                         }
                     }
                 })
@@ -78,8 +77,8 @@ extension OTPView {
     }
 }
 
-//struct OTPView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        OTPView()
-//    }
-//}
+struct OTPView_Previews: PreviewProvider {
+    static var previews: some View {
+        OTPView(loginSetting: .constant(LoginSetting()))
+    }
+}

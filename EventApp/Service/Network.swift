@@ -8,6 +8,8 @@
 
 import Foundation
 import Apollo
+//import { onError } from "apollo-link-error";
+
 
 class Network {
     static let shared = Network()
@@ -38,5 +40,10 @@ class Network {
         )
     }()
     
+    func refreshToken() {
+        
+    }
     
 }
+
+//HTTPNetworkTransportPreflightDelegate

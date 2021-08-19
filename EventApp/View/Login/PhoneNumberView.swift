@@ -11,7 +11,7 @@ import SwiftUI
 struct PhoneNumberView: View {
     
     @ObservedObject var viewModel = PhoneNumberViewModel()
-    @Binding var loginToken: String
+    @Binding var loginSetting: LoginSetting
     
     var body: some View {
         GeometryReader { geo in
@@ -45,7 +45,7 @@ struct PhoneNumberView: View {
                     .padding(.bottom, 40)
                     .onTapGesture(count: 1, perform: {
                         viewModel.setup() { token in
-                            self.loginToken = token
+                            self.loginSetting.loginToken = token
                         }
                     })
             }
@@ -57,7 +57,7 @@ struct PhoneNumberView: View {
 struct PhoneNumberView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            PhoneNumberView(loginToken: .constant(""))
+            PhoneNumberView(loginSetting: .constant(LoginSetting()))
         }
     }
 }

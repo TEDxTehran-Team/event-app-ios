@@ -9,8 +9,12 @@
 import SwiftUI
 
 class UserSettings: ObservableObject {
-    @Published var loginToken: String = ""
-    @Published var token: String = DataManager.shared.token
+    @Published var loginSetting = LoginSetting()
+}
+
+struct LoginSetting {
+    var loginToken: String = ""
+    var token: String = DataManager.shared.token
 }
 
 struct ProfileTabBar: View {
@@ -19,11 +23,11 @@ struct ProfileTabBar: View {
     @ObservedObject var userSettings = UserSettings()
 
     var body: some View {
-        if userSettings.token.isEmpty {
-            if userSettings.loginToken.isEmpty {
-                PhoneNumberView(loginToken: $userSettings.loginToken)
+        if userSettings.loginSetting.token.isEmpty {
+            if userSettings.loginSetting.loginToken.isEmpty {
+                PhoneNumberView(loginSetting: $userSettings.loginSetting)
             } else {
-                OTPView(loginToken: $userSettings.loginToken, token: $userSettings.token)
+                OTPView(loginSetting: $userSettings.loginSetting)
             }
         } else {
             tabBarView
