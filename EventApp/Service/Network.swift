@@ -30,7 +30,7 @@ class Network {
         let configuration = URLSessionConfiguration.default
         
         configuration.httpAdditionalHeaders = ["Application-Token": Configuration.token]
-        configuration.httpAdditionalHeaders = ["Authorization": DataManager.shared.token]
+//        configuration.httpAdditionalHeaders = ["Authorization": DataManager.shared.token]
 
         return ApolloClient(
             networkTransport: HTTPNetworkTransport(url: url, client: URLSessionClient(sessionConfiguration: configuration, callbackQueue: nil)),

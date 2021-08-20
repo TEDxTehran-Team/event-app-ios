@@ -30,11 +30,11 @@ struct SpeakersView: View {
                             HStack {
                                 VStack() {
                                     Spacer()
-                                    Text(item.title)
+                                    LocalizedText(item.title)
                                         .customFont(name: Configuration.shabnamBold, style: .callout, weight: .bold)
                                         .lineLimit(2)
                                     Spacer()
-                                    Text(item.description)
+                                    LocalizedText(item.description)
                                         .multilineTextAlignment(.center)
                                         .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
                                         .lineLimit(2)

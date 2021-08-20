@@ -27,11 +27,11 @@ struct TalkCell: View {
                 .cornerRadius(10)
             
             VStack(alignment: .center) {
-                Text(talk.title)
+                LocalizedText(talk.title)
                     .customFont(name: Configuration.shabnam, style: .caption1, weight: .regular)
                     .lineLimit(2)
                 
-                Text(talk.speakers.map { $0.title }.joined(separator: ", "))
+                LocalizedText(talk.speakers.map { $0.title }.joined(separator: ", "))
                     .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
                     .lineLimit(1)
                     .foregroundColor(.secondary)

@@ -26,7 +26,7 @@ struct TalksView: View {
                                 VStack {
                                     HStack {
                                         
-                                        Text(talkWithEvent.event.title ?? "")
+                                        LocalizedText(talkWithEvent.event.title ?? "")
                                             .foregroundColor(.secondary)
                                             .padding(.horizontal)
                                             .customFont(name: Configuration.shabnam, style: .headline, weight: .regular)

@@ -24,7 +24,7 @@ struct OTPView: View {
                     .foregroundColor(Colors.darkTextColor)
                 
                 
-                Text("validation_message %@".localize(with: DataManager.shared.phoneNumber))
+                LocalizedText("validation_message %@".localize(with: DataManager.shared.phoneNumber))
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 

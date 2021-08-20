@@ -58,7 +58,7 @@ struct ProfileView: View {
                 .padding(.top, 5)
                 .padding([.leading, .trailing], 40)
                 
-                Text(viewModel.biography)
+                LocalizedText(viewModel.biography)
                     .customFont(name: Configuration.shabnam, style: .subheadline, weight: .regular)
                     .padding(.top, 5)
                     .padding([.leading, .trailing], leadingTrailingPadding)
@@ -134,7 +134,7 @@ extension ProfileView {
             Image(systemName: "phone")
                 .foregroundColor(.black)
             
-            Text(viewModel.phoneNumber)
+            LocalizedText(viewModel.phoneNumber)
                 .customFont(name: Configuration.shabnam, style: .subheadline, weight: .regular)
             
         }
@@ -145,7 +145,7 @@ extension ProfileView {
             Text("Job Title".localized() + ": ")
                 .customFont(name: Configuration.shabnamBold, style: .headline, weight: .bold)
             
-            Text(viewModel.jobTitle)
+            LocalizedText(viewModel.jobTitle)
                 .customFont(name: Configuration.shabnamBold, style: .headline, weight: .regular)
             Spacer()
         }
@@ -158,7 +158,7 @@ extension ProfileView {
             Text("Field".localized() + ": ")
                 .customFont(name: Configuration.shabnamBold, style: .headline, weight: .bold)
             
-            Text(viewModel.educationField)
+            LocalizedText(viewModel.educationField)
                 .customFont(name: Configuration.shabnamBold, style: .headline, weight: .regular)
             Spacer()
         }
