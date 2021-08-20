@@ -9,14 +9,13 @@
 import Foundation
 
 class ProfilleRepository {
-    func get(withUserId userId: String, completion: @escaping (Profile?, XException?) -> ()) {
-        #warning("Complete later when API is available")
-        Network.shared.apollo.fetch(query: GetEventSponsorsQuery(eventId: Int(userId) ?? 1),cachePolicy: .fetchIgnoringCacheCompletely) { result in
+    func get(completion: @escaping (ProfileData?, XException?) -> ()) {
+        Network.shared.fetch(query: GetUserProfileQuery()) { result in
             switch result {
             case .failure(let error):
                 completion(nil, XException(message: error.localizedDescription, code: 0))
             case .success(let data):
-                let model = data.data?.decodeModel(type: Profile.self)
+                let model = data.data?.decodeModel(type: ProfileData.self)
                 completion(model, nil)
             }
         }

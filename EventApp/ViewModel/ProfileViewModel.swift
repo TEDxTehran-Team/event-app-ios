@@ -11,14 +11,50 @@ import Foundation
 class ProfileViewModel: ObservableObject {
     
     var repo = ProfilleRepository()
-    @Published var repositories = Profile.example
+    @Published var repositories: ProfileData!
     
     @Published var errorMessage: String = ""
     @Published var statusView: StatusView = .none
     
-    func setup(withUserId userId: String) {
+    var firstName: String {
+        return repositories.firstName ?? ""
+    }
+    
+    var lastName: String {
+        return repositories.firstName ?? ""
+    }
+    
+    var biography: String {
+        return repositories.biography ?? ""
+    }
+    
+    var email: String {
+        return repositories.email ?? ""
+    }
+
+    var phoneNumber: String {
+        return repositories.phone ?? ""
+    }
+    
+    var jobTitle: String {
+        return repositories.jobTitle ?? ""
+    }
+    
+    var educationField: String {
+        return repositories.educationField ?? ""
+    }
+    
+    var interestList: [InterestType] {
+        return repositories.interests ?? []
+    }
+    
+    init() {
+        setup()
+    }
+    
+    func setup() {
         self.statusView = .loading
-        repo.get(withUserId: userId) { repositories, exception  in
+        repo.get() { repositories, exception  in
             
             if let error = exception {
                 self.statusView = .error

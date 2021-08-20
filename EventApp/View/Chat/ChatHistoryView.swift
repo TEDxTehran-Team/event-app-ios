@@ -11,7 +11,7 @@ import struct Kingfisher.KFImage
 
 struct ChatHistoryView: View {
     
-    let profiles = [Profile.example, Profile.example, Profile.example, Profile.example, Profile.example, Profile.example, Profile.example]
+    let profiles = [ProfileData.example, ProfileData.example, ProfileData.example, ProfileData.example, ProfileData.example, ProfileData.example, ProfileData.example]
     let chatHitory = ChatHistory.exampleList
     
     var body: some View {
@@ -81,7 +81,7 @@ struct ChatHistoryChatCell: View {
 
 struct ChatHistoryProfileHorizontalList: View {
     let height =  10 + UIScreen.main.bounds.width / 4
-    var profiles: [Profile]
+    var profiles: [ProfileData]
     var body: some View {
         GeometryReader { geometry in
             ScrollView(.horizontal, showsIndicators: false) {
@@ -90,7 +90,7 @@ struct ChatHistoryProfileHorizontalList: View {
                         ChatHistoryCell(profile: profile)
                             .padding(.horizontal, 5)
                     }
-                    ChatHistoryCell(profile: Profile(interests: [Interest(interest: "")], firstName: "+", lastName: "", jobTitle: "", field: "", email: "", phoneNumber: "", story: "", id: "0", image: ""))
+                    ChatHistoryCell(profile: ProfileData.example)
                 }
                 .padding(.horizontal)
             }
@@ -103,11 +103,11 @@ struct ChatHistoryProfileHorizontalList: View {
 }
 
 struct ChatHistoryCell: View {
-    var profile: Profile
+    var profile: ProfileData
     let width = UIScreen.main.bounds.width / 6
     var body: some View {
         VStack {
-            KFImage(URL(string: profile.image))
+            KFImage(URL(string: profile.image ?? ""))
                 .placeholder {
                     ImagePlaceholder()
                 }
@@ -115,9 +115,9 @@ struct ChatHistoryCell: View {
                 .scaledToFill()
                 .frame(width: width, height: width)
                 .clipShape(Circle())
-            Text(profile.firstName + " " + profile.lastName)
+            Text((profile.firstName ?? "") + " " + (profile.lastName ?? ""))
                 .font(.body)
-            Text(profile.jobTitle)
+            Text(profile.jobTitle ?? "")
                 .font(.footnote)
                 .foregroundColor(.gray)
         }

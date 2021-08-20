@@ -38,7 +38,7 @@ struct ProfileView: View {
                         .padding(.top, -1 * (geo.size.width / 4))
                 
                 
-                Text(viewModel.repositories.firstName + " " +  viewModel.repositories.lastName )
+                Text(viewModel.firstName + " " + viewModel.lastName)
                     .customFont(name: Configuration.shabnamBold, style: .title2, weight: .bold)
                     .padding(.bottom, 20)
                 
@@ -58,7 +58,7 @@ struct ProfileView: View {
                 .padding(.top, 5)
                 .padding([.leading, .trailing], 40)
                 
-                Text(viewModel.repositories.story)
+                Text(viewModel.biography)
                     .customFont(name: Configuration.shabnam, style: .subheadline, weight: .regular)
                     .padding(.top, 5)
                     .padding([.leading, .trailing], leadingTrailingPadding)
@@ -112,7 +112,7 @@ extension ProfileView {
     }
     
     private var chatButton: some View {
-        Text("".localized() + " " + viewModel.repositories.firstName)
+        Text("".localized() + " " + viewModel.firstName)
             .customFont(name: Configuration.shabnam, style: .headline, weight: .regular)
             .frame(width: 290, height: 62, alignment: .center)
             .foregroundColor(Color.white)
@@ -124,7 +124,7 @@ extension ProfileView {
         HStack {
             Image(systemName: "envelope")
                 .foregroundColor(.black)
-            Text(viewModel.repositories.email)
+            Text(viewModel.email)
                 .customFont(name: Configuration.shabnam, style: .subheadline, weight: .regular)
         }
     }
@@ -134,7 +134,7 @@ extension ProfileView {
             Image(systemName: "phone")
                 .foregroundColor(.black)
             
-            Text(viewModel.repositories.phoneNumber)
+            Text(viewModel.phoneNumber)
                 .customFont(name: Configuration.shabnam, style: .subheadline, weight: .regular)
             
         }
@@ -145,7 +145,7 @@ extension ProfileView {
             Text("Job Title".localized() + ": ")
                 .customFont(name: Configuration.shabnamBold, style: .headline, weight: .bold)
             
-            Text(viewModel.repositories.jobTitle)
+            Text(viewModel.jobTitle)
                 .customFont(name: Configuration.shabnamBold, style: .headline, weight: .regular)
             Spacer()
         }
@@ -158,7 +158,7 @@ extension ProfileView {
             Text("Field".localized() + ": ")
                 .customFont(name: Configuration.shabnamBold, style: .headline, weight: .bold)
             
-            Text(viewModel.repositories.field)
+            Text(viewModel.educationField)
                 .customFont(name: Configuration.shabnamBold, style: .headline, weight: .regular)
             Spacer()
         }
@@ -172,8 +172,8 @@ extension ProfileView {
             var width = CGFloat.zero
             var height = CGFloat.zero
             return ZStack(alignment: .topLeading) {
-                ForEach(viewModel.repositories.interests.compactMap({$0.interest}), id: \.self) { platform in
-                    item(for: platform)
+                ForEach(viewModel.interestList, id: \.self) { platform in
+                    item(for: platform.name)
                         .padding(4)
                         .alignmentGuide(.leading, computeValue: { d in
                             if (abs(width - d.width) > g.size.width) {
@@ -181,7 +181,7 @@ extension ProfileView {
                                 height -= d.height
                             }
                             let result = width
-                            if platform == viewModel.repositories.interests.last!.interest {
+                            if platform == viewModel.interestList.last! {
                                 width = 0 //last item
                             } else {
                                 width -= d.width
@@ -190,7 +190,7 @@ extension ProfileView {
                         })
                         .alignmentGuide(.top, computeValue: {d in
                             let result = height
-                            if platform == viewModel.repositories.interests.last!.interest {
+                            if platform == viewModel.interestList.last! {
                                 height = 0 // last item
                             }
                             return result
@@ -210,7 +210,7 @@ extension ProfileView {
         }
         
         return VStack {
-            let sectionHeight = CGFloat(viewModel.repositories.interests.compactMap({$0.interest}).joined().count) * 2
+            let sectionHeight = CGFloat(viewModel.repositories.interests?.compactMap({$0.name}).joined().count ?? 0) * 2
             GeometryReader { geometry in
                 generateContent(in: geometry)
             }.frame(height: sectionHeight)
