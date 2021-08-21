@@ -34,7 +34,7 @@ struct SponsorCell: View {
           .cornerRadius(10)
         
         VStack(alignment: .center) {
-        LocalizedText(sponsor.title)
+        LocalizedNumberText(sponsor.title)
             .customFont(name: Configuration.shabnam, style: .headline)
             .lineLimit(2)
         }

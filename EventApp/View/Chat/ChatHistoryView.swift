@@ -52,9 +52,9 @@ struct ChatHistoryChatCell: View {
     var body: some View {
         HStack {
             VStack(alignment: .center) {
-                LocalizedText("\(chat.newMessages)")
+                LocalizedNumberText("\(chat.newMessages)")
                     .font(.body)
-                LocalizedText("\(chat.lastMessage.time)")
+                LocalizedNumberText("\(chat.lastMessage.time)")
                     .font(.footnote)
             }
             .frame(width: height, height: height)
@@ -62,7 +62,7 @@ struct ChatHistoryChatCell: View {
             VStack(alignment: .trailing) {
                 Text(chat.firstName + " " + chat.lastName)
                     .font(.body)
-                LocalizedText(chat.lastMessage.messageText)
+                LocalizedNumberText(chat.lastMessage.messageText)
                     .font(.footnote)
                     .lineLimit(1)
             }

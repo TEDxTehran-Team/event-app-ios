@@ -14,7 +14,7 @@ struct ImageOverlay: View {
     
     var body: some View {
         ZStack {
-            LocalizedText(text)
+            LocalizedNumberText(text)
                 .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
                 .padding(10)
                 .foregroundColor(.white)

@@ -35,7 +35,7 @@ struct AboutView: View {
                                 .scaledToFit()
                                 .cornerRadius(10)
                             
-                        LocalizedText(about.description)
+                        LocalizedNumberText(about.description)
                                 .padding()
                                 .customFont(name: Configuration.shabnam, style: .body)
                                 .multilineTextAlignment(.trailing)

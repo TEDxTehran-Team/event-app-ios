@@ -38,12 +38,7 @@ struct PhoneNumberView: View {
                 
                 Spacer()
                 
-                Text("Get Code".localized())
-                    .customFont(name: Configuration.shabnam, style: .headline, weight: .regular)
-                    .frame(width: geo.size.width - 40, height: 62, alignment: .center)
-                    .foregroundColor(Color.white)
-                    .background(Colors.primaryRed)
-                    .cornerRadius(5)
+                RoundButton("Get Code".localized(), width: geo.size.width - 40, height: 62, alignment: .center)
                     .padding(.bottom, 40)
                     .onTapGesture(count: 1, perform: {
                         viewModel.sendCode() { token in

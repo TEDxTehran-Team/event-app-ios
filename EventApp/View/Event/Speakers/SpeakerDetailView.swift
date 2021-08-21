@@ -26,7 +26,7 @@ struct SpeakerDetailView: View {
                     .scaledToFit()
                     .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity)
                 
-                LocalizedText(self.speaker.description)
+                LocalizedNumberText(self.speaker.description)
                     .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
                     .padding()
             }

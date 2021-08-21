@@ -15,10 +15,10 @@ struct SessionHeaderView: View {
     var body: some View {
         HStack(spacing: 10) {
             
-            LocalizedText(session.title)
+            LocalizedNumberText(session.title)
                 .customFont(name: Configuration.shabnam, style: .subheadline, weight: .regular)
             
-            LocalizedText(DateHelper.ommitSeconds(fromTime: session.startTime))
+            LocalizedNumberText(DateHelper.ommitSeconds(fromTime: session.startTime))
                 .customFont(name: Configuration.shabnam, style: .subheadline, weight: .regular)
                 .foregroundColor(Colors.primaryRed)
                         

@@ -29,7 +29,7 @@ struct SettingsView: View {
                 Picker(selection: $iconSettings.currentIndex, label: Text("Icons".localized())) {
                     ForEach(0..<iconSettings.iconNames.count) { i in
                         HStack {
-                            LocalizedText(self.iconSettings.iconNames[i] ?? "AppIcon")
+                            LocalizedNumberText(self.iconSettings.iconNames[i] ?? "AppIcon")
                             Spacer()
                             Image(uiImage: UIImage(named: self.iconSettings.iconNames[i] ?? "AppIcon") ?? UIImage())
                                 .resizable()

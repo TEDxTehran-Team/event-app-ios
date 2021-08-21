@@ -24,7 +24,7 @@ struct OTPView: View {
                     .foregroundColor(Colors.darkTextColor)
                 
                 
-                LocalizedText("validation_message %@".localize(with: DataManager.shared.phoneNumber))
+                LocalizedNumberText("validation_message %@".localize(with: DataManager.shared.phoneNumber))
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 
@@ -61,12 +61,7 @@ struct OTPView: View {
                 
                 Spacer()
                 
-                Text("Get Code".localized())
-                    .customFont(name: Configuration.shabnam, style: .headline, weight: .regular)
-                    .frame(width: geo.size.width - 40, height: 62, alignment: .center)
-                    .foregroundColor(Color.white)
-                    .background(Colors.primaryRed)
-                    .cornerRadius(5)
+                RoundButton("Register".localized(), width: geo.size.width - 40, height: 62, alignment: .center)
                     .padding(.bottom, 40)
                     .onTapGesture(count: 1, perform: {
                         viewModel.login(token: self.loginSetting.loginToken) { token in

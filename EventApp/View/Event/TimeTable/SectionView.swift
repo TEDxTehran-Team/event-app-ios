@@ -18,18 +18,18 @@ struct SectionView: View {
                 .fill(Day.Session.Section.sectionTypeColor(withType: section.type))
                 .frame(width: 8, height: 8)
             
-            LocalizedText(section.title)
+            LocalizedNumberText(section.title)
                 .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
             
             Spacer()
             
-            LocalizedText(DateHelper.ommitSeconds(fromTime: section.startTime))
+            LocalizedNumberText(DateHelper.ommitSeconds(fromTime: section.startTime))
                 .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
             
             Text("to".localized())
                 .customFont(name: Configuration.shabnam, style: .footnote)
             
-            LocalizedText(DateHelper.ommitSeconds(fromTime: section.endTime))
+            LocalizedNumberText(DateHelper.ommitSeconds(fromTime: section.endTime))
                 .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
         }
         .foregroundColor(.secondary)

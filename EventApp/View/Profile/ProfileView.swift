@@ -58,7 +58,7 @@ struct ProfileView: View {
                 .padding(.top, 5)
                 .padding([.leading, .trailing], 40)
                 
-                LocalizedText(viewModel.biography)
+                LocalizedNumberText(viewModel.biography)
                     .customFont(name: Configuration.shabnam, style: .subheadline, weight: .regular)
                     .padding(.top, 5)
                     .padding([.leading, .trailing], leadingTrailingPadding)
@@ -75,9 +75,9 @@ struct ProfileView: View {
                     
                 }, label: {
                     if isMyProfile {
-                        updateProfileButton
+                        RoundButton("Update Profile".localized(), width: geo.size.width - 40, height: 62, alignment: .center)
                     } else {
-                        chatButton
+                        RoundButton("Chat With".localized() + " " + viewModel.firstName, width: geo.size.width - 40, height: 62, alignment: .center)
                     }
                 })
             }
@@ -102,24 +102,6 @@ struct ProfileView: View {
 }
 
 extension ProfileView {
-    private var updateProfileButton: some View {
-        Text("Update Profile".localized())
-            .customFont(name: Configuration.shabnam, style: .headline, weight: .regular)
-            .frame(width: 290, height: 62, alignment: .center)
-            .foregroundColor(Color.white)
-            .background(Colors.primaryRed)
-            .cornerRadius(5)
-    }
-    
-    private var chatButton: some View {
-        Text("".localized() + " " + viewModel.firstName)
-            .customFont(name: Configuration.shabnam, style: .headline, weight: .regular)
-            .frame(width: 290, height: 62, alignment: .center)
-            .foregroundColor(Color.white)
-            .background(Colors.primaryRed)
-            .cornerRadius(5)
-    }
-    
     private var emailView: some View {
         HStack {
             Image(systemName: "envelope")
@@ -134,7 +116,7 @@ extension ProfileView {
             Image(systemName: "phone")
                 .foregroundColor(.black)
             
-            LocalizedText(viewModel.phoneNumber)
+            LocalizedNumberText(viewModel.phoneNumber)
                 .customFont(name: Configuration.shabnam, style: .subheadline, weight: .regular)
             
         }
@@ -145,7 +127,7 @@ extension ProfileView {
             Text("Job Title".localized() + ": ")
                 .customFont(name: Configuration.shabnamBold, style: .headline, weight: .bold)
             
-            LocalizedText(viewModel.jobTitle)
+            LocalizedNumberText(viewModel.jobTitle)
                 .customFont(name: Configuration.shabnamBold, style: .headline, weight: .regular)
             Spacer()
         }
@@ -158,7 +140,7 @@ extension ProfileView {
             Text("Field".localized() + ": ")
                 .customFont(name: Configuration.shabnamBold, style: .headline, weight: .bold)
             
-            LocalizedText(viewModel.educationField)
+            LocalizedNumberText(viewModel.educationField)
                 .customFont(name: Configuration.shabnamBold, style: .headline, weight: .regular)
             Spacer()
         }

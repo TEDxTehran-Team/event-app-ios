@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct LocalizedText: View {
+struct LocalizedNumberText: View {
     let text: String
 
     init(_ text: String) {
