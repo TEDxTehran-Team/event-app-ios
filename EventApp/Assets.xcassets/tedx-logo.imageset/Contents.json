@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "tedx_logo_dark.pdf",
+      "filename" : "tedxlogo-black.pdf",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "tedx_logo_light.pdf",
+      "filename" : "tedxlogo-white.pdf",
       "idiom" : "universal"
     }
   ],
