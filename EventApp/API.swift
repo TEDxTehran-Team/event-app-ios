@@ -5,7 +5,7 @@ import Apollo
 import Foundation
 
 /// An enumeration.
-public enum SectionType: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+public enum TimelinesSectionTypeChoices: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
   public typealias RawValue = String
   /// Generic
   case generic
@@ -42,7 +42,7 @@ public enum SectionType: RawRepresentable, Equatable, Hashable, CaseIterable, Ap
     }
   }
 
-  public static func == (lhs: SectionType, rhs: SectionType) -> Bool {
+  public static func == (lhs: TimelinesSectionTypeChoices, rhs: TimelinesSectionTypeChoices) -> Bool {
     switch (lhs, rhs) {
       case (.generic, .generic): return true
       case (.talk, .talk): return true
@@ -54,7 +54,7 @@ public enum SectionType: RawRepresentable, Equatable, Hashable, CaseIterable, Ap
     }
   }
 
-  public static var allCases: [SectionType] {
+  public static var allCases: [TimelinesSectionTypeChoices] {
     return [
       .generic,
       .talk,
@@ -62,6 +62,419 @@ public enum SectionType: RawRepresentable, Equatable, Hashable, CaseIterable, Ap
       .activity,
       .entertainment,
     ]
+  }
+}
+
+public final class GetAuthenticateMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation GetAuthenticate($phone: String!) {
+      authenticate(phone: $phone) {
+        __typename
+        success
+        errors
+        token
+      }
+    }
+    """
+
+  public let operationName: String = "GetAuthenticate"
+
+  public var phone: String
+
+  public init(phone: String) {
+    self.phone = phone
+  }
+
+  public var variables: GraphQLMap? {
+    return ["phone": phone]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("authenticate", arguments: ["phone": GraphQLVariable("phone")], type: .object(Authenticate.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(authenticate: Authenticate? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "authenticate": authenticate.flatMap { (value: Authenticate) -> ResultMap in value.resultMap }])
+    }
+
+    /// Start authentication process for the specified phone number.
+    /// 
+    /// Sends account verification sms.
+    public var authenticate: Authenticate? {
+      get {
+        return (resultMap["authenticate"] as? ResultMap).flatMap { Authenticate(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "authenticate")
+      }
+    }
+
+    public struct Authenticate: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Authenticate"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("success", type: .scalar(Bool.self)),
+          GraphQLField("errors", type: .scalar(String.self)),
+          GraphQLField("token", type: .scalar(String.self)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(success: Bool? = nil, errors: String? = nil, token: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Authenticate", "success": success, "errors": errors, "token": token])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var success: Bool? {
+        get {
+          return resultMap["success"] as? Bool
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "success")
+        }
+      }
+
+      public var errors: String? {
+        get {
+          return resultMap["errors"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "errors")
+        }
+      }
+
+      /// Identifies this specific login attempt - pass this token on the verify_authentication mutation
+      public var token: String? {
+        get {
+          return resultMap["token"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "token")
+        }
+      }
+    }
+  }
+}
+
+public final class GetVerifyAuthenticationMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation GetVerifyAuthentication($token: String!, $code: String!) {
+      verifyAuthentication(token: $token, verificationCode: $code) {
+        __typename
+        success
+        errors
+        token
+        refreshToken
+        refreshExpiresIn
+      }
+    }
+    """
+
+  public let operationName: String = "GetVerifyAuthentication"
+
+  public var token: String
+  public var code: String
+
+  public init(token: String, code: String) {
+    self.token = token
+    self.code = code
+  }
+
+  public var variables: GraphQLMap? {
+    return ["token": token, "code": code]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("verifyAuthentication", arguments: ["token": GraphQLVariable("token"), "verificationCode": GraphQLVariable("code")], type: .object(VerifyAuthentication.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(verifyAuthentication: VerifyAuthentication? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "verifyAuthentication": verifyAuthentication.flatMap { (value: VerifyAuthentication) -> ResultMap in value.resultMap }])
+    }
+
+    /// Verify the verification code passed by the user.
+    /// 
+    /// If the code is valid, logs the user in and returns
+    /// token and refresh token and the user's details.
+    public var verifyAuthentication: VerifyAuthentication? {
+      get {
+        return (resultMap["verifyAuthentication"] as? ResultMap).flatMap { VerifyAuthentication(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "verifyAuthentication")
+      }
+    }
+
+    public struct VerifyAuthentication: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["VerifyAuthentication"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("success", type: .scalar(Bool.self)),
+          GraphQLField("errors", type: .scalar(String.self)),
+          GraphQLField("token", type: .scalar(String.self)),
+          GraphQLField("refreshToken", type: .scalar(String.self)),
+          GraphQLField("refreshExpiresIn", type: .scalar(Int.self)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(success: Bool? = nil, errors: String? = nil, token: String? = nil, refreshToken: String? = nil, refreshExpiresIn: Int? = nil) {
+        self.init(unsafeResultMap: ["__typename": "VerifyAuthentication", "success": success, "errors": errors, "token": token, "refreshToken": refreshToken, "refreshExpiresIn": refreshExpiresIn])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var success: Bool? {
+        get {
+          return resultMap["success"] as? Bool
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "success")
+        }
+      }
+
+      public var errors: String? {
+        get {
+          return resultMap["errors"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "errors")
+        }
+      }
+
+      /// OAuth authorization token
+      public var token: String? {
+        get {
+          return resultMap["token"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "token")
+        }
+      }
+
+      /// OAuth refresh token
+      public var refreshToken: String? {
+        get {
+          return resultMap["refreshToken"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "refreshToken")
+        }
+      }
+
+      public var refreshExpiresIn: Int? {
+        get {
+          return resultMap["refreshExpiresIn"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "refreshExpiresIn")
+        }
+      }
+    }
+  }
+}
+
+public final class GetRefreshTokenMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation GetRefreshToken($refreshToken: String!) {
+      refreshToken(refreshToken: $refreshToken) {
+        __typename
+        success
+        errors
+        payload
+        token
+        refreshToken
+        refreshExpiresIn
+      }
+    }
+    """
+
+  public let operationName: String = "GetRefreshToken"
+
+  public var refreshToken: String
+
+  public init(refreshToken: String) {
+    self.refreshToken = refreshToken
+  }
+
+  public var variables: GraphQLMap? {
+    return ["refreshToken": refreshToken]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("refreshToken", arguments: ["refreshToken": GraphQLVariable("refreshToken")], type: .object(RefreshToken.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(refreshToken: RefreshToken? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "refreshToken": refreshToken.flatMap { (value: RefreshToken) -> ResultMap in value.resultMap }])
+    }
+
+    /// Same as `grapgql_jwt` implementation, with standard output.
+    public var refreshToken: RefreshToken? {
+      get {
+        return (resultMap["refreshToken"] as? ResultMap).flatMap { RefreshToken(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "refreshToken")
+      }
+    }
+
+    public struct RefreshToken: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["RefreshToken"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("success", type: .scalar(Bool.self)),
+          GraphQLField("errors", type: .scalar(String.self)),
+          GraphQLField("payload", type: .nonNull(.scalar(String.self))),
+          GraphQLField("token", type: .nonNull(.scalar(String.self))),
+          GraphQLField("refreshToken", type: .nonNull(.scalar(String.self))),
+          GraphQLField("refreshExpiresIn", type: .nonNull(.scalar(Int.self))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(success: Bool? = nil, errors: String? = nil, payload: String, token: String, refreshToken: String, refreshExpiresIn: Int) {
+        self.init(unsafeResultMap: ["__typename": "RefreshToken", "success": success, "errors": errors, "payload": payload, "token": token, "refreshToken": refreshToken, "refreshExpiresIn": refreshExpiresIn])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var success: Bool? {
+        get {
+          return resultMap["success"] as? Bool
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "success")
+        }
+      }
+
+      public var errors: String? {
+        get {
+          return resultMap["errors"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "errors")
+        }
+      }
+
+      public var payload: String {
+        get {
+          return resultMap["payload"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "payload")
+        }
+      }
+
+      public var token: String {
+        get {
+          return resultMap["token"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "token")
+        }
+      }
+
+      public var refreshToken: String {
+        get {
+          return resultMap["refreshToken"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "refreshToken")
+        }
+      }
+
+      public var refreshExpiresIn: Int {
+        get {
+          return resultMap["refreshExpiresIn"]! as! Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "refreshExpiresIn")
+        }
+      }
+    }
   }
 }
 
@@ -104,6 +517,9 @@ public final class GetNewsQuery: GraphQLQuery {
       self.init(unsafeResultMap: ["__typename": "Query", "news": news.flatMap { (value: [News?]) -> [ResultMap?] in value.map { (value: News?) -> ResultMap? in value.flatMap { (value: News) -> ResultMap in value.resultMap } } }])
     }
 
+    /// This query returns the news object of id is provided. If organizer id is provided, it will return the list of news objects for that organizer.
+    /// If organizer id is not provided, It will return the list of news corresponding to the organizer connected to the application token provided
+    /// by the client.
     public var news: [News?]? {
       get {
         return (resultMap["news"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [News?] in value.map { (value: ResultMap?) -> News? in value.flatMap { (value: ResultMap) -> News in News(unsafeResultMap: value) } } }
@@ -224,6 +640,7 @@ public final class GetAlbumsQuery: GraphQLQuery {
       self.init(unsafeResultMap: ["__typename": "Query", "albums": albums.flatMap { (value: [Album?]) -> [ResultMap?] in value.map { (value: Album?) -> ResultMap? in value.flatMap { (value: Album) -> ResultMap in value.resultMap } } }])
     }
 
+    /// Just like the album query. With only difference that if id is not provided, it will return the list of albums for the organizer.
     public var albums: [Album?]? {
       get {
         return (resultMap["albums"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Album?] in value.map { (value: ResultMap?) -> Album? in value.flatMap { (value: ResultMap) -> Album in Album(unsafeResultMap: value) } } }
@@ -342,6 +759,9 @@ public final class GetAlbumPhotosQuery: GraphQLQuery {
       self.init(unsafeResultMap: ["__typename": "Query", "album": album.flatMap { (value: Album) -> ResultMap in value.resultMap }])
     }
 
+    /// Retrieves Album data of the given id. If organizer is provided, it will search among that organizer's
+    /// talks. Otherwise it will search among the talks of the organizer connected to the application token
+    /// sent by the client.
     public var album: Album? {
       get {
         return (resultMap["album"] as? ResultMap).flatMap { Album(unsafeResultMap: $0) }
@@ -486,6 +906,8 @@ public final class GetAboutsQuery: GraphQLQuery {
       self.init(unsafeResultMap: ["__typename": "Query", "organizer": organizer.flatMap { (value: Organizer) -> ResultMap in value.resultMap }])
     }
 
+    /// To get organizer Data. If id is provided, it will return the data corresponding to that organizer.
+    /// Otherwise it will return the organizer connected to the application token sent by the client
     public var organizer: Organizer? {
       get {
         return (resultMap["organizer"] as? ResultMap).flatMap { Organizer(unsafeResultMap: $0) }
@@ -662,6 +1084,8 @@ public final class MainEventInfoQuery: GraphQLQuery {
       self.init(unsafeResultMap: ["__typename": "Query", "organizer": organizer.flatMap { (value: Organizer) -> ResultMap in value.resultMap }])
     }
 
+    /// To get organizer Data. If id is provided, it will return the data corresponding to that organizer.
+    /// Otherwise it will return the organizer connected to the application token sent by the client
     public var organizer: Organizer? {
       get {
         return (resultMap["organizer"] as? ResultMap).flatMap { Organizer(unsafeResultMap: $0) }
@@ -994,6 +1418,8 @@ public final class GetDaysQuery: GraphQLQuery {
       self.init(unsafeResultMap: ["__typename": "Query", "organizer": organizer.flatMap { (value: Organizer) -> ResultMap in value.resultMap }])
     }
 
+    /// To get organizer Data. If id is provided, it will return the data corresponding to that organizer.
+    /// Otherwise it will return the organizer connected to the application token sent by the client
     public var organizer: Organizer? {
       get {
         return (resultMap["organizer"] as? ResultMap).flatMap { Organizer(unsafeResultMap: $0) }
@@ -1197,7 +1623,7 @@ public final class GetDaysQuery: GraphQLQuery {
                 return [
                   GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
                   GraphQLField("title", type: .nonNull(.scalar(String.self))),
-                  GraphQLField("type", type: .nonNull(.scalar(SectionType.self))),
+                  GraphQLField("type", type: .nonNull(.scalar(TimelinesSectionTypeChoices.self))),
                   GraphQLField("startTime", type: .nonNull(.scalar(String.self))),
                   GraphQLField("endTime", type: .nonNull(.scalar(String.self))),
                 ]
@@ -1209,7 +1635,7 @@ public final class GetDaysQuery: GraphQLQuery {
                 self.resultMap = unsafeResultMap
               }
 
-              public init(title: String, type: SectionType, startTime: String, endTime: String) {
+              public init(title: String, type: TimelinesSectionTypeChoices, startTime: String, endTime: String) {
                 self.init(unsafeResultMap: ["__typename": "SectionSchemaType", "title": title, "type": type, "startTime": startTime, "endTime": endTime])
               }
 
@@ -1232,9 +1658,9 @@ public final class GetDaysQuery: GraphQLQuery {
               }
 
               /// shows type of this program section, whether it's a generic section, a talk or performance, an activity, or else.
-              public var type: SectionType {
+              public var type: TimelinesSectionTypeChoices {
                 get {
-                  return resultMap["type"]! as! SectionType
+                  return resultMap["type"]! as! TimelinesSectionTypeChoices
                 }
                 set {
                   resultMap.updateValue(newValue, forKey: "type")
@@ -1321,6 +1747,10 @@ public final class GetTalksQuery: GraphQLQuery {
       self.init(unsafeResultMap: ["__typename": "Query", "talksWithEvent": talksWithEvent.flatMap { (value: [TalksWithEvent?]) -> [ResultMap?] in value.map { (value: TalksWithEvent?) -> ResultMap? in value.flatMap { (value: TalksWithEvent) -> ResultMap in value.resultMap } } }])
     }
 
+    /// Returns a list of events and their talks. To be more exact, each item of the list contains an Event object and a list of Talk objects,
+    /// each Talk object has an extra field called eventId that stores the Id of this talk's event. Again, if organizer is provided,
+    /// it searchs among the talks of that organizer. Otherwise it will search among the talks of the organizer connected to the application token
+    /// sent by the client.
     public var talksWithEvent: [TalksWithEvent?]? {
       get {
         return (resultMap["talksWithEvent"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [TalksWithEvent?] in value.map { (value: ResultMap?) -> TalksWithEvent? in value.flatMap { (value: ResultMap) -> TalksWithEvent in TalksWithEvent(unsafeResultMap: value) } } }
@@ -1360,6 +1790,7 @@ public final class GetTalksQuery: GraphQLQuery {
         }
       }
 
+      /// List of the talks of the same event
       public var talks: [Talk?]? {
         get {
           return (resultMap["talks"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Talk?] in value.map { (value: ResultMap?) -> Talk? in value.flatMap { (value: ResultMap) -> Talk in Talk(unsafeResultMap: value) } } }
@@ -1369,6 +1800,7 @@ public final class GetTalksQuery: GraphQLQuery {
         }
       }
 
+      /// The event that the talks correspond to
       public var event: Event? {
         get {
           return (resultMap["event"] as? ResultMap).flatMap { Event(unsafeResultMap: $0) }
@@ -1625,6 +2057,9 @@ public final class GetFeaturedTalkQuery: GraphQLQuery {
       self.init(unsafeResultMap: ["__typename": "Query", "featuredTalk": featuredTalk.flatMap { (value: FeaturedTalk) -> ResultMap in value.resultMap }])
     }
 
+    /// Returns the featured talk of the organizer. If organizer is provided, it will search among that organizer's
+    /// talks. Otherwise it will search among the talks of the organizer connected to the application token
+    /// sent by the client.
     public var featuredTalk: FeaturedTalk? {
       get {
         return (resultMap["featuredTalk"] as? ResultMap).flatMap { FeaturedTalk(unsafeResultMap: $0) }
@@ -1855,6 +2290,9 @@ public final class GetTalkDetailQuery: GraphQLQuery {
       self.init(unsafeResultMap: ["__typename": "Query", "talk": talk.flatMap { (value: Talk) -> ResultMap in value.resultMap }, "suggestedTalks": suggestedTalks.flatMap { (value: [SuggestedTalk?]) -> [ResultMap?] in value.map { (value: SuggestedTalk?) -> ResultMap? in value.flatMap { (value: SuggestedTalk) -> ResultMap in value.resultMap } } }])
     }
 
+    /// Retrieves Talk data of the given id. If organizer is provided, it will search among that organizer's
+    /// talks. Otherwise it will search among the talks of the organizer connected to the application token
+    /// sent by the client.
     public var talk: Talk? {
       get {
         return (resultMap["talk"] as? ResultMap).flatMap { Talk(unsafeResultMap: $0) }
@@ -1864,6 +2302,9 @@ public final class GetTalkDetailQuery: GraphQLQuery {
       }
     }
 
+    /// Returns the suggested talk of the organizer. If organizer is provided, it will search among that organizer's
+    /// talks. Otherwise it will search among the talks of the organizer connected to the application token
+    /// sent by the client.
     public var suggestedTalks: [SuggestedTalk?]? {
       get {
         return (resultMap["suggestedTalks"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [SuggestedTalk?] in value.map { (value: ResultMap?) -> SuggestedTalk? in value.flatMap { (value: ResultMap) -> SuggestedTalk in SuggestedTalk(unsafeResultMap: value) } } }
@@ -2259,6 +2700,8 @@ public final class GetEventSponsorsQuery: GraphQLQuery {
       self.init(unsafeResultMap: ["__typename": "Query", "sponsorsWithType": sponsorsWithType.flatMap { (value: [SponsorsWithType?]) -> [ResultMap?] in value.map { (value: SponsorsWithType?) -> ResultMap? in value.flatMap { (value: SponsorsWithType) -> ResultMap in value.resultMap } } }])
     }
 
+    /// Returns a list of sponsors and their corresponding types.
+    /// To be more exact, each item of the list contains an SponsorType object and a list of Sponsor objects
     public var sponsorsWithType: [SponsorsWithType?]? {
       get {
         return (resultMap["sponsorsWithType"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [SponsorsWithType?] in value.map { (value: ResultMap?) -> SponsorsWithType? in value.flatMap { (value: ResultMap) -> SponsorsWithType in SponsorsWithType(unsafeResultMap: value) } } }
@@ -2298,6 +2741,7 @@ public final class GetEventSponsorsQuery: GraphQLQuery {
         }
       }
 
+      /// Event sponsors list
       public var sponsors: [Sponsor?]? {
         get {
           return (resultMap["sponsors"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Sponsor?] in value.map { (value: ResultMap?) -> Sponsor? in value.flatMap { (value: ResultMap) -> Sponsor in Sponsor(unsafeResultMap: value) } } }
@@ -2307,6 +2751,7 @@ public final class GetEventSponsorsQuery: GraphQLQuery {
         }
       }
 
+      /// Sponsor Type
       public var type: `Type`? {
         get {
           return (resultMap["type"] as? ResultMap).flatMap { `Type`(unsafeResultMap: $0) }
@@ -2463,6 +2908,8 @@ public final class GetEventSpeakersQuery: GraphQLQuery {
       self.init(unsafeResultMap: ["__typename": "Query", "organizer": organizer.flatMap { (value: Organizer) -> ResultMap in value.resultMap }])
     }
 
+    /// To get organizer Data. If id is provided, it will return the data corresponding to that organizer.
+    /// Otherwise it will return the organizer connected to the application token sent by the client
     public var organizer: Organizer? {
       get {
         return (resultMap["organizer"] as? ResultMap).flatMap { Organizer(unsafeResultMap: $0) }
@@ -2607,6 +3054,290 @@ public final class GetEventSpeakersQuery: GraphQLQuery {
             set {
               resultMap.updateValue(newValue, forKey: "image")
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class GetUserProfileQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query GetUserProfile {
+      me {
+        __typename
+        lastLogin
+        dateJoined
+        isStaff
+        isActive
+        firstName
+        lastName
+        email
+        phone
+        jobTitle
+        educationField
+        biography
+        id
+        interests {
+          __typename
+          id
+          name
+        }
+        pk
+      }
+    }
+    """
+
+  public let operationName: String = "GetUserProfile"
+
+  public init() {
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("me", type: .object(Me.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(me: Me? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "me": me.flatMap { (value: Me) -> ResultMap in value.resultMap }])
+    }
+
+    public var me: Me? {
+      get {
+        return (resultMap["me"] as? ResultMap).flatMap { Me(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "me")
+      }
+    }
+
+    public struct Me: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["UserNode"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("lastLogin", type: .scalar(String.self)),
+          GraphQLField("dateJoined", type: .nonNull(.scalar(String.self))),
+          GraphQLField("isStaff", type: .nonNull(.scalar(Bool.self))),
+          GraphQLField("isActive", type: .nonNull(.scalar(Bool.self))),
+          GraphQLField("firstName", type: .scalar(String.self)),
+          GraphQLField("lastName", type: .scalar(String.self)),
+          GraphQLField("email", type: .scalar(String.self)),
+          GraphQLField("phone", type: .nonNull(.scalar(String.self))),
+          GraphQLField("jobTitle", type: .scalar(String.self)),
+          GraphQLField("educationField", type: .scalar(String.self)),
+          GraphQLField("biography", type: .scalar(String.self)),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("interests", type: .nonNull(.list(.nonNull(.object(Interest.selections))))),
+          GraphQLField("pk", type: .scalar(Int.self)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(lastLogin: String? = nil, dateJoined: String, isStaff: Bool, isActive: Bool, firstName: String? = nil, lastName: String? = nil, email: String? = nil, phone: String, jobTitle: String? = nil, educationField: String? = nil, biography: String? = nil, id: GraphQLID, interests: [Interest], pk: Int? = nil) {
+        self.init(unsafeResultMap: ["__typename": "UserNode", "lastLogin": lastLogin, "dateJoined": dateJoined, "isStaff": isStaff, "isActive": isActive, "firstName": firstName, "lastName": lastName, "email": email, "phone": phone, "jobTitle": jobTitle, "educationField": educationField, "biography": biography, "id": id, "interests": interests.map { (value: Interest) -> ResultMap in value.resultMap }, "pk": pk])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var lastLogin: String? {
+        get {
+          return resultMap["lastLogin"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "lastLogin")
+        }
+      }
+
+      public var dateJoined: String {
+        get {
+          return resultMap["dateJoined"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "dateJoined")
+        }
+      }
+
+      /// Designates whether the user can log into this admin site.
+      public var isStaff: Bool {
+        get {
+          return resultMap["isStaff"]! as! Bool
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "isStaff")
+        }
+      }
+
+      /// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+      public var isActive: Bool {
+        get {
+          return resultMap["isActive"]! as! Bool
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "isActive")
+        }
+      }
+
+      public var firstName: String? {
+        get {
+          return resultMap["firstName"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "firstName")
+        }
+      }
+
+      public var lastName: String? {
+        get {
+          return resultMap["lastName"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "lastName")
+        }
+      }
+
+      public var email: String? {
+        get {
+          return resultMap["email"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "email")
+        }
+      }
+
+      public var phone: String {
+        get {
+          return resultMap["phone"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "phone")
+        }
+      }
+
+      public var jobTitle: String? {
+        get {
+          return resultMap["jobTitle"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "jobTitle")
+        }
+      }
+
+      public var educationField: String? {
+        get {
+          return resultMap["educationField"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "educationField")
+        }
+      }
+
+      public var biography: String? {
+        get {
+          return resultMap["biography"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "biography")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var interests: [Interest] {
+        get {
+          return (resultMap["interests"] as! [ResultMap]).map { (value: ResultMap) -> Interest in Interest(unsafeResultMap: value) }
+        }
+        set {
+          resultMap.updateValue(newValue.map { (value: Interest) -> ResultMap in value.resultMap }, forKey: "interests")
+        }
+      }
+
+      public var pk: Int? {
+        get {
+          return resultMap["pk"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "pk")
+        }
+      }
+
+      public struct Interest: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["InterestType"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+            GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: GraphQLID, name: String) {
+          self.init(unsafeResultMap: ["__typename": "InterestType", "id": id, "name": name])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return resultMap["id"]! as! GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var name: String {
+          get {
+            return resultMap["name"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "name")
           }
         }
       }

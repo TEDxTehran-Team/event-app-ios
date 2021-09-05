@@ -8,23 +8,47 @@
 
 import SwiftUI
 
-
+enum AppLanguage: String {
+    case fa, en
+    case faIR = "fa-IR"
+}
 
 class Configuration {
     internal static let baseUrl = "https://tedxtehran.idearun.co/graphql/"
+//    internal static let baseUrl = "http://3.65.177.235:8000/graphql/"
     internal static let placeholderUrl = "https://tedxtehran.com/"
     internal static let acknowledgmentsUrl = "https://trello.com/b/9Vp84PlW"
     
-    internal static var direction:LayoutDirection = .leftToRight
+    internal static var direction: LayoutDirection{
+        get {
+            switch Configuration.appLanguage {
+            case .fa, .faIR:
+                return .rightToLeft
+            case .en:
+                return .leftToRight
+            }
+        }
+    }
     
-    internal static var token:String {
-        return "56fe1591-c5c1-4113-aba3-73fca1f5aacd" // English Data Token
-        //return "7b9c5f16-0882-4334-a828-e67ce8ccf201" // Persian Data Token
+    internal static var token: String {
+        get {
+            switch Configuration.appLanguage {
+            case .fa, .faIR:
+                return "7b9c5f16-0882-4334-a828-e67ce8ccf201"
+            case .en:
+                return "56fe1591-c5c1-4113-aba3-73fca1f5aacd"
+            }
+        }
     }
     
     internal static var locale:Locale =  Locale(identifier: "en") //Locale(identifier: "fa_IR")
     
     internal static let shabnam = "" //"Shabnam-FD"
     internal static let shabnamBold = "" //"Shabnam-Bold-FD"
+    internal static var appLanguage: AppLanguage {
+        get {
+            return AppLanguage(rawValue: String((Bundle.main.preferredLocalizations.first ?? "en").prefix(2))) ?? .en
+        }
+    }
     
 }

@@ -82,12 +82,12 @@ struct TalkDetailView: View {
             
             VStack(alignment: TalkDetailView.alignment,spacing: 10) {
                 
-                Text(self.viewModel.repository.talk.title)
+                LocalizedNumberText(self.viewModel.repository.talk.title)
                     .customFont(name: Configuration.shabnam, style: .title3, weight: .bold)
                     .foregroundColor(Colors.primaryDarkGray)
                     .multilineTextAlignment(TalkDetailView.textAlignment)
                 
-                Text(self.viewModel.repository.talk.speakers.map { $0.title }.joined(separator: ", "))
+                LocalizedNumberText(self.viewModel.repository.talk.speakers.map { $0.title }.joined(separator: ", "))
                     .customFont(name: Configuration.shabnamBold, style: .subheadline)
                     .foregroundColor(.secondary)
             }
@@ -97,7 +97,7 @@ struct TalkDetailView: View {
             VStack(alignment: TalkDetailView.alignment,spacing: 10) {
                 HStack {
                     
-                    Text(LocalizedStringKey("Description"))
+                    LocalizedNumberText("Description".localized())
                         .foregroundColor(.secondary)
                         .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom)
                                     .foregroundColor(Colors.primaryRed), alignment: .bottom)
@@ -107,7 +107,7 @@ struct TalkDetailView: View {
                 }
                 
                 
-                Text(self.viewModel.repository.talk.description ?? "")
+                LocalizedNumberText(self.viewModel.repository.talk.description ?? "")
                     .foregroundColor(.secondary)
                     .customFont(name: Configuration.shabnamBold, style: .body)
             }
@@ -117,7 +117,7 @@ struct TalkDetailView: View {
             
             VStack(spacing: 10) {
                 HStack {
-                    Text(LocalizedStringKey("Related Talks"))
+                    LocalizedNumberText("Related Talks".localized())
                         .foregroundColor(.secondary)
                         .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom)
                                     .foregroundColor(Colors.primaryRed), alignment: .bottom)

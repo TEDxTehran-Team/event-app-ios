@@ -9,7 +9,6 @@
 import Foundation
 
 class SponsorRepository {
-  
   func get(withEventId eventId: String, completion: @escaping ([SponsorWithType]?, XException?) -> ()) {
     
     Network.shared.apollo.fetch(query: GetEventSponsorsQuery(eventId: Int(eventId) ?? 1),cachePolicy: .fetchIgnoringCacheCompletely) { result in
@@ -23,6 +22,4 @@ class SponsorRepository {
     }
     
   }
-
-  
 }

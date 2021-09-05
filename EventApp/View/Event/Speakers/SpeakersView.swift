@@ -30,11 +30,11 @@ struct SpeakersView: View {
                             HStack {
                                 VStack() {
                                     Spacer()
-                                    Text(item.title)
+                                    LocalizedNumberText(item.title)
                                         .customFont(name: Configuration.shabnamBold, style: .callout, weight: .bold)
                                         .lineLimit(2)
                                     Spacer()
-                                    Text(item.description)
+                                    LocalizedNumberText(item.description)
                                         .multilineTextAlignment(.center)
                                         .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
                                         .lineLimit(2)
@@ -59,7 +59,7 @@ struct SpeakersView: View {
                     }
                 }
             }
-            .navigationBarTitle(Text(LocalizedStringKey("Speakers")), displayMode: .inline)
+            .navigationBarTitle(Text("Speakers".localized()), displayMode: .inline)
         }
         
     }

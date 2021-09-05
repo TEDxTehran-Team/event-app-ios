@@ -1,5 +1,8 @@
 // English
 "News" = "News";
+"Profile" = "Profile";
+"Chats" = "Chats";
+"Update Profile" = "Update Profile";
 "Gallery" = "Gallery";
 "About" = "About";
 "Home" = "Home";
@@ -16,7 +19,7 @@
 "Black" = "Black";
 "Dark Mode" = "Dark Mode";
 "OK" = "OK";
-"Error occurred" = "Error occured";
+"Error occurred" = "Error occurred";
 "Clear Cache" = "Clear Cache";
 "Done" = "Done";
 "Cache cleared successfully" = "Cache cleared successfully";
@@ -32,3 +35,20 @@
 "Tap to retry" = "Tap to retry";
 "Description" = "Description";
 "Related Talks" = "Related Talks";
+
+"YourProfile" = "Your Profile";
+"Job Title" = "Job Title";
+"Field" = "Study Field";
+"My Story" = "My Story";
+"Chat With" = "Chat With";
+"welcome_title_networking" = "Welcome to the networking section of TEDxTehran application!";
+"networking_message" = "To use this section, you need to register, just enter your mobile number and wait for the confirmation code from us.";
+"Get Code" = "Get Verification Code";
+"Register" = "Register";
+"Phone Number" = "Phone Number";
+"validation" = "Verification";
+"validation_message %@" = "Verification code will be sent to %@ in a few seconds, please wait";
+"verification_code" = "Verification Code";
+"register" = "Register";
+"cancel_search" = "Cancel Search";
+"loading_chat" = "Wait a few moments to connect with the right person";

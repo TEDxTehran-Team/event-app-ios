@@ -9,7 +9,7 @@
 import Foundation
 
 class ToggleModel: ObservableObject {
-  @Published var isDark: Bool = false {
+  @Published var isDark: Bool = (SceneDelegate.shared?.window?.traitCollection.userInterfaceStyle == .dark) {
     didSet {
       SceneDelegate.shared?.window!.overrideUserInterfaceStyle = isDark ? .dark : .light
     }

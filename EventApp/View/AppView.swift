@@ -14,6 +14,7 @@ enum AppTabViewItem : String{
     case news
     case gallery
     case talks
+    case profile
 }
 
 struct AppView: View {
@@ -38,21 +39,21 @@ struct AppView: View {
                 VStack {
                     HomeTabUIView(eventViewModel: self.eventViewModel,dayViewModel: self.dayViewModel, speakerViewModel: self.speakerViewModel)
                 }
-                .navigationBarTitle(Text(LocalizedStringKey("Home")),displayMode: .inline)
+                .navigationBarTitle(Text("Home".localized()),displayMode: .inline)
                 
             }
             .navigationViewStyle(StackNavigationViewStyle())
             .tag(AppTabViewItem.home)
             .tabItem {
                 Image(systemName: "house")
-                Text(LocalizedStringKey("Home"))
+                Text("Home".localized())
             }
             
             TalksView(talkViewModel: self.talkViewModel, featuredTalkViewModel: self.featuredTalkViewModel)
                 .tag(AppTabViewItem.talks)
                 .tabItem {
                     Image(systemName: "music.mic")
-                    Text(LocalizedStringKey("Talks"))
+                    Text("Talks".localized())
                 }
             
             
@@ -62,16 +63,23 @@ struct AppView: View {
             .tag(AppTabViewItem.gallery)
             .tabItem {
                 Image(systemName: "photo.on.rectangle")
-                Text(LocalizedStringKey("Gallery"))
+                Text("Gallery".localized())
             }
             
             NewsView(viewModel: self.newsViewModel)
                 .tag(AppTabViewItem.news)
                 .tabItem {
                     Image(systemName: "newspaper")
-                    Text(LocalizedStringKey("News"))
+                    Text("News".localized())
                     
                 }
+            
+//                ProfileTabBar()
+//                .tag(AppTabViewItem.profile)
+//                .tabItem {
+//                    Image(systemName: "person")
+//                    Text("Profile".localized())
+//                }
             
             
         }.accentColor(Colors.primaryRed)
@@ -81,6 +89,8 @@ struct AppView: View {
 
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {
-        AppView()
+        Group {
+            AppView()
+        }
     }
 }

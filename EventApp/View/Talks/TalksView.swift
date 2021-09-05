@@ -26,7 +26,7 @@ struct TalksView: View {
                                 VStack {
                                     HStack {
                                         
-                                        Text(talkWithEvent.event.title ?? "")
+                                        LocalizedNumberText(talkWithEvent.event.title ?? "")
                                             .foregroundColor(.secondary)
                                             .padding(.horizontal)
                                             .customFont(name: Configuration.shabnam, style: .headline, weight: .regular)
@@ -71,13 +71,14 @@ struct TalksView: View {
                         }
                 }
             }
-            .navigationBarTitle(Text(LocalizedStringKey("Talks")), displayMode: .inline)
+            .navigationBarTitle(Text("Talks".localized()), displayMode: .inline)
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
 struct TalksView_Previews: PreviewProvider {
+    
     static var previews: some View {
         TalksView(talkViewModel: TalkViewModel(), featuredTalkViewModel: FeaturedTalkViewModel())
     }

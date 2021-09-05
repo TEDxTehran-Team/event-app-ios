@@ -56,7 +56,7 @@ struct EventDetailView: View {
                         
                         Image(systemName: "play.rectangle")
                         
-                        Text(LocalizedStringKey("Watch Live"))
+                        Text("Watch Live".localized())
                             .customFont(name: Configuration.shabnam, style: .body, weight: .bold)
                         
                         
@@ -81,7 +81,7 @@ struct EventDetailView: View {
                             
                             Image(decorative: "ticket-icon")
                             
-                            Text(LocalizedStringKey("Buy Ticket"))
+                            Text("Buy Ticket".localized())
                                 .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
                             
                             Spacer()
@@ -101,7 +101,7 @@ struct EventDetailView: View {
                         HStack {
                             Image(decorative: "register-icon")
                             
-                            Text(LocalizedStringKey("Register in Event"))
+                            Text("Register in Event".localized())
                                 .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
                             
                             Spacer()
@@ -117,10 +117,10 @@ struct EventDetailView: View {
                     Image(decorative: "clock-icon")
                     
                     
-                    Text(DateHelper.dateWith(self.viewModel.event.startDate ?? "TBA", showTime: true))
+                    LocalizedNumberText(DateHelper.dateWith(self.viewModel.event.startDate ?? "TBA", showTime: true))
                         .customFont(name: Configuration.shabnam , style: .footnote, weight: .regular)
                     Text("|")
-                    Text(DateHelper.dateWith(self.viewModel.event.endDate  ?? "TBA", showTime: true))
+                    LocalizedNumberText(DateHelper.dateWith(self.viewModel.event.endDate  ?? "TBA", showTime: true))
                         .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
                     
                     Spacer()
@@ -146,7 +146,7 @@ struct EventDetailView: View {
                     
                     Image(decorative: "address-icon")
                     
-                    Text(self.viewModel.event.venue?.address ?? "-")
+                    LocalizedNumberText(self.viewModel.event.venue?.address ?? "-")
                         .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
                         .multilineTextAlignment(.trailing)
                     
@@ -181,7 +181,7 @@ struct EventDetailView: View {
             NavigationLink(destination: SponsorsView(eventId: viewModel.event.id)) {
                 HStack {
                     Spacer()
-                    Text(LocalizedStringKey("Sponsors"))
+                    Text("Sponsors".localized())
                         .customFont(name: Configuration.shabnam, style: .body, weight: .bold)
                     Spacer()
                 }

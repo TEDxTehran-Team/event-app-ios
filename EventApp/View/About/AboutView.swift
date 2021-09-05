@@ -35,7 +35,7 @@ struct AboutView: View {
                                 .scaledToFit()
                                 .cornerRadius(10)
                             
-                            Text(about.description)
+                        LocalizedNumberText(about.description)
                                 .padding()
                                 .customFont(name: Configuration.shabnam, style: .body)
                                 .multilineTextAlignment(.trailing)
@@ -70,7 +70,7 @@ struct AboutView: View {
                     }
             }
         }
-        .navigationBarTitle(Text(LocalizedStringKey("About")), displayMode: .inline)
+        .navigationBarTitle(Text("About".localized()), displayMode: .inline)
         .onAppear(perform: {
             if self.aboutViewModel.statusView == .none {
                 self.aboutViewModel.setup()
