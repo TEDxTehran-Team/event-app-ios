@@ -33,6 +33,5 @@ Hello, we shared our projects in open source in **[TEDxTehran](http://tedxtehran
 
 - [ ] Routing in SwiftUI
 - [ ] Use [Combine](https://developer.apple.com/documentation/combine)
-- [ ] English Free and Open Source Font
-- [ ] Setting UI : Clear apollo cache and show open source licenses and EventApp Version      
+- [ ] English Free and Open Source Font   
 
