@@ -11,7 +11,7 @@ import SwiftUI
 struct PhoneNumberView: View {
     
     @ObservedObject var viewModel = PhoneNumberViewModel()
-    @Binding var loginToken: String
+    @Binding var loginSetting: LoginSetting
     
     var body: some View {
         GeometryReader { geo in
@@ -25,27 +25,25 @@ struct PhoneNumberView: View {
                 Text("welcome_title_networking".localized())
                     .font(.headline)
                     .bold()
+                    .foregroundColor(Colors.darkTextColor)
                 
                 
                 Text("networking_message".localized())
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 
-                TextFieldWithImage(text: $viewModel.phoneNumber, placeholder: "Phone Number", imageName: "iphone")
+                TextFieldWithImage(text: $viewModel.phoneNumber, placeholder: "Phone Number", imageName: "iphone", keyboardType: .numberPad)
+                    .keyboardType(.numberPad)
                     .padding(.top, 20)
                 
                 Spacer()
                 
-                Text("Get Code".localized())
-                    .customFont(name: Configuration.shabnam, style: .headline, weight: .regular)
-                    .frame(width: geo.size.width - 40, height: 62, alignment: .center)
-                    .foregroundColor(Color.white)
-                    .background(Colors.primaryRed)
-                    .cornerRadius(5)
+                RoundButton("Get Code".localized(), width: geo.size.width - 40, height: 62, alignment: .center)
                     .padding(.bottom, 40)
                     .onTapGesture(count: 1, perform: {
-                        viewModel.setup() { token in
-                            self.loginToken = token
+                        viewModel.sendCode() { token in
+                            self.loginSetting.phoneNumber = viewModel.phoneNumber
+                            self.loginSetting.loginToken = token
                         }
                     })
             }
@@ -57,7 +55,7 @@ struct PhoneNumberView: View {
 struct PhoneNumberView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            PhoneNumberView(loginToken: .constant(""))
+            PhoneNumberView(loginSetting: .constant(LoginSetting()))
         }
     }
 }

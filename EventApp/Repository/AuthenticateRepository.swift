@@ -10,7 +10,7 @@ import Foundation
 
 class AuthenticateRepository {
     func getOTP(phoneNumber: String, completion: @escaping (Authenticate?, XException?) -> ()) {
-        Network.shared.apollo.perform(mutation: GetAuthenticateMutation(phone: phoneNumber)) { result in
+        Network.shared.perform(mutation: GetAuthenticateMutation(phone: phoneNumber)) { result in
           switch result {
             case .failure(let error):
               completion(nil, XException(message: error.localizedDescription, code: 0))
@@ -22,7 +22,7 @@ class AuthenticateRepository {
     }
     
     func sendOTP(token: String, code: String, completion: @escaping (VerifyAuthentication?, XException?) -> ()) {
-        Network.shared.apollo.perform(mutation: GetVerifyAuthenticationMutation(token: token, code: code)) { result in
+        Network.shared.perform(mutation: GetVerifyAuthenticationMutation(token: token, code: code)) { result in
           switch result {
             case .failure(let error):
               completion(nil, XException(message: error.localizedDescription, code: 0))

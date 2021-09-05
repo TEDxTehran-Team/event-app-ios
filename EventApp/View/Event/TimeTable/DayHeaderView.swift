@@ -15,7 +15,7 @@ struct DayHeaderView: View {
     var body: some View {
         HStack {
             
-            Text(day.title)
+            LocalizedNumberText(day.title)
                 .customFont(name: Configuration.shabnam, style: .body, weight: .bold)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 5)

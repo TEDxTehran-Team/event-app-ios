@@ -22,7 +22,7 @@ struct TabBarButton: View {
       
     }) {
       
-      Text(title)
+    LocalizedNumberText(title)
         .padding(.vertical, 4)
         .padding(.horizontal, 30)
         .background(selectedTab == tabNumber ? Colors.primaryBackground : Color.clear)

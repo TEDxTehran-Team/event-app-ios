@@ -24,7 +24,7 @@ struct SponsorsView: View {
                             Group {
                                 if sponsorWithEvent.sponsors.count != 0 {
                                     VStack(alignment: .center, spacing: 10) {
-                                        Text(sponsorWithEvent.type.title)
+                                        LocalizedNumberText(sponsorWithEvent.type.title)
                                             .foregroundColor(.secondary)
                                             .padding()
                                             .customFont(name: Configuration.shabnam, style: .headline, weight: .regular)

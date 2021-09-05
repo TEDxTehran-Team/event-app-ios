@@ -104,9 +104,12 @@
 		6DFCAF4C24FD32FC008AD550 /* EventRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFCAF4B24FD32FC008AD550 /* EventRepository.swift */; };
 		6DFCAF4E24FD3332008AD550 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFCAF4D24FD3332008AD550 /* EventViewModel.swift */; };
 		B27655D36FCFB2FB5C6EE1C7 /* Pods_EventApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B30976FAB87CDF8856B680 /* Pods_EventApp.framework */; };
+		BB40FFF526D061FF00704962 /* LocalizedNumberText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40FFF426D061FF00704962 /* LocalizedNumberText.swift */; };
 		BB5D686226C6B2B2005967DB /* TextFieldWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D686126C6B2B2005967DB /* TextFieldWithImage.swift */; };
+		BB5F449C26CEB7CF001AC60F /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5F449B26CEB7CF001AC60F /* EditProfileView.swift */; };
 		BB7D69A926C539A70038857F /* cat.json in Resources */ = {isa = PBXBuildFile; fileRef = BB7D69A826C539A70038857F /* cat.json */; };
 		BB7D69AC26C53CD20038857F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7D69AB26C53CD20038857F /* LoadingView.swift */; };
+		BBC6F47C26D0D48100CAEC8A /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC6F47B26D0D48100CAEC8A /* RoundButton.swift */; };
 		BBE4EE5426C50E9500176DFA /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE4EE5326C50E9500176DFA /* DataManager.swift */; };
 		BBE4EE5626C5105200176DFA /* PhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE4EE5526C5105200176DFA /* PhoneNumberViewModel.swift */; };
 		BBE4EE5A26C51D9B00176DFA /* OTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE4EE5926C51D9B00176DFA /* OTPViewModel.swift */; };
@@ -254,9 +257,12 @@
 		6DFCAF4D24FD3332008AD550 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		88B30976FAB87CDF8856B680 /* Pods_EventApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE40F42D4450EB907BBCF94 /* Pods-EventApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventApp.release.xcconfig"; path = "Target Support Files/Pods-EventApp/Pods-EventApp.release.xcconfig"; sourceTree = "<group>"; };
+		BB40FFF426D061FF00704962 /* LocalizedNumberText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedNumberText.swift; sourceTree = "<group>"; };
 		BB5D686126C6B2B2005967DB /* TextFieldWithImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldWithImage.swift; sourceTree = "<group>"; };
+		BB5F449B26CEB7CF001AC60F /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		BB7D69A826C539A70038857F /* cat.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cat.json; sourceTree = "<group>"; };
 		BB7D69AB26C53CD20038857F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		BBC6F47B26D0D48100CAEC8A /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		BBE4EE5326C50E9500176DFA /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		BBE4EE5526C5105200176DFA /* PhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		BBE4EE5926C51D9B00176DFA /* OTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewModel.swift; sourceTree = "<group>"; };
@@ -509,6 +515,7 @@
 			isa = PBXGroup;
 			children = (
 				F5AD978326B7F44F00ED8B46 /* Authenticate.swift */,
+				F5A65674263449E500DAA5BC /* Profile.swift */,
 				BBE4EE5B26C51DE800176DFA /* VerifyAuthentication.swift */,
 				F5AD978526B7F4D800ED8B46 /* ErrorModel.swift */,
 				6DD9718124F8D0D70044D596 /* News.swift */,
@@ -517,7 +524,6 @@
 				6DC0A45424FBCD1D00CE535B /* About.swift */,
 				6DFCAF4624FD2FBB008AD550 /* Event.swift */,
 				6D3B49142528AB1F0002EBF8 /* Sponsor.swift */,
-				F5A65674263449E500DAA5BC /* Profile.swift */,
 				F54B35D1269B24D50060D5F2 /* Chat.swift */,
 				F54B35D0269B24D40060D5F2 /* User.swift */,
 				6D3B49062528A1340002EBF8 /* Speaker.swift */,
@@ -645,6 +651,8 @@
 			isa = PBXGroup;
 			children = (
 				BB5D686126C6B2B2005967DB /* TextFieldWithImage.swift */,
+				BBC6F47B26D0D48100CAEC8A /* RoundButton.swift */,
+				BB40FFF426D061FF00704962 /* LocalizedNumberText.swift */,
 				BBE4EE5D26C536CE00176DFA /* LottieView.swift */,
 				E837436324FFF69D009FEB5B /* Indicator.swift */,
 				6D8CE96E2501237A00F47ADF /* ImagePlaceholder.swift */,
@@ -664,6 +672,7 @@
 				F53010A12626E08E00948D9E /* ProfileView.swift */,
 				F554E46F2629929100E849E5 /* ProfileTabBar.swift */,
 				F5A656652633CF2200DAA5BC /* PagerView.swift */,
+				BB5F449B26CEB7CF001AC60F /* EditProfileView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -903,6 +912,7 @@
 				6D3B49072528A1340002EBF8 /* Speaker.swift in Sources */,
 				6D1325B824FE65D200FFA202 /* PhotoViewModel.swift in Sources */,
 				6DCFBC6A24FA45F7005103E5 /* GridCalculator.swift in Sources */,
+				BB5F449C26CEB7CF001AC60F /* EditProfileView.swift in Sources */,
 				F5A65669263404BB00DAA5BC /* ProfileViewModel.swift in Sources */,
 				E8EAE3A4256ACD6A00B43FB1 /* Model+Extension.swift in Sources */,
 				6D3B49252528B1AF0002EBF8 /* SponsorsRow.swift in Sources */,
@@ -924,6 +934,7 @@
 				6D3B491D2528AC2E0002EBF8 /* SponsorViewModel.swift in Sources */,
 				6D1325BC24FE706400FFA202 /* DateHelper.swift in Sources */,
 				6DD9718A24F8D2C20044D596 /* NewsViewModel.swift in Sources */,
+				BB40FFF526D061FF00704962 /* LocalizedNumberText.swift in Sources */,
 				6DE7941124F939A500CEEE0E /* Album.swift in Sources */,
 				6D3B49302528BBD20002EBF8 /* SpeakerDetailView.swift in Sources */,
 				BBE4EE5A26C51D9B00176DFA /* OTPViewModel.swift in Sources */,
@@ -938,6 +949,7 @@
 				6DCFBC5B24F941A5005103E5 /* GalleryDetailView.swift in Sources */,
 				F554E474262994B000E849E5 /* ChatHistoryView.swift in Sources */,
 				6DE7CEE524E120BA00910DF7 /* API.swift in Sources */,
+				BBC6F47C26D0D48100CAEC8A /* RoundButton.swift in Sources */,
 				E8CFE1F825D815C200FF564E /* Image+Extension.swift in Sources */,
 				6D8CE979250206AD00F47ADF /* TimeTableView.swift in Sources */,
 				6DD9718224F8D0D70044D596 /* News.swift in Sources */,

@@ -15,7 +15,6 @@ struct TabBar : View {
   var body: some View {
     
     HStack {
-    
       TabBarButton(selectedTab: $selectedTab, tabNumber: 0, title: NSLocalizedString("Detail", comment: ""))
       TabBarButton(selectedTab: $selectedTab, tabNumber: 1, title: NSLocalizedString("Timetable", comment: ""))
       TabBarButton(selectedTab: $selectedTab, tabNumber: 2, title: NSLocalizedString("Speakers", comment: ""))

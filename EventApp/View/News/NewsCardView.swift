@@ -30,14 +30,14 @@ struct NewsCardView: View {
                         .scaledToFill()
                         .frame(width: 55, height: 30)
                    
-                    Text(news.title)
+                    LocalizedNumberText(news.title)
                         .multilineTextAlignment(.center)
                         .customFont(name: Configuration.shabnam, style: .body, weight: .bold)
                         .foregroundColor(.primary)
                                         
                     Spacer()
                 }
-                Text(news.description)
+                LocalizedNumberText(news.description)
                     .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
                     .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)

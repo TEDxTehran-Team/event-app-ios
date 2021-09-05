@@ -22,19 +22,34 @@ struct ProfileView: View {
     }
     
     var body: some View {
+        GeometryReader { geo in
         //        if self.viewModel.statusView == .complete {
         ScrollView {
-            VStack {
-                topView
-                    .scaledToFit()
-                Text(viewModel.repositories.firstName + " " +  viewModel.repositories.lastName )
+            VStack(alignment: .leading, spacing: 20) {
+                    Color.gray
+                        .frame(width: geo.size.width, height: 200)
+                    
+                    Image("person")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: geo.size.width / 2, height: geo.size.width / 2, alignment: .center)
+                        .background(Color.blue)
+                        .cornerRadius(7)
+                        .padding(.top, -1 * (geo.size.width / 4))
+                
+                
+                Text(viewModel.firstName + " " + viewModel.lastName)
                     .customFont(name: Configuration.shabnamBold, style: .title2, weight: .bold)
                     .padding(.bottom, 20)
+                
                 interstsList
                     .padding(.vertical, 5)
                     .padding([.leading, .trailing], leadingTrailingPadding)
+                
                 jobView
+                
                 fieldView
+                
                 HStack {
                     Text("My Story".localized())
                         .customFont(name: Configuration.shabnamBold, style: .headline, weight: .bold)
@@ -42,10 +57,12 @@ struct ProfileView: View {
                 }
                 .padding(.top, 5)
                 .padding([.leading, .trailing], 40)
-                Text(viewModel.repositories.story)
+                
+                LocalizedNumberText(viewModel.biography)
                     .customFont(name: Configuration.shabnam, style: .subheadline, weight: .regular)
                     .padding(.top, 5)
                     .padding([.leading, .trailing], leadingTrailingPadding)
+                
                 HStack(alignment: .center) {
                     phoneNumberView
                         .padding(.trailing, 20)
@@ -58,14 +75,14 @@ struct ProfileView: View {
                     
                 }, label: {
                     if isMyProfile {
-                        updateProfileButton
+                        RoundButton("Update Profile".localized(), width: geo.size.width - 40, height: 62, alignment: .center)
                     } else {
-                        chatButton
+                        RoundButton("Chat With".localized() + " " + viewModel.firstName, width: geo.size.width - 40, height: 62, alignment: .center)
                     }
                 })
-                Spacer()
             }
-            .frame(width: UIScreen.main.bounds.width)
+            .frame(width: geo.size.width)
+            .padding()
         }
         //        }
         
@@ -80,51 +97,16 @@ struct ProfileView: View {
         //                    self.viewModel.setup(withUserId: userId)
         //                }
         //        }
+        }
     }
 }
 
 extension ProfileView {
-    
-    private var topView: some View {
-        ZStack {
-            Image("person")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.width / 2, alignment: .top)
-                .background(Color.blue)
-                .cornerRadius(7)
-                .padding(.top, 10)
-            
-            Image("Profile Background Image")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: UIScreen.main.bounds.width, height: 300, alignment: .top)
-        }
-    }
-    
-    private var updateProfileButton: some View {
-        Text("Update Profile".localized())
-            .customFont(name: Configuration.shabnam, style: .headline, weight: .regular)
-            .frame(width: 290, height: 62, alignment: .center)
-            .foregroundColor(Color.white)
-            .background(Colors.primaryRed)
-            .cornerRadius(5)
-    }
-    
-    private var chatButton: some View {
-        Text("".localized() + " " + viewModel.repositories.firstName)
-            .customFont(name: Configuration.shabnam, style: .headline, weight: .regular)
-            .frame(width: 290, height: 62, alignment: .center)
-            .foregroundColor(Color.white)
-            .background(Colors.primaryRed)
-            .cornerRadius(5)
-    }
-    
     private var emailView: some View {
         HStack {
             Image(systemName: "envelope")
                 .foregroundColor(.black)
-            Text(viewModel.repositories.email)
+            Text(viewModel.email)
                 .customFont(name: Configuration.shabnam, style: .subheadline, weight: .regular)
         }
     }
@@ -134,7 +116,7 @@ extension ProfileView {
             Image(systemName: "phone")
                 .foregroundColor(.black)
             
-            Text(viewModel.repositories.phoneNumber)
+            LocalizedNumberText(viewModel.phoneNumber)
                 .customFont(name: Configuration.shabnam, style: .subheadline, weight: .regular)
             
         }
@@ -145,7 +127,7 @@ extension ProfileView {
             Text("Job Title".localized() + ": ")
                 .customFont(name: Configuration.shabnamBold, style: .headline, weight: .bold)
             
-            Text(viewModel.repositories.jobTitle)
+            LocalizedNumberText(viewModel.jobTitle)
                 .customFont(name: Configuration.shabnamBold, style: .headline, weight: .regular)
             Spacer()
         }
@@ -158,7 +140,7 @@ extension ProfileView {
             Text("Field".localized() + ": ")
                 .customFont(name: Configuration.shabnamBold, style: .headline, weight: .bold)
             
-            Text(viewModel.repositories.field)
+            LocalizedNumberText(viewModel.educationField)
                 .customFont(name: Configuration.shabnamBold, style: .headline, weight: .regular)
             Spacer()
         }
@@ -172,8 +154,8 @@ extension ProfileView {
             var width = CGFloat.zero
             var height = CGFloat.zero
             return ZStack(alignment: .topLeading) {
-                ForEach(viewModel.repositories.interests.compactMap({$0.interest}), id: \.self) { platform in
-                    item(for: platform)
+                ForEach(viewModel.interestList, id: \.self) { platform in
+                    item(for: platform.name)
                         .padding(4)
                         .alignmentGuide(.leading, computeValue: { d in
                             if (abs(width - d.width) > g.size.width) {
@@ -181,7 +163,7 @@ extension ProfileView {
                                 height -= d.height
                             }
                             let result = width
-                            if platform == viewModel.repositories.interests.last!.interest {
+                            if platform == viewModel.interestList.last! {
                                 width = 0 //last item
                             } else {
                                 width -= d.width
@@ -190,7 +172,7 @@ extension ProfileView {
                         })
                         .alignmentGuide(.top, computeValue: {d in
                             let result = height
-                            if platform == viewModel.repositories.interests.last!.interest {
+                            if platform == viewModel.interestList.last! {
                                 height = 0 // last item
                             }
                             return result
@@ -210,7 +192,7 @@ extension ProfileView {
         }
         
         return VStack {
-            let sectionHeight = CGFloat(viewModel.repositories.interests.compactMap({$0.interest}).joined().count) * 2
+            let sectionHeight = CGFloat(viewModel.repositories.interests?.compactMap({$0.name}).joined().count ?? 0) * 2
             GeometryReader { geometry in
                 generateContent(in: geometry)
             }.frame(height: sectionHeight)

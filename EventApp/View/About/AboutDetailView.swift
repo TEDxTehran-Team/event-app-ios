@@ -25,7 +25,7 @@ struct AboutDetailView: View {
                     .resizable()
                     .scaledToFit()
                 
-                Text(self.item.description)
+                LocalizedNumberText(self.item.description)
                     .padding()
                 Spacer()
             }

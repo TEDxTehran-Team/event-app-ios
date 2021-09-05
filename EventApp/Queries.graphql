@@ -161,3 +161,25 @@ query GetEventSpeakers {
     }
   }
 }
+
+query GetUserProfile{
+    me {
+        lastLogin
+        dateJoined
+        isStaff
+        isActive
+        firstName
+        lastName
+        email
+        phone
+        jobTitle
+        educationField
+        biography
+        id
+        interests {
+            id
+            name
+        }
+        pk
+    }
+}

@@ -117,10 +117,10 @@ struct EventDetailView: View {
                     Image(decorative: "clock-icon")
                     
                     
-                    Text(DateHelper.dateWith(self.viewModel.event.startDate ?? "TBA", showTime: true))
+                    LocalizedNumberText(DateHelper.dateWith(self.viewModel.event.startDate ?? "TBA", showTime: true))
                         .customFont(name: Configuration.shabnam , style: .footnote, weight: .regular)
                     Text("|")
-                    Text(DateHelper.dateWith(self.viewModel.event.endDate  ?? "TBA", showTime: true))
+                    LocalizedNumberText(DateHelper.dateWith(self.viewModel.event.endDate  ?? "TBA", showTime: true))
                         .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
                     
                     Spacer()
@@ -146,7 +146,7 @@ struct EventDetailView: View {
                     
                     Image(decorative: "address-icon")
                     
-                    Text(self.viewModel.event.venue?.address ?? "-")
+                    LocalizedNumberText(self.viewModel.event.venue?.address ?? "-")
                         .customFont(name: Configuration.shabnam, style: .footnote, weight: .regular)
                         .multilineTextAlignment(.trailing)
                     
