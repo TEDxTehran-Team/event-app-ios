@@ -27,7 +27,6 @@ struct PhoneNumberView: View {
                     .bold()
                     .foregroundColor(Colors.darkTextColor)
                 
-                
                 Text("networking_message".localized())
                     .font(.subheadline)
                     .foregroundColor(.secondary)
@@ -48,11 +47,15 @@ struct PhoneNumberView: View {
                     })
             }
             .padding()
+            .onTapGesture {
+                hideKeyboard()
+            }
         }
     }
 }
 
 struct PhoneNumberView_Previews: PreviewProvider {
+    
     static var previews: some View {
         Group {
             PhoneNumberView(loginSetting: .constant(LoginSetting()))

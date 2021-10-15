@@ -76,6 +76,9 @@ struct OTPView: View {
                     })
             }
             .padding()
+            .onTapGesture {
+                hideKeyboard()
+            }
         }
     }
 }

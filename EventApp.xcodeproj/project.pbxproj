@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BB375CB27197EEF0043AF24 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB375CA27197EEF0043AF24 /* UITextFieldExtensions.swift */; };
 		6D1325B424FE658F00FFA202 /* PhotoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1325B324FE658F00FFA202 /* PhotoRepository.swift */; };
 		6D1325B624FE65C100FFA202 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1325B524FE65C100FFA202 /* Photo.swift */; };
 		6D1325B824FE65D200FFA202 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1325B724FE65D200FFA202 /* PhotoViewModel.swift */; };
@@ -156,6 +157,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0BB375CA27197EEF0043AF24 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
 		6B071428B16091281252D1D6 /* Pods-EventApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventApp.debug.xcconfig"; path = "Target Support Files/Pods-EventApp/Pods-EventApp.debug.xcconfig"; sourceTree = "<group>"; };
 		6D1325B324FE658F00FFA202 /* PhotoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRepository.swift; sourceTree = "<group>"; };
 		6D1325B524FE65C100FFA202 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 				E8CFE1F425D8159A00FF564E /* Color+Extension.swift */,
 				E8CFE1F725D815C200FF564E /* Image+Extension.swift */,
 				F57FD37F2635504900593603 /* LocalaizedStrring.swift */,
+				0BB375CA27197EEF0043AF24 /* UITextFieldExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -582,9 +585,9 @@
 		6DE7CEF124E1237900910DF7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E837436224FFF68A009FEB5B /* Custom Views */,
 				6DCFBC6024FA453F005103E5 /* AppView.swift */,
 				BB7D69AB26C53CD20038857F /* LoadingView.swift */,
+				E837436224FFF68A009FEB5B /* Custom Views */,
 				E834C0852554045F00AC827F /* Home */,
 				6DFCAF4824FD3133008AD550 /* Event */,
 				6DD12DF0251A1F240055D611 /* Settings */,
@@ -976,6 +979,7 @@
 				6DC754DB24DE6BD700F96518 /* SceneDelegate.swift in Sources */,
 				F5AD978426B7F44F00ED8B46 /* Authenticate.swift in Sources */,
 				F57FD3802635504900593603 /* LocalaizedStrring.swift in Sources */,
+				0BB375CB27197EEF0043AF24 /* UITextFieldExtensions.swift in Sources */,
 				6DD9719D24F8FB180044D596 /* View+Extension.swift in Sources */,
 				6DCFBC7224FA48E5005103E5 /* CustomFont.swift in Sources */,
 			);
@@ -1135,7 +1139,7 @@
 				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"EventApp/Preview Content\"";
-				DEVELOPMENT_TEAM = XYY68H4963;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/EventApp/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1163,7 +1167,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"EventApp/Preview Content\"";
-				DEVELOPMENT_TEAM = XYY68H4963;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/EventApp/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
