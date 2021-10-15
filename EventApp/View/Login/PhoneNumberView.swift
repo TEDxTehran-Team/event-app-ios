@@ -49,6 +49,9 @@ struct PhoneNumberView: View {
                         })
                 }
                 .padding()
+                .onTapGesture {
+                    hideKeyboard()
+                }
                 if self.viewModel.statusView == .loading {
                     Indicator()
                 }
@@ -58,6 +61,7 @@ struct PhoneNumberView: View {
 }
 
 struct PhoneNumberView_Previews: PreviewProvider {
+    
     static var previews: some View {
         Group {
             PhoneNumberView(loginSetting: .constant(LoginSetting()))

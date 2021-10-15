@@ -83,7 +83,10 @@ struct OTPView: View {
                     } else {
                         return Alert(title: Text("error_title".localized()), message: Text("send_otp_failed".localized()), dismissButton: .default(Text("OK".localized())))
                     }
-            }.padding()
+                }.padding()
+                    .onTapGesture {
+                        hideKeyboard()
+                    }
                 if self.viewModel.statusView == .loading {
                     Indicator()
                 }

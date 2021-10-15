@@ -24,5 +24,8 @@ extension View {
     static var textAlignment:TextAlignment {
         return Configuration.direction == .leftToRight ? .leading : .trailing
     }
-
+    
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
 }

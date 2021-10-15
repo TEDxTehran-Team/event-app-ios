@@ -26,11 +26,10 @@ struct TextFieldWithImage: View {
                     .scaledToFit()
                     .frame(width: 20, height: 20)
                     .foregroundColor(.gray)
-                
             }
             if isFieldSecure {
-                SecureField(placeholder.localized(), text: $text)
-                    .accessibility(identifier: secureTextFieldIdentifier)
+                TextField(placeholder.localized(), text: $text)
+                .accessibility(identifier: secureTextFieldIdentifier)
                 
             } else {
                 TextField(placeholder.localized(), text: $text)
