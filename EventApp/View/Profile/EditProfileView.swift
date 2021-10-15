@@ -9,20 +9,20 @@
 import SwiftUI
 
 struct EditProfileView: View {
- 
+       
     var body: some View {
-        
         VStack {
             HeaderView()
             BodyView()
             Spacer()
+        }.onTapGesture {
+            hideKeyboard()
         }
     }
     
-    
- 
     // MARK: - Header
     struct HeaderView: View {
+        
         let imageHeight:CGFloat = UIScreen.main.bounds.width / 3
         var body: some View {
             VStack {
@@ -46,61 +46,63 @@ struct EditProfileView: View {
     
     // MARK: - Body
     struct BodyView: View {
-
+                        
         var body: some View {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack {
-                    Text("علاقه‌مندی‌ها")
+                    HStack {
+                        Spacer()
+                        Text("interests".localized())
+                            .font(.footnote)
+                            .fontWeight(.bold)
+                            .multilineTextAlignment(.trailing)
+                    }
+                    TagView(tags: ["aq", "bssds", "bcccccc","asd", "bssds", "bcsccccc"])
+                    inputFields()
+                    Button(action: {
+                        // MARK: Button Action
+                    }){
+                        Text("confirm".localized())
+                    }
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 60)
+                    .background(Color.red)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                    .padding(.top, 10)
                 }
             }
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 40)
         }
     }
     
-//    private var interstsList: some View {
-//        let interestList = [InterestType.shortExample, .longExample]
-//        func generateContent(in g: GeometryProxy) -> some View {
-//            var width = CGFloat.zero
-//            var height = CGFloat.zero
-//            return ZStack(alignment: .topLeading) {
-//                ForEach(interestList, id: \.self) { platform in
-//                    item(for: platform.name)
-//                        .padding(4)
-//                        .alignmentGuide(.leading, computeValue: { d in
-//                            if (abs(width - d.width) > g.size.width) {
-//                                width = 0
-//                                height -= d.height
-//                            }
-//                            let result = width
-//                            if platform == interestList.last! {
-//                                width = 0 //last item
-//                            } else {
-//                                width -= d.width
-//                            }
-//                            return result
-//                        })
-//                        .alignmentGuide(.top, computeValue: {d in
-//                            let result = height
-//                            if platform == interestList.last! {
-//                                height = 0 // last item
-//                            }
-//                            return result
-//                        })
-//                }
-//            }
-//        }
-//    }
-    
-    private func item(for text: String) -> some View {
-        Text(text)
-            .foregroundColor(.white)
-            .padding()
-            .lineLimit(1)
-            .frame(height: 36)
-            .background(Colors.primaryBlue)
-            .cornerRadius(18)
+    struct inputFields: View {
+        
+        @State var text = ""
+                
+        var body: some View {
+            VStack(spacing: 15) {
+                TextFieldWithImage(text: $text, placeholder: "name", imageName: "")
+                TextFieldWithImage(text: $text, placeholder: "job title", imageName: "")
+                TextFieldWithImage(text: $text, placeholder: "education", imageName: "")
+                TextFieldWithImage(text: $text, placeholder: "phone number", imageName: "")
+                TextFieldWithImage(text: $text, placeholder: "email", imageName: "")
+                TextView() {
+                    $0.text = "story".localized()
+                }
+                .font(.body)
+                .frame(height: 100)
+                .padding()
+                .overlay(
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke(lineWidth: 1)
+                        .foregroundColor(.gray)
+                )
+            }
+        }
     }
 }
-
 
 struct EditProfileView_Previews: PreviewProvider {
     

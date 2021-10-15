@@ -30,7 +30,6 @@ struct TextFieldWithImage: View {
             if isFieldSecure {
                 TextField(placeholder.localized(), text: $text)
                 .accessibility(identifier: secureTextFieldIdentifier)
-                
             } else {
                 TextField(placeholder.localized(), text: $text)
                     .accessibility(identifier: textFieldIdentifier)
