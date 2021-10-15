@@ -33,6 +33,8 @@ class PhoneNumberViewModel: ObservableObject {
             }
             
             guard let repository = repository else {
+                self.statusView = .error
+                self.errorMessage = "Invalid Response Model"
                 completion("")
                 return
             }
