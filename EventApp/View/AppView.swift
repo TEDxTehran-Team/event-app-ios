@@ -74,12 +74,12 @@ struct AppView: View {
                     
                 }
             
-//                ProfileTabBar()
-//                .tag(AppTabViewItem.profile)
-//                .tabItem {
-//                    Image(systemName: "person")
-//                    Text("Profile".localized())
-//                }
+                ProfileTabBar()
+                .tag(AppTabViewItem.profile)
+                .tabItem {
+                    Image(systemName: "person")
+                    Text("Profile".localized())
+                }
             
             
         }.accentColor(Colors.primaryRed)

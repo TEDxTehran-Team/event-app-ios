@@ -20,6 +20,7 @@ struct User: Decodable, Hashable {
     var jobTitle: String
     var id: String
     var imageUrl: String
+    var doesNeedProfileUpdate: Bool = false
   
   static var exampleList: [User] {
     [

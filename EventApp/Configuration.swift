@@ -14,8 +14,7 @@ enum AppLanguage: String {
 }
 
 class Configuration {
-    internal static let baseUrl = "https://tedxtehran.idearun.co/graphql/"
-//    internal static let baseUrl = "http://3.65.177.235:8000/graphql/"
+    internal static let baseUrl = "https://event-app-core.tedxtehran.com/graphql/"
     internal static let placeholderUrl = "https://tedxtehran.com/"
     internal static let acknowledgmentsUrl = "https://trello.com/b/9Vp84PlW"
     
