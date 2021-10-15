@@ -52,3 +52,6 @@
 "register" = "Register";
 "cancel_search" = "Cancel Search";
 "loading_chat" = "Wait a few moments to connect with the right person";
+"error_title" = "Error!";
+"send_otp_failed" = "Failed to send verification code, try again.";
+"enter_otp_code" = "Please enter verification code.";
