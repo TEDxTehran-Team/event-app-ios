@@ -9,14 +9,15 @@
 import SwiftUI
 
 struct Indicator : UIViewRepresentable {
-  
-  func makeUIView(context: UIViewRepresentableContext<Indicator>) -> UIActivityIndicatorView {
-    let indi = UIActivityIndicatorView(style: .medium)
-    indi.color = .gray
-    indi.startAnimating()
-    return indi
-  }
-  func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<Indicator>) {
     
-  }
+    func makeUIView(context: UIViewRepresentableContext<Indicator>) -> UIActivityIndicatorView {
+        let indi = UIActivityIndicatorView(style: .large)
+        indi.color = Colors.primaryRed.uiColor()
+        indi.startAnimating()
+        return indi
+    }
+    
+    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<Indicator>) {
+        
+    }
 }
