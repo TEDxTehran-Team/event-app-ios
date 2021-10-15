@@ -27,7 +27,8 @@ struct ProfileTabBar: View {
     var body: some View {
         if userSettings.loginSetting.token.isEmpty {
             if userSettings.loginSetting.loginToken.isEmpty {
-                PhoneNumberView(loginSetting: $userSettings.loginSetting)
+//                PhoneNumberView(loginSetting: $userSettings.loginSetting)
+                EditProfileView()
             } else {
                 OTPView(loginSetting: $userSettings.loginSetting)
             }

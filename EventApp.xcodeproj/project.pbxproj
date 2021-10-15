@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0BB375CB27197EEF0043AF24 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB375CA27197EEF0043AF24 /* UITextFieldExtensions.swift */; };
+		0BB375CF2719C9560043AF24 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB375CE2719C9560043AF24 /* TagView.swift */; };
+		0BB375D12719CE1C0043AF24 /* PlaceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB375D02719CE1C0043AF24 /* PlaceHolder.swift */; };
+		0BB375D32719D3170043AF24 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB375D22719D3170043AF24 /* TextView.swift */; };
 		6D1325B424FE658F00FFA202 /* PhotoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1325B324FE658F00FFA202 /* PhotoRepository.swift */; };
 		6D1325B624FE65C100FFA202 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1325B524FE65C100FFA202 /* Photo.swift */; };
 		6D1325B824FE65D200FFA202 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1325B724FE65D200FFA202 /* PhotoViewModel.swift */; };
@@ -158,6 +161,9 @@
 
 /* Begin PBXFileReference section */
 		0BB375CA27197EEF0043AF24 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
+		0BB375CE2719C9560043AF24 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		0BB375D02719CE1C0043AF24 /* PlaceHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolder.swift; sourceTree = "<group>"; };
+		0BB375D22719D3170043AF24 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		6B071428B16091281252D1D6 /* Pods-EventApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventApp.debug.xcconfig"; path = "Target Support Files/Pods-EventApp/Pods-EventApp.debug.xcconfig"; sourceTree = "<group>"; };
 		6D1325B324FE658F00FFA202 /* PhotoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRepository.swift; sourceTree = "<group>"; };
 		6D1325B524FE65C100FFA202 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -665,6 +671,9 @@
 				6D3B49332528BD130002EBF8 /* ErrorView.swift */,
 				6D3B495C2529B1EB0002EBF8 /* WebView.swift */,
 				6D3B495F2529B2470002EBF8 /* WebViewSheet.swift */,
+				0BB375CE2719C9560043AF24 /* TagView.swift */,
+				0BB375D02719CE1C0043AF24 /* PlaceHolder.swift */,
+				0BB375D22719D3170043AF24 /* TextView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -911,6 +920,7 @@
 				6DFCAF4C24FD32FC008AD550 /* EventRepository.swift in Sources */,
 				BB5D686226C6B2B2005967DB /* TextFieldWithImage.swift in Sources */,
 				6DDAEAC0251DC8DE0008CCEE /* EventView.swift in Sources */,
+				0BB375D32719D3170043AF24 /* TextView.swift in Sources */,
 				6D3B49202528AC4D0002EBF8 /* SponsorsView.swift in Sources */,
 				6D3B49072528A1340002EBF8 /* Speaker.swift in Sources */,
 				6D1325B824FE65D200FFA202 /* PhotoViewModel.swift in Sources */,
@@ -935,8 +945,10 @@
 				6D8CE96F2501237A00F47ADF /* ImagePlaceholder.swift in Sources */,
 				6D8CE973250204A600F47ADF /* Day.swift in Sources */,
 				6D3B491D2528AC2E0002EBF8 /* SponsorViewModel.swift in Sources */,
+				0BB375D12719CE1C0043AF24 /* PlaceHolder.swift in Sources */,
 				6D1325BC24FE706400FFA202 /* DateHelper.swift in Sources */,
 				6DD9718A24F8D2C20044D596 /* NewsViewModel.swift in Sources */,
+				0BB375CF2719C9560043AF24 /* TagView.swift in Sources */,
 				BB40FFF526D061FF00704962 /* LocalizedNumberText.swift in Sources */,
 				6DE7941124F939A500CEEE0E /* Album.swift in Sources */,
 				6D3B49302528BBD20002EBF8 /* SpeakerDetailView.swift in Sources */,
