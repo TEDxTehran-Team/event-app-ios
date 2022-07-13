@@ -3,7 +3,7 @@
 //  EventApp
 //
 //  Created by Alireza on 8/12/21.
-//  Copyright © 2021 Alexani. All rights reserved.
+//  Copyright © 2021 Alexani. All rights reserved. 
 //
 
 import Foundation
@@ -11,7 +11,7 @@ import Foundation
 class DataManager {
     
     enum UserDefaultKeys: String {
-        case refreshToken, token, phoneNumber
+        case refreshToken, token, phoneNumber // TODO: These values has to be kept on KeyChain.
     }
 
     static var shared = DataManager()
